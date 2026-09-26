@@ -1,0 +1,30 @@
+source_key: pagerduty
+adapter: pagerduty
+base_url: https://status.pagerduty.com
+official_url: https://status.pagerduty.com
+description: "On-call management, incident response, and digital operations."
+tags:
+  - "Automation"
+  - "DevOps"
+  - "IT operations"
+  - "Observability"
+component_scope: listed
+providers:
+  - slug: pagerduty
+    name: PagerDuty
+    components:
+      - { upstream_id: PDACBTY, name: Events API, group: US, position: 0 }
+      - { upstream_id: PA1RAE8, name: Events API, group: EU, position: 1 }
+      - { upstream_id: PKJOCIO, name: REST API, group: US, position: 2 }
+      - { upstream_id: PHN0C5L, name: REST API, group: EU, position: 3 }
+      - { upstream_id: PWS3A1I, name: Web Application, group: US, position: 4 }
+      - { upstream_id: PSFFZPV, name: Web Application, group: EU, position: 5 }
+      - { upstream_id: PP6UYA5, name: Mobile Application, group: US, position: 6 }
+      - { upstream_id: P8X6XKF, name: Mobile Application, group: EU, position: 7 }
+      - { upstream_id: PXMJ5Y2, name: Incident Timeline and Alert Logs, group: US, position: 8 }
+      - { upstream_id: PBZ76NS, name: Incident Timeline and Alert Logs, group: EU, position: 9 }
+      - { upstream_id: PRAXTAU, name: Business Services and Status Dashboard, group: US, position: 10 }
+      - { upstream_id: PO19SL4, name: Business Services and Status Dashboard, group: EU, position: 11 }
+      - { upstream_id: P3XI84O, name: Other Integrations, group: US, position: 12 }
+      - { upstream_id: PMU48RV, name: Other Integrations, group: EU, position: 13 }
+      - { upstream_id: PFSPYI7, name: Runbook Automation, group: Global, position: 14 }

@@ -1,0 +1,57 @@
+source_key: slack
+adapter: slack
+base_url: https://slack-status.com
+official_url: https://slack-status.com
+description: "Workplace messaging, collaboration, and connected workflows."
+tags:
+  - "Collaboration"
+  - "Communications"
+  - "Integration"
+providers:
+  - slug: slack
+    name: Slack
+    components:
+      - upstream_id: slack-login-sso
+        name: Login/SSO
+        group: Slack
+        position: 0
+      - upstream_id: slack-messaging
+        name: Messaging
+        group: Slack
+        position: 1
+      - upstream_id: slack-notifications
+        name: Notifications
+        group: Slack
+        position: 2
+      - upstream_id: slack-search
+        name: Search
+        group: Slack
+        position: 3
+      - upstream_id: slack-workspace-org-administration
+        name: Workspace/Org Administration
+        group: Slack
+        position: 4
+      - upstream_id: slack-canvases
+        name: Canvases
+        group: Slack
+        position: 5
+      - upstream_id: slack-connectivity
+        name: Connectivity
+        group: Slack
+        position: 6
+      - upstream_id: slack-files
+        name: Files
+        group: Slack
+        position: 7
+      - upstream_id: slack-huddles
+        name: Huddles
+        group: Slack
+        position: 8
+      - upstream_id: slack-apps-integrations-apis
+        name: Apps/Integrations/APIs
+        group: Slack
+        position: 9
+      - upstream_id: slack-workflows
+        name: Workflows
+        group: Slack
+        position: 10

@@ -1,0 +1,26 @@
+source_key: salesforce
+adapter: salesforce
+base_url: https://api.status.salesforce.com
+official_url: https://status.salesforce.com
+description: "Customer relationship management for sales, service, and marketing."
+tags:
+  - "Business operations"
+  - "CRM"
+  - "Marketing"
+  - "Support"
+component_scope: listed
+providers:
+  - slug: salesforce
+    name: Salesforce
+    components:
+      - { upstream_id: coreService, name: Core Service, group: Salesforce Platform, position: 0 }
+      - { upstream_id: Communities, name: Experience Cloud, group: Salesforce Platform, position: 1 }
+      - { upstream_id: liveAgent, name: Live Agent, group: Salesforce Platform, position: 2 }
+      - { upstream_id: Agentforce, name: Agentforce, group: Salesforce Platform, position: 3 }
+      - { upstream_id: Data, name: Data Cloud, group: Salesforce Platform, position: 4 }
+      - { upstream_id: B2BCommerce, name: B2B Commerce, group: Commerce, position: 5 }
+      - { upstream_id: MarketingCloudCoreService, name: Marketing Cloud Core, group: Marketing Cloud, position: 6 }
+      - { upstream_id: MarketingCloudRESTAPI, name: Marketing Cloud REST API, group: Marketing Cloud, position: 7 }
+      - { upstream_id: AnalyticsCloud, name: Tableau, group: Analytics, position: 8 }
+      - { upstream_id: Dataloader, name: MuleSoft Data Loader, group: MuleSoft, position: 9 }
+      - { upstream_id: MuleSoftPlatformMCPServer, name: MuleSoft Platform MCP Server, group: MuleSoft, position: 10 }

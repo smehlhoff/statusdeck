@@ -1,0 +1,16 @@
+source_key: airtable
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.airtable.com
+official_url: https://status.airtable.com
+description: "Collaborative databases and application workflows for teams."
+tags:
+  - "Collaboration"
+  - "Database"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: airtable
+    name: Airtable
+    components:
+      - { upstream_id: g1b92k2kv139, name: Airtable Service, group: Global, position: 0 }

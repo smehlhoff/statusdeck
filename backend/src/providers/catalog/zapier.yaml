@@ -1,0 +1,34 @@
+source_key: zapier
+adapter: statuspage
+base_url: https://status.zapier.com
+official_url: https://status.zapier.com
+separate_incidents_endpoint: true
+native_incidents_path: /proxy/zapier/incidents
+description: "No-code workflow automation across connected applications."
+tags:
+  - "Automation"
+  - "Integration"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: zapier
+    name: Zapier
+    components:
+      - { upstream_id: 01K6BRWXMXWWFM1R208A0N8NW0, name: Login, group: Global, position: 0 }
+      - { upstream_id: 01K4DRAZJMV7GFZ5T3WZMK9PJW, name: Website, group: Global, position: 1 }
+      - { upstream_id: 01KN263B5NYX3SE6M9X1H42F0J, name: Zap Editor, group: Automation, position: 2 }
+      - { upstream_id: 01KKYFMKD6MEHBVJAMD7YRWF46, name: Zap History, group: Automation, position: 3 }
+      - { upstream_id: 01K4DRAZJMYJC9SMZQVRYA4DQD, name: Polling Triggers, group: Automation, position: 4 }
+      - { upstream_id: 01K4DRAZJMC8E8N0B53VGDZ77V, name: Instant Triggers, group: Automation, position: 5 }
+      - { upstream_id: 01K4DRAZJMG8J96EX5QM7HK7XT, name: Searches and Writes, group: Automation, position: 6 }
+      - { upstream_id: 01K4DRAZJMD1RV4QNJ9MZB16E9, name: Developer Platform, group: Platform, position: 7 }
+      - { upstream_id: 01K4DRAZJMEY1Z5Z8TSW1A0GPF, name: Tables, group: Platform, position: 8 }
+      - { upstream_id: 01K4DRAZJMQPVFF9PRDAK69SDN, name: Forms, group: Platform, position: 9 }
+      - { upstream_id: 01KBDY7BCGJ40V777PA99J59KN, name: Functions, group: Platform, position: 10 }
+      - { upstream_id: 01K5F7Q8X1ND8PR00YJRCVW2C6, name: Canvas, group: AI, position: 11 }
+      - { upstream_id: 01K5F7Q8X1B0053SAX340H8470, name: Chatbots, group: AI, position: 12 }
+      - { upstream_id: 01K5F7Q8X1PZTPDGQC0DVCP7JW, name: Agents, group: AI, position: 13 }
+      - { upstream_id: 01KMEC0YVF63K65R8ZSHTR1VCB, name: Copilot, group: AI, position: 14 }
+      - { upstream_id: 01K6BPXXKEXQ12K4CBRF8187F0, name: MCP, group: AI, position: 15 }
+      - { upstream_id: 01KRKFGTB53GNTCRWGDDB8E0T8, name: Lead Router, group: Platform, position: 16 }
+      - { upstream_id: 01K6NEYNYASNTJYJGMAF9TKGWC, name: Support, group: Global, position: 17 }

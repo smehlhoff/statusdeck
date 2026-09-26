@@ -1,0 +1,29 @@
+source_key: circleci
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.circleci.com
+official_url: https://status.circleci.com
+description: "Continuous integration and delivery automation for software teams."
+tags:
+  - "Automation"
+  - "CI/CD"
+  - "DevOps"
+component_scope: listed
+providers:
+  - slug: circleci
+    name: CircleCI
+    components:
+      - { upstream_id: zxxnbynf4dkm, name: Pipelines and Workflows, group: Global, position: 0 }
+      - { upstream_id: x1v3t5qrnlhk, name: Docker Jobs, group: Global, position: 1 }
+      - { upstream_id: 0l5xn1l7qs8f, name: Machine Jobs, group: Global, position: 2 }
+      - { upstream_id: bpfmy8wy8wq2, name: macOS Jobs, group: Global, position: 3 }
+      - { upstream_id: svt88btymymk, name: Windows Jobs, group: Global, position: 4 }
+      - { upstream_id: t489m38xq83m, name: CircleCI API, group: Global, position: 5 }
+      - { upstream_id: sw1j7xsbdlk4, name: CircleCI UI, group: Global, position: 6 }
+      - { upstream_id: bckmjhmfhjnb, name: Artifacts, group: Global, position: 7 }
+      - { upstream_id: g157tj6jrzwy, name: Runner, group: Global, position: 8 }
+      - { upstream_id: 60j1gp5j396y, name: CircleCI Webhooks, group: Global, position: 9 }
+      - { upstream_id: gs1qyd7g3l17, name: CircleCI Insights, group: Global, position: 10 }
+      - { upstream_id: k7z3xkf61sff, name: CircleCI Releases, group: Global, position: 11 }
+      - { upstream_id: rms1xkdxxqx1, name: Notifications and Status Updates, group: Global, position: 12 }
+      - { upstream_id: gx397f9wvq4w, name: Billing and Account, group: Global, position: 13 }

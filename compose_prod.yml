@@ -1,0 +1,28 @@
+# Merge after compose_base.yml.
+x-build-args: &build-args
+  STATUSDECK_VERSION: ${STATUSDECK_VERSION:?set STATUSDECK_VERSION in .env/.env}
+  STATUSDECK_REVISION: ${STATUSDECK_REVISION:?set STATUSDECK_REVISION in .env/.env}
+
+services:
+  migrate:
+    build:
+      args: *build-args
+
+  backend:
+    build:
+      args: *build-args
+    environment:
+      STATUSDECK_BASE_URL: ${STATUSDECK_BASE_URL:?set STATUSDECK_BASE_URL in .env/.env}
+      STATUSDECK_TRUSTED_HOSTS: ${STATUSDECK_TRUSTED_HOSTS:?set STATUSDECK_TRUSTED_HOSTS in .env/.env},localhost
+      STATUSDECK_SESSION_COOKIE_SECURE: ${STATUSDECK_SESSION_COOKIE_SECURE:-true}
+
+  worker:
+    build:
+      args: *build-args
+    environment:
+      STATUSDECK_BASE_URL: ${STATUSDECK_BASE_URL:?set STATUSDECK_BASE_URL in .env/.env}
+      STATUSDECK_SESSION_COOKIE_SECURE: ${STATUSDECK_SESSION_COOKIE_SECURE:-true}
+
+  frontend:
+    build:
+      args: *build-args

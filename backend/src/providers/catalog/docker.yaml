@@ -1,0 +1,37 @@
+source_key: docker
+adapter: statuspage
+base_url: https://www.dockerstatus.com
+official_url: https://www.dockerstatus.com
+description: "Container development, image registries, and cloud build services."
+tags:
+  - "Developer tools"
+  - "DevOps"
+  - "Infrastructure"
+separate_incidents_endpoint: true
+native_incidents_path: /proxy/docker/incidents
+component_scope: listed
+providers:
+  - slug: docker
+    name: Docker
+    components:
+      - { upstream_id: 01M00EVP5B9Q25WG105ZAKTBBM, name: Docker Hub Registry, group: Docker Hub, position: 0 }
+      - { upstream_id: 01M00EVP5BBXPD92QQ0BZTQ4ZP, name: Docker Hub Web Services, group: Docker Hub, position: 1 }
+      - { upstream_id: 01M00EVP5BT5J1G53M71AQX3CM, name: Docker Hub Automated Builds, group: Docker Hub, position: 2 }
+      - { upstream_id: 01M00EVP5BKSANR81NCA9DWKRC, name: Docker Authentication, group: Platform, position: 3 }
+      - { upstream_id: 01M00EVP5B3NWQV99B5G5QE8JD, name: Docker Billing, group: Platform, position: 4 }
+      - { upstream_id: 01M00EVP5BGQ9CJ4KY4RTFY02Y, name: Docker Build Cloud, group: Platform, position: 5 }
+      - { upstream_id: 01M00EVP5BFYYH7CTY68WTGPC6, name: Docker Package Repositories, group: Platform, position: 6 }
+      - { upstream_id: 01M00EVP5BZMT77ZTSR66A7JHD, name: Docker Scout, group: Platform, position: 7 }
+      - { upstream_id: 01M00EVP5BR2HP2C2CXPED9G0G, name: Docker Hardened Images, group: Platform, position: 8 }
+      - { upstream_id: 01M00EVP5BNSF5YHJCADSMASQ0, name: Docker Testcontainers Cloud, group: Platform, position: 9 }
+      - { upstream_id: 01M00EVP5BTST1D23855Z966P7, name: Docker Offload, group: AI, position: 10 }
+      - { upstream_id: 01M00EVP5BGVEVE2GA5SA08D55, name: Docker Model Runner, group: AI, position: 11 }
+      - { upstream_id: 01M00EVP5BYXS3ZC1BFVBVHNGM, name: Docker Sandboxes, group: AI, position: 12 }
+      - { upstream_id: 01M08V1MRH3RG3SGKNCX3H7Q9E, name: Docker Agentic Platform, group: AI, position: 13 }
+      - { upstream_id: 01M08TCWSZQ09120HAQETTHEZS, name: MCP Gateway, group: AI, position: 14 }
+      - { upstream_id: 01M00EVP5BHN11H5QEJY5G83C0, name: Gordon AI Agent, group: AI, position: 15 }
+      - { upstream_id: 01M00EVP5BSEDYWDR2N8RBWSBD, name: Docker AI Governance, group: AI, position: 16 }
+      - { upstream_id: 01M00EVP5B68G96EP4JY2BZ0P7, name: Docker Support, group: Web, position: 17 }
+      - { upstream_id: 01M00EVP5B59AVP3HQ58QBFJ3G, name: Docker Community Forum, group: Web, position: 18 }
+      - { upstream_id: 01M00EVP5BR2YFPX5W6N80T36K, name: Docker.com Website, group: Web, position: 19 }
+      - { upstream_id: 01M00EVP5BV9H5J9TTP4GKDQGC, name: Docker Documentation, group: Web, position: 20 }

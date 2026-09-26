@@ -1,0 +1,38 @@
+source_key: twilio
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.twilio.com
+official_url: https://status.twilio.com
+description: "Programmable messaging, voice, email, and communications APIs."
+tags:
+  - "API"
+  - "Communications"
+  - "Developer tools"
+component_scope: listed
+providers:
+  - slug: twilio
+    name: Twilio
+    components:
+      - { upstream_id: d1j2nx64rpq3, name: MMS, group: Messaging, position: 0 }
+      - { upstream_id: yvvy3vlp4djf, name: SMS, group: Messaging, position: 1 }
+      - { upstream_id: pf1lb8dq2g3b, name: SMPP, group: Messaging, position: 2 }
+      - { upstream_id: 1gkv0mxhzsjv, name: WhatsApp Messaging, group: Messaging, position: 3 }
+      - { upstream_id: 2vs63pk0qq23, name: Conversations, group: Messaging, position: 4 }
+      - { upstream_id: 6cn0g627h62p, name: Messaging Insights, group: Messaging, position: 5 }
+      - { upstream_id: 3p1q1qbw970c, name: Content API, group: Messaging, position: 6 }
+      - { upstream_id: x3z86l06nvl7, name: Programmable Messaging API, group: Messaging, position: 7 }
+      - { upstream_id: g2dt752kwqs0, name: PSTN, group: Voice US1, position: 8 }
+      - { upstream_id: w7nxj548smhd, name: SIP Interface, group: Voice US1, position: 9 }
+      - { upstream_id: x6drb5vw27bs, name: Client Web, group: Voice US1, position: 10 }
+      - { upstream_id: 6f5zbh4rqx3m, name: Client Mobile, group: Voice US1, position: 11 }
+      - { upstream_id: l2p2s96tdsf4, name: Conference, group: Voice US1, position: 12 }
+      - { upstream_id: frxynt0ffp5w, name: Recording, group: Voice US1, position: 13 }
+      - { upstream_id: mwcz6hw53t7c, name: Voice REST API, group: Voice US1, position: 14 }
+      - { upstream_id: mq9q3ytpkyfz, name: Authy 2FA, group: Account Security, position: 15 }
+      - { upstream_id: whldrk77jnm4, name: Verify, group: Account Security, position: 16 }
+      - { upstream_id: xk8z50jy8hcs, name: Lookup, group: Account Security, position: 17 }
+      - { upstream_id: 7pyswrs5pfd6, name: Mail Send API, group: Email, position: 18 }
+      - { upstream_id: n0182p0ccyxz, name: Logs, group: Email, position: 19 }
+      - { upstream_id: qhhgb8cl0ztk, name: Dedicated IP, group: Email, position: 20 }
+      - { upstream_id: g4hs7h64k9fv, name: Console, group: Developer Tools, position: 21 }
+      - { upstream_id: zxhmy448yyn3, name: Event Streams, group: Developer Tools, position: 22 }

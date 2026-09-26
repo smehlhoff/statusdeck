@@ -1,0 +1,23 @@
+source_key: shopify
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://www.shopifystatus.com
+official_url: https://www.shopifystatus.com
+description: "Commerce platform for online stores, retail, and payments."
+tags:
+  - "API"
+  - "Commerce"
+  - "Payments"
+component_scope: listed
+providers:
+  - slug: shopify
+    name: Shopify
+    components:
+      - { upstream_id: j2v844ncbwhc, name: Admin, group: Global, position: 0 }
+      - { upstream_id: xxmsk7ckz5zn, name: Checkout, group: Global, position: 1 }
+      - { upstream_id: lsbpn7k2klys, name: Storefront, group: Global, position: 2 }
+      - { upstream_id: 3yw249mdwsnm, name: API and Mobile, group: Global, position: 3 }
+      - { upstream_id: zqwjyv8w0j1v, name: Point of Sale, group: Global, position: 4 }
+      - { upstream_id: kts17443k1tp, name: Reports and Dashboards, group: Global, position: 5 }
+      - { upstream_id: hbrbr6ssntq5, name: Oxygen, group: Global, position: 6 }
+      - { upstream_id: 681m2hqkhvdk, name: Support, group: Global, position: 7 }

@@ -1,0 +1,25 @@
+source_key: bitbucket
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://bitbucket.status.atlassian.com
+official_url: https://bitbucket.status.atlassian.com
+description: "Git source hosting, code review, and development workflows."
+tags:
+  - "CI/CD"
+  - "Developer tools"
+  - "Source control"
+component_scope: listed
+providers:
+  - slug: bitbucket
+    name: Bitbucket Cloud
+    components:
+      - { upstream_id: g0lfj4sv2fhf, name: Website, group: Global, position: 0 }
+      - { upstream_id: k0x2yw1435v7, name: API, group: Global, position: 1 }
+      - { upstream_id: qmh4tj8h5kbn, name: Git via SSH, group: Global, position: 2 }
+      - { upstream_id: c1qmcrcbc5zy, name: Git via HTTPS, group: Global, position: 3 }
+      - { upstream_id: qfsxh5mgnyyn, name: Authentication and User Management, group: Global, position: 4 }
+      - { upstream_id: rfzky0v13fbp, name: Webhooks, group: Global, position: 5 }
+      - { upstream_id: 28h8dvv2qfzw, name: Source Downloads, group: Global, position: 6 }
+      - { upstream_id: rzh2n85q7vtt, name: Pipelines, group: Global, position: 7 }
+      - { upstream_id: g0c8l3nn2vr1, name: Git LFS, group: Global, position: 8 }
+      - { upstream_id: fwjr473vzj2z, name: Packages, group: Global, position: 9 }

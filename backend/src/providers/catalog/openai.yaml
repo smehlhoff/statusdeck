@@ -1,0 +1,42 @@
+source_key: openai
+adapter: statuspage
+base_url: https://status.openai.com
+official_url: https://status.openai.com
+description: "AI models, assistants, and APIs for developers and businesses."
+tags:
+  - "AI"
+  - "API"
+  - "Developer tools"
+separate_incidents_endpoint: true
+components_path: /api/v2/components.json
+native_incidents_path: /proxy/status.openai.com/incidents
+component_scope: listed
+providers:
+  - slug: openai
+    name: OpenAI
+    components:
+      - { upstream_id: 01JP8CD9JR3HR6Y7G4Q75N4DVW, name: Responses, group: API, position: 0 }
+      - { upstream_id: 01JMXBRMFE4MAP2BHSJNZ787WX, name: Images, group: API, position: 1 }
+      - { upstream_id: 01JMXBRMFEKVBWKK82B44QFMCE, name: Audio, group: API, position: 2 }
+      - { upstream_id: 01JNKS9D9S72PMP1938PVFFQN4, name: Compliance API, group: API, position: 3 }
+      - { upstream_id: 01JMXBRMFESJCBGJR10PDD3WCQ, name: Files, group: API, position: 4 }
+      - { upstream_id: 01JMXBNJXGKKP51D4DEJ2HZJ8Q, name: Search, group: API, position: 5 }
+      - { upstream_id: 01KVR95C58GGWHV7RYBT32NP11, name: Ads API, group: API, position: 6 }
+      - { upstream_id: 01JMXBRMFEMZK0HPK19RYET250, name: Fine-tuning, group: API, position: 7 }
+      - { upstream_id: 01JMXBRMFEQW613TFE89F45035, name: Realtime, group: API, position: 8 }
+      - { upstream_id: 01JMXBRMFE5ESNNV8JDHVCGSRD, name: Batch, group: API, position: 9 }
+      - { upstream_id: 01JMXBRMFEV0AJ0VVS68N9CD6R, name: Embeddings, group: API, position: 10 }
+      - { upstream_id: 01JMXBRMFEVZ7E0X9GD9FWR9WX, name: Moderations, group: API, position: 11 }
+      - { upstream_id: 01KMP3KP5MGE23B80K1EK4S8PV, name: Codex API, group: API, position: 12 }
+      - { upstream_id: 01JSM5RTJWHRWDTS6Q604VEW3B, name: Login, group: Products, position: 13 }
+      - { upstream_id: 01K9G527YRPY1EFRMHTKB5BKT5, name: Sora, group: Products, position: 14 }
+      - { upstream_id: 01K8C008QVXHA6JX98PAS42VPD, name: ChatGPT Atlas, group: Products, position: 15 }
+      - { upstream_id: 01JSYVYQSWMJ9QG35XHP08BHA7, name: Deep Research, group: Products, position: 16 }
+      - { upstream_id: 01JMXBNJXGGT5SR5DB9J7GYY48, name: Voice mode, group: Products, position: 17 }
+      - { upstream_id: 01K6TVGGGDCP0PPGCHXAG3AQX8, name: Connectors and Apps, group: Products, position: 18 }
+      - { upstream_id: 01KX45G1SHQQ9DTAX9S4W7FV8G, name: Sites, group: Products, position: 19 }
+      - { upstream_id: 01JSG1XMJ9RVJJQ0E85NVSJ2AZ, name: Agent, group: Products, position: 20 }
+      - { upstream_id: 01KMKFAMWKQ81YWSE1Z18R6VHR, name: Codex in ChatGPT Desktop, group: Codex, position: 21 }
+      - { upstream_id: 01JVCV8YSWZFRSM1G5CVP253SK, name: Codex Web, group: Codex, position: 22 }
+      - { upstream_id: 01KMP3KP5M8X0EBTVW6KN327EE, name: VS Code extension, group: Codex, position: 23 }
+      - { upstream_id: 01KKAD7C71MCCH3FTREMJH4AAS, name: FedRAMP, group: Compliance, position: 24 }

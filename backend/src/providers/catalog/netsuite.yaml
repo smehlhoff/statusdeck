@@ -1,0 +1,118 @@
+source_key: netsuite
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.netsuite.com
+official_url: https://status.netsuite.com
+description: "Cloud business management for accounting, ERP, and operations."
+tags:
+  - "Business operations"
+  - "CRM"
+  - "Finance"
+component_name_prefixes:
+  - "US "
+excluded_incident_name_prefixes:
+  - "_system_metadata:"
+providers:
+  - slug: netsuite-us
+    name: NetSuite US
+    components:
+      - upstream_id: z4w2kz03lzcv
+        name: US Ashburn 1
+        group: Application UI
+        position: 0
+      - upstream_id: hblpqdnw0c6p
+        name: US Ashburn 2
+        group: Application UI
+        position: 1
+      - upstream_id: z7vv3xs7vmrg
+        name: US Ashburn 3
+        group: Application UI
+        position: 2
+      - upstream_id: 6c22vvdllc85
+        name: US Ashburn 4
+        group: Application UI
+        position: 3
+      - upstream_id: bp7q245b0cpf
+        name: US Ashburn 5
+        group: Application UI
+        position: 4
+      - upstream_id: ytf3rlkby833
+        name: US Ashburn 6
+        group: Application UI
+        position: 5
+      - upstream_id: sl4d0hclfqn3
+        name: US Ashburn 7
+        group: Application UI
+        position: 6
+      - upstream_id: 95trk55ffqkl
+        name: US Ashburn 8
+        group: Application UI
+        position: 7
+      - upstream_id: rx730fhdtvns
+        name: US Ashburn S
+        group: SuiteProjects Pro
+        position: 8
+      - upstream_id: rnlqdwmr1czq
+        name: US Chicago 1
+        group: Application UI
+        position: 9
+      - upstream_id: x7k2219wq01p
+        name: US Chicago 2
+        group: Application UI
+        position: 10
+      - upstream_id: gzm9zvgc1q3t
+        name: US Chicago 3
+        group: Application UI
+        position: 11
+      - upstream_id: 7pr1h1rfs1hl
+        name: US Chicago 4
+        group: Application UI
+        position: 12
+      - upstream_id: 85st6s6ldk03
+        name: US Chicago 5
+        group: Application UI
+        position: 13
+      - upstream_id: svp8qfvkz19p
+        name: US Phoenix 1
+        group: Application UI
+        position: 14
+      - upstream_id: 64sp09xqrqg8
+        name: US Phoenix 2
+        group: Application UI
+        position: 15
+      - upstream_id: y35zfrwq4cxj
+        name: US Phoenix 3
+        group: Application UI
+        position: 16
+      - upstream_id: 68vp02m8h2zy
+        name: US Phoenix 4
+        group: Application UI
+        position: 17
+      - upstream_id: mdnpkx8lf6fn
+        name: US Phoenix 5
+        group: Application UI
+        position: 18
+      - upstream_id: rghg9rs9c1h5
+        name: US Phoenix 6
+        group: Application UI
+        position: 19
+      - upstream_id: 0qbjw1px0v7f
+        name: US Phoenix 7
+        group: Application UI
+        position: 20
+      - upstream_id: l5043g1y3kxb
+        name: US Phoenix 8
+        group: Application UI
+        position: 21
+      - upstream_id: vhq3b2tnk4d7
+        name: US Phoenix S
+        group: SuitePeople Payroll
+        position: 22
+      - upstream_id: g60j3kpb7zry
+        name: US San Jose 1
+        group: Application UI
+        position: 23
+      - upstream_id: ghgfs6jst1mk
+        name: US San Jose 2
+        group: Application UI
+        position: 24

@@ -1,0 +1,27 @@
+source_key: hubspot
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.hubspot.com
+official_url: https://status.hubspot.com
+description: "Customer relationship management, marketing, sales, and support."
+tags:
+  - "Business operations"
+  - "CRM"
+  - "Marketing"
+  - "Support"
+component_scope: listed
+providers:
+  - slug: hubspot
+    name: HubSpot
+    components:
+      - { upstream_id: wd2vk60brf48, name: CRM, group: Global, position: 0 }
+      - { upstream_id: vq3xl1yxlv6w, name: Marketing Tools, group: Global, position: 1 }
+      - { upstream_id: dgj0tf6pvh46, name: Website, group: Global, position: 2 }
+      - { upstream_id: pmyfnq1w532l, name: Sales Tools, group: Global, position: 3 }
+      - { upstream_id: 3mg3gm1jsdr0, name: Service Tools, group: Global, position: 4 }
+      - { upstream_id: j7jxwhzfxbld, name: Chat & Automation, group: Global, position: 5 }
+      - { upstream_id: 1l51z2b3c1tk, name: Reports, group: Global, position: 6 }
+      - { upstream_id: 56ktwf7k5yrk, name: HubSpot APIs, group: Global, position: 7 }
+      - { upstream_id: xmv0ypc21z1n, name: Integrations, group: Global, position: 8 }
+      - { upstream_id: 72fr2qpd5z0d, name: Mobile, group: Global, position: 9 }
+      - { upstream_id: zdlqz8253lz3, name: Developer Tools, group: Global, position: 10 }

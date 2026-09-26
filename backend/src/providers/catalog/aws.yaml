@@ -1,0 +1,82 @@
+source_key: aws
+adapter: aws
+base_url: https://health.aws.amazon.com
+official_url: https://health.aws.amazon.com
+description: "Cloud infrastructure and managed computing platform services."
+tags:
+  - "Cloud"
+  - "Developer tools"
+  - "Infrastructure"
+component_scope: listed
+providers:
+  - slug: aws
+    name: AWS United States and Global
+    components:
+      - { upstream_id: ec2-us-east-1, name: Amazon EC2, group: US East (N. Virginia), position: 0 }
+      - { upstream_id: s3-us-east-1, name: Amazon S3, group: US East (N. Virginia), position: 1 }
+      - { upstream_id: rds-us-east-1, name: Amazon RDS, group: US East (N. Virginia), position: 2 }
+      - { upstream_id: dynamodb-us-east-1, name: Amazon DynamoDB, group: US East (N. Virginia), position: 3 }
+      - { upstream_id: lambda-us-east-1, name: AWS Lambda, group: US East (N. Virginia), position: 4 }
+      - { upstream_id: apigateway-us-east-1, name: Amazon API Gateway, group: US East (N. Virginia), position: 5 }
+      - { upstream_id: elb-us-east-1, name: Elastic Load Balancing, group: US East (N. Virginia), position: 6 }
+      - { upstream_id: eks-us-east-1, name: Amazon EKS, group: US East (N. Virginia), position: 7 }
+      - { upstream_id: ecs-us-east-1, name: Amazon ECS, group: US East (N. Virginia), position: 8 }
+      - { upstream_id: sqs-us-east-1, name: Amazon SQS, group: US East (N. Virginia), position: 9 }
+      - { upstream_id: sns-us-east-1, name: Amazon SNS, group: US East (N. Virginia), position: 10 }
+      - { upstream_id: kinesis-us-east-1, name: Kinesis Data Streams, group: US East (N. Virginia), position: 11 }
+      - { upstream_id: cloudwatch-us-east-1, name: Amazon CloudWatch, group: US East (N. Virginia), position: 12 }
+      - { upstream_id: ec2-us-east-2, name: Amazon EC2, group: US East (Ohio), position: 13 }
+      - { upstream_id: s3-us-east-2, name: Amazon S3, group: US East (Ohio), position: 14 }
+      - { upstream_id: rds-us-east-2, name: Amazon RDS, group: US East (Ohio), position: 15 }
+      - { upstream_id: dynamodb-us-east-2, name: Amazon DynamoDB, group: US East (Ohio), position: 16 }
+      - { upstream_id: lambda-us-east-2, name: AWS Lambda, group: US East (Ohio), position: 17 }
+      - { upstream_id: apigateway-us-east-2, name: Amazon API Gateway, group: US East (Ohio), position: 18 }
+      - { upstream_id: elb-us-east-2, name: Elastic Load Balancing, group: US East (Ohio), position: 19 }
+      - { upstream_id: eks-us-east-2, name: Amazon EKS, group: US East (Ohio), position: 20 }
+      - { upstream_id: ecs-us-east-2, name: Amazon ECS, group: US East (Ohio), position: 21 }
+      - { upstream_id: sqs-us-east-2, name: Amazon SQS, group: US East (Ohio), position: 22 }
+      - { upstream_id: sns-us-east-2, name: Amazon SNS, group: US East (Ohio), position: 23 }
+      - { upstream_id: kinesis-us-east-2, name: Kinesis Data Streams, group: US East (Ohio), position: 24 }
+      - { upstream_id: cloudwatch-us-east-2, name: Amazon CloudWatch, group: US East (Ohio), position: 25 }
+      - { upstream_id: ec2-us-west-1, name: Amazon EC2, group: US West (N. California), position: 26 }
+      - { upstream_id: s3-us-west-1, name: Amazon S3, group: US West (N. California), position: 27 }
+      - { upstream_id: rds-us-west-1, name: Amazon RDS, group: US West (N. California), position: 28 }
+      - { upstream_id: dynamodb-us-west-1, name: Amazon DynamoDB, group: US West (N. California), position: 29 }
+      - { upstream_id: lambda-us-west-1, name: AWS Lambda, group: US West (N. California), position: 30 }
+      - { upstream_id: apigateway-us-west-1, name: Amazon API Gateway, group: US West (N. California), position: 31 }
+      - { upstream_id: elb-us-west-1, name: Elastic Load Balancing, group: US West (N. California), position: 32 }
+      - { upstream_id: eks-us-west-1, name: Amazon EKS, group: US West (N. California), position: 33 }
+      - { upstream_id: ecs-us-west-1, name: Amazon ECS, group: US West (N. California), position: 34 }
+      - { upstream_id: sqs-us-west-1, name: Amazon SQS, group: US West (N. California), position: 35 }
+      - { upstream_id: sns-us-west-1, name: Amazon SNS, group: US West (N. California), position: 36 }
+      - { upstream_id: kinesis-us-west-1, name: Kinesis Data Streams, group: US West (N. California), position: 37 }
+      - { upstream_id: cloudwatch-us-west-1, name: Amazon CloudWatch, group: US West (N. California), position: 38 }
+      - { upstream_id: ec2-us-west-2, name: Amazon EC2, group: US West (Oregon), position: 39 }
+      - { upstream_id: s3-us-west-2, name: Amazon S3, group: US West (Oregon), position: 40 }
+      - { upstream_id: rds-us-west-2, name: Amazon RDS, group: US West (Oregon), position: 41 }
+      - { upstream_id: dynamodb-us-west-2, name: Amazon DynamoDB, group: US West (Oregon), position: 42 }
+      - { upstream_id: lambda-us-west-2, name: AWS Lambda, group: US West (Oregon), position: 43 }
+      - { upstream_id: apigateway-us-west-2, name: Amazon API Gateway, group: US West (Oregon), position: 44 }
+      - { upstream_id: elb-us-west-2, name: Elastic Load Balancing, group: US West (Oregon), position: 45 }
+      - { upstream_id: eks-us-west-2, name: Amazon EKS, group: US West (Oregon), position: 46 }
+      - { upstream_id: ecs-us-west-2, name: Amazon ECS, group: US West (Oregon), position: 47 }
+      - { upstream_id: sqs-us-west-2, name: Amazon SQS, group: US West (Oregon), position: 48 }
+      - { upstream_id: sns-us-west-2, name: Amazon SNS, group: US West (Oregon), position: 49 }
+      - { upstream_id: kinesis-us-west-2, name: Kinesis Data Streams, group: US West (Oregon), position: 50 }
+      - { upstream_id: cloudwatch-us-west-2, name: Amazon CloudWatch, group: US West (Oregon), position: 51 }
+      - { upstream_id: cloudfront, name: Amazon CloudFront, group: Global, position: 52 }
+      - { upstream_id: route53, name: Amazon Route 53, group: Global, position: 53 }
+      - { upstream_id: iamidentitycenter-us-east-1, name: AWS IAM Identity Center, group: US East (N. Virginia), position: 54 }
+      - { upstream_id: sts-us-east-1, name: AWS Security Token Service, group: US East (N. Virginia), position: 55 }
+      - { upstream_id: signin-us-east-1, name: AWS Sign-In, group: US East (N. Virginia), position: 56 }
+      - { upstream_id: connect-us-east-1, name: Amazon Connect, group: US East (N. Virginia), position: 57 }
+      - { upstream_id: iamidentitycenter-us-east-2, name: AWS IAM Identity Center, group: US East (Ohio), position: 58 }
+      - { upstream_id: sts-us-east-2, name: AWS Security Token Service, group: US East (Ohio), position: 59 }
+      - { upstream_id: signin-us-east-2, name: AWS Sign-In, group: US East (Ohio), position: 60 }
+      - { upstream_id: iamidentitycenter-us-west-1, name: AWS IAM Identity Center, group: US West (N. California), position: 61 }
+      - { upstream_id: sts-us-west-1, name: AWS Security Token Service, group: US West (N. California), position: 62 }
+      - { upstream_id: signin-us-west-1, name: AWS Sign-In, group: US West (N. California), position: 63 }
+      - { upstream_id: iamidentitycenter-us-west-2, name: AWS IAM Identity Center, group: US West (Oregon), position: 64 }
+      - { upstream_id: sts-us-west-2, name: AWS Security Token Service, group: US West (Oregon), position: 65 }
+      - { upstream_id: signin-us-west-2, name: AWS Sign-In, group: US West (Oregon), position: 66 }
+      - { upstream_id: connect-us-west-2, name: Amazon Connect, group: US West (Oregon), position: 67 }

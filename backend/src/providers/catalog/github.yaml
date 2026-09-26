@@ -1,0 +1,60 @@
+source_key: github
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://www.githubstatus.com
+official_url: https://www.githubstatus.com
+description: "Source hosting, code collaboration, and software automation."
+tags:
+  - "CI/CD"
+  - "Collaboration"
+  - "Developer tools"
+  - "Source control"
+component_scope: listed
+providers:
+  - slug: github
+    name: GitHub
+    components:
+      - upstream_id: 8l4ygp009s5s
+        name: Git Operations
+        group: GitHub
+        position: 0
+      - upstream_id: 4230lsnqdsld
+        name: Webhooks
+        group: GitHub
+        position: 1
+      - upstream_id: brv1bkgrwx7q
+        name: API Requests
+        group: GitHub
+        position: 3
+      - upstream_id: kr09ddfgbfsf
+        name: Issues
+        group: GitHub
+        position: 4
+      - upstream_id: hhtssxt0f5v2
+        name: Pull Requests
+        group: GitHub
+        position: 5
+      - upstream_id: br0l2tvcx85d
+        name: Actions
+        group: GitHub
+        position: 6
+      - upstream_id: st3j38cctv9l
+        name: Packages
+        group: GitHub
+        position: 7
+      - upstream_id: vg70hn9s2tyj
+        name: Pages
+        group: GitHub
+        position: 8
+      - upstream_id: pjmpxvq2cmr2
+        name: Copilot
+        group: GitHub
+        position: 9
+      - upstream_id: h2ftsgbw7kmk
+        name: Codespaces
+        group: GitHub
+        position: 10
+      - upstream_id: cnnb39dkkk82
+        name: Copilot AI Model Providers
+        group: GitHub
+        position: 11

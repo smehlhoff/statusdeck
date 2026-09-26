@@ -1,0 +1,24 @@
+source_key: zoom
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://www.zoomstatus.com
+official_url: https://www.zoomstatus.com
+description: "Video meetings, phone, chat, and workplace communications."
+tags:
+  - "API"
+  - "Collaboration"
+  - "Communications"
+component_scope: listed
+providers:
+  - slug: zoom
+    name: Zoom
+    components:
+      - { upstream_id: 3z7b6jks10hm, name: Zoom Meetings, group: Global, position: 0 }
+      - { upstream_id: t2jk6yrqbp4j, name: Zoom Chat, group: Global, position: 1 }
+      - { upstream_id: jh6w5p8b9yv9, name: Zoom Phone, group: Global, position: 2 }
+      - { upstream_id: cn1j8pttz0wy, name: Dashboard & Reporting, group: Global, position: 3 }
+      - { upstream_id: jds2k69nx1t9, name: Web SDK, group: Global, position: 4 }
+      - { upstream_id: xtgr15yv6hbn, name: Zoom Rooms, group: Global, position: 5 }
+      - { upstream_id: vttvjkwmdfps, name: Zoom Contact Center, group: Global, position: 6 }
+      - { upstream_id: g3x1x7ffg5b0, name: Zoom Revenue Accelerator, group: Global, position: 7 }
+      - { upstream_id: nyfqtg3bpllm, name: REST API, group: Global, position: 8 }

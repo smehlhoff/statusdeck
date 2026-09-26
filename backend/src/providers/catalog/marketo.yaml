@@ -1,0 +1,17 @@
+source_key: marketo
+adapter: adobe
+base_url: https://data.status.adobe.com
+official_url: https://status.adobe.com
+description: "Marketing automation, lead management, and campaign operations."
+tags:
+  - "Automation"
+  - "Business operations"
+  - "Marketing"
+providers:
+  - slug: marketo-us
+    name: Adobe Marketo Engage US
+    components:
+      - upstream_id: marketo-us
+        name: Adobe Marketo Engage (US)
+        group: US
+        position: 0

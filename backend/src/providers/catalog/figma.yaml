@@ -1,0 +1,27 @@
+source_key: figma
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.figma.com
+official_url: https://status.figma.com
+description: "Collaborative interface design, prototyping, and whiteboarding."
+tags:
+  - "Collaboration"
+  - "Developer tools"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: figma
+    name: Figma
+    components:
+      - { upstream_id: 99pvgc89pmqy, name: Figma Design, group: Global, position: 0 }
+      - { upstream_id: sh20yv82q2nb, name: FigJam, group: Global, position: 1 }
+      - { upstream_id: dxx798px4nsg, name: Dev Mode, group: Global, position: 2 }
+      - { upstream_id: 6t88v9qpkz5v, name: Figma Make, group: Global, position: 3 }
+      - { upstream_id: nwrqc1cqgt21, name: Figma Agent, group: Global, position: 4 }
+      - { upstream_id: tkdcyy1s1dgt, name: MCP, group: Global, position: 5 }
+      - { upstream_id: pn57gvt7sjmx, name: Real-time Collaboration, group: Global, position: 6 }
+      - { upstream_id: bcf4b8z76zqr, name: REST API, group: Global, position: 7 }
+      - { upstream_id: vgmcylvtjvx4, name: Plugins and Widgets, group: Global, position: 8 }
+      - { upstream_id: xf0flg39y90r, name: Sign-in and Account Access, group: Global, position: 9 }
+      - { upstream_id: m29llqngdb9f, name: File Browser and Search, group: Global, position: 10 }
+      - { upstream_id: kxfxzz366mlk, name: Email and Notifications, group: Global, position: 11 }

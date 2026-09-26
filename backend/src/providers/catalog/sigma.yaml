@@ -1,0 +1,27 @@
+source_key: sigma
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.sigmacomputing.com
+official_url: https://status.sigmacomputing.com
+description: "Cloud business intelligence, analytics, reporting, and data applications."
+tags:
+  - "Analytics"
+  - "Collaboration"
+  - "Data"
+component_scope: listed
+providers:
+  - slug: sigma-us
+    name: Sigma US
+    components:
+      - upstream_id: 6hfstyp7zpd3
+        name: Sigma - AWS (US)
+        group: US
+        position: 0
+      - upstream_id: f754w346xp3s
+        name: Sigma - Azure (US)
+        group: US
+        position: 1
+      - upstream_id: c2ftyy6cgk24
+        name: Sigma - GCP (US)
+        group: US
+        position: 2

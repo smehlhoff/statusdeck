@@ -1,0 +1,37 @@
+source_key: notion
+adapter: statuspage
+base_url: https://www.notion-status.com
+official_url: https://www.notion-status.com
+description: "Connected documents, projects, wikis, and team knowledge."
+tags:
+  - "Collaboration"
+  - "Knowledge base"
+  - "Workflow"
+summary_path: /proxy/notion/atlassian/v2/summary.json
+incidents_path: /proxy/notion/atlassian/v2/incidents.json
+native_incidents_path: /proxy/notion/incidents
+separate_incidents_endpoint: true
+component_scope: listed
+providers:
+  - slug: notion
+    name: Notion
+    components:
+      - { upstream_id: 01KK2QB40MYBG2ZDZHE55VWQTV, name: View and Edit Content, group: Core Services, position: 0 }
+      - { upstream_id: 01KK2QB40M2QP6N862GCJS77YE, name: Databases, group: Core Services, position: 1 }
+      - { upstream_id: 01KK2QB40MKK284NY745VZVFTQ, name: Search, group: Core Services, position: 2 }
+      - { upstream_id: 01KK2QB40MF1A0T2SKSE02084R, name: Login and User Accounts, group: Core Services, position: 3 }
+      - { upstream_id: 01KK2QB40M6SC2S63V7TJ4XAND, name: Notifications, group: Core Services, position: 4 }
+      - { upstream_id: 01KK2QB40M8DPAM1W0ASK21666, name: Notion API, group: Developer Platform, position: 5 }
+      - { upstream_id: 01KTYWYK6ASXXMQMR8RG5XXAZN, name: Notion MCP, group: Developer Platform, position: 6 }
+      - { upstream_id: 01KK2QB40MK48JR4030HR4DY9M, name: Data and Integrations, group: Developer Platform, position: 7 }
+      - { upstream_id: 01KTYWYK6ARGN1SC5Z501WRHSM, name: Notion Workers, group: Developer Platform, position: 8 }
+      - { upstream_id: 01KK2QB40MDY87965Q0JSNFY1X, name: Notion Agent, group: Notion AI, position: 9 }
+      - { upstream_id: 01KTYWYK6A7R4BZRG4B87JJ5FF, name: Enterprise Search, group: Notion AI, position: 10 }
+      - { upstream_id: 01KTYWYK6AQRM8FJNWNXKH483B, name: AI Meeting Notes, group: Notion AI, position: 11 }
+      - { upstream_id: 01KTYWYK6AKQFFQCE51XETM1BZ, name: Custom Agents, group: Notion AI, position: 12 }
+      - { upstream_id: 01KK2QB40MN6K8JZFRHKETJSVS, name: Notion Calendar, group: Products, position: 13 }
+      - { upstream_id: 01KK2QB40M2J38GDRJN5WZSNCH, name: Notion Sites, group: Products, position: 14 }
+      - { upstream_id: 01KK2QB40MX8JSN8D7ZRK8Y01X, name: Notion Apps, group: Products, position: 15 }
+      - { upstream_id: 01KK2QB40MWM0PEZ4XG8YPM871, name: Administration, group: Products, position: 16 }
+      - { upstream_id: 01KK2QB40MWW0XD8P2SKZ7DZEQ, name: Marketplace, group: Products, position: 17 }
+      - { upstream_id: 01KK2QB40MKQXK44J6ENSZS2WV, name: Notion Mail, group: Products, position: 18 }

@@ -1,0 +1,29 @@
+source_key: intercom
+adapter: intercom
+base_url: https://www.finstatus.com
+official_url: https://www.finstatus.com
+description: "Intercom customer support, Fin AI Agent, messaging, and developer services in US hosting."
+tags:
+  - "AI"
+  - "Communications"
+  - "Support"
+providers:
+  - slug: intercom
+    name: Intercom US
+    components:
+      - { upstream_id: 01J0R8NT6YMG2CAKJ20H40RP6W, name: "Fin AI Agent", group: "US", position: 0 }
+      - { upstream_id: 01J0RKP63R5H2101GECKVJQ6E9, name: "Inbox", group: "US", position: 1 }
+      - { upstream_id: 01J0JZVX13K8WFP2XKC9AEDPZY, name: "Web Messenger", group: "US", position: 2 }
+      - { upstream_id: 01J0JX1364FB23KDE3R4SDZK98, name: "Mobile Messenger", group: "US", position: 3 }
+      - { upstream_id: 01JYJVXR00ZP4TPEJTCVAJKZW3, name: "Webhooks", group: "US", position: 4 }
+      - { upstream_id: 01JYJVY1FWTSJ16RPSASY1Z7BK, name: "REST API", group: "US", position: 5 }
+      - { upstream_id: 01J1FG08Y8T69TF1S9V0YFQEF6, name: "Phone", group: "US", position: 6 }
+      - { upstream_id: 01JYJVYZ31HVW6H0YZVGNX1JKH, name: "Copilot", group: "US", position: 7 }
+      - { upstream_id: 01JYJVZ79GMBYEC5EDCPRZB06V, name: "Tickets", group: "US", position: 8 }
+      - { upstream_id: 01JYJVZHTRHZS6QX4XD6D5NM82, name: "Omnichannel", group: "US", position: 9 }
+      - { upstream_id: 01JYJW03J5CB544SR3G9J45FRX, name: "Help Center", group: "US", position: 10 }
+      - { upstream_id: 01JYJW0F66RK85D1B8KZEDAJT1, name: "Apps and Integrations", group: "US", position: 11 }
+      - { upstream_id: 01JYJW0QJKZ2Z3ZA0N5ZBSTBYD, name: "Reporting", group: "US", position: 12 }
+      - { upstream_id: 01JYJW18JS1EQ6SBANV76GS5X3, name: "Knowledge Hub", group: "US", position: 13 }
+      - { upstream_id: 01JYJW1JPBKGJQAK12DYCP22E0, name: "Outbound", group: "US", position: 14 }
+      - { upstream_id: 01JYJW1T7RJ89KCTA64FHYBRV9, name: "Other", group: "US", position: 15 }

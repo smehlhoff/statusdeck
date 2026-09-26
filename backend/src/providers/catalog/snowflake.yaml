@@ -1,0 +1,43 @@
+source_key: snowflake
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.snowflake.com
+official_url: https://status.snowflake.com
+description: "Fully managed data and AI platform for analytics, applications, and collaboration."
+tags:
+  - "AI"
+  - "Analytics"
+  - "Cloud"
+  - "Data"
+  - "Database"
+component_scope: listed
+providers:
+  - slug: snowflake
+    name: Snowflake US
+    components:
+      - { upstream_id: kzyxytvqxdv8, name: Databases Tables and Views, group: AWS US East (N. Virginia), position: 0 }
+      - { upstream_id: qq2p61352hpx, name: Virtual Warehouses, group: AWS US East (N. Virginia), position: 1 }
+      - { upstream_id: ryhvks9xgd1f, name: Data Loading and Unloading, group: AWS US East (N. Virginia), position: 2 }
+      - { upstream_id: y91fnlh9bjvq, name: Applications, group: AWS US East (N. Virginia), position: 3 }
+      - { upstream_id: k8fd72738ctj, name: Snowpark Container Services, group: AWS US East (N. Virginia), position: 4 }
+      - { upstream_id: jyw9m4t0r9d4, name: Security and Privacy Features, group: AWS US East (N. Virginia), position: 5 }
+      - { upstream_id: kgnxnzrhrw1y, name: AI and ML, group: AWS US East (N. Virginia), position: 6 }
+      - { upstream_id: 15rvddq2fvl1, name: Organization and Account Management, group: AWS US East (N. Virginia), position: 7 }
+      - { upstream_id: 82knpnnljw31, name: Listings and Collaboration, group: AWS US East (N. Virginia), position: 8 }
+      - { upstream_id: y3l557k0fpcn, name: Alerts and Notifications, group: AWS US East (N. Virginia), position: 9 }
+      - { upstream_id: l560w7n2qdwj, name: Developer Tools, group: AWS US East (N. Virginia), position: 10 }
+      - { upstream_id: zglyd2yy8lg8, name: Business Continuity, group: AWS US East (N. Virginia), position: 11 }
+      - { upstream_id: 6qx2q5b8xbh3, name: Snowflake Postgres, group: AWS US East (N. Virginia), position: 12 }
+      - { upstream_id: gftdll6pf43g, name: Databases Tables and Views, group: Azure East US 2, position: 13 }
+      - { upstream_id: nrg0s4c1jh3b, name: Virtual Warehouses, group: Azure East US 2, position: 14 }
+      - { upstream_id: bbx7v2mp09x8, name: Data Loading and Unloading, group: Azure East US 2, position: 15 }
+      - { upstream_id: xkkfhzzgkf3k, name: Applications, group: Azure East US 2, position: 16 }
+      - { upstream_id: rywt65fg7swh, name: Snowpark Container Services, group: Azure East US 2, position: 17 }
+      - { upstream_id: cqxvcsmfq5mv, name: Security and Privacy Features, group: Azure East US 2, position: 18 }
+      - { upstream_id: j6n2b93v0qvp, name: AI and ML, group: Azure East US 2, position: 19 }
+      - { upstream_id: 98c5586nx8zb, name: Organization and Account Management, group: Azure East US 2, position: 20 }
+      - { upstream_id: p2tdpc5ftsm1, name: Listings and Collaboration, group: Azure East US 2, position: 21 }
+      - { upstream_id: ld7k5zxhk469, name: Alerts and Notifications, group: Azure East US 2, position: 22 }
+      - { upstream_id: 0df2n68d5788, name: Developer Tools, group: Azure East US 2, position: 23 }
+      - { upstream_id: 227yh5znvtr5, name: Business Continuity, group: Azure East US 2, position: 24 }
+      - { upstream_id: hh6f39mtrtcw, name: Snowflake Postgres, group: Azure East US 2, position: 25 }

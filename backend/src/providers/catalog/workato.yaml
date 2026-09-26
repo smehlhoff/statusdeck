@@ -1,0 +1,104 @@
+source_key: workato
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.workato.com
+official_url: https://status.workato.com
+description: "Enterprise integration and workflow automation across apps, data, and AI."
+tags:
+  - "Automation"
+  - "Integration"
+  - "Workflow"
+providers:
+  - slug: workato-us
+    name: Workato Americas
+    components:
+      - upstream_id: hjxwvdjyhp3w
+        name: Workspace UI
+        position: 0
+      - upstream_id: byshvl6ft9vp
+        name: Agent Studio
+        position: 1
+      - upstream_id: 1q9lycg7xzlk
+        name: Docs
+        position: 2
+      - upstream_id: 1l7vl3ly80b8
+        name: Chatbot
+        position: 3
+      - upstream_id: fbfn0lmr5grm
+        name: Workato Agentic
+        position: 4
+      - upstream_id: 75j81xrn4j0c
+        name: Agentic Runtime
+        position: 5
+      - upstream_id: mcdmmz9yb9lp
+        name: Workspace Administration
+        position: 6
+      - upstream_id: m6fcbk89nh97
+        name: Support Chat
+        position: 7
+      - upstream_id: hfb0dg42s804
+        name: Workato Orchestrate
+        position: 8
+      - upstream_id: 7s8rzqrthd4g
+        name: Support Site Search
+        position: 9
+      - upstream_id: zkw5hpc1pnnk
+        name: Job execution
+        position: 10
+      - upstream_id: g2jyp1lnxhr0
+        name: Enterprise MCP
+        position: 11
+      - upstream_id: mgklpk3lwzmq
+        name: AssistIQ
+        position: 12
+      - upstream_id: hql5gzs0pxgt
+        name: Workato GO
+        position: 13
+      - upstream_id: hf52q8lsy6gy
+        name: Triggers
+        position: 14
+      - upstream_id: 3ycbmd32tt7c
+        name: AgentX Support
+        position: 15
+      - upstream_id: ykzfv5082cwh
+        name: Webhooks
+        position: 16
+      - upstream_id: v59xnhy9lsyn
+        name: Support and Documentation
+        position: 17
+      - upstream_id: 314txdmh6q73
+        name: Email Notifications
+        position: 18
+      - upstream_id: 1x9w1gbgv4z8
+        name: Connectors
+        position: 19
+      - upstream_id: ntfjktc8kjns
+        name: On-premise connectivity
+        position: 20
+      - upstream_id: sgy98lqnjfxg
+        name: Connector SDK
+        position: 21
+      - upstream_id: 8sp0k9dvw90m
+        name: API Gateway
+        position: 22
+      - upstream_id: 6x9skksrw7cj
+        name: API Proxy
+        position: 23
+      - upstream_id: 7pfmp0hk7h6q
+        name: Event Streams
+        position: 24
+      - upstream_id: 5yl1bg3p039q
+        name: Workbot
+        position: 25
+      - upstream_id: 0wxx90zm7tvd
+        name: Workflow Apps
+        position: 26
+      - upstream_id: 7rwkm76dxb9v
+        name: Data Pipelines
+        position: 27
+      - upstream_id: kfxtdrf88j91
+        name: Workato Developer API
+        position: 28
+      - upstream_id: s6vznb8rwwb1
+        name: Embedded Developer API
+        position: 29

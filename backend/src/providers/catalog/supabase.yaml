@@ -1,0 +1,29 @@
+source_key: supabase
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.supabase.com
+official_url: https://status.supabase.com
+description: "Hosted Postgres databases and application backend services."
+tags:
+  - "API"
+  - "Cloud"
+  - "Database"
+  - "Developer tools"
+component_scope: listed
+providers:
+  - slug: supabase
+    name: Supabase
+    components:
+      - { upstream_id: 43453sylqk7v, name: API Gateway, group: Global, position: 0 }
+      - { upstream_id: fznyj00kpng2, name: Auth, group: Global, position: 1 }
+      - { upstream_id: 022jctfqtj3y, name: Connection Pooler, group: Global, position: 2 }
+      - { upstream_id: 45jcpkfhw6hd, name: Dashboard, group: Global, position: 3 }
+      - { upstream_id: yz6pcnlscwpb, name: Database, group: Global, position: 4 }
+      - { upstream_id: mvs609wqrsf7, name: Edge Functions, group: Global, position: 5 }
+      - { upstream_id: 8sjr72528tgt, name: Management API, group: Global, position: 6 }
+      - { upstream_id: l3gnd4rfxc2y, name: Realtime, group: Global, position: 7 }
+      - { upstream_id: f867wqkvs7ct, name: Storage, group: Global, position: 8 }
+      - { upstream_id: gx5p5zhkgl8f, name: us-east-1, group: US, position: 9 }
+      - { upstream_id: 1wd1zrc846g6, name: us-east-2, group: US, position: 10 }
+      - { upstream_id: bcpt22h2w3pk, name: us-west-1, group: US, position: 11 }
+      - { upstream_id: psf6vmblbsvf, name: us-west-2, group: US, position: 12 }

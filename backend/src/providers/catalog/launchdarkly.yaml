@@ -1,0 +1,33 @@
+source_key: launchdarkly
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.launchdarkly.com
+official_url: https://status.launchdarkly.com
+description: "Feature flags, experimentation, and software release management."
+tags:
+  - "Automation"
+  - "Developer tools"
+  - "DevOps"
+component_scope: listed
+providers:
+  - slug: launchdarkly
+    name: LaunchDarkly
+    components:
+      - { upstream_id: d78f8m7zkgqt, name: Server-side Streaming API, group: Flag Delivery, position: 0 }
+      - { upstream_id: 156fh2g9b6pd, name: Client-side Streaming API, group: Flag Delivery, position: 1 }
+      - { upstream_id: w5565sdz2kfj, name: Polling API, group: Flag Delivery, position: 2 }
+      - { upstream_id: dbc44wm7yn68, name: Edge API, group: Flag Delivery, position: 3 }
+      - { upstream_id: xkfhb7ktnvb6, name: Feature Workflows, group: Feature Management, position: 4 }
+      - { upstream_id: 0z3ns76sxvnf, name: Flag Targeting, group: Feature Management, position: 5 }
+      - { upstream_id: 9xz56kbw0hgj, name: Segment Management, group: Feature Management, position: 6 }
+      - { upstream_id: 2xhvx01jmqrw, name: Progressive Rollouts, group: Feature Management, position: 7 }
+      - { upstream_id: 2wnf8k8p3bd8, name: Release Pipelines, group: Feature Management, position: 8 }
+      - { upstream_id: nz8qpllp3bsz, name: Authentication, group: Global, position: 9 }
+      - { upstream_id: s57hhrpqqwk1, name: Web App, group: Global, position: 10 }
+      - { upstream_id: xqtx8rntl6pn, name: Integrations and Webhooks, group: Global, position: 11 }
+      - { upstream_id: d117hfz24bmg, name: Account Management, group: Global, position: 12 }
+      - { upstream_id: nxbw9v3lmdtl, name: SDKs, group: Global, position: 13 }
+      - { upstream_id: p39qdwzktq8h, name: Observability Frontend, group: Observability, position: 14 }
+      - { upstream_id: s3hr5qhhm94r, name: Observability Query API, group: Observability, position: 15 }
+      - { upstream_id: 2ndk16wxw8jt, name: Observability Data Ingest, group: Observability, position: 16 }
+      - { upstream_id: 12y9mq78j7hh, name: OpenTelemetry, group: Observability, position: 17 }

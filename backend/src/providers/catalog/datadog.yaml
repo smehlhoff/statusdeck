@@ -1,0 +1,31 @@
+source_key: datadog
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.datadoghq.com
+official_url: https://status.datadoghq.com
+description: "Infrastructure, application, log, and security observability."
+tags:
+  - "DevOps"
+  - "IT operations"
+  - "Observability"
+  - "Security"
+component_scope: listed
+providers:
+  - slug: datadog
+    name: Datadog US1
+    components:
+      - { upstream_id: p4hwj4wsc5wf, name: APM, group: US1, position: 0 }
+      - { upstream_id: l0ttkj4bcvjj, name: Container Registry, group: US1, position: 1 }
+      - { upstream_id: 34qkhdj3s176, name: Continuous Profiler, group: US1, position: 2 }
+      - { upstream_id: 2ng88yhsvb74, name: Database Monitoring, group: US1, position: 3 }
+      - { upstream_id: 9y11dv57sdjd, name: Error Tracking, group: US1, position: 4 }
+      - { upstream_id: nypxbf5kxblr, name: Incident Response, group: US1, position: 5 }
+      - { upstream_id: 1w2mz2hzw0cz, name: Log Management, group: US1, position: 6 }
+      - { upstream_id: qrnng5l7z80l, name: Metrics and Infrastructure Monitoring, group: US1, position: 7 }
+      - { upstream_id: s6jxgrkjjj6p, name: Monitors, group: US1, position: 8 }
+      - { upstream_id: b5fx9rfn6137, name: Web Application, group: US1, position: 9 }
+      - { upstream_id: wb6d6tss5zph, name: RUM, group: US1, position: 10 }
+      - { upstream_id: s66ymj7q3sdd, name: Synthetics, group: US1, position: 11 }
+      - { upstream_id: cwp97nbkd47t, name: Cloud Security Management, group: US1, position: 12 }
+      - { upstream_id: p86xlbv3q3sz, name: Cloud SIEM, group: US1, position: 13 }
+      - { upstream_id: 56605tlzwqbh, name: Workload Protection, group: US1, position: 14 }

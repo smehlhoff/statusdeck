@@ -1,0 +1,97 @@
+source_key: okta
+adapter: okta
+base_url: https://status.okta.com
+official_url: https://status.okta.com
+description: "Workforce identity, authentication, and access management."
+tags:
+  - "Identity & access"
+  - "IT operations"
+  - "Security"
+providers:
+  - slug: okta-us
+    name: Okta US
+    components:
+      - upstream_id: okta.com:1
+        name: OK1 Cell
+        group: US
+        position: 0
+      - upstream_id: okta.com:2
+        name: OK2 Cell
+        group: US
+        position: 1
+      - upstream_id: okta.com:3
+        name: OK3 Cell
+        group: US
+        position: 2
+      - upstream_id: okta.com:4
+        name: OK4 Cell
+        group: US
+        position: 3
+      - upstream_id: okta.com:6
+        name: OK6 Cell
+        group: US
+        position: 4
+      - upstream_id: okta.com:7
+        name: OK7 Cell
+        group: US
+        position: 5
+      - upstream_id: okta.com:8
+        name: OK8 Cell
+        group: US
+        position: 6
+      - upstream_id: okta.com:9
+        name: OK9 Cell
+        group: US
+        position: 7
+      - upstream_id: okta.com:11
+        name: OK11 Cell
+        group: US
+        position: 8
+      - upstream_id: okta.com:12
+        name: OK12 Cell
+        group: US
+        position: 9
+      - upstream_id: okta.com:14
+        name: OK14 Cell
+        group: US
+        position: 10
+      - upstream_id: okta.com:15
+        name: OK15 Cell
+        group: US
+        position: 11
+      - upstream_id: okta.com:16
+        name: OK16 Cell
+        group: US
+        position: 12
+      - upstream_id: okta.com:17
+        name: OK17 Cell
+        group: US
+        position: 13
+      - upstream_id: okta.com:18
+        name: OK18 Cell
+        group: US
+        position: 14
+      - upstream_id: okta.com:19
+        name: OK19 Cell
+        group: US
+        position: 15
+      - upstream_id: okta.com:20
+        name: OK20 Cell
+        group: US
+        position: 16
+      - upstream_id: okta.com:22
+        name: OK22 Cell
+        group: US
+        position: 17
+      - upstream_id: oktapreview.com:1
+        name: OP1 Preview Cell
+        group: US
+        position: 18
+      - upstream_id: oktapreview.com:2
+        name: OP2 Preview Cell
+        group: US
+        position: 19
+      - upstream_id: oktapreview.com:3
+        name: OP3 Preview Cell
+        group: US
+        position: 20

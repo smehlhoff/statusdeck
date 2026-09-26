@@ -1,0 +1,17 @@
+source_key: trello
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://trello.status.atlassian.com
+official_url: https://trello.status.atlassian.com
+description: "Visual boards for project planning and task management."
+tags:
+  - "Collaboration"
+  - "Project management"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: trello
+    name: Trello
+    components:
+      - { upstream_id: hsr3nvlz0k2l, name: Trello.com, group: Global, position: 0 }
+      - { upstream_id: y1nllgnkxn9d, name: API, group: Global, position: 1 }

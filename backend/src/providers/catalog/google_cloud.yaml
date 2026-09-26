@@ -1,0 +1,30 @@
+source_key: google_cloud
+adapter: google_cloud
+base_url: https://status.cloud.google.com
+official_url: https://status.cloud.google.com
+description: "Google Cloud infrastructure, data, and platform services."
+tags:
+  - "Cloud"
+  - "Data"
+  - "Developer tools"
+  - "Infrastructure"
+component_scope: listed
+providers:
+  - slug: google-cloud
+    name: Google Cloud
+    components:
+      - { upstream_id: L3ggmi3Jy4xJmgodFA9K, name: Compute Engine, group: Core Infrastructure, position: 0 }
+      - { upstream_id: UwaYoXQ5bHYHG6EdiPB8, name: Cloud Storage, group: Core Infrastructure, position: 1 }
+      - { upstream_id: VNJxzcH58QmTt5H6pnT6, name: Cloud Networking, group: Core Infrastructure, position: 2 }
+      - { upstream_id: ix7u9beT8ivBdjApTif3, name: Cloud Load Balancing, group: Core Infrastructure, position: 3 }
+      - { upstream_id: TUZUsWSJUVJGW97Jq2sH, name: Cloud DNS, group: Core Infrastructure, position: 4 }
+      - { upstream_id: adnGEDEt9zWzs8uF1oKA, name: Identity and Access Management, group: Core Infrastructure, position: 5 }
+      - { upstream_id: LCSbT57h59oR4W98NHuz, name: Google Kubernetes Engine, group: Compute, position: 6 }
+      - { upstream_id: 9D7d2iNBQWN24zc1VamE, name: Cloud Run, group: Compute, position: 7 }
+      - { upstream_id: oW4vJ7VNqyxTWNzSHopX, name: Cloud Functions, group: Compute, position: 8 }
+      - { upstream_id: kchyUtnkMHJWaAva8aYc, name: App Engine, group: Compute, position: 9 }
+      - { upstream_id: hV87iK5DcEXKgWU2kDri, name: Cloud SQL, group: Data, position: 10 }
+      - { upstream_id: 9CcrhHUcFevXPSVaSxkf, name: BigQuery, group: Data, position: 11 }
+      - { upstream_id: dFjdLh2v6zuES6t9ADCB, name: Pub/Sub, group: Data, position: 12 }
+      - { upstream_id: 3zaaDb7antc73BM1UAVT, name: Cloud Monitoring, group: Operations, position: 13 }
+      - { upstream_id: PuCJ6W2ovoDhLcyvZ1xa, name: Cloud Logging, group: Operations, position: 14 }

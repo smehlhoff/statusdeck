@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+target/
+dist/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Local environment settings; keep the setup example
+.env/*
+!.env/.env.example
+.env.*
+!.env.example
+
+# Generated reports and browser snapshots
+graphify-out/
+.graphify_*
+.playwright-mcp/
+
+# Database backups
+*.dump
+*.dump.tmp.*
+
+# Logs and editor temporary files
+*.log
+*.swp

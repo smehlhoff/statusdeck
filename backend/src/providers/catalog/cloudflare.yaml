@@ -1,0 +1,207 @@
+source_key: cloudflare
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://www.cloudflarestatus.com
+official_url: https://www.cloudflarestatus.com
+description: "Edge networking, application security, and content delivery."
+tags:
+  - "Cloud"
+  - "Infrastructure"
+  - "Security"
+component_scope: listed
+providers:
+  - slug: cloudflare-us
+    name: Cloudflare US
+    components:
+      - upstream_id: fs7l9rdk9kq5
+        name: Albuquerque, NM, United States - (ABQ)
+        group: US
+        position: 1
+      - upstream_id: 4npbr7cg7zgn
+        name: Anchorage, AK, United States - (ANC)
+        group: US
+        position: 2
+      - upstream_id: 3t0npclljyyg
+        name: Ashburn, VA, United States - (IAD)
+        group: US
+        position: 3
+      - upstream_id: 03wwgmh4vbnl
+        name: Atlanta, GA, United States - (ATL)
+        group: US
+        position: 4
+      - upstream_id: 3l8dxwjtgpp6
+        name: Austin, TX, United States - (AUS)
+        group: US
+        position: 5
+      - upstream_id: vqz2xt1vflhx
+        name: Bangor, ME, United States - (BGR)
+        group: US
+        position: 6
+      - upstream_id: mfwf3n729rpy
+        name: Boston, MA, United States - (BOS)
+        group: US
+        position: 7
+      - upstream_id: bz9bt1q3m2jy
+        name: Buffalo, NY, United States - (BUF)
+        group: US
+        position: 8
+      - upstream_id: dwlvwq5gnym8
+        name: Charlotte, NC, United States - (CLT)
+        group: US
+        position: 10
+      - upstream_id: z9v8znl25w0f
+        name: Chicago, IL, United States - (ORD)
+        group: US
+        position: 11
+      - upstream_id: j9g1dbqntzg0
+        name: Cleveland, OH, United States - (CLE)
+        group: US
+        position: 12
+      - upstream_id: rq16k3q6yz17
+        name: Columbus, OH, United States - (CMH)
+        group: US
+        position: 13
+      - upstream_id: r8ppmb3xm98j
+        name: Dallas, TX, United States - (DFW)
+        group: US
+        position: 14
+      - upstream_id: 6s4lzp8vmxr5
+        name: Denver, CO, United States - (DEN)
+        group: US
+        position: 15
+      - upstream_id: bbx7ndl66dmp
+        name: Detroit, MI, United States - (DTW)
+        group: US
+        position: 16
+      - upstream_id: rqcmdkdlyyc8
+        name: Durham, NC, United States - (RDU)
+        group: US
+        position: 17
+      - upstream_id: sjkc1b576wk8
+        name: Honolulu, HI, United States - (HNL)
+        group: US
+        position: 20
+      - upstream_id: dk64qkf6mlmk
+        name: Houston, TX, United States - (IAH)
+        group: US
+        position: 21
+      - upstream_id: fvvt1qwvgqq2
+        name: Indianapolis, IN, United States - (IND)
+        group: US
+        position: 22
+      - upstream_id: yst1cfbj49q2
+        name: Jacksonville, FL, United States - (JAX)
+        group: US
+        position: 23
+      - upstream_id: t6hj728hzf16
+        name: Kansas City, MO, United States - (MCI)
+        group: US
+        position: 24
+      - upstream_id: wtc1p207n9kv
+        name: Las Vegas, NV, United States - (LAS)
+        group: US
+        position: 26
+      - upstream_id: 38w4zp21dlkc
+        name: Los Angeles, CA, United States - (LAX)
+        group: US
+        position: 27
+      - upstream_id: m91w78997pqv
+        name: Memphis, TN, United States - (MEM)
+        group: US
+        position: 28
+      - upstream_id: mvbjk0vw3krv
+        name: Miami, FL, United States - (MIA)
+        group: US
+        position: 30
+      - upstream_id: gfbkjpmmjmkj
+        name: Minneapolis, MN, United States - (MSP)
+        group: US
+        position: 31
+      - upstream_id: vwctw131s16t
+        name: Nashville, United States - (BNA)
+        group: US
+        position: 33
+      - upstream_id: grpnztl4pd46
+        name: Newark, NJ, United States - (EWR)
+        group: US
+        position: 34
+      - upstream_id: yd8dc8tlrzxr
+        name: Norfolk, VA, United States - (ORF)
+        group: US
+        position: 35
+      - upstream_id: 3mj4c8m14ncw
+        name: Oklahoma City, OK, United States - (OKC)
+        group: US
+        position: 36
+      - upstream_id: nbxgf9nycs42
+        name: Omaha, NE, United States - (OMA)
+        group: US
+        position: 37
+      - upstream_id: bss3xc7lbmgw
+        name: Philadelphia, United States - (PHL)
+        group: US
+        position: 39
+      - upstream_id: n05d51gmgf0f
+        name: Phoenix, AZ, United States - (PHX)
+        group: US
+        position: 40
+      - upstream_id: fjfvdrs8h5sl
+        name: Pittsburgh, PA, United States - (PIT)
+        group: US
+        position: 41
+      - upstream_id: 9b9tyrd9x3xr
+        name: Portland, OR, United States - (PDX)
+        group: US
+        position: 42
+      - upstream_id: cgpftq0mp2h5
+        name: Richmond, VA, United States - (RIC)
+        group: US
+        position: 44
+      - upstream_id: 2k1qvzk3763q
+        name: Sacramento, CA, United States - (SMF)
+        group: US
+        position: 45
+      - upstream_id: 3cg9wbk5hzg4
+        name: Salt Lake City, UT, United States - (SLC)
+        group: US
+        position: 46
+      - upstream_id: 5dhjdhgdqjzd
+        name: San Antonio, TX, United States - (SAT)
+        group: US
+        position: 47
+      - upstream_id: pxfjpfczss60
+        name: San Diego, CA, United States - (SAN)
+        group: US
+        position: 48
+      - upstream_id: sb9ptqm089ck
+        name: San Francisco, CA, United States - (SFO)
+        group: US
+        position: 49
+      - upstream_id: 4xvd68d7k70c
+        name: San Jose, CA, United States - (SJC)
+        group: US
+        position: 50
+      - upstream_id: bvtc2f85ft3p
+        name: Seattle, WA, United States - (SEA)
+        group: US
+        position: 52
+      - upstream_id: wkc7ly9m8s5s
+        name: Sioux Falls, SD, United States - (FSD)
+        group: US
+        position: 53
+      - upstream_id: f4kdktnb8sz2
+        name: St. Louis, MO, United States - (STL)
+        group: US
+        position: 54
+      - upstream_id: 6b2qmnds3203
+        name: Tallahassee, FL, United States - (TLH)
+        group: US
+        position: 55
+      - upstream_id: ldfjdvf7hr27
+        name: Tampa, FL, United States - (TPA)
+        group: US
+        position: 56
+      - upstream_id: 28ydsptn9dxx
+        name: Cincinnati, United States - (CVG)
+        group: US
+        position: 60

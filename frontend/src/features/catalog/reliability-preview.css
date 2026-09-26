@@ -1,0 +1,318 @@
+.reliability-preview {
+  --rp-healthy: #d9eee5;
+  --rp-minor: #f4cc82;
+  --rp-major: #d5707c;
+  --rp-maintenance: #a9c8ed;
+}
+:root[data-theme="dark"] .reliability-preview {
+  --rp-healthy: #244c3d;
+  --rp-minor: #90692f;
+  --rp-major: #a3485c;
+  --rp-maintenance: #3b6696;
+}
+.rp-heading {
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.rp-heading h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+.rp-controls {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.rp-controls label {
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--text-secondary);
+}
+.rp-periods {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+.rp-periods button {
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.6rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+.rp-periods button[aria-pressed="true"] {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+}
+.rp-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: 1.25rem 0 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.rp-metrics span {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+.rp-metrics strong {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 650;
+  color: var(--text-strong);
+  margin: 0.35rem 0;
+  letter-spacing: -0.04em;
+}
+.rp-metrics small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 450;
+  letter-spacing: normal;
+}
+.rp-metrics p {
+  color: var(--muted);
+  font-size: 0.7rem;
+  margin: 0;
+}
+.rp-calendar-scroll {
+  container-type: inline-size;
+  overflow-x: auto;
+  padding: 4px 4px 8px;
+}
+.rp-calendar {
+  --cell-min-size: 12px;
+  --cell-height: clamp(
+    max(16px, var(--cell-min-size)),
+    calc((100cqw - 38px - (var(--weeks) - 1) * 4px) / var(--weeks)),
+    32px
+  );
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 8px;
+  width: 100%;
+  min-width: calc(
+    38px + var(--weeks) * var(--cell-min-size) + (var(--weeks) - 1) * 4px
+  );
+}
+.rp-months {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--weeks), minmax(0, 1fr));
+  column-gap: 4px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  height: 20px;
+}
+.rp-months span {
+  white-space: nowrap;
+}
+.rp-day-names {
+  display: grid;
+  grid-template-rows: repeat(7, var(--cell-height));
+  gap: 4px;
+  color: var(--muted);
+  font-size: 0.6rem;
+  align-items: center;
+}
+.rp-squares {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, var(--cell-height));
+  grid-template-columns: repeat(var(--weeks), minmax(0, 1fr));
+  gap: 4px;
+}
+.rp-day {
+  border: 1px solid rgb(0 0 0 / 7%);
+  border-radius: 4px;
+  padding: 0;
+  min-width: 0;
+  color: var(--text-strong);
+  font-size: 0.7rem;
+  line-height: 1;
+}
+.rp-day:hover {
+  filter: brightness(0.9);
+}
+.rp-day[aria-pressed="true"] {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.rp-healthy {
+  background: var(--rp-healthy);
+}
+.rp-minor {
+  background: var(--rp-minor);
+}
+.rp-major {
+  background: var(--rp-major);
+}
+.rp-maintenance {
+  background: var(--rp-maintenance);
+}
+.rp-unknown {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--surface-subtle),
+    var(--surface-subtle) 3px,
+    var(--border) 3px,
+    var(--border) 5px
+  );
+}
+.rp-calendar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.8rem 0 1.3rem;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+.rp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.rp-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.rp-key {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.rp-day-detail {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background: var(--surface-subtle);
+  border-radius: 9px;
+  border: 1px solid var(--border);
+}
+.rp-day-detail h3 {
+  margin: 0.45rem 0 0.55rem;
+  font-size: 0.95rem;
+  color: var(--text-strong);
+}
+.rp-day-detail strong {
+  font-size: 0.85rem;
+}
+.rp-day-detail p {
+  margin: 0.4rem 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.provider-reliability {
+  margin-block: 1rem;
+}
+.rp-controls select {
+  max-width: 280px;
+}
+.rp-incident-link {
+  font-size: 0.78rem;
+}
+@media (max-width: 900px) {
+  .rp-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .rp-day-detail {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .rp-controls {
+    width: 100%;
+  }
+  .rp-controls label {
+    width: 100%;
+  }
+}
+
+.rp-trends {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.rp-trend-card {
+  min-width: 0;
+}
+.rp-trend-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+.rp-trend-total {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 1.25rem 0;
+}
+.rp-trend-total strong {
+  font-size: 1.8rem;
+  font-weight: 650;
+  color: var(--text-strong);
+  letter-spacing: -0.04em;
+}
+.rp-trend-total span,
+.rp-trend-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.rp-trend-canvas {
+  position: relative;
+  height: 230px;
+  margin-bottom: 1rem;
+}
+.rp-trend-card .rp-legend {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.rp-frequency-legend {
+  justify-content: flex-end;
+}
+@media (max-width: 900px) {
+  .rp-trends {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rp-history-help {
+  margin-bottom: 0.35rem;
+}
+
+.rp-history-help h2 {
+  margin-bottom: 0;
+}
+
+.rp-history-help .field-help-tooltip p {
+  margin: 0;
+}
+
+.rp-history-help .field-help-tooltip p + p {
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 800px), (pointer: coarse) {
+  .rp-calendar {
+    --cell-min-size: 24px;
+  }
+
+  .rp-periods button {
+    min-height: 44px;
+  }
+}

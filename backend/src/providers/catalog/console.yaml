@@ -1,0 +1,19 @@
+source_key: console
+adapter: statuspage
+base_url: https://status.console.com
+official_url: https://status.console.com
+description: "AI-powered IT support, employee assistance, and workflow automation."
+tags:
+  - "AI"
+  - "Automation"
+  - "IT operations"
+  - "Support"
+maintenance_path: /api/v2/scheduled-maintenances.json
+component_scope: listed
+providers:
+  - slug: console
+    name: Console AI
+    components:
+      - { upstream_id: xkv8kz5l6d6n, name: "Web App", group: "Core Services", position: 0 }
+      - { upstream_id: q26k1n6yy9bk, name: "Slackbot", group: "Core Services", position: 1 }
+      - { upstream_id: 8rs5zyrc19rn, name: "Assistant", group: "Core Services", position: 2 }

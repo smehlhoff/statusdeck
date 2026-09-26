@@ -1,0 +1,43 @@
+source_key: discord
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://discordstatus.com
+official_url: https://discordstatus.com
+description: "Community messaging, voice, video, and collaboration."
+tags:
+  - "API"
+  - "Collaboration"
+  - "Communications"
+component_scope: listed
+providers:
+  - slug: discord
+    name: Discord
+    components:
+      - { upstream_id: rhznvxg4v7yh, name: API, group: Core, position: 0 }
+      - { upstream_id: r3wq1zsx72bz, name: Media Proxy, group: Core, position: 1 }
+      - { upstream_id: x7rnz0t7dpnp, name: Gateway, group: Core, position: 2 }
+      - { upstream_id: 354mn7xfxz1h, name: Push Notifications, group: Core, position: 3 }
+      - { upstream_id: 3y468xdr1st2, name: Search, group: Core, position: 4 }
+      - { upstream_id: 9dydj1xgtnht, name: Server Web Pages, group: Core, position: 5 }
+      - { upstream_id: tvztr8rd74jp, name: Payments, group: Core, position: 6 }
+      - { upstream_id: hnlsj1g5vn1n, name: Marketing Site, group: Core, position: 7 }
+      - { upstream_id: ly7bf56hshjc, name: Desktop, group: Client, position: 8 }
+      - { upstream_id: dmyjqtpgpjkr, name: iOS, group: Client, position: 9 }
+      - { upstream_id: 8r4xqnt9jslk, name: Android, group: Client, position: 10 }
+      - { upstream_id: 6j5lgxtyjfc2, name: Web, group: Client, position: 11 }
+      - { upstream_id: gqhmm9t47wcw, name: Atlanta, group: Voice, position: 12 }
+      - { upstream_id: sg02vq1rbfrr, name: Brazil, group: Voice, position: 13 }
+      - { upstream_id: fc8y53dfg85y, name: Rotterdam, group: Voice, position: 14 }
+      - { upstream_id: 0ysw0jy8hnsr, name: Hong Kong, group: Voice, position: 15 }
+      - { upstream_id: tl31gd6tc86r, name: India, group: Voice, position: 16 }
+      - { upstream_id: xggnf9hnngkt, name: Japan, group: Voice, position: 17 }
+      - { upstream_id: ccgfj3l84lvt, name: Russia, group: Voice, position: 18 }
+      - { upstream_id: q0lbnfc59j35, name: Singapore, group: Voice, position: 19 }
+      - { upstream_id: b5v9r9bdppvm, name: South Africa, group: Voice, position: 20 }
+      - { upstream_id: qk867vbbh84x, name: South Korea, group: Voice, position: 21 }
+      - { upstream_id: qbt7ryjc5tcd, name: Sydney, group: Voice, position: 22 }
+      - { upstream_id: nhlpbmmcffcl, name: US Central, group: Voice, position: 23 }
+      - { upstream_id: kdz8bp5dp08v, name: US East, group: Voice, position: 24 }
+      - { upstream_id: gmppldfdghcd, name: US South, group: Voice, position: 25 }
+      - { upstream_id: 334vzyzzwlfs, name: US West, group: Voice, position: 26 }
+      - { upstream_id: 1krn5438nd7m, name: Creator Payouts, group: Monetization, position: 27 }

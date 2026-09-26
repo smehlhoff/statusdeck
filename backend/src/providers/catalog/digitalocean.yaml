@@ -1,0 +1,153 @@
+source_key: digitalocean
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.digitalocean.com
+official_url: https://status.digitalocean.com
+description: "Cloud infrastructure, compute, storage, networking, and managed services."
+tags:
+  - "Cloud"
+  - "Database"
+  - "Infrastructure"
+component_scope: listed
+providers:
+  - slug: digitalocean
+    name: DigitalOcean
+    components:
+      - { upstream_id: p1x9rv4137gx, name: "API", group: "Global", position: 0 }
+      - { upstream_id: yht2qc1zfp6x, name: "Global", group: "Monitoring", position: 1 }
+      - { upstream_id: 5rzxjrq10gb2, name: "Global", group: "Networking", position: 2 }
+      - { upstream_id: txysr8r0gn1n, name: "Global", group: "App Platform", position: 3 }
+      - { upstream_id: 558h1l1q0c2w, name: "Global", group: "Event Processing", position: 4 }
+      - { upstream_id: kwqnp70p9wjy, name: "Global", group: "VPC", position: 5 }
+      - { upstream_id: dkbfnt2ghbw4, name: "Global", group: "Droplets", position: 6 }
+      - { upstream_id: mzkgffp35tq4, name: "Global", group: "Managed Databases", position: 7 }
+      - { upstream_id: ctwhml01vvw1, name: "Global", group: "Load Balancers", position: 8 }
+      - { upstream_id: k96xfyczckzw, name: "Global", group: "Functions", position: 9 }
+      - { upstream_id: ljktrzzffk6j, name: "Global", group: "Kubernetes", position: 10 }
+      - { upstream_id: g8rttgsgxr37, name: "Global", group: "Volumes", position: 11 }
+      - { upstream_id: q2c5475x69cz, name: "Global", group: "GPU Droplets", position: 12 }
+      - { upstream_id: nkx0nmdx9vrs, name: "Global", group: "Spaces", position: 13 }
+      - { upstream_id: 3xz669qnng8n, name: "Global", group: "Container Registry", position: 14 }
+      - { upstream_id: 8cp93lvtlh32, name: "Global", group: "Spaces CDN", position: 15 }
+      - { upstream_id: br95fz33h6td, name: "Agent Runtime", group: "Agentic Inference Cloud", position: 16 }
+      - { upstream_id: djw4tbjb0dq2, name: "ATL1", group: "Network File Storage", position: 17 }
+      - { upstream_id: xbsdwfbb4xx0, name: "Billing", group: "Global", position: 18 }
+      - { upstream_id: cxxt9nh9v10h, name: "ATL1", group: "GPU Droplets", position: 19 }
+      - { upstream_id: 2z9ldz1t4dgp, name: "Inference", group: "Agentic Inference Cloud", position: 20 }
+      - { upstream_id: v5mmhbh575qn, name: "MKC1", group: "Network File Storage", position: 21 }
+      - { upstream_id: 8hcqp0f8fd7r, name: "ATL1", group: "Spaces", position: 22 }
+      - { upstream_id: h1pgtp83tw7t, name: "ATL1", group: "Kubernetes", position: 23 }
+      - { upstream_id: kdx5m5498vxc, name: "ATL1", group: "Managed Databases", position: 24 }
+      - { upstream_id: yttvl43dvw9z, name: "ATL1", group: "Spaces CDN", position: 25 }
+      - { upstream_id: vfhgr4fby7s3, name: "Atlanta", group: "App Platform", position: 26 }
+      - { upstream_id: ncxxw3cs6pgm, name: "BYOIP", group: "Global", position: 27 }
+      - { upstream_id: zjmmzjfcbh16, name: "ADK", group: "Agentic Inference Cloud", position: 28 }
+      - { upstream_id: dzzkx9qrqr9v, name: "MKC1", group: "GPU Droplets", position: 29 }
+      - { upstream_id: rg5pvf9bh9f8, name: "RIC1", group: "Network File Storage", position: 30 }
+      - { upstream_id: czck17wcspr5, name: "Cloud Control Panel", group: "Global", position: 31 }
+      - { upstream_id: 2m55tfz8n656, name: "NYC2", group: "GPU Droplets", position: 32 }
+      - { upstream_id: 9ysykpzcncd8, name: "ATL1", group: "Droplets", position: 33 }
+      - { upstream_id: pgz01c7vwjmh, name: "ATL1", group: "Load Balancers", position: 34 }
+      - { upstream_id: 04807xw520nd, name: "ATL1", group: "Event Processing", position: 35 }
+      - { upstream_id: 6w3mb763f7hx, name: "ATL1", group: "Networking", position: 36 }
+      - { upstream_id: 361ycvhgf2t4, name: "ATL1", group: "Monitoring", position: 37 }
+      - { upstream_id: 395bzd7209ml, name: "ATL1", group: "Volumes", position: 38 }
+      - { upstream_id: 30f69kx2hvgr, name: "ATL1", group: "VPC", position: 39 }
+      - { upstream_id: ks0p9z6mcksw, name: "Knowledge Bases", group: "Agentic Inference Cloud", position: 40 }
+      - { upstream_id: hnqx47tg75cw, name: "NYC3", group: "Container Registry", position: 41 }
+      - { upstream_id: pg9zc33244c7, name: "Cloud Firewall", group: "Global", position: 42 }
+      - { upstream_id: s40901432yn0, name: "Guardrails", group: "Agentic Inference Cloud", position: 43 }
+      - { upstream_id: 2strljnbl6sz, name: "RIC1", group: "GPU Droplets", position: 44 }
+      - { upstream_id: 2p17zg8kmsyc, name: "Community", group: "Global", position: 45 }
+      - { upstream_id: 8pntc51v5prb, name: "SFO2", group: "Container Registry", position: 46 }
+      - { upstream_id: pmy8cw253ck9, name: "Model Services", group: "Agentic Inference Cloud", position: 47 }
+      - { upstream_id: 232pwcngkg4d, name: "MKC1", group: "Spaces", position: 48 }
+      - { upstream_id: r9ktgk1m8d0f, name: "MKC1", group: "Spaces CDN", position: 49 }
+      - { upstream_id: 0c0134jlkz39, name: "Kansas", group: "App Platform", position: 50 }
+      - { upstream_id: b2kmcrnftwt2, name: "MKC1", group: "Functions", position: 51 }
+      - { upstream_id: zfnbgvbvc6bd, name: "SFO3", group: "Container Registry", position: 52 }
+      - { upstream_id: tz43j53blsmy, name: "NYC3", group: "Spaces", position: 53 }
+      - { upstream_id: ydgcz5twlr1m, name: "NYC3", group: "Spaces CDN", position: 54 }
+      - { upstream_id: py0tr7dkb36t, name: "NYC1", group: "Functions", position: 55 }
+      - { upstream_id: qdnryq0lymfk, name: "DNS", group: "Global", position: 56 }
+      - { upstream_id: 20bc3d63817b, name: "MKC1", group: "Kubernetes", position: 57 }
+      - { upstream_id: mxp9kv359bb0, name: "MKC1", group: "Managed Databases", position: 58 }
+      - { upstream_id: jzv4wms5qc33, name: "NYC1", group: "Kubernetes", position: 59 }
+      - { upstream_id: d1cvx1qj7f1n, name: "SFO3", group: "Functions", position: 60 }
+      - { upstream_id: d2m7jh32j7z1, name: "NYC1", group: "Managed Databases", position: 61 }
+      - { upstream_id: hklgsphcrjq4, name: "Support Center", group: "Global", position: 62 }
+      - { upstream_id: fkf61qj12vby, name: "New York", group: "App Platform", position: 63 }
+      - { upstream_id: yrxcjxwft6b2, name: "RIC1", group: "Spaces", position: 64 }
+      - { upstream_id: 65lktqss9y31, name: "RIC1", group: "Spaces CDN", position: 65 }
+      - { upstream_id: nfkfrqyj9yk4, name: "MKC1", group: "Droplets", position: 66 }
+      - { upstream_id: nrzf9ksrmpg4, name: "MKC1", group: "Load Balancers", position: 67 }
+      - { upstream_id: tsnxjdkl530d, name: "MKC1", group: "Networking", position: 68 }
+      - { upstream_id: 50z4w8yqcpn2, name: "MKC1", group: "VPC", position: 69 }
+      - { upstream_id: 696hcf3jpgm4, name: "MKC1", group: "Monitoring", position: 70 }
+      - { upstream_id: x9tyx831x2yh, name: "MKC1", group: "Event Processing", position: 71 }
+      - { upstream_id: 2vyxggng9z8f, name: "MKC1", group: "Volumes", position: 72 }
+      - { upstream_id: p4l05gv4bg18, name: "NYC1", group: "Volumes", position: 73 }
+      - { upstream_id: fb63qt9f69m0, name: "NYC1", group: "Droplets", position: 74 }
+      - { upstream_id: t2sr3808q4ry, name: "NYC1", group: "Event Processing", position: 75 }
+      - { upstream_id: dzkmyxfh1rf0, name: "NYC3", group: "Kubernetes", position: 76 }
+      - { upstream_id: 2vpzq3ytx996, name: "NYC1", group: "Load Balancers", position: 77 }
+      - { upstream_id: kgt6s4ckl9fh, name: "NYC1", group: "Monitoring", position: 78 }
+      - { upstream_id: vzxxv27h45m4, name: "NYC2", group: "Managed Databases", position: 79 }
+      - { upstream_id: 5108wr792q5m, name: "SFO3", group: "Spaces CDN", position: 80 }
+      - { upstream_id: dhcf7lpc5q3z, name: "NYC1", group: "Networking", position: 81 }
+      - { upstream_id: tvs6bwzfdc2j, name: "NYC1", group: "VPC", position: 82 }
+      - { upstream_id: yvh4g97h7mk7, name: "Reserved IP", group: "Global", position: 83 }
+      - { upstream_id: w4m98sdz3szn, name: "SFO2", group: "Spaces", position: 84 }
+      - { upstream_id: 8g7dkldq7xkh, name: "Richmond", group: "App Platform", position: 85 }
+      - { upstream_id: dn73yck15rk9, name: "San Francisco", group: "App Platform", position: 86 }
+      - { upstream_id: hlr2gdtmpmxs, name: "NYC2", group: "Volumes", position: 87 }
+      - { upstream_id: 9czvz44l7dp3, name: "NYC2", group: "Droplets", position: 88 }
+      - { upstream_id: f61lqt7r9fg5, name: "NYC2", group: "Event Processing", position: 89 }
+      - { upstream_id: 12w0d51pyjvh, name: "NYC2", group: "Load Balancers", position: 90 }
+      - { upstream_id: sdv7rfbf2w42, name: "NYC2", group: "Monitoring", position: 91 }
+      - { upstream_id: lf2rrgctn54t, name: "SFO3", group: "Spaces", position: 92 }
+      - { upstream_id: r2cw20w0r9zx, name: "NYC2", group: "Networking", position: 93 }
+      - { upstream_id: rpk174pnyr42, name: "NYC2", group: "VPC", position: 94 }
+      - { upstream_id: gt78t0v1dx9k, name: "NYC3", group: "Managed Databases", position: 95 }
+      - { upstream_id: 30fq20d840t8, name: "WWW", group: "Global", position: 96 }
+      - { upstream_id: 69l4tm5vr2gg, name: "RIC1", group: "Kubernetes", position: 97 }
+      - { upstream_id: fkzl92xwpwc9, name: "NYC3", group: "Volumes", position: 98 }
+      - { upstream_id: mrdxgk8b9l9m, name: "NYC3", group: "Droplets", position: 99 }
+      - { upstream_id: ty601myjf6cj, name: "NYC3", group: "Event Processing", position: 100 }
+      - { upstream_id: x94k17yvyvj7, name: "NYC3", group: "Load Balancers", position: 101 }
+      - { upstream_id: 4945q9my8ycl, name: "NYC3", group: "VPC", position: 102 }
+      - { upstream_id: grxx637rqt5r, name: "NYC3", group: "Monitoring", position: 103 }
+      - { upstream_id: 4lc0zwg56npx, name: "NYC3", group: "Networking", position: 104 }
+      - { upstream_id: 83tzdysp693h, name: "SFO2", group: "Kubernetes", position: 105 }
+      - { upstream_id: qkrqphz8r8d0, name: "SFO2", group: "Managed Databases", position: 106 }
+      - { upstream_id: s9txl6g88v1z, name: "SFO3", group: "Kubernetes", position: 107 }
+      - { upstream_id: 2cvhn89gxfk8, name: "SFO3", group: "Managed Databases", position: 108 }
+      - { upstream_id: ww3gp3141n6j, name: "RIC1", group: "Droplets", position: 109 }
+      - { upstream_id: r8bmvbfyx8w2, name: "RIC1", group: "Load Balancers", position: 110 }
+      - { upstream_id: c7xp1qx30ynp, name: "RIC1", group: "Networking", position: 111 }
+      - { upstream_id: rvm9zxtf7cxj, name: "RIC1", group: "VPC", position: 112 }
+      - { upstream_id: h9kvx8t7844z, name: "RIC1", group: "Monitoring", position: 113 }
+      - { upstream_id: xw561v0y9bht, name: "RIC1", group: "Event Processing", position: 114 }
+      - { upstream_id: xl1ylq6hd4m7, name: "RIC1", group: "Volumes", position: 115 }
+      - { upstream_id: btbzvrcdfjb3, name: "SFO1", group: "Networking", position: 116 }
+      - { upstream_id: 40f2th6p044g, name: "SFO1", group: "Load Balancers", position: 117 }
+      - { upstream_id: lwvmstkg3yv6, name: "SFO1", group: "VPC", position: 118 }
+      - { upstream_id: b9n6frtjqnzm, name: "SFO1", group: "Volumes", position: 119 }
+      - { upstream_id: 86hpqb7crkzg, name: "SFO1", group: "Droplets", position: 120 }
+      - { upstream_id: txy6938s4dhq, name: "SFO1", group: "Event Processing", position: 121 }
+      - { upstream_id: d28g0q5tjlnf, name: "SFO2", group: "Droplets", position: 122 }
+      - { upstream_id: sczx6qbs36ps, name: "SFO2", group: "Event Processing", position: 123 }
+      - { upstream_id: qpfd9tcp5dp7, name: "SFO2", group: "Load Balancers", position: 124 }
+      - { upstream_id: r59jnkcnpy5w, name: "SFO2", group: "Networking", position: 125 }
+      - { upstream_id: j92cs7vmnhnc, name: "SFO2", group: "Volumes", position: 126 }
+      - { upstream_id: dchd0yhfsf7p, name: "SFO2", group: "VPC", position: 127 }
+      - { upstream_id: 6492wj01735w, name: "SFO1", group: "Monitoring", position: 128 }
+      - { upstream_id: kzjfhwmlkw4b, name: "SFO3", group: "Volumes", position: 129 }
+      - { upstream_id: 2zv8zdysz98p, name: "SFO3", group: "Droplets", position: 130 }
+      - { upstream_id: pp8pv57fs5f4, name: "SFO3", group: "Event Processing", position: 131 }
+      - { upstream_id: 9mrvzmdgkksr, name: "SFO3", group: "Load Balancers", position: 132 }
+      - { upstream_id: pkldx6th5q38, name: "SFO3", group: "Networking", position: 133 }
+      - { upstream_id: ldccrdgw9kp7, name: "SFO3", group: "VPC", position: 134 }
+      - { upstream_id: vb0g5n4m2d59, name: "SFO2", group: "Monitoring", position: 135 }
+      - { upstream_id: w2pchvqc4918, name: "SFO3", group: "Monitoring", position: 136 }
+      - { upstream_id: 2vrsb49336n5, name: "CSPM", group: "Global", position: 137 }

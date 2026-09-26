@@ -1,0 +1,26 @@
+# Merge after compose_base.yml.
+x-build-args: &build-args
+  STATUSDECK_VERSION: ${STATUSDECK_VERSION:-0.1.0}
+  STATUSDECK_REVISION: ${STATUSDECK_REVISION:-development}
+
+services:
+  migrate:
+    build:
+      args: *build-args
+
+  backend:
+    build:
+      args: *build-args
+    environment:
+      STATUSDECK_BASE_URL: ${STATUSDECK_BASE_URL:-http://localhost}
+      STATUSDECK_TRUSTED_HOSTS: ${STATUSDECK_TRUSTED_HOSTS:-localhost},localhost
+
+  worker:
+    build:
+      args: *build-args
+    environment:
+      STATUSDECK_BASE_URL: ${STATUSDECK_BASE_URL:-http://localhost}
+
+  frontend:
+    build:
+      args: *build-args

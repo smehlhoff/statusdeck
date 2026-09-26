@@ -1,0 +1,103 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+        env:
+          {
+            POSTGRES_PASSWORD: statusdeck,
+            POSTGRES_DB: statusdeck,
+            POSTGRES_USER: statusdeck,
+          }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U statusdeck -d statusdeck"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    defaults:
+      run: { working-directory: backend }
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions-rust-lang/setup-rust-toolchain@166cdcfd11aee3cb47222f9ddb555ce30ddb9659 # v1
+        with: { toolchain: 1.97.0, components: rustfmt, clippy }
+      - run: cargo fmt -- --check
+      - run: cargo check --locked
+      - run: cargo clippy --all-targets --all-features --locked -- -D warnings
+      - run: cargo build --release --locked
+      - run: cargo run --locked -- validate-catalog
+      - run: cargo run --locked -- migrate
+        env:
+          STATUSDECK_DATABASE_URL: postgres://statusdeck:statusdeck@localhost:5432/statusdeck
+          STATUSDECK_SECRET_KEY: 01234567890123456789012345678901
+          STATUSDECK_ENCRYPTION_KEY: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+          STATUSDECK_ADMIN_EMAIL: admin@example.test
+
+  backend-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: rustsec/audit-check@69366f33c96575abad1ee0dba8212993eecbe998 # v2.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          working-directory: backend
+          # Lockfile-only RSA via SQLx's disabled MySQL driver; see docs/deployment.md.
+          ignore: RUSTSEC-2023-0071
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Gitleaks
+        env:
+          GITLEAKS_VERSION: 8.30.1
+          GITLEAKS_ARCHIVE_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+        run: |
+          archive="$RUNNER_TEMP/gitleaks.tar.gz"
+          curl --fail --silent --show-error --location \
+            --output "$archive" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          printf '%s  %s\n' "$GITLEAKS_ARCHIVE_SHA256" "$archive" | sha256sum --check -
+          tar --extract --gzip --file "$archive" --directory "$RUNNER_TEMP" gitleaks
+      - name: Scan Git history for secrets
+        run: |
+          "$RUNNER_TEMP/gitleaks" git --redact --verbose --timeout 300 .
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run: { working-directory: frontend }
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          {
+            node-version: 24,
+            cache: npm,
+            cache-dependency-path: frontend/package-lock.json,
+          }
+      - run: npm ci
+      - run: npm run check
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run build
+      - run: npm audit --audit-level=high
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - run: docker compose --env-file .env/.env.example -f compose_base.yml -f compose_dev.yml config
+      - run: docker compose --env-file .env/.env.example -f compose_base.yml -f compose_prod.yml config
+      - run: docker build --build-arg STATUSDECK_VERSION=ci --build-arg STATUSDECK_REVISION=${{ github.sha }} -f deploy/backend.Dockerfile .
+      - run: docker build --build-arg STATUSDECK_VERSION=ci --build-arg STATUSDECK_REVISION=${{ github.sha }} -f deploy/frontend.Dockerfile .

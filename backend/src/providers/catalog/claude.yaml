@@ -1,0 +1,21 @@
+source_key: claude
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.claude.com
+official_url: https://status.claude.com
+description: "AI assistants and foundation-model APIs from Anthropic."
+tags:
+  - "AI"
+  - "API"
+  - "Developer tools"
+component_scope: listed
+providers:
+  - slug: claude
+    name: Claude and Anthropic
+    components:
+      - { upstream_id: rwppv331jlwc, name: claude.ai, group: Products, position: 0 }
+      - { upstream_id: 0qbwn08sd68x, name: Claude Console, group: Platform, position: 1 }
+      - { upstream_id: k8w3r06qmzrp, name: Claude API, group: Platform, position: 2 }
+      - { upstream_id: yyzkbfz2thpt, name: Claude Code, group: Products, position: 3 }
+      - { upstream_id: bpp5gb3hpjcl, name: Claude Cowork, group: Products, position: 4 }
+      - { upstream_id: 0scnb50nvy53, name: Claude for Government, group: Products, position: 5 }

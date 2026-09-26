@@ -1,0 +1,22 @@
+source_key: stripe
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://www.stripestatus.com
+official_url: https://status.stripe.com
+description: "Payment processing and financial infrastructure for internet businesses."
+tags:
+  - "API"
+  - "Commerce"
+  - "Finance"
+  - "Payments"
+component_scope: listed
+providers:
+  - slug: stripe
+    name: Stripe
+    components:
+      - { upstream_id: 2p0n66vlgnn2, name: Stripe API, group: Global, position: 0 }
+      - { upstream_id: qcs5gg7rz4ps, name: Global payments, group: Global, position: 1 }
+      - { upstream_id: xpbk3q21zzdb, name: Revenue and finance automation, group: Global, position: 2 }
+      - { upstream_id: 51gsjcp6h48z, name: Banking-as-a-service, group: Global, position: 3 }
+      - { upstream_id: mdklyd2ynjqv, name: Stripe core components, group: Global, position: 4 }
+      - { upstream_id: glvywj51z2g9, name: Acquirers and payment methods, group: Global, position: 5 }

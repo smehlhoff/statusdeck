@@ -1,0 +1,27 @@
+source_key: dropbox
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.dropbox.com
+official_url: https://status.dropbox.com
+description: "Cloud file storage, sharing, and content collaboration."
+tags:
+  - "Cloud"
+  - "Collaboration"
+  - "Integration"
+component_scope: listed
+providers:
+  - slug: dropbox
+    name: Dropbox
+    components:
+      - { upstream_id: xxdqx0ykqsdv, name: Website, group: Global, position: 0 }
+      - { upstream_id: 6806922ybdl4, name: Desktop Application, group: Applications, position: 1 }
+      - { upstream_id: 9249rggclblt, name: Mobile Application, group: Applications, position: 2 }
+      - { upstream_id: g0f37btkjhcq, name: API, group: Developer, position: 3 }
+      - { upstream_id: 6hfxwc3bylrx, name: Paper, group: Products, position: 4 }
+      - { upstream_id: j2bmcbh0qddh, name: Passwords, group: Products, position: 5 }
+      - { upstream_id: zr2pd7n95xx1, name: Dash, group: Products, position: 6 }
+      - { upstream_id: p80tdn5wg8lv, name: Protect, group: Products, position: 7 }
+      - { upstream_id: 28p7kxfc2400, name: Replay, group: Products, position: 8 }
+      - { upstream_id: jd1xbk17qkvv, name: DocSend, group: Products, position: 9 }
+      - { upstream_id: gbn95109q3c3, name: MCP Server, group: Developer, position: 10 }
+      - { upstream_id: 0888k9dj2x6x, name: Support Services, group: Global, position: 11 }

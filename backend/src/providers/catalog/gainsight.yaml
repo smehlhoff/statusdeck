@@ -1,0 +1,31 @@
+source_key: gainsight
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.gainsight.com
+official_url: https://status.gainsight.com
+description: "Customer success applications, data processing, integrations, and authentication."
+tags:
+  - "Business operations"
+  - "CRM"
+  - "Support"
+component_scope: listed
+providers:
+  - slug: gainsight
+    name: Gainsight
+    components:
+      - { upstream_id: 7psml40p3ht4, name: "Gainsight CS US1 Application", group: "Gainsight CS - US1 Region", position: 0 }
+      - { upstream_id: p3gfpw41dw0f, name: "Gainsight CS US2 Application", group: "Gainsight CS - US2 Region", position: 1 }
+      - { upstream_id: 9jydpk2v6jd3, name: "US1 Rules Engine Queue", group: "Gainsight CS - US1 Region", position: 2 }
+      - { upstream_id: 1m7n7mmycqmm, name: "US2 Rules Engine Queue", group: "Gainsight CS - US2 Region", position: 3 }
+      - { upstream_id: g9mq2qy1v9v7, name: "US1 Data Processor Queue", group: "Gainsight CS - US1 Region", position: 4 }
+      - { upstream_id: h90q4v8s79q8, name: "US2 Data Processor Queue", group: "Gainsight CS - US2 Region", position: 5 }
+      - { upstream_id: 52mpkk1tqtjx, name: "US1 Data Ingestion Queue", group: "Gainsight CS - US1 Region", position: 6 }
+      - { upstream_id: 83v7kg3x4tw4, name: "US2 Data Ingestion Queue", group: "Gainsight CS - US2 Region", position: 7 }
+      - { upstream_id: 8gclr5vj7btp, name: "US - Insight Agent - Powered by Staircase AI", group: "Gainsight CS - US1 Region", position: 8 }
+      - { upstream_id: nsldj6ndx5yj, name: "US - Insight Agent - Powered by Staircase AI", group: "Gainsight CS - US2 Region", position: 9 }
+      - { upstream_id: f2yn1s1w7m02, name: "US2 Gainsight Salesforce Integration", group: "Gainsight CS - US2 Region", position: 10 }
+      - { upstream_id: x8zpsthqblk0, name: "US1 Gainsight Salesforce Integration", group: "Gainsight CS - US1 Region", position: 11 }
+      - { upstream_id: 3c3wslp82ffl, name: "US2 SAML SSO Authentication", group: "Gainsight CS - US2 Region", position: 12 }
+      - { upstream_id: 2m5nrr70kcmr, name: "US1 SAML SSO Authentication", group: "Gainsight CS - US1 Region", position: 13 }
+      - { upstream_id: 10b1hd7xxqmj, name: "US2 Google SSO Authentication - GSuite", group: "Gainsight CS - US2 Region", position: 14 }
+      - { upstream_id: hfgbsqr3xydm, name: "US1 Google SSO Authentication - GSuite", group: "Gainsight CS - US1 Region", position: 15 }

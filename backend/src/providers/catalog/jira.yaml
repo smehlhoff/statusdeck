@@ -1,0 +1,59 @@
+source_key: jira
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://jira-software.status.atlassian.com
+official_url: https://jira-software.status.atlassian.com
+description: "Issue tracking and project planning for software teams."
+tags:
+  - "Collaboration"
+  - "Developer tools"
+  - "Project management"
+  - "Workflow"
+providers:
+  - slug: jira
+    name: Jira
+    components:
+      - upstream_id: jmgfbtr0k28j
+        name: Viewing content
+        group: Jira Cloud
+        position: 0
+      - upstream_id: b01bgtvb4q2j
+        name: Create and edit
+        group: Jira Cloud
+        position: 1
+      - upstream_id: y76gc542s6nd
+        name: Authentication and User Management
+        group: Jira Cloud
+        position: 2
+      - upstream_id: sv1xfn9br170
+        name: Search
+        group: Jira Cloud
+        position: 3
+      - upstream_id: yzll2534txvb
+        name: Notifications
+        group: Jira Cloud
+        position: 4
+      - upstream_id: sftzwrxsjrry
+        name: Administration
+        group: Jira Cloud
+        position: 5
+      - upstream_id: 50wvm3nm8nd3
+        name: Marketplace
+        group: Jira Cloud
+        position: 6
+      - upstream_id: 39kyw28g27ws
+        name: Mobile
+        group: Jira Cloud
+        position: 7
+      - upstream_id: 0hjw3h7qpkc6
+        name: Purchasing & Licensing
+        group: Jira Cloud
+        position: 8
+      - upstream_id: fgq39r8cz7mj
+        name: Signup
+        group: Jira Cloud
+        position: 9
+      - upstream_id: 9hyf9lm0fswd
+        name: Automation for Jira
+        group: Jira Cloud
+        position: 10

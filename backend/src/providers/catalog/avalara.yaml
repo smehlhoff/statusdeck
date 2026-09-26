@@ -1,0 +1,40 @@
+source_key: avalara
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.avalara.com
+official_url: https://status.avalara.com
+description: "Automated tax calculation, reporting, filing, and compliance."
+tags:
+  - "API"
+  - "Business operations"
+  - "Commerce"
+  - "Finance"
+component_scope: listed
+providers:
+  - slug: avalara
+    name: Avalara
+    components:
+      - { upstream_id: q9ytw0yxhxjk, name: Tax Calculation Service, group: AvaTax, position: 0 }
+      - { upstream_id: rjzd31s11p3g, name: Batch Processing Service, group: AvaTax, position: 1 }
+      - { upstream_id: fbdd124vv37w, name: Reporting Service, group: AvaTax, position: 2 }
+      - { upstream_id: gvpl0gqt6yfs, name: AvaTax UI, group: AvaTax, position: 3 }
+      - { upstream_id: r2m4ftsgxzqf, name: Avalara Edge, group: AvaTax, position: 4 }
+      - { upstream_id: 1cz23t78f45p, name: Restv2, group: AvaTax, position: 5 }
+      - { upstream_id: 1m0cn1gmvbs9, name: AvaTax Exemptions, group: AvaTax, position: 6 }
+      - { upstream_id: 2zvfbgwpsvkn, name: Returns Services, group: Returns, position: 7 }
+      - { upstream_id: 4ytjy9f34l6b, name: Returns Console, group: Returns, position: 8 }
+      - { upstream_id: 0n9mtw6lkz2c, name: Avalara Exemption Certificate Management, group: Exemption Certificate Management, position: 9 }
+      - { upstream_id: d90h8h9j6xnm, name: Web Portal, group: Exemption Certificate Management, position: 10 }
+      - { upstream_id: 0txcpknjszv3, name: REST API Services, group: Exemption Certificate Management, position: 11 }
+      - { upstream_id: hx0l1zvqt7n8, name: Exemption Management, group: Exemption Certificate Management, position: 12 }
+      - { upstream_id: kwxc132py54s, name: File Uploads, group: Exemption Certificate Management, position: 13 }
+      - { upstream_id: gxd4k06028dx, name: Document Central, group: Exemption Certificate Management, position: 14 }
+      - { upstream_id: 91qyx3j8yc0t, name: SaaS Connectors, group: Connectors, position: 15 }
+      - { upstream_id: l3h29h35r78k, name: Avalara for Shopify, group: Connectors, position: 16 }
+      - { upstream_id: 3dpmqsg2hqr7, name: SAP S/4HANA AvaTax Integration, group: Connectors, position: 17 }
+      - { upstream_id: 056dv59mcqw9, name: SAP S/4HANA E-Invoice Integration, group: Connectors, position: 18 }
+      - { upstream_id: 7plx47xj4sgh, name: Mirakl, group: Connectors, position: 19 }
+      - { upstream_id: x6bq7y4pwpbz, name: Avalara Account, group: Platform, position: 20 }
+      - { upstream_id: l5rzp8xph7xf, name: E-Invoicing and Live Reporting, group: E-Invoicing, position: 21 }
+      - { upstream_id: 6cw76blv9tdz, name: Active Status Monitoring, group: E-Invoicing, position: 22 }
+      - { upstream_id: pd2pn8r60kxq, name: Avalara Developer Portal, group: Developer, position: 23 }

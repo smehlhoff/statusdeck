@@ -1,0 +1,24 @@
+source_key: gong
+adapter: statuspage
+base_url: https://status.gong.io
+official_url: https://status.gong.io
+description: "Revenue intelligence, conversation capture, sales engagement, and forecasting."
+tags:
+  - "AI"
+  - "Analytics"
+  - "Business operations"
+  - "CRM"
+separate_incidents_endpoint: true
+native_incidents_path: /proxy/gong/incidents
+component_scope: listed
+providers:
+  - slug: gong
+    name: Gong
+    components:
+      - { upstream_id: 01KP5HCBZ2SAFECB3AZATRPD3A, name: "Data Capture", group: "Global", position: 0 }
+      - { upstream_id: 01KP5HCBZ25H44357TSM7TQHSQ, name: "Enable", group: "Global", position: 1 }
+      - { upstream_id: 01K0RPD4TCR8PVY7AFYTFJ073J, name: "Engage", group: "Global", position: 2 }
+      - { upstream_id: 01K0RPD4TCQHPKVTRHTCM3XC38, name: "Web App", group: "Global", position: 3 }
+      - { upstream_id: 01K0RPD4TCZPM3S235Q9D6P8Y6, name: "Mobile App", group: "Global", position: 4 }
+      - { upstream_id: 01K0RPD4TCQT2X6MDPDJJ10XWZ, name: "Forecast", group: "Global", position: 5 }
+      - { upstream_id: 01K0RPD4TCZ0SV5T4CKTE25Q5T, name: "Data Cloud", group: "Global", position: 6 }

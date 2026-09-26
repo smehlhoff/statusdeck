@@ -1,0 +1,30 @@
+source_key: vercel
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://www.vercel-status.com
+official_url: https://www.vercel-status.com
+description: "Frontend hosting, application delivery, and developer platform services."
+tags:
+  - "CI/CD"
+  - "Cloud"
+  - "Developer tools"
+  - "Infrastructure"
+component_scope: listed
+providers:
+  - slug: vercel
+    name: Vercel
+    components:
+      - { upstream_id: fk66q26xp7hh, name: Dashboard, group: Global, position: 0 }
+      - { upstream_id: rxynwj392p81, name: API, group: Global, position: 1 }
+      - { upstream_id: 7ckq6xr6nsbv, name: Builds, group: Global, position: 2 }
+      - { upstream_id: kgcsn9c73xzf, name: Functions, group: Global, position: 3 }
+      - { upstream_id: jhhn5y2phjx8, name: Blob, group: Global, position: 4 }
+      - { upstream_id: 3fm17p8bsb40, name: Global Config, group: Global, position: 5 }
+      - { upstream_id: 4byczsw70cgb, name: DNS, group: Global, position: 6 }
+      - { upstream_id: xxh50pzvy03x, name: Firewall, group: Global, position: 7 }
+      - { upstream_id: kngz5jwm57mk, name: npm Registry, group: Global, position: 8 }
+      - { upstream_id: hpqj1ys9gr78, name: Git Integrations, group: Global, position: 9 }
+      - { upstream_id: 1mfh9wp03sww, name: Integration Webhooks, group: Global, position: 10 }
+      - { upstream_id: 1vhy91zktp01, name: Cron Jobs, group: Global, position: 11 }
+      - { upstream_id: jrd979g6ssl0, name: IAD1 - Washington DC, group: CDN, position: 12 }
+      - { upstream_id: hb2s3rrdjnhb, name: SFO1 - San Francisco, group: CDN, position: 13 }

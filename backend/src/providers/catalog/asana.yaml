@@ -1,0 +1,39 @@
+source_key: asana
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.asana.com
+official_url: https://status.asana.com
+description: "Work management for team projects, tasks, and workflows."
+tags:
+  - "Collaboration"
+  - "Project management"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: asana
+    name: Asana US
+    components:
+      - upstream_id: 27w8th2c08v6
+        name: App
+        group: US
+        position: 0
+      - upstream_id: yg4058k03s50
+        name: API
+        group: US
+        position: 1
+      - upstream_id: 0tlyr3w5wwtv
+        name: Mobile
+        group: US
+        position: 2
+      - upstream_id: 5pzgfbsllb5y
+        name: Automations and Background Actions
+        group: US
+        position: 3
+      - upstream_id: 72r2f6764450
+        name: Webhooks and Event Streams
+        group: US
+        position: 4
+      - upstream_id: v7hcrjtr3zmm
+        name: Notifications
+        group: US
+        position: 5

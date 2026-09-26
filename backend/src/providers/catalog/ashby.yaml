@@ -1,0 +1,43 @@
+source_key: ashby
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.ashbyhq.com
+official_url: https://status.ashbyhq.com
+description: "Recruiting operations, applicant tracking, and talent analytics."
+tags:
+  - "Automation"
+  - "HR"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: ashby
+    name: Ashby
+    components:
+      - upstream_id: y91vnr0l80dw
+        name: Recruiting
+        group: Ashby Products
+        position: 0
+      - upstream_id: 72qblx6kzhvf
+        name: Analytics
+        group: Ashby Products
+        position: 1
+      - upstream_id: f95v0t3rrzp4
+        name: Hosted Job Boards
+        group: Ashby Products
+        position: 2
+      - upstream_id: wbm2bf9wjggq
+        name: Scheduling
+        group: Ashby Products
+        position: 3
+      - upstream_id: cgd4z59x74sm
+        name: Chrome Extension
+        group: Ashby Products
+        position: 4
+      - upstream_id: xf7vrclmn6yt
+        name: Mobile
+        group: Ashby Products
+        position: 5
+      - upstream_id: vxpvy1rpk963
+        name: AI Notetaker
+        group: Ashby Products
+        position: 6

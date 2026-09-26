@@ -1,0 +1,32 @@
+source_key: grafana
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.grafana.com
+official_url: https://status.grafana.com
+description: "Dashboards and observability for metrics, logs, and traces."
+tags:
+  - "Analytics"
+  - "DevOps"
+  - "IT operations"
+  - "Observability"
+component_scope: listed
+providers:
+  - slug: grafana
+    name: Grafana Cloud US East
+    components:
+      - { upstream_id: hbqgpzmf8h9k, name: Grafana, group: AWS US East, position: 0 }
+      - { upstream_id: 5270kl9kd6l2, name: Metrics Querying, group: AWS US East, position: 1 }
+      - { upstream_id: zqsjp5p0d8n7, name: Metrics Ingestion, group: AWS US East, position: 2 }
+      - { upstream_id: hzw0yd89s9ny, name: Alerting Configuration API, group: AWS US East, position: 3 }
+      - { upstream_id: fgtp31zqpw8v, name: Alertmanager, group: AWS US East, position: 4 }
+      - { upstream_id: 33nzwl8kffd6, name: Rule Evaluation, group: AWS US East, position: 5 }
+      - { upstream_id: 2lyhl59mn4dl, name: Logs, group: AWS US East, position: 6 }
+      - { upstream_id: q8160vpq47xz, name: Traces Querying, group: AWS US East, position: 7 }
+      - { upstream_id: h6zfv84tzkd3, name: Traces Ingestion, group: AWS US East, position: 8 }
+      - { upstream_id: dk50b1c487h5, name: AI and Machine Learning, group: AWS US East, position: 9 }
+      - { upstream_id: nps7z0srxs25, name: Synthetic Monitoring API, group: AWS US East, position: 10 }
+      - { upstream_id: wlk38l1st21f, name: Synthetic Monitoring Probes, group: AWS US East, position: 11 }
+      - { upstream_id: xt9yyht68cbw, name: Profiles, group: AWS US East, position: 12 }
+      - { upstream_id: 43jd9wwclvwy, name: OpenTelemetry Ingest, group: AWS US East, position: 13 }
+      - { upstream_id: 72qxjs1p29q7, name: Frontend Observability, group: AWS US East, position: 14 }
+      - { upstream_id: m0qkgdzwyr6l, name: Grafana.com, group: Global, position: 15 }

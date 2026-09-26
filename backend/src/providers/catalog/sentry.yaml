@@ -1,0 +1,30 @@
+source_key: sentry
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://t687h3m0nh65.statuspage.io
+official_url: https://status.sentry.io
+description: "Application error tracking and performance monitoring."
+tags:
+  - "Developer tools"
+  - "DevOps"
+  - "Observability"
+component_scope: listed
+providers:
+  - slug: sentry
+    name: Sentry US
+    components:
+      - { upstream_id: khtl9dcky3lb, name: Dashboard, group: Global, position: 0 }
+      - { upstream_id: qywmfv7jr0pd, name: API, group: Global, position: 1 }
+      - { upstream_id: 51yszynm4xyv, name: Error Ingestion, group: US, position: 2 }
+      - { upstream_id: bctv81yt9s6w, name: Errors Alerting, group: US, position: 3 }
+      - { upstream_id: bdg4djkxjxmk, name: Transaction Ingestion, group: US, position: 4 }
+      - { upstream_id: mbhk48shsbl8, name: Transactions Alerting, group: US, position: 5 }
+      - { upstream_id: cycj4r32g25w, name: Attachment Ingestion, group: US, position: 6 }
+      - { upstream_id: 52t4t3ww2qcn, name: Profile Ingestion, group: US, position: 7 }
+      - { upstream_id: zxkxxtspk64g, name: Replay Ingestion, group: US, position: 8 }
+      - { upstream_id: qd7tzrk5q8xm, name: Span Ingestion, group: US, position: 9 }
+      - { upstream_id: rcdlp8rvtf7t, name: Spans Alerting, group: US, position: 10 }
+      - { upstream_id: 6f1r28lydc6h, name: Cron Monitoring, group: US, position: 11 }
+      - { upstream_id: fvsfbxc1mb16, name: Uptime Monitoring, group: US, position: 12 }
+      - { upstream_id: 6gtdt9t60dl0, name: Integration Pipeline, group: Global, position: 13 }
+      - { upstream_id: 7wrqyj84ltw7, name: Custom Metrics, group: Global, position: 14 }

@@ -1,0 +1,213 @@
+x-app-hardening: &app-hardening
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+
+x-bounded-logging: &bounded-logging
+  driver: local
+  options:
+    max-size: "10m"
+    max-file: "3"
+    compress: "true"
+
+services:
+  postgres:
+    cpus: "2.0"
+    mem_limit: 1g
+    memswap_limit: 1g
+    logging: *bounded-logging
+    image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+    restart: unless-stopped
+    pids_limit: 256
+
+    environment:
+      POSTGRES_DB: statusdeck
+      POSTGRES_USER: statusdeck
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+
+    secrets:
+      - postgres_password
+
+    volumes:
+      - postgres18-data:/var/lib/postgresql
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U statusdeck -d statusdeck
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  migrate:
+    <<: *app-hardening
+    cpus: "1.0"
+    mem_limit: 512m
+    memswap_limit: 512m
+    logging: *bounded-logging
+    build:
+      context: .
+      dockerfile: deploy/backend.Dockerfile
+
+    command:
+      - migrate
+    pids_limit: 128
+
+    environment:
+      STATUSDECK_DATABASE_URL_FILE: /run/secrets/statusdeck_database_url
+
+    secrets:
+      - statusdeck_database_url
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  backend:
+    <<: *app-hardening
+    cpus: "1.0"
+    mem_limit: 512m
+    memswap_limit: 512m
+    logging: *bounded-logging
+    build:
+      context: .
+      dockerfile: deploy/backend.Dockerfile
+
+    command:
+      - api
+    restart: unless-stopped
+    pids_limit: 256
+
+    environment:
+      STATUSDECK_DATABASE_URL_FILE: /run/secrets/statusdeck_database_url
+      STATUSDECK_BIND: 0.0.0.0:8080
+      STATUSDECK_SECRET_KEY_FILE: /run/secrets/statusdeck_secret_key
+      STATUSDECK_ENCRYPTION_KEY_FILE: /run/secrets/statusdeck_encryption_key
+      STATUSDECK_ADMIN_EMAIL: ${STATUSDECK_ADMIN_EMAIL:?set STATUSDECK_ADMIN_EMAIL in .env/.env}
+      STATUSDECK_ADMIN_PASSWORD_FILE: /run/secrets/statusdeck_admin_password
+      STATUSDECK_LOG_LEVEL: ${STATUSDECK_LOG_LEVEL:-info}
+      STATUSDECK_LOG_FORMAT: ${STATUSDECK_LOG_FORMAT:-json}
+      STATUSDECK_DEFAULT_POLL_INTERVAL: ${STATUSDECK_DEFAULT_POLL_INTERVAL:-300}
+      STATUSDECK_STALE_MULTIPLIER: ${STATUSDECK_STALE_MULTIPLIER:-3}
+      STATUSDECK_GLOBAL_POLL_CONCURRENCY: ${STATUSDECK_GLOBAL_POLL_CONCURRENCY:-10}
+      STATUSDECK_PER_HOST_CONCURRENCY: ${STATUSDECK_PER_HOST_CONCURRENCY:-2}
+      STATUSDECK_RAW_PAYLOAD_RETENTION_DAYS: ${STATUSDECK_RAW_PAYLOAD_RETENTION_DAYS:-7}
+      STATUSDECK_TRUST_PROXY: "true"
+      STATUSDECK_ALLOW_PRIVATE_NOTIFICATION_TARGETS: ${STATUSDECK_ALLOW_PRIVATE_NOTIFICATION_TARGETS:-false}
+
+    secrets:
+      - statusdeck_database_url
+      - statusdeck_secret_key
+      - statusdeck_encryption_key
+      - statusdeck_admin_password
+
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - -q
+        - http://localhost:8080/health/ready
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  worker:
+    <<: *app-hardening
+    cpus: "1.0"
+    mem_limit: 512m
+    memswap_limit: 512m
+    logging: *bounded-logging
+    build:
+      context: .
+      dockerfile: deploy/backend.Dockerfile
+
+    command:
+      - worker
+    restart: unless-stopped
+    pids_limit: 256
+    stop_grace_period: 35s
+
+    environment:
+      STATUSDECK_DATABASE_URL_FILE: /run/secrets/statusdeck_database_url
+      STATUSDECK_BIND: 0.0.0.0:8080
+      STATUSDECK_SECRET_KEY_FILE: /run/secrets/statusdeck_secret_key
+      STATUSDECK_ENCRYPTION_KEY_FILE: /run/secrets/statusdeck_encryption_key
+      STATUSDECK_ADMIN_EMAIL: ${STATUSDECK_ADMIN_EMAIL:?set STATUSDECK_ADMIN_EMAIL in .env/.env}
+      STATUSDECK_ADMIN_PASSWORD_FILE: /run/secrets/statusdeck_admin_password
+      STATUSDECK_LOG_LEVEL: ${STATUSDECK_LOG_LEVEL:-info}
+      STATUSDECK_LOG_FORMAT: ${STATUSDECK_LOG_FORMAT:-json}
+      STATUSDECK_DEFAULT_POLL_INTERVAL: ${STATUSDECK_DEFAULT_POLL_INTERVAL:-300}
+      STATUSDECK_STALE_MULTIPLIER: ${STATUSDECK_STALE_MULTIPLIER:-3}
+      STATUSDECK_GLOBAL_POLL_CONCURRENCY: ${STATUSDECK_GLOBAL_POLL_CONCURRENCY:-10}
+      STATUSDECK_PER_HOST_CONCURRENCY: ${STATUSDECK_PER_HOST_CONCURRENCY:-2}
+      STATUSDECK_RAW_PAYLOAD_RETENTION_DAYS: ${STATUSDECK_RAW_PAYLOAD_RETENTION_DAYS:-7}
+      STATUSDECK_ALLOW_PRIVATE_NOTIFICATION_TARGETS: ${STATUSDECK_ALLOW_PRIVATE_NOTIFICATION_TARGETS:-false}
+
+    secrets:
+      - statusdeck_database_url
+      - statusdeck_secret_key
+      - statusdeck_encryption_key
+      - statusdeck_admin_password
+
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+    healthcheck:
+      test:
+        - CMD
+        - statusdeck
+        - healthcheck-worker
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  frontend:
+    <<: *app-hardening
+    read_only: true
+    cpus: "0.5"
+    mem_limit: 128m
+    memswap_limit: 128m
+    logging: *bounded-logging
+    # Nginx stores its PID and request/proxy temporary files here.
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+    build:
+      context: .
+      dockerfile: deploy/frontend.Dockerfile
+
+    restart: unless-stopped
+    pids_limit: 128
+
+    ports:
+      - "${STATUSDECK_PORT:-80}:8080"
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  postgres18-data:
+
+secrets:
+  postgres_password:
+    environment: STATUSDECK_DATABASE_PASSWORD
+
+  statusdeck_database_url:
+    environment: STATUSDECK_DATABASE_URL
+
+  statusdeck_secret_key:
+    environment: STATUSDECK_SECRET_KEY
+
+  statusdeck_encryption_key:
+    environment: STATUSDECK_ENCRYPTION_KEY
+
+  statusdeck_admin_password:
+    environment: STATUSDECK_ADMIN_PASSWORD

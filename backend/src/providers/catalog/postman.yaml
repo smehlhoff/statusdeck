@@ -1,0 +1,30 @@
+source_key: postman
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.postman.com
+official_url: https://status.postman.com
+description: "API design, development, testing, and collaboration."
+tags:
+  - "API"
+  - "Collaboration"
+  - "Developer tools"
+component_scope: listed
+providers:
+  - slug: postman
+    name: Postman
+    components:
+      - { upstream_id: myy1xf2243k7, name: Desktop Platform, group: Global, position: 0 }
+      - { upstream_id: yd763bkzgtgp, name: Browser Platform, group: Global, position: 1 }
+      - { upstream_id: 6p1fq1q27p48, name: Login, group: Global, position: 2 }
+      - { upstream_id: 2qwj5yj4dd1p, name: Monitors, group: Global, position: 3 }
+      - { upstream_id: s6f85vsfgs0d, name: Mocks, group: Global, position: 4 }
+      - { upstream_id: 3vjknn1q8nsm, name: Postman API, group: Global, position: 5 }
+      - { upstream_id: bv6g2w5c9bvy, name: Search, group: Global, position: 6 }
+      - { upstream_id: k14n5hnrpqss, name: API Network, group: Global, position: 7 }
+      - { upstream_id: z20p2dbm7l9c, name: Public Collection Documentation, group: Global, position: 8 }
+      - { upstream_id: bprxgtx0551h, name: Newman, group: Global, position: 9 }
+      - { upstream_id: 1v2l8kpl7blf, name: Integrations, group: Global, position: 10 }
+      - { upstream_id: mbqgc0cwjyf4, name: VS Code Extension, group: Global, position: 11 }
+      - { upstream_id: tpym246hbkmn, name: API Builder, group: Global, position: 12 }
+      - { upstream_id: 3wtq4z74p3rv, name: Postman CLI, group: Global, position: 13 }
+      - { upstream_id: 4rwk712jf36d, name: Agent Mode, group: Global, position: 14 }

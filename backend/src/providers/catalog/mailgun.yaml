@@ -1,0 +1,26 @@
+source_key: mailgun
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.mailgun.com
+official_url: https://status.mailgun.com
+description: "Transactional email delivery, validation, and developer APIs."
+tags:
+  - "API"
+  - "Communications"
+  - "Developer tools"
+component_scope: listed
+providers:
+  - slug: mailgun
+    name: Mailgun
+    components:
+      - { upstream_id: bwm7lcxpmygd, name: API, group: Global, position: 0 }
+      - { upstream_id: q5pjqhp4nsyj, name: Control Panel, group: Global, position: 1 }
+      - { upstream_id: msj99l1ctybs, name: Email Validation, group: Global, position: 2 }
+      - { upstream_id: pdjtfylt9rv1, name: SMTP, group: Global, position: 3 }
+      - { upstream_id: tnhtt5q8vklm, name: Inbox Placement, group: Global, position: 4 }
+      - { upstream_id: 3x8cldj79lmg, name: Outbound Delivery, group: Global, position: 5 }
+      - { upstream_id: fn54lc3ntr17, name: Inbound Email Processing, group: Global, position: 6 }
+      - { upstream_id: qsn97w35tlf7, name: Events and Logs, group: Global, position: 7 }
+      - { upstream_id: hdg3sjrz5ypz, name: Stats and Analytics, group: Global, position: 8 }
+      - { upstream_id: 774xcb67q2n1, name: Email Previews, group: Global, position: 9 }
+      - { upstream_id: 1f2cjmh8xgjl, name: Spam Trap Network, group: Global, position: 10 }

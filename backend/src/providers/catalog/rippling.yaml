@@ -1,0 +1,36 @@
+source_key: rippling
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.rippling.com
+official_url: https://status.rippling.com
+description: "Workforce management spanning HR, payroll, IT, and finance."
+tags:
+  - "Business operations"
+  - "Finance"
+  - "HR"
+  - "Identity & access"
+  - "IT operations"
+component_scope: listed
+providers:
+  - slug: rippling
+    name: Rippling
+    components:
+      - { upstream_id: lq3c3hps2qqf, name: Rippling App, group: Platform, position: 0 }
+      - { upstream_id: y0q25d7bxg83, name: Single Sign-on (SSO), group: Identity & App Management, position: 1 }
+      - { upstream_id: 73fdn9j7bj7y, name: Authentication, group: Identity & App Management, position: 2 }
+      - { upstream_id: w6drqys53rw6, name: RPass, group: Identity & App Management, position: 3 }
+      - { upstream_id: gmjllbg6x62z, name: VLDAP, group: Identity & App Management, position: 4 }
+      - { upstream_id: 4t3nv95fsdms, name: Platform API, group: Identity & App Management, position: 5 }
+      - { upstream_id: zj32d6qhl0dg, name: Third-party Integrations, group: Identity & App Management, position: 6 }
+      - { upstream_id: 31v90p00t71m, name: RADIUS, group: Identity & App Management, position: 7 }
+      - { upstream_id: 7z0m5ns4rhfn, name: Devices App, group: Device & Inventory Management, position: 8 }
+      - { upstream_id: fzrbjx3wgpz2, name: Workflow Studio, group: Platform Tools, position: 9 }
+      - { upstream_id: lp9t2ntbx839, name: Notifications, group: Platform Tools, position: 10 }
+      - { upstream_id: 5bq47xw7sdh7, name: Rippling AI, group: Platform Tools, position: 11 }
+      - { upstream_id: xr7zszhzcvgr, name: Reports & Dashboards, group: Data, position: 12 }
+      - { upstream_id: 714gx98gj7y0, name: Pipelines, group: Data, position: 13 }
+      - { upstream_id: snm8r415174n, name: Transformations, group: Data, position: 14 }
+      - { upstream_id: lk027m66kb2d, name: Timesheets, group: Time, position: 15 }
+      - { upstream_id: k64jpzw6sb0l, name: Scheduling, group: Time, position: 16 }
+      - { upstream_id: 2467w9pctv6m, name: Payroll, group: Payroll, position: 17 }
+      - { upstream_id: 06x486rmbnxj, name: Benefits, group: Benefits, position: 18 }

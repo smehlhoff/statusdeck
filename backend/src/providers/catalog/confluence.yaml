@@ -1,0 +1,26 @@
+source_key: confluence
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://confluence.status.atlassian.com
+official_url: https://confluence.status.atlassian.com
+description: "Shared documentation, knowledge management, and team collaboration."
+tags:
+  - "Collaboration"
+  - "Knowledge base"
+  - "Workflow"
+component_scope: listed
+providers:
+  - slug: confluence
+    name: Confluence Cloud
+    components:
+      - { upstream_id: bl9mxbb582vk, name: View Content, group: Global, position: 0 }
+      - { upstream_id: y4z6hxpf7d7t, name: Create and Edit, group: Global, position: 1 }
+      - { upstream_id: snpbn00x0g0k, name: Comments, group: Global, position: 2 }
+      - { upstream_id: n779hf70xvvb, name: Authentication and User Management, group: Global, position: 3 }
+      - { upstream_id: 5fjwzmlch883, name: Search, group: Global, position: 4 }
+      - { upstream_id: p8qwf8g1xjs4, name: Administration, group: Global, position: 5 }
+      - { upstream_id: 4gcj9wwwkfrm, name: Notifications, group: Global, position: 6 }
+      - { upstream_id: s0zdf6p5dhv7, name: Marketplace Apps, group: Global, position: 7 }
+      - { upstream_id: fsg199jjm9nd, name: Confluence Automations, group: Global, position: 8 }
+      - { upstream_id: jwv14kjhl1yt, name: iOS App, group: Mobile, position: 9 }
+      - { upstream_id: gxy3929vqtmy, name: Android App, group: Mobile, position: 10 }

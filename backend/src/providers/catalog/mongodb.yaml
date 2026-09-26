@@ -1,0 +1,24 @@
+source_key: mongodb
+adapter: statuspage
+maintenance_path: /api/v2/scheduled-maintenances.json
+base_url: https://status.mongodb.com
+official_url: https://status.mongodb.com
+description: "Document databases and managed cloud data services."
+tags:
+  - "Cloud"
+  - "Data"
+  - "Database"
+  - "Developer tools"
+component_scope: listed
+providers:
+  - slug: mongodb
+    name: MongoDB Atlas
+    components:
+      - { upstream_id: 98lbmdz85yp0, name: MongoDB Cloud, group: Global, position: 0 }
+      - { upstream_id: crrq7qqlqfsh, name: Atlas App Services and Device Sync, group: Global, position: 1 }
+      - { upstream_id: lh7m7lhnf3rj, name: Atlas Data Federation and Online Archive, group: Global, position: 2 }
+      - { upstream_id: c17x9n8yy8pz, name: Atlas Search, group: Global, position: 3 }
+      - { upstream_id: 7wbvh4zlbmmh, name: MongoDB Charts, group: Global, position: 4 }
+      - { upstream_id: prk6bb5j7h4l, name: Atlas Stream Processing, group: Global, position: 5 }
+      - { upstream_id: qm4sbrwb7nys, name: VoyageAI Models, group: Global, position: 6 }
+      - { upstream_id: kb8k7qml7npt, name: Support Portal, group: Global, position: 7 }

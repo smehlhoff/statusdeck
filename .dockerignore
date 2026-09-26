@@ -1,0 +1,33 @@
+# Git metadata and GitHub configuration
+.git
+.github
+
+# Local environment settings
+.env
+.env.*
+
+# Dependencies
+**/node_modules
+
+# Build artifacts
+**/target
+**/dist
+**/*.tsbuildinfo
+
+# Tests and coverage
+backend/tests
+frontend/tests
+**/coverage
+
+# Generated reports and browser snapshots
+**/graphify-out
+**/.graphify_*
+**/.playwright-mcp
+
+# Database backups
+**/*.dump
+**/*.dump.tmp.*
+
+# Logs and editor temporary files
+**/*.log
+**/*.swp
