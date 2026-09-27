@@ -90,9 +90,10 @@ interpretations, not claims of a separate design-decision record:
 Three scopes determine what the installation collects and reports:
 
 1. **Catalog:** reviewed provider origins and component coverage define available
-   data sources. Catalog changes require a rebuild.
+   data sources. All enabled sources are polled to discover and refresh components
+   before subscription. Changes to the compiled catalog require a rebuild.
 2. **Monitoring:** subscriptions select whole providers or specific components.
-   Only sources with enabled subscriptions are polled.
+   They determine dashboard coverage and alert eligibility.
 3. **Alerts:** rules narrow monitored coverage and choose events, destinations
    and quiet hours.
 
@@ -110,7 +111,8 @@ Startup checks migration state, bootstraps the administrator when needed and
 reconciles the compiled catalog. Migrations run explicitly before application
 startup. Existing credentials and subscriptions survive restarts.
 
-Subscribing schedules a source for collection. Current status and hourly history
+Catalog reconciliation schedules enabled sources for collection, even without
+subscriptions. Subscribing requests an immediate refresh. Current status and hourly history
 refreshes use independent schedules and retry state, while a shared source lease
 serializes reconciliation. The worker reconciles observations, incidents and
 matching alert work in a database transaction. Semantic deduplication suppresses
@@ -121,8 +123,8 @@ recovery after interrupted processing. Quiet hours hold eligible events for a
 summary, and transient failures are retried. External delivery is not exactly
 once: receivers should deduplicate by event ID.
 
-Removing a subscription stops collection when its source is no longer needed,
-while retaining history. Editing an alert rule does not replay past events.
+Removing a subscription removes its monitored coverage and alert eligibility;
+catalog collection and history continue. Editing an alert rule does not replay past events.
 Detailed reconciliation and delivery semantics belong in [backend](backend.md).
 
 ```mermaid
@@ -138,7 +140,7 @@ sequenceDiagram
     Admin->>UI: Subscribe and configure alert rule/channel
     UI->>API: Session-authenticated JSON mutation + CSRF
     API->>DB: Save configuration and schedule source
-    Poller->>DB: Lease due subscribed source
+    Poller->>DB: Lease due enabled catalog source
     Poller->>Feed: Fetch status and available history
     Feed-->>Poller: Snapshot or unchanged response
     Poller->>DB: Commit observations, events and matching deliveries

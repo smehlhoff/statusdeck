@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../api/client";
 import { invalidateMonitoringState, queryKeys } from "../../api/queries";
-import type { CatalogDetail, CatalogProvider, Monitor } from "../../api/types";
+import type { CatalogEntry, Monitor } from "../../api/types";
 import { ConfirmDialog } from "../../components/ConfirmDialog";
 import { EmptyState } from "../../components/EmptyState";
 import { LoadingSkeleton } from "../../components/LoadingSkeleton";
@@ -42,13 +42,33 @@ function bulkResultMessage(action: string, result: BulkMonitorResult): string {
     : `${summary}; ${result.failed} failed. ${result.firstError ?? "Try the failed providers again."}`;
 }
 
-export function Catalog() {
+export interface CatalogView {
+  search: string;
+  subscribedOnly: boolean;
+  selectedTags: string[];
+  visibleCount: number;
+  scrollY: number;
+}
+
+export function Catalog({
+  initialView,
+  onRemember,
+}: {
+  initialView?: CatalogView;
+  onRemember: (view: CatalogView) => void;
+}) {
   const queryClient = useQueryClient();
   const { notify } = useToast();
-  const [search, setSearch] = useState("");
-  const [subscribedOnly, setSubscribedOnly] = useState(false);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [search, setSearch] = useState(initialView?.search ?? "");
+  const [subscribedOnly, setSubscribedOnly] = useState(
+    initialView?.subscribedOnly ?? false,
+  );
+  const [selectedTags, setSelectedTags] = useState<string[]>(
+    initialView?.selectedTags ?? [],
+  );
+  const [visibleCount, setVisibleCount] = useState(
+    initialView?.visibleCount ?? PAGE_SIZE,
+  );
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const [bulkStatus, setBulkStatus] = useState<{
     message: string;
@@ -59,7 +79,7 @@ export function Catalog() {
   const providers = useQuery({
     queryKey: queryKeys.catalog,
     queryFn: ({ signal }) =>
-      api<CatalogProvider[]>("/api/v1/catalog/providers", { signal }),
+      api<CatalogEntry[]>("/api/v1/catalog/providers", { signal }),
   });
 
   const monitors = useQuery({
@@ -146,9 +166,26 @@ export function Catalog() {
   const displayedProviders = filteredProviders.slice(0, visibleCount);
   const hasNextPage = displayedProviders.length < filteredProviders.length;
 
+  const filterKey = JSON.stringify([
+    normalizedSearch,
+    selectedTags,
+    subscribedOnly,
+  ]);
+  const previousFilter = useRef(filterKey);
   useEffect(() => {
-    setVisibleCount(PAGE_SIZE);
-  }, [normalizedSearch, selectedTags, subscribedOnly]);
+    if (previousFilter.current !== filterKey) setVisibleCount(PAGE_SIZE);
+    previousFilter.current = filterKey;
+  }, [filterKey]);
+
+  const restoredScroll = useRef(false);
+  useEffect(() => {
+    if (restoredScroll.current || !providers.data || !monitors.data) return;
+    const frame = requestAnimationFrame(() => {
+      window.scrollTo(0, initialView?.scrollY ?? 0);
+      restoredScroll.current = true;
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [providers.data, monitors.data, initialView]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -244,6 +281,15 @@ export function Catalog() {
             <CatalogCard
               key={provider.id}
               provider={provider}
+              onConfigure={() =>
+                onRemember({
+                  search,
+                  subscribedOnly,
+                  selectedTags,
+                  visibleCount,
+                  scrollY: window.scrollY,
+                })
+              }
               monitor={monitors.data?.find(
                 (monitor) => monitor.provider_id === provider.id,
               )}
@@ -375,45 +421,21 @@ export function Catalog() {
 }
 
 function CatalogCard({
+  onConfigure,
   provider,
   monitor,
   selectedTags,
   onTagSelect,
 }: {
-  provider: CatalogProvider;
+  onConfigure: () => void;
+  provider: CatalogEntry;
   monitor: Monitor | undefined;
   selectedTags: string[];
   onTagSelect: (tag: string) => void;
 }) {
   const queryClient = useQueryClient();
   const { notify } = useToast();
-  const [expanded, setExpanded] = useState(false);
-  const [coverageDraft, setCoverageDraft] = useState<{
-    allComponents: boolean;
-    selectedComponentIds: string[];
-  }>();
   const [monitorIdToRemove, setMonitorIdToRemove] = useState<string>();
-
-  const detail = useQuery({
-    queryKey: queryKeys.catalogDetail(provider.id),
-    queryFn: ({ signal }) =>
-      api<CatalogDetail>(`/api/v1/catalog/providers/${provider.id}`, {
-        signal,
-      }),
-    enabled: expanded,
-  });
-
-  const allComponents =
-    coverageDraft?.allComponents ??
-    detail.data?.monitor?.monitor_all_components ??
-    true;
-  const selectedComponentIds =
-    coverageDraft?.selectedComponentIds ??
-    (allComponents
-      ? []
-      : (detail.data?.components
-          .filter((component) => component.selected)
-          .map((component) => component.id) ?? []));
 
   const createMonitor = useMutation({
     mutationFn: (body: {
@@ -424,23 +446,8 @@ function CatalogCard({
         method: "POST",
         body: JSON.stringify({ provider_id: provider.id, ...body }),
       }),
-    onSuccess: async (savedMonitor, coverage) => {
+    onSuccess: async () => {
       notify(`Subscribed to ${provider.name}.`);
-      queryClient.setQueryData<CatalogDetail>(
-        queryKeys.catalogDetail(provider.id),
-        (current) =>
-          current && {
-            ...current,
-            monitor: savedMonitor,
-            components: current.components.map((component) => ({
-              ...component,
-              selected:
-                coverage.monitor_all_components ||
-                coverage.component_ids.includes(component.id),
-            })),
-          },
-      );
-      setCoverageDraft(undefined);
       await invalidateMonitoringState(queryClient);
     },
     onError: (error) => notify(error.message, "error"),
@@ -463,22 +470,6 @@ function CatalogCard({
     void invalidateMonitoringState(queryClient);
   }
 
-  function selectAllComponents(selected: boolean) {
-    setCoverageDraft({
-      allComponents: selected,
-      selectedComponentIds: selected ? [] : selectedComponentIds,
-    });
-  }
-
-  function selectComponent(componentId: string, selected: boolean) {
-    setCoverageDraft({
-      allComponents,
-      selectedComponentIds: selected
-        ? [...selectedComponentIds, componentId]
-        : selectedComponentIds.filter((id) => id !== componentId),
-    });
-  }
-
   function monitorAllComponents() {
     createMonitor.mutate({
       monitor_all_components: true,
@@ -486,15 +477,10 @@ function CatalogCard({
     });
   }
 
-  function monitorSelectedComponents() {
-    createMonitor.mutate({
-      monitor_all_components: false,
-      component_ids: selectedComponentIds,
-    });
-  }
-
   return (
-    <article className="card catalog-card">
+    <article
+      className={`card catalog-card${monitored ? " coverage-selected" : ""}`}
+    >
       <div className="catalog-card-body">
         <div className="catalog-card-header">
           <div className="provider-title">
@@ -505,13 +491,28 @@ function CatalogCard({
           </div>
           <p className="provider-description">{provider.description}</p>
         </div>
+        {monitored && monitor && (
+          <div className="catalog-coverage-summary">
+            <strong>
+              {monitor.monitor_all_components
+                ? "All components"
+                : `${provider.selected_component_count.toLocaleString()} component${provider.selected_component_count === 1 ? "" : "s"} selected`}
+            </strong>
+            <span>
+              {monitor.monitor_all_components
+                ? "Includes newly discovered components"
+                : `Services: ${provider.selected_service_count} · Regions / groups: ${provider.selected_group_count}`}
+            </span>
+          </div>
+        )}
         <div className="catalog-actions">
-          <button
+          <Link
             className="button ghost"
-            onClick={() => setExpanded(!expanded)}
+            to={`/catalog/${provider.id}/coverage`}
+            onClick={onConfigure}
           >
-            {expanded ? "Close" : "Configure coverage"}
-          </button>
+            Configure coverage
+          </Link>
           {monitored ? (
             <button
               className="button danger"
@@ -537,101 +538,6 @@ function CatalogCard({
           <p className="alert error" role="alert">
             {(createMonitor.error ?? deleteMonitor.error)?.message}
           </p>
-        )}
-        {expanded && detail.isLoading && (
-          <LoadingSkeleton
-            label="Loading provider components"
-            rows={2}
-            inline
-          />
-        )}
-        {expanded && detail.isError && (
-          <p className="alert error" role="alert">
-            Components could not be loaded.{" "}
-            <button
-              className="button ghost"
-              onClick={() => void detail.refetch()}
-            >
-              Retry
-            </button>
-          </p>
-        )}
-        {expanded && detail.data && (
-          <div className="component-picker">
-            <div className="component-picker-heading">
-              <div>
-                <strong>Coverage</strong>
-                <span className="muted">
-                  Choose every component or a focused subset.
-                </span>
-              </div>
-            </div>
-            <label className="coverage-mode">
-              Coverage mode
-              <select
-                value={allComponents ? "all" : "selected"}
-                disabled={createMonitor.isPending}
-                onChange={(event) =>
-                  selectAllComponents(event.target.value === "all")
-                }
-              >
-                <option value="all">All components</option>
-                <option value="selected">Selected components</option>
-              </select>
-            </label>
-            {!allComponents && (
-              <>
-                <div className="component-options">
-                  {detail.data.components
-                    .filter(
-                      (component) =>
-                        component.active ||
-                        selectedComponentIds.includes(component.id),
-                    )
-                    .map((component) => (
-                      <label
-                        className="check component-option"
-                        key={component.id}
-                      >
-                        <input
-                          type="checkbox"
-                          disabled={createMonitor.isPending}
-                          checked={selectedComponentIds.includes(component.id)}
-                          onChange={(event) =>
-                            selectComponent(component.id, event.target.checked)
-                          }
-                        />
-                        <span>
-                          {component.group ? component.group + ": " : ""}
-                          {component.name}
-                          {!component.active && " (no longer reported)"}
-                        </span>
-                      </label>
-                    ))}
-                </div>
-                <button
-                  className="button primary"
-                  disabled={
-                    selectedComponentIds.length === 0 || createMonitor.isPending
-                  }
-                  onClick={monitorSelectedComponents}
-                >
-                  Save selected coverage
-                </button>
-              </>
-            )}
-            {allComponents &&
-              monitored &&
-              !detail.data.monitor?.monitor_all_components && (
-                <button
-                  className="button primary"
-                  disabled={createMonitor.isPending}
-                  onClick={monitorAllComponents}
-                >
-                  Save all components
-                </button>
-              )}
-          </div>
         )}
         {monitorIdToRemove && (
           <ConfirmDialog

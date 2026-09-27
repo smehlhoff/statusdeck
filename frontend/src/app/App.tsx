@@ -29,6 +29,7 @@ import { Login } from "../features/auth/Login";
 import { ProfileContext } from "../features/profile/profileContext";
 import { UserAvatar } from "../components/UserAvatar";
 import { setThemePreference } from "../features/profile/theme";
+import type { CatalogView } from "../features/catalog/Catalog";
 import { NavigationIcon } from "./NavigationIcon";
 import "../styles/global.css";
 
@@ -58,6 +59,11 @@ const Dashboard = lazy(() =>
 const Catalog = lazy(() =>
   import("../features/catalog/Catalog").then((module) => ({
     default: module.Catalog,
+  })),
+);
+const Coverage = lazy(() =>
+  import("../features/catalog/Coverage").then((module) => ({
+    default: module.Coverage,
   })),
 );
 const ProviderDetail = lazy(() =>
@@ -114,6 +120,8 @@ const queryClient = new QueryClient({
 function pageTitle(pathname: string): string {
   if (pathname.startsWith("/notifications/summaries/"))
     return "Quiet-Hours Summary";
+  if (pathname.startsWith("/catalog/") && pathname.endsWith("/coverage"))
+    return "Configure coverage";
   if (pathname.startsWith("/catalog/")) return "Provider details";
   if (pathname === "/catalog") return "Providers";
   if (pathname.startsWith("/incidents/")) return "Incident details";
@@ -136,6 +144,7 @@ function Shell({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [catalogView, setCatalogView] = useState<CatalogView>();
   const [logoutError, setLogoutError] = useState("");
   const [loggingOut, setLoggingOut] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
@@ -339,7 +348,16 @@ function Shell({
               path="/"
               element={<Dashboard key={user.id} userId={user.id} />}
             />
-            <Route path="/catalog" element={<Catalog />} />
+            <Route
+              path="/catalog"
+              element={
+                <Catalog
+                  initialView={catalogView}
+                  onRemember={setCatalogView}
+                />
+              }
+            />
+            <Route path="/catalog/:id/coverage" element={<Coverage />} />
             <Route path="/catalog/:id" element={<ProviderDetail />} />
             <Route path="/incidents" element={<Incidents />} />
             <Route path="/incidents/:id" element={<IncidentDetail />} />

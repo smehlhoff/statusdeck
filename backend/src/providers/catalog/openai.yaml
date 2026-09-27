@@ -29,7 +29,6 @@ providers:
       - { upstream_id: 01JMXBRMFEVZ7E0X9GD9FWR9WX, name: Moderations, group: API, position: 11 }
       - { upstream_id: 01KMP3KP5MGE23B80K1EK4S8PV, name: Codex API, group: API, position: 12 }
       - { upstream_id: 01JSM5RTJWHRWDTS6Q604VEW3B, name: Login, group: Products, position: 13 }
-      - { upstream_id: 01K9G527YRPY1EFRMHTKB5BKT5, name: Sora, group: Products, position: 14 }
       - { upstream_id: 01K8C008QVXHA6JX98PAS42VPD, name: ChatGPT Atlas, group: Products, position: 15 }
       - { upstream_id: 01JSYVYQSWMJ9QG35XHP08BHA7, name: Deep Research, group: Products, position: 16 }
       - { upstream_id: 01JMXBNJXGGT5SR5DB9J7GYY48, name: Voice mode, group: Products, position: 17 }

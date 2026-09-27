@@ -57,3 +57,4 @@ providers:
         name: Automation for Jira
         group: Jira Cloud
         position: 10
+      - { upstream_id: "hmk3mqjby1pm", name: "Webhooks", position: 11 }

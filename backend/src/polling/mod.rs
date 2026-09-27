@@ -246,6 +246,7 @@ impl PollFailure {
 
 async fn claim_source(pool: &PgPool, owner: &str, excluded: &[Uuid]) -> Result<Option<Source>> {
     let mut tx = pool.begin().await?;
+    // Discover and refresh coverage before subscription; alert fan-out checks monitors.
     let source = sqlx::query_as::<_, Source>("
         SELECT id, adapter, base_url,
                ARRAY(SELECT DISTINCT provider.official_url FROM providers provider WHERE provider.provider_source_id = provider_sources.id) AS official_urls,
@@ -255,7 +256,6 @@ async fn claim_source(pool: &PgPool, owner: &str, excluded: &[Uuid]) -> Result<O
         WHERE enabled AND (next_poll_at <= now() OR history_next_poll_at <= now())
           AND (lease_until IS NULL OR lease_until < now())
           AND NOT (id = ANY($1))
-          AND EXISTS (SELECT 1 FROM providers s JOIN monitored_providers m ON m.provider_id = s.id WHERE s.provider_source_id = provider_sources.id AND m.enabled)
         ORDER BY CASE WHEN next_poll_at <= now() THEN 0 ELSE 1 END,
                  LEAST(next_poll_at, history_next_poll_at), id
         FOR UPDATE SKIP LOCKED LIMIT 1

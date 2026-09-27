@@ -12,71 +12,1172 @@ providers:
   - slug: aws
     name: AWS United States and Global
     components:
-      - { upstream_id: ec2-us-east-1, name: Amazon EC2, group: US East (N. Virginia), position: 0 }
-      - { upstream_id: s3-us-east-1, name: Amazon S3, group: US East (N. Virginia), position: 1 }
-      - { upstream_id: rds-us-east-1, name: Amazon RDS, group: US East (N. Virginia), position: 2 }
-      - { upstream_id: dynamodb-us-east-1, name: Amazon DynamoDB, group: US East (N. Virginia), position: 3 }
-      - { upstream_id: lambda-us-east-1, name: AWS Lambda, group: US East (N. Virginia), position: 4 }
-      - { upstream_id: apigateway-us-east-1, name: Amazon API Gateway, group: US East (N. Virginia), position: 5 }
-      - { upstream_id: elb-us-east-1, name: Elastic Load Balancing, group: US East (N. Virginia), position: 6 }
-      - { upstream_id: eks-us-east-1, name: Amazon EKS, group: US East (N. Virginia), position: 7 }
-      - { upstream_id: ecs-us-east-1, name: Amazon ECS, group: US East (N. Virginia), position: 8 }
-      - { upstream_id: sqs-us-east-1, name: Amazon SQS, group: US East (N. Virginia), position: 9 }
-      - { upstream_id: sns-us-east-1, name: Amazon SNS, group: US East (N. Virginia), position: 10 }
-      - { upstream_id: kinesis-us-east-1, name: Kinesis Data Streams, group: US East (N. Virginia), position: 11 }
-      - { upstream_id: cloudwatch-us-east-1, name: Amazon CloudWatch, group: US East (N. Virginia), position: 12 }
-      - { upstream_id: ec2-us-east-2, name: Amazon EC2, group: US East (Ohio), position: 13 }
-      - { upstream_id: s3-us-east-2, name: Amazon S3, group: US East (Ohio), position: 14 }
-      - { upstream_id: rds-us-east-2, name: Amazon RDS, group: US East (Ohio), position: 15 }
-      - { upstream_id: dynamodb-us-east-2, name: Amazon DynamoDB, group: US East (Ohio), position: 16 }
-      - { upstream_id: lambda-us-east-2, name: AWS Lambda, group: US East (Ohio), position: 17 }
-      - { upstream_id: apigateway-us-east-2, name: Amazon API Gateway, group: US East (Ohio), position: 18 }
-      - { upstream_id: elb-us-east-2, name: Elastic Load Balancing, group: US East (Ohio), position: 19 }
-      - { upstream_id: eks-us-east-2, name: Amazon EKS, group: US East (Ohio), position: 20 }
-      - { upstream_id: ecs-us-east-2, name: Amazon ECS, group: US East (Ohio), position: 21 }
-      - { upstream_id: sqs-us-east-2, name: Amazon SQS, group: US East (Ohio), position: 22 }
-      - { upstream_id: sns-us-east-2, name: Amazon SNS, group: US East (Ohio), position: 23 }
-      - { upstream_id: kinesis-us-east-2, name: Kinesis Data Streams, group: US East (Ohio), position: 24 }
-      - { upstream_id: cloudwatch-us-east-2, name: Amazon CloudWatch, group: US East (Ohio), position: 25 }
-      - { upstream_id: ec2-us-west-1, name: Amazon EC2, group: US West (N. California), position: 26 }
-      - { upstream_id: s3-us-west-1, name: Amazon S3, group: US West (N. California), position: 27 }
-      - { upstream_id: rds-us-west-1, name: Amazon RDS, group: US West (N. California), position: 28 }
-      - { upstream_id: dynamodb-us-west-1, name: Amazon DynamoDB, group: US West (N. California), position: 29 }
-      - { upstream_id: lambda-us-west-1, name: AWS Lambda, group: US West (N. California), position: 30 }
-      - { upstream_id: apigateway-us-west-1, name: Amazon API Gateway, group: US West (N. California), position: 31 }
-      - { upstream_id: elb-us-west-1, name: Elastic Load Balancing, group: US West (N. California), position: 32 }
-      - { upstream_id: eks-us-west-1, name: Amazon EKS, group: US West (N. California), position: 33 }
-      - { upstream_id: ecs-us-west-1, name: Amazon ECS, group: US West (N. California), position: 34 }
-      - { upstream_id: sqs-us-west-1, name: Amazon SQS, group: US West (N. California), position: 35 }
-      - { upstream_id: sns-us-west-1, name: Amazon SNS, group: US West (N. California), position: 36 }
-      - { upstream_id: kinesis-us-west-1, name: Kinesis Data Streams, group: US West (N. California), position: 37 }
-      - { upstream_id: cloudwatch-us-west-1, name: Amazon CloudWatch, group: US West (N. California), position: 38 }
-      - { upstream_id: ec2-us-west-2, name: Amazon EC2, group: US West (Oregon), position: 39 }
-      - { upstream_id: s3-us-west-2, name: Amazon S3, group: US West (Oregon), position: 40 }
-      - { upstream_id: rds-us-west-2, name: Amazon RDS, group: US West (Oregon), position: 41 }
-      - { upstream_id: dynamodb-us-west-2, name: Amazon DynamoDB, group: US West (Oregon), position: 42 }
-      - { upstream_id: lambda-us-west-2, name: AWS Lambda, group: US West (Oregon), position: 43 }
-      - { upstream_id: apigateway-us-west-2, name: Amazon API Gateway, group: US West (Oregon), position: 44 }
-      - { upstream_id: elb-us-west-2, name: Elastic Load Balancing, group: US West (Oregon), position: 45 }
-      - { upstream_id: eks-us-west-2, name: Amazon EKS, group: US West (Oregon), position: 46 }
-      - { upstream_id: ecs-us-west-2, name: Amazon ECS, group: US West (Oregon), position: 47 }
-      - { upstream_id: sqs-us-west-2, name: Amazon SQS, group: US West (Oregon), position: 48 }
-      - { upstream_id: sns-us-west-2, name: Amazon SNS, group: US West (Oregon), position: 49 }
-      - { upstream_id: kinesis-us-west-2, name: Kinesis Data Streams, group: US West (Oregon), position: 50 }
-      - { upstream_id: cloudwatch-us-west-2, name: Amazon CloudWatch, group: US West (Oregon), position: 51 }
-      - { upstream_id: cloudfront, name: Amazon CloudFront, group: Global, position: 52 }
-      - { upstream_id: route53, name: Amazon Route 53, group: Global, position: 53 }
-      - { upstream_id: iamidentitycenter-us-east-1, name: AWS IAM Identity Center, group: US East (N. Virginia), position: 54 }
-      - { upstream_id: sts-us-east-1, name: AWS Security Token Service, group: US East (N. Virginia), position: 55 }
-      - { upstream_id: signin-us-east-1, name: AWS Sign-In, group: US East (N. Virginia), position: 56 }
-      - { upstream_id: connect-us-east-1, name: Amazon Connect, group: US East (N. Virginia), position: 57 }
-      - { upstream_id: iamidentitycenter-us-east-2, name: AWS IAM Identity Center, group: US East (Ohio), position: 58 }
-      - { upstream_id: sts-us-east-2, name: AWS Security Token Service, group: US East (Ohio), position: 59 }
-      - { upstream_id: signin-us-east-2, name: AWS Sign-In, group: US East (Ohio), position: 60 }
-      - { upstream_id: iamidentitycenter-us-west-1, name: AWS IAM Identity Center, group: US West (N. California), position: 61 }
-      - { upstream_id: sts-us-west-1, name: AWS Security Token Service, group: US West (N. California), position: 62 }
-      - { upstream_id: signin-us-west-1, name: AWS Sign-In, group: US West (N. California), position: 63 }
-      - { upstream_id: iamidentitycenter-us-west-2, name: AWS IAM Identity Center, group: US West (Oregon), position: 64 }
-      - { upstream_id: sts-us-west-2, name: AWS Security Token Service, group: US West (Oregon), position: 65 }
-      - { upstream_id: signin-us-west-2, name: AWS Sign-In, group: US West (Oregon), position: 66 }
-      - { upstream_id: connect-us-west-2, name: Amazon Connect, group: US West (Oregon), position: 67 }
+      - { upstream_id: "certificatemanager-us-east-2", name: "AWS Certificate Manager", group: "Ohio (us-east-2)", position: 0 }
+      - { upstream_id: "certificatemanager-us-east-1", name: "AWS Certificate Manager", group: "N. Virginia (us-east-1)", position: 1 }
+      - { upstream_id: "certificatemanager-us-west-2", name: "AWS Certificate Manager", group: "Oregon (us-west-2)", position: 2 }
+      - { upstream_id: "certificatemanager-us-west-1", name: "AWS Certificate Manager", group: "N. California (us-west-1)", position: 3 }
+      - { upstream_id: "certificatemanager-us-gov-east-1", name: "AWS Certificate Manager", group: "US-East (us-gov-east-1)", position: 4 }
+      - { upstream_id: "certificatemanager-us-gov-west-1", name: "AWS Certificate Manager", group: "US-West (us-gov-west-1)", position: 5 }
+      - { upstream_id: "apigateway-us-east-2", name: "Amazon API Gateway", group: "Ohio (us-east-2)", position: 6 }
+      - { upstream_id: "apigateway-us-east-1", name: "Amazon API Gateway", group: "N. Virginia (us-east-1)", position: 7 }
+      - { upstream_id: "apigateway-us-west-2", name: "Amazon API Gateway", group: "Oregon (us-west-2)", position: 8 }
+      - { upstream_id: "apigateway-us-west-1", name: "Amazon API Gateway", group: "N. California (us-west-1)", position: 9 }
+      - { upstream_id: "apigateway-us-gov-east-1", name: "Amazon API Gateway", group: "US-East (us-gov-east-1)", position: 10 }
+      - { upstream_id: "apigateway-us-gov-west-1", name: "Amazon API Gateway", group: "US-West (us-gov-west-1)", position: 11 }
+      - { upstream_id: "backup-us-east-2", name: "AWS Backup", group: "Ohio (us-east-2)", position: 12 }
+      - { upstream_id: "backup-us-east-1", name: "AWS Backup", group: "N. Virginia (us-east-1)", position: 13 }
+      - { upstream_id: "backup-us-west-2", name: "AWS Backup", group: "Oregon (us-west-2)", position: 14 }
+      - { upstream_id: "backup-us-west-1", name: "AWS Backup", group: "N. California (us-west-1)", position: 15 }
+      - { upstream_id: "backup-us-gov-east-1", name: "AWS Backup", group: "US-East (us-gov-east-1)", position: 16 }
+      - { upstream_id: "backup-us-gov-west-1", name: "AWS Backup", group: "US-West (us-gov-west-1)", position: 17 }
+      - { upstream_id: "cloudwan", name: "AWS Cloud WAN", group: "Global", position: 18 }
+      - { upstream_id: "cloudwan-us-gov-east-1", name: "AWS Cloud WAN", group: "US-East (us-gov-east-1)", position: 19 }
+      - { upstream_id: "cloudwan-us-gov-west-1", name: "AWS Cloud WAN", group: "US-West (us-gov-west-1)", position: 20 }
+      - { upstream_id: "consolemobileapp-us-east-2", name: "AWS Console Mobile App", group: "Ohio (us-east-2)", position: 21 }
+      - { upstream_id: "consolemobileapp-us-east-1", name: "AWS Console Mobile App", group: "N. Virginia (us-east-1)", position: 22 }
+      - { upstream_id: "consolemobileapp-us-west-2", name: "AWS Console Mobile App", group: "Oregon (us-west-2)", position: 23 }
+      - { upstream_id: "consolemobileapp-us-west-1", name: "AWS Console Mobile App", group: "N. California (us-west-1)", position: 24 }
+      - { upstream_id: "deadline-us-east-2", name: "AWS Deadline Cloud", group: "Ohio (us-east-2)", position: 25 }
+      - { upstream_id: "deadline-us-east-1", name: "AWS Deadline Cloud", group: "N. Virginia (us-east-1)", position: 26 }
+      - { upstream_id: "deadline-us-west-2", name: "AWS Deadline Cloud", group: "Oregon (us-west-2)", position: 27 }
+      - { upstream_id: "evs-us-east-2", name: "AWS Elastic VMWare Service", group: "Ohio (us-east-2)", position: 28 }
+      - { upstream_id: "evs-us-east-1", name: "AWS Elastic VMWare Service", group: "N. Virginia (us-east-1)", position: 29 }
+      - { upstream_id: "evs-us-west-2", name: "AWS Elastic VMWare Service", group: "Oregon (us-west-2)", position: 30 }
+      - { upstream_id: "evs-us-west-1", name: "AWS Elastic VMWare Service", group: "N. California (us-west-1)", position: 31 }
+      - { upstream_id: "elemental-us-east-2", name: "AWS Elemental", group: "Ohio (us-east-2)", position: 32 }
+      - { upstream_id: "elemental-us-east-1", name: "AWS Elemental", group: "N. Virginia (us-east-1)", position: 33 }
+      - { upstream_id: "elemental-us-west-2", name: "AWS Elemental", group: "Oregon (us-west-2)", position: 34 }
+      - { upstream_id: "elemental-us-west-1", name: "AWS Elemental", group: "N. California (us-west-1)", position: 35 }
+      - { upstream_id: "elemental-us-gov-west-1", name: "AWS Elemental", group: "US-West (us-gov-west-1)", position: 36 }
+      - { upstream_id: "endusermessaging-us-east-2", name: "AWS End User Messaging", group: "Ohio (us-east-2)", position: 37 }
+      - { upstream_id: "endusermessaging-us-east-1", name: "AWS End User Messaging", group: "N. Virginia (us-east-1)", position: 38 }
+      - { upstream_id: "endusermessaging-us-west-2", name: "AWS End User Messaging", group: "Oregon (us-west-2)", position: 39 }
+      - { upstream_id: "endusermessaging-us-west-1", name: "AWS End User Messaging", group: "N. California (us-west-1)", position: 40 }
+      - { upstream_id: "endusermessaging-us-gov-east-1", name: "AWS End User Messaging", group: "US-East (us-gov-east-1)", position: 41 }
+      - { upstream_id: "endusermessaging-us-gov-west-1", name: "AWS End User Messaging", group: "US-West (us-gov-west-1)", position: 42 }
+      - { upstream_id: "health", name: "AWS Health", group: "Global", position: 43 }
+      - { upstream_id: "health-us-gov-east-1", name: "AWS Health", group: "US-East (us-gov-east-1)", position: 44 }
+      - { upstream_id: "health-us-gov-west-1", name: "AWS Health", group: "US-West (us-gov-west-1)", position: 45 }
+      - { upstream_id: "ipam-us-east-2", name: "Amazon VPC IP Address Manager", group: "Ohio (us-east-2)", position: 46 }
+      - { upstream_id: "ipam-us-east-1", name: "Amazon VPC IP Address Manager", group: "N. Virginia (us-east-1)", position: 47 }
+      - { upstream_id: "ipam-us-west-2", name: "Amazon VPC IP Address Manager", group: "Oregon (us-west-2)", position: 48 }
+      - { upstream_id: "ipam-us-west-1", name: "Amazon VPC IP Address Manager", group: "N. California (us-west-1)", position: 49 }
+      - { upstream_id: "ipam-us-gov-east-1", name: "Amazon VPC IP Address Manager", group: "US-East (us-gov-east-1)", position: 50 }
+      - { upstream_id: "ipam-us-gov-west-1", name: "Amazon VPC IP Address Manager", group: "US-West (us-gov-west-1)", position: 51 }
+      - { upstream_id: "iotfleetwise-us-east-1", name: "AWS IoT FleetWise", group: "N. Virginia (us-east-1)", position: 52 }
+      - { upstream_id: "aws-mcp-us-east-1", name: "AWS MCP Server", group: "N. Virginia (us-east-1)", position: 53 }
+      - { upstream_id: "migops-us-east-2", name: "AWS Migration Hub Journeys", group: "Ohio (us-east-2)", position: 54 }
+      - { upstream_id: "migops-us-east-1", name: "AWS Migration Hub Journeys", group: "N. Virginia (us-east-1)", position: 55 }
+      - { upstream_id: "networkfirewall-us-east-2", name: "AWS Network Firewall", group: "Ohio (us-east-2)", position: 56 }
+      - { upstream_id: "networkfirewall-us-east-1", name: "AWS Network Firewall", group: "N. Virginia (us-east-1)", position: 57 }
+      - { upstream_id: "networkfirewall-us-west-2", name: "AWS Network Firewall", group: "Oregon (us-west-2)", position: 58 }
+      - { upstream_id: "networkfirewall-us-west-1", name: "AWS Network Firewall", group: "N. California (us-west-1)", position: 59 }
+      - { upstream_id: "networkfirewall-us-gov-east-1", name: "AWS Network Firewall", group: "US-East (us-gov-east-1)", position: 60 }
+      - { upstream_id: "networkfirewall-us-gov-west-1", name: "AWS Network Firewall", group: "US-West (us-gov-west-1)", position: 61 }
+      - { upstream_id: "aws-partner-central", name: "AWS Partner Central", group: "Global", position: 62 }
+      - { upstream_id: "aws-partner-central-us-gov-east-1", name: "AWS Partner Central", group: "US-East (us-gov-east-1)", position: 63 }
+      - { upstream_id: "aws-partner-central-us-gov-west-1", name: "AWS Partner Central", group: "US-West (us-gov-west-1)", position: 64 }
+      - { upstream_id: "paymentcryptography-us-east-2", name: "AWS Payment Cryptography", group: "Ohio (us-east-2)", position: 65 }
+      - { upstream_id: "paymentcryptography-us-east-1", name: "AWS Payment Cryptography", group: "N. Virginia (us-east-1)", position: 66 }
+      - { upstream_id: "paymentcryptography-us-west-2", name: "AWS Payment Cryptography", group: "Oregon (us-west-2)", position: 67 }
+      - { upstream_id: "pca-connector-scep-us-east-2", name: "AWS Private CA Connector for SCEP", group: "Ohio (us-east-2)", position: 68 }
+      - { upstream_id: "pca-connector-scep-us-east-1", name: "AWS Private CA Connector for SCEP", group: "N. Virginia (us-east-1)", position: 69 }
+      - { upstream_id: "pca-connector-scep-us-west-2", name: "AWS Private CA Connector for SCEP", group: "Oregon (us-west-2)", position: 70 }
+      - { upstream_id: "pca-connector-scep-us-west-1", name: "AWS Private CA Connector for SCEP", group: "N. California (us-west-1)", position: 71 }
+      - { upstream_id: "resourceexplorer-us-east-2", name: "AWS Resource Explorer", group: "Ohio (us-east-2)", position: 72 }
+      - { upstream_id: "resourceexplorer-us-east-1", name: "AWS Resource Explorer", group: "N. Virginia (us-east-1)", position: 73 }
+      - { upstream_id: "resourceexplorer-us-west-2", name: "AWS Resource Explorer", group: "Oregon (us-west-2)", position: 74 }
+      - { upstream_id: "resourceexplorer-us-west-1", name: "AWS Resource Explorer", group: "N. California (us-west-1)", position: 75 }
+      - { upstream_id: "resourceexplorer-us-gov-east-1", name: "AWS Resource Explorer", group: "US-East (us-gov-east-1)", position: 76 }
+      - { upstream_id: "resourceexplorer-us-gov-west-1", name: "AWS Resource Explorer", group: "US-West (us-gov-west-1)", position: 77 }
+      - { upstream_id: "resourcegroups-us-east-2", name: "AWS Resource Groups", group: "Ohio (us-east-2)", position: 78 }
+      - { upstream_id: "resourcegroups-us-east-1", name: "AWS Resource Groups", group: "N. Virginia (us-east-1)", position: 79 }
+      - { upstream_id: "resourcegroups-us-west-2", name: "AWS Resource Groups", group: "Oregon (us-west-2)", position: 80 }
+      - { upstream_id: "resourcegroups-us-west-1", name: "AWS Resource Groups", group: "N. California (us-west-1)", position: 81 }
+      - { upstream_id: "resourcegroups-us-gov-east-1", name: "AWS Resource Groups", group: "US-East (us-gov-east-1)", position: 82 }
+      - { upstream_id: "resourcegroups-us-gov-west-1", name: "AWS Resource Groups", group: "US-West (us-gov-west-1)", position: 83 }
+      - { upstream_id: "s3rtc-us-east-2", name: "Amazon S3 Replication Time Control", group: "Ohio (us-east-2)", position: 84 }
+      - { upstream_id: "s3rtc-us-east-1", name: "Amazon S3 Replication Time Control", group: "N. Virginia (us-east-1)", position: 85 }
+      - { upstream_id: "s3rtc-us-west-2", name: "Amazon S3 Replication Time Control", group: "Oregon (us-west-2)", position: 86 }
+      - { upstream_id: "s3rtc-us-west-1", name: "Amazon S3 Replication Time Control", group: "N. California (us-west-1)", position: 87 }
+      - { upstream_id: "securityagent-us-east-1", name: "AWS Security Agent", group: "N. Virginia (us-east-1)", position: 88 }
+      - { upstream_id: "securityagent-us-west-2", name: "AWS Security Agent", group: "Oregon (us-west-2)", position: 89 }
+      - { upstream_id: "simspaceweaver-us-east-1", name: "AWS SimSpace Weaver", group: "N. Virginia (us-east-1)", position: 90 }
+      - { upstream_id: "simspaceweaver-us-east-2", name: "AWS SimSpace Weaver", group: "Ohio (us-east-2)", position: 91 }
+      - { upstream_id: "simspaceweaver-us-west-2", name: "AWS SimSpace Weaver", group: "Oregon (us-west-2)", position: 92 }
+      - { upstream_id: "simspaceweaver-us-gov-east-1", name: "AWS SimSpace Weaver", group: "US-East (us-gov-east-1)", position: 93 }
+      - { upstream_id: "simspaceweaver-us-gov-west-1", name: "AWS SimSpace Weaver", group: "US-West (us-gov-west-1)", position: 94 }
+      - { upstream_id: "sustainability", name: "AWS Sustainability", group: "Global", position: 95 }
+      - { upstream_id: "ssmsap-us-east-2", name: "AWS Systems Manager for SAP", group: "Ohio (us-east-2)", position: 96 }
+      - { upstream_id: "ssmsap-us-east-1", name: "AWS Systems Manager for SAP", group: "N. Virginia (us-east-1)", position: 97 }
+      - { upstream_id: "ssmsap-us-west-2", name: "AWS Systems Manager for SAP", group: "Oregon (us-west-2)", position: 98 }
+      - { upstream_id: "ssmsap-us-west-1", name: "AWS Systems Manager for SAP", group: "N. California (us-west-1)", position: 99 }
+      - { upstream_id: "transform-us-east-1", name: "AWS Transform", group: "N. Virginia (us-east-1)", position: 100 }
+      - { upstream_id: "transform-us-gov-west-1", name: "AWS Transform", group: "US-West (us-gov-west-1)", position: 101 }
+      - { upstream_id: "account", name: "AWS Account Management", group: "Global", position: 102 }
+      - { upstream_id: "activateconsole-us-west-2", name: "AWS Activate Console", group: "Oregon (us-west-2)", position: 103 }
+      - { upstream_id: "agent-registry-us-east-1", name: "AWS Agent Registry", group: "N. Virginia (us-east-1)", position: 104 }
+      - { upstream_id: "agent-registry-us-west-2", name: "AWS Agent Registry", group: "Oregon (us-west-2)", position: 105 }
+      - { upstream_id: "dsql-us-east-2", name: "Amazon Aurora DSQL Service", group: "Ohio (us-east-2)", position: 106 }
+      - { upstream_id: "dsql-us-east-1", name: "Amazon Aurora DSQL Service", group: "N. Virginia (us-east-1)", position: 107 }
+      - { upstream_id: "dsql-us-west-2", name: "Amazon Aurora DSQL Service", group: "Oregon (us-west-2)", position: 108 }
+      - { upstream_id: "codecatalyst-us-west-2", name: "Amazon CodeCatalyst", group: "Oregon (us-west-2)", position: 109 }
+      - { upstream_id: "health-agent-us-east-1", name: "Amazon Connect Health", group: "N. Virginia (us-east-1)", position: 110 }
+      - { upstream_id: "health-agent-us-west-2", name: "Amazon Connect Health", group: "Oregon (us-west-2)", position: 111 }
+      - { upstream_id: "detective-us-east-1", name: "Amazon Detective", group: "N. Virginia (us-east-1)", position: 112 }
+      - { upstream_id: "detective-us-east-2", name: "Amazon Detective", group: "Ohio (us-east-2)", position: 113 }
+      - { upstream_id: "detective-us-west-1", name: "Amazon Detective", group: "N. California (us-west-1)", position: 114 }
+      - { upstream_id: "detective-us-west-2", name: "Amazon Detective", group: "Oregon (us-west-2)", position: 115 }
+      - { upstream_id: "detective-us-gov-east-1", name: "Amazon Detective", group: "US-East (us-gov-east-1)", position: 116 }
+      - { upstream_id: "detective-us-gov-west-1", name: "Amazon Detective", group: "US-West (us-gov-west-1)", position: 117 }
+      - { upstream_id: "gameliftstreams-us-east-2", name: "Amazon GameLift Streams", group: "Ohio (us-east-2)", position: 118 }
+      - { upstream_id: "gameliftstreams-us-west-2", name: "Amazon GameLift Streams", group: "Oregon (us-west-2)", position: 119 }
+      - { upstream_id: "qapps-us-east-1", name: "Amazon Q Apps", group: "N. Virginia (us-east-1)", position: 120 }
+      - { upstream_id: "qapps-us-west-2", name: "Amazon Q Apps", group: "Oregon (us-west-2)", position: 121 }
+      - { upstream_id: "qbusiness-us-east-1", name: "Amazon Q Business", group: "N. Virginia (us-east-1)", position: 122 }
+      - { upstream_id: "qbusiness-us-west-2", name: "Amazon Q Business", group: "Oregon (us-west-2)", position: 123 }
+      - { upstream_id: "verifiedpermissions-us-east-2", name: "Amazon Verified Permissions", group: "Ohio (us-east-2)", position: 124 }
+      - { upstream_id: "verifiedpermissions-us-east-1", name: "Amazon Verified Permissions", group: "N. Virginia (us-east-1)", position: 125 }
+      - { upstream_id: "verifiedpermissions-us-west-2", name: "Amazon Verified Permissions", group: "Oregon (us-west-2)", position: 126 }
+      - { upstream_id: "verifiedpermissions-us-west-1", name: "Amazon Verified Permissions", group: "N. California (us-west-1)", position: 127 }
+      - { upstream_id: "verifiedpermissions-us-gov-east-1", name: "Amazon Verified Permissions", group: "US-East (us-gov-east-1)", position: 128 }
+      - { upstream_id: "verifiedpermissions-us-gov-west-1", name: "Amazon Verified Permissions", group: "US-West (us-gov-west-1)", position: 129 }
+      - { upstream_id: "amplifyadmin-us-east-2", name: "AWS Amplify Admin", group: "Ohio (us-east-2)", position: 130 }
+      - { upstream_id: "amplifyadmin-us-east-1", name: "AWS Amplify Admin", group: "N. Virginia (us-east-1)", position: 131 }
+      - { upstream_id: "amplifyadmin-us-west-2", name: "AWS Amplify Admin", group: "Oregon (us-west-2)", position: 132 }
+      - { upstream_id: "amplifyadmin-us-west-1", name: "AWS Amplify Admin", group: "N. California (us-west-1)", position: 133 }
+      - { upstream_id: "amplify-us-east-2", name: "AWS Amplify", group: "Ohio (us-east-2)", position: 134 }
+      - { upstream_id: "amplify-us-east-1", name: "AWS Amplify", group: "N. Virginia (us-east-1)", position: 135 }
+      - { upstream_id: "amplify-us-west-2", name: "AWS Amplify", group: "Oregon (us-west-2)", position: 136 }
+      - { upstream_id: "amplify-us-west-1", name: "AWS Amplify", group: "N. California (us-west-1)", position: 137 }
+      - { upstream_id: "appmesh-us-east-2", name: "AWS App Mesh", group: "Ohio (us-east-2)", position: 138 }
+      - { upstream_id: "appmesh-us-east-1", name: "AWS App Mesh", group: "N. Virginia (us-east-1)", position: 139 }
+      - { upstream_id: "appmesh-us-west-2", name: "AWS App Mesh", group: "Oregon (us-west-2)", position: 140 }
+      - { upstream_id: "appmesh-us-west-1", name: "AWS App Mesh", group: "N. California (us-west-1)", position: 141 }
+      - { upstream_id: "apprunner-us-east-2", name: "AWS App Runner", group: "Ohio (us-east-2)", position: 142 }
+      - { upstream_id: "apprunner-us-east-1", name: "AWS App Runner", group: "N. Virginia (us-east-1)", position: 143 }
+      - { upstream_id: "apprunner-us-west-2", name: "AWS App Runner", group: "Oregon (us-west-2)", position: 144 }
+      - { upstream_id: "appstudio-us-west-2", name: "AWS App Studio", group: "Oregon (us-west-2)", position: 145 }
+      - { upstream_id: "appconfig-us-east-2", name: "AWS AppConfig", group: "Ohio (us-east-2)", position: 146 }
+      - { upstream_id: "appconfig-us-east-1", name: "AWS AppConfig", group: "N. Virginia (us-east-1)", position: 147 }
+      - { upstream_id: "appconfig-us-west-2", name: "AWS AppConfig", group: "Oregon (us-west-2)", position: 148 }
+      - { upstream_id: "appconfig-us-west-1", name: "AWS AppConfig", group: "N. California (us-west-1)", position: 149 }
+      - { upstream_id: "appconfig-us-gov-east-1", name: "AWS AppConfig", group: "US-East (us-gov-east-1)", position: 150 }
+      - { upstream_id: "appconfig-us-gov-west-1", name: "AWS AppConfig", group: "US-West (us-gov-west-1)", position: 151 }
+      - { upstream_id: "appfabric-us-east-1", name: "AWS AppFabric", group: "N. Virginia (us-east-1)", position: 152 }
+      - { upstream_id: "appflow-us-east-2", name: "Amazon AppFlow", group: "Ohio (us-east-2)", position: 153 }
+      - { upstream_id: "appflow-us-east-1", name: "Amazon AppFlow", group: "N. Virginia (us-east-1)", position: 154 }
+      - { upstream_id: "appflow-us-west-2", name: "Amazon AppFlow", group: "Oregon (us-west-2)", position: 155 }
+      - { upstream_id: "appflow-us-west-1", name: "Amazon AppFlow", group: "N. California (us-west-1)", position: 156 }
+      - { upstream_id: "appstream2-us-east-2", name: "Amazon WorkSpaces Applications", group: "Ohio (us-east-2)", position: 157 }
+      - { upstream_id: "appstream2-us-east-1", name: "Amazon WorkSpaces Applications", group: "N. Virginia (us-east-1)", position: 158 }
+      - { upstream_id: "appstream2-us-west-2", name: "Amazon WorkSpaces Applications", group: "Oregon (us-west-2)", position: 159 }
+      - { upstream_id: "appstream2-us-gov-east-1", name: "Amazon WorkSpaces Applications", group: "US-East (us-gov-east-1)", position: 160 }
+      - { upstream_id: "appstream2-us-gov-west-1", name: "Amazon WorkSpaces Applications", group: "US-West (us-gov-west-1)", position: 161 }
+      - { upstream_id: "appsync-us-east-2", name: "AWS AppSync", group: "Ohio (us-east-2)", position: 162 }
+      - { upstream_id: "appsync-us-east-1", name: "AWS AppSync", group: "N. Virginia (us-east-1)", position: 163 }
+      - { upstream_id: "appsync-us-west-2", name: "AWS AppSync", group: "Oregon (us-west-2)", position: 164 }
+      - { upstream_id: "appsync-us-west-1", name: "AWS AppSync", group: "N. California (us-west-1)", position: 165 }
+      - { upstream_id: "applicationdiscoveryservice-us-east-1", name: "AWS Application Discovery Service", group: "N. Virginia (us-east-1)", position: 166 }
+      - { upstream_id: "applicationdiscoveryservice-us-west-2", name: "AWS Application Discovery Service", group: "Oregon (us-west-2)", position: 167 }
+      - { upstream_id: "mgn-us-east-2", name: "AWS Application Migration Service", group: "Ohio (us-east-2)", position: 168 }
+      - { upstream_id: "mgn-us-east-1", name: "AWS Application Migration Service", group: "N. Virginia (us-east-1)", position: 169 }
+      - { upstream_id: "mgn-us-west-2", name: "AWS Application Migration Service", group: "Oregon (us-west-2)", position: 170 }
+      - { upstream_id: "mgn-us-west-1", name: "AWS Application Migration Service", group: "N. California (us-west-1)", position: 171 }
+      - { upstream_id: "mgn-us-gov-east-1", name: "AWS Application Migration Service", group: "US-East (us-gov-east-1)", position: 172 }
+      - { upstream_id: "mgn-us-gov-west-1", name: "AWS Application Migration Service", group: "US-West (us-gov-west-1)", position: 173 }
+      - { upstream_id: "athena-us-east-2", name: "Amazon Athena", group: "Ohio (us-east-2)", position: 174 }
+      - { upstream_id: "athena-us-east-1", name: "Amazon Athena", group: "N. Virginia (us-east-1)", position: 175 }
+      - { upstream_id: "athena-us-west-2", name: "Amazon Athena", group: "Oregon (us-west-2)", position: 176 }
+      - { upstream_id: "athena-us-west-1", name: "Amazon Athena", group: "N. California (us-west-1)", position: 177 }
+      - { upstream_id: "athena-us-gov-east-1", name: "Amazon Athena", group: "US-East (us-gov-east-1)", position: 178 }
+      - { upstream_id: "athena-us-gov-west-1", name: "Amazon Athena", group: "US-West (us-gov-west-1)", position: 179 }
+      - { upstream_id: "auditmanager-us-east-2", name: "AWS Audit Manager", group: "Ohio (us-east-2)", position: 180 }
+      - { upstream_id: "auditmanager-us-east-1", name: "AWS Audit Manager", group: "N. Virginia (us-east-1)", position: 181 }
+      - { upstream_id: "auditmanager-us-west-2", name: "AWS Audit Manager", group: "Oregon (us-west-2)", position: 182 }
+      - { upstream_id: "auditmanager-us-west-1", name: "AWS Audit Manager", group: "N. California (us-west-1)", position: 183 }
+      - { upstream_id: "augmentedai-us-east-2", name: "Amazon Augmented AI", group: "Ohio (us-east-2)", position: 184 }
+      - { upstream_id: "augmentedai-us-east-1", name: "Amazon Augmented AI", group: "N. Virginia (us-east-1)", position: 185 }
+      - { upstream_id: "augmentedai-us-west-2", name: "Amazon Augmented AI", group: "Oregon (us-west-2)", position: 186 }
+      - { upstream_id: "autoscaling-us-east-2", name: "Auto Scaling", group: "Ohio (us-east-2)", position: 187 }
+      - { upstream_id: "autoscaling-us-east-1", name: "Auto Scaling", group: "N. Virginia (us-east-1)", position: 188 }
+      - { upstream_id: "autoscaling-us-west-2", name: "Auto Scaling", group: "Oregon (us-west-2)", position: 189 }
+      - { upstream_id: "autoscaling-us-west-1", name: "Auto Scaling", group: "N. California (us-west-1)", position: 190 }
+      - { upstream_id: "autoscaling-us-gov-east-1", name: "Auto Scaling", group: "US-East (us-gov-east-1)", position: 191 }
+      - { upstream_id: "autoscaling-us-gov-west-1", name: "Auto Scaling", group: "US-West (us-gov-west-1)", position: 192 }
+      - { upstream_id: "b2bi-us-east-2", name: "AWS B2B Data Interchange", group: "Ohio (us-east-2)", position: 193 }
+      - { upstream_id: "b2bi-us-east-1", name: "AWS B2B Data Interchange", group: "N. Virginia (us-east-1)", position: 194 }
+      - { upstream_id: "b2bi-us-west-2", name: "AWS B2B Data Interchange", group: "Oregon (us-west-2)", position: 195 }
+      - { upstream_id: "batch-us-east-2", name: "AWS Batch", group: "Ohio (us-east-2)", position: 196 }
+      - { upstream_id: "batch-us-east-1", name: "AWS Batch", group: "N. Virginia (us-east-1)", position: 197 }
+      - { upstream_id: "batch-us-west-2", name: "AWS Batch", group: "Oregon (us-west-2)", position: 198 }
+      - { upstream_id: "batch-us-west-1", name: "AWS Batch", group: "N. California (us-west-1)", position: 199 }
+      - { upstream_id: "batch-us-gov-east-1", name: "AWS Batch", group: "US-East (us-gov-east-1)", position: 200 }
+      - { upstream_id: "batch-us-gov-west-1", name: "AWS Batch", group: "US-West (us-gov-west-1)", position: 201 }
+      - { upstream_id: "bedrock-us-east-2", name: "Amazon Bedrock", group: "Ohio (us-east-2)", position: 202 }
+      - { upstream_id: "bedrock-us-east-1", name: "Amazon Bedrock", group: "N. Virginia (us-east-1)", position: 203 }
+      - { upstream_id: "bedrock-us-west-2", name: "Amazon Bedrock", group: "Oregon (us-west-2)", position: 204 }
+      - { upstream_id: "bedrock-us-west-1", name: "Amazon Bedrock", group: "N. California (us-west-1)", position: 205 }
+      - { upstream_id: "bedrock-us-gov-east-1", name: "Amazon Bedrock", group: "US-East (us-gov-east-1)", position: 206 }
+      - { upstream_id: "bedrock-us-gov-west-1", name: "Amazon Bedrock", group: "US-West (us-gov-west-1)", position: 207 }
+      - { upstream_id: "bedrock-agentcore-us-east-2", name: "Bedrock AgentCore", group: "Ohio (us-east-2)", position: 208 }
+      - { upstream_id: "bedrock-agentcore-us-east-1", name: "Bedrock AgentCore", group: "N. Virginia (us-east-1)", position: 209 }
+      - { upstream_id: "bedrock-agentcore-us-west-2", name: "Bedrock AgentCore", group: "Oregon (us-west-2)", position: 210 }
+      - { upstream_id: "bedrock-agentcore-us-west-1", name: "Bedrock AgentCore", group: "N. California (us-west-1)", position: 211 }
+      - { upstream_id: "bedrock-agentcore-us-gov-west-1", name: "Bedrock AgentCore", group: "US-West (us-gov-west-1)", position: 212 }
+      - { upstream_id: "billingconsole", name: "AWS Billing Console", group: "Global", position: 213 }
+      - { upstream_id: "braket-us-east-1", name: "Amazon Braket", group: "N. Virginia (us-east-1)", position: 214 }
+      - { upstream_id: "braket-us-west-2", name: "Amazon Braket", group: "Oregon (us-west-2)", position: 215 }
+      - { upstream_id: "braket-us-west-1", name: "Amazon Braket", group: "N. California (us-west-1)", position: 216 }
+      - { upstream_id: "chatbot", name: "AWS Chatbot", group: "Global", position: 217 }
+      - { upstream_id: "chime", name: "Amazon Chime", group: "Global", position: 218 }
+      - { upstream_id: "chime-us-gov-east-1", name: "Amazon Chime", group: "US-East (us-gov-east-1)", position: 219 }
+      - { upstream_id: "chime-us-gov-west-1", name: "Amazon Chime", group: "US-West (us-gov-west-1)", position: 220 }
+      - { upstream_id: "cleanrooms-us-east-2", name: "AWS Clean Rooms", group: "Ohio (us-east-2)", position: 221 }
+      - { upstream_id: "cleanrooms-us-east-1", name: "AWS Clean Rooms", group: "N. Virginia (us-east-1)", position: 222 }
+      - { upstream_id: "cleanrooms-us-west-2", name: "AWS Clean Rooms", group: "Oregon (us-west-2)", position: 223 }
+      - { upstream_id: "clientvpn-us-east-2", name: "AWS Client VPN", group: "Ohio (us-east-2)", position: 224 }
+      - { upstream_id: "clientvpn-us-east-1", name: "AWS Client VPN", group: "N. Virginia (us-east-1)", position: 225 }
+      - { upstream_id: "clientvpn-us-west-2", name: "AWS Client VPN", group: "Oregon (us-west-2)", position: 226 }
+      - { upstream_id: "clientvpn-us-west-1", name: "AWS Client VPN", group: "N. California (us-west-1)", position: 227 }
+      - { upstream_id: "clientvpn-us-gov-east-1", name: "AWS Client VPN", group: "US-East (us-gov-east-1)", position: 228 }
+      - { upstream_id: "clientvpn-us-gov-west-1", name: "AWS Client VPN", group: "US-West (us-gov-west-1)", position: 229 }
+      - { upstream_id: "clouddirectory-us-east-1", name: "Amazon Cloud Directory", group: "N. Virginia (us-east-1)", position: 230 }
+      - { upstream_id: "clouddirectory-us-east-2", name: "Amazon Cloud Directory", group: "Ohio (us-east-2)", position: 231 }
+      - { upstream_id: "clouddirectory-us-west-2", name: "Amazon Cloud Directory", group: "Oregon (us-west-2)", position: 232 }
+      - { upstream_id: "clouddirectory-us-gov-west-1", name: "Amazon Cloud Directory", group: "US-West (us-gov-west-1)", position: 233 }
+      - { upstream_id: "servicediscovery-us-east-2", name: "AWS Cloud Map", group: "Ohio (us-east-2)", position: 234 }
+      - { upstream_id: "servicediscovery-us-east-1", name: "AWS Cloud Map", group: "N. Virginia (us-east-1)", position: 235 }
+      - { upstream_id: "servicediscovery-us-west-2", name: "AWS Cloud Map", group: "Oregon (us-west-2)", position: 236 }
+      - { upstream_id: "servicediscovery-us-west-1", name: "AWS Cloud Map", group: "N. California (us-west-1)", position: 237 }
+      - { upstream_id: "servicediscovery-us-gov-east-1", name: "AWS Cloud Map", group: "US-East (us-gov-east-1)", position: 238 }
+      - { upstream_id: "servicediscovery-us-gov-west-1", name: "AWS Cloud Map", group: "US-West (us-gov-west-1)", position: 239 }
+      - { upstream_id: "cloud9-us-east-2", name: "AWS Cloud9", group: "Ohio (us-east-2)", position: 240 }
+      - { upstream_id: "cloud9-us-east-1", name: "AWS Cloud9", group: "N. Virginia (us-east-1)", position: 241 }
+      - { upstream_id: "cloud9-us-west-2", name: "AWS Cloud9", group: "Oregon (us-west-2)", position: 242 }
+      - { upstream_id: "cloud9-us-west-1", name: "AWS Cloud9", group: "N. California (us-west-1)", position: 243 }
+      - { upstream_id: "cloudformation-us-east-2", name: "AWS CloudFormation", group: "Ohio (us-east-2)", position: 244 }
+      - { upstream_id: "cloudformation-us-east-1", name: "AWS CloudFormation", group: "N. Virginia (us-east-1)", position: 245 }
+      - { upstream_id: "cloudformation-us-west-2", name: "AWS CloudFormation", group: "Oregon (us-west-2)", position: 246 }
+      - { upstream_id: "cloudformation-us-west-1", name: "AWS CloudFormation", group: "N. California (us-west-1)", position: 247 }
+      - { upstream_id: "cloudformation-us-gov-east-1", name: "AWS CloudFormation", group: "US-East (us-gov-east-1)", position: 248 }
+      - { upstream_id: "cloudformation-us-gov-west-1", name: "AWS CloudFormation", group: "US-West (us-gov-west-1)", position: 249 }
+      - { upstream_id: "cloudfront", name: "Amazon CloudFront", group: "Global", position: 250 }
+      - { upstream_id: "cloudhsm-us-east-2", name: "AWS CloudHSM", group: "Ohio (us-east-2)", position: 251 }
+      - { upstream_id: "cloudhsm-us-east-1", name: "AWS CloudHSM", group: "N. Virginia (us-east-1)", position: 252 }
+      - { upstream_id: "cloudhsm-us-west-2", name: "AWS CloudHSM", group: "Oregon (us-west-2)", position: 253 }
+      - { upstream_id: "cloudhsm-us-west-1", name: "AWS CloudHSM", group: "N. California (us-west-1)", position: 254 }
+      - { upstream_id: "cloudhsm-us-gov-east-1", name: "AWS CloudHSM", group: "US-East (us-gov-east-1)", position: 255 }
+      - { upstream_id: "cloudhsm-us-gov-west-1", name: "AWS CloudHSM", group: "US-West (us-gov-west-1)", position: 256 }
+      - { upstream_id: "cloudsearch-us-east-1", name: "Amazon CloudSearch", group: "N. Virginia (us-east-1)", position: 257 }
+      - { upstream_id: "cloudsearch-us-west-2", name: "Amazon CloudSearch", group: "Oregon (us-west-2)", position: 258 }
+      - { upstream_id: "cloudsearch-us-west-1", name: "Amazon CloudSearch", group: "N. California (us-west-1)", position: 259 }
+      - { upstream_id: "cloudtrail-us-east-2", name: "AWS CloudTrail", group: "Ohio (us-east-2)", position: 260 }
+      - { upstream_id: "cloudtrail-us-east-1", name: "AWS CloudTrail", group: "N. Virginia (us-east-1)", position: 261 }
+      - { upstream_id: "cloudtrail-us-west-2", name: "AWS CloudTrail", group: "Oregon (us-west-2)", position: 262 }
+      - { upstream_id: "cloudtrail-us-west-1", name: "AWS CloudTrail", group: "N. California (us-west-1)", position: 263 }
+      - { upstream_id: "cloudtrail-us-gov-east-1", name: "AWS CloudTrail", group: "US-East (us-gov-east-1)", position: 264 }
+      - { upstream_id: "cloudtrail-us-gov-west-1", name: "AWS CloudTrail", group: "US-West (us-gov-west-1)", position: 265 }
+      - { upstream_id: "cloudwatch-us-east-2", name: "Amazon CloudWatch", group: "Ohio (us-east-2)", position: 266 }
+      - { upstream_id: "cloudwatch-us-east-1", name: "Amazon CloudWatch", group: "N. Virginia (us-east-1)", position: 267 }
+      - { upstream_id: "cloudwatch-us-west-2", name: "Amazon CloudWatch", group: "Oregon (us-west-2)", position: 268 }
+      - { upstream_id: "cloudwatch-us-west-1", name: "Amazon CloudWatch", group: "N. California (us-west-1)", position: 269 }
+      - { upstream_id: "cloudwatch-us-gov-east-1", name: "Amazon CloudWatch", group: "US-East (us-gov-east-1)", position: 270 }
+      - { upstream_id: "cloudwatch-us-gov-west-1", name: "Amazon CloudWatch", group: "US-West (us-gov-west-1)", position: 271 }
+      - { upstream_id: "applicationinsights-us-east-2", name: "Amazon CloudWatch Application Insights", group: "Ohio (us-east-2)", position: 272 }
+      - { upstream_id: "applicationinsights-us-east-1", name: "Amazon CloudWatch Application Insights", group: "N. Virginia (us-east-1)", position: 273 }
+      - { upstream_id: "applicationinsights-us-west-2", name: "Amazon CloudWatch Application Insights", group: "Oregon (us-west-2)", position: 274 }
+      - { upstream_id: "applicationinsights-us-west-1", name: "Amazon CloudWatch Application Insights", group: "N. California (us-west-1)", position: 275 }
+      - { upstream_id: "applicationinsights-us-gov-east-1", name: "Amazon CloudWatch Application Insights", group: "US-East (us-gov-east-1)", position: 276 }
+      - { upstream_id: "applicationinsights-us-gov-west-1", name: "Amazon CloudWatch Application Insights", group: "US-West (us-gov-west-1)", position: 277 }
+      - { upstream_id: "cloudwatchsynthetics-us-east-2", name: "Amazon CloudWatch Synthetics", group: "Ohio (us-east-2)", position: 278 }
+      - { upstream_id: "cloudwatchsynthetics-us-east-1", name: "Amazon CloudWatch Synthetics", group: "N. Virginia (us-east-1)", position: 279 }
+      - { upstream_id: "cloudwatchsynthetics-us-west-2", name: "Amazon CloudWatch Synthetics", group: "Oregon (us-west-2)", position: 280 }
+      - { upstream_id: "cloudwatchsynthetics-us-west-1", name: "Amazon CloudWatch Synthetics", group: "N. California (us-west-1)", position: 281 }
+      - { upstream_id: "cloudwatchsynthetics-us-gov-east-1", name: "Amazon CloudWatch Synthetics", group: "US-East (us-gov-east-1)", position: 282 }
+      - { upstream_id: "cloudwatchsynthetics-us-gov-west-1", name: "Amazon CloudWatch Synthetics", group: "US-West (us-gov-west-1)", position: 283 }
+      - { upstream_id: "cloudshell-us-east-2", name: "AWS CloudShell", group: "Ohio (us-east-2)", position: 284 }
+      - { upstream_id: "cloudshell-us-east-1", name: "AWS CloudShell", group: "N. Virginia (us-east-1)", position: 285 }
+      - { upstream_id: "cloudshell-us-west-2", name: "AWS CloudShell", group: "Oregon (us-west-2)", position: 286 }
+      - { upstream_id: "cloudshell-us-west-1", name: "AWS CloudShell", group: "N. California (us-west-1)", position: 287 }
+      - { upstream_id: "cloudshell-us-gov-east-1", name: "AWS CloudShell", group: "US-East (us-gov-east-1)", position: 288 }
+      - { upstream_id: "cloudshell-us-gov-west-1", name: "AWS CloudShell", group: "US-West (us-gov-west-1)", position: 289 }
+      - { upstream_id: "rum-us-east-2", name: "Amazon CloudWatch RUM", group: "Ohio (us-east-2)", position: 290 }
+      - { upstream_id: "rum-us-east-1", name: "Amazon CloudWatch RUM", group: "N. Virginia (us-east-1)", position: 291 }
+      - { upstream_id: "rum-us-west-2", name: "Amazon CloudWatch RUM", group: "Oregon (us-west-2)", position: 292 }
+      - { upstream_id: "rum-us-west-1", name: "Amazon CloudWatch RUM", group: "N. California (us-west-1)", position: 293 }
+      - { upstream_id: "rum-us-gov-east-1", name: "Amazon CloudWatch RUM", group: "US-East (us-gov-east-1)", position: 294 }
+      - { upstream_id: "rum-us-gov-west-1", name: "Amazon CloudWatch RUM", group: "US-West (us-gov-west-1)", position: 295 }
+      - { upstream_id: "codeartifact-us-east-2", name: "AWS CodeArtifact", group: "Ohio (us-east-2)", position: 296 }
+      - { upstream_id: "codeartifact-us-east-1", name: "AWS CodeArtifact", group: "N. Virginia (us-east-1)", position: 297 }
+      - { upstream_id: "codeartifact-us-west-2", name: "AWS CodeArtifact", group: "Oregon (us-west-2)", position: 298 }
+      - { upstream_id: "codebuild-us-east-2", name: "AWS CodeBuild", group: "Ohio (us-east-2)", position: 299 }
+      - { upstream_id: "codebuild-us-east-1", name: "AWS CodeBuild", group: "N. Virginia (us-east-1)", position: 300 }
+      - { upstream_id: "codebuild-us-west-2", name: "AWS CodeBuild", group: "Oregon (us-west-2)", position: 301 }
+      - { upstream_id: "codebuild-us-west-1", name: "AWS CodeBuild", group: "N. California (us-west-1)", position: 302 }
+      - { upstream_id: "codebuild-us-gov-east-1", name: "AWS CodeBuild", group: "US-East (us-gov-east-1)", position: 303 }
+      - { upstream_id: "codebuild-us-gov-west-1", name: "AWS CodeBuild", group: "US-West (us-gov-west-1)", position: 304 }
+      - { upstream_id: "codecommit-us-east-2", name: "AWS CodeCommit", group: "Ohio (us-east-2)", position: 305 }
+      - { upstream_id: "codecommit-us-east-1", name: "AWS CodeCommit", group: "N. Virginia (us-east-1)", position: 306 }
+      - { upstream_id: "codecommit-us-west-2", name: "AWS CodeCommit", group: "Oregon (us-west-2)", position: 307 }
+      - { upstream_id: "codecommit-us-west-1", name: "AWS CodeCommit", group: "N. California (us-west-1)", position: 308 }
+      - { upstream_id: "codecommit-us-gov-east-1", name: "AWS CodeCommit", group: "US-East (us-gov-east-1)", position: 309 }
+      - { upstream_id: "codecommit-us-gov-west-1", name: "AWS CodeCommit", group: "US-West (us-gov-west-1)", position: 310 }
+      - { upstream_id: "codedeploy-us-east-2", name: "AWS CodeDeploy", group: "Ohio (us-east-2)", position: 311 }
+      - { upstream_id: "codedeploy-us-east-1", name: "AWS CodeDeploy", group: "N. Virginia (us-east-1)", position: 312 }
+      - { upstream_id: "codedeploy-us-west-2", name: "AWS CodeDeploy", group: "Oregon (us-west-2)", position: 313 }
+      - { upstream_id: "codedeploy-us-west-1", name: "AWS CodeDeploy", group: "N. California (us-west-1)", position: 314 }
+      - { upstream_id: "codedeploy-us-gov-east-1", name: "AWS CodeDeploy", group: "US-East (us-gov-east-1)", position: 315 }
+      - { upstream_id: "codedeploy-us-gov-west-1", name: "AWS CodeDeploy", group: "US-West (us-gov-west-1)", position: 316 }
+      - { upstream_id: "codeguru-profiler-us-east-2", name: "Amazon CodeGuru Profiler", group: "Ohio (us-east-2)", position: 317 }
+      - { upstream_id: "codeguru-profiler-us-east-1", name: "Amazon CodeGuru Profiler", group: "N. Virginia (us-east-1)", position: 318 }
+      - { upstream_id: "codeguru-profiler-us-west-2", name: "Amazon CodeGuru Profiler", group: "Oregon (us-west-2)", position: 319 }
+      - { upstream_id: "codeguru-reviewer-us-east-2", name: "Amazon CodeGuru Reviewer", group: "Ohio (us-east-2)", position: 320 }
+      - { upstream_id: "codeguru-reviewer-us-east-1", name: "Amazon CodeGuru Reviewer", group: "N. Virginia (us-east-1)", position: 321 }
+      - { upstream_id: "codeguru-reviewer-us-west-2", name: "Amazon CodeGuru Reviewer", group: "Oregon (us-west-2)", position: 322 }
+      - { upstream_id: "codepipeline-us-east-2", name: "AWS CodePipeline", group: "Ohio (us-east-2)", position: 323 }
+      - { upstream_id: "codepipeline-us-east-1", name: "AWS CodePipeline", group: "N. Virginia (us-east-1)", position: 324 }
+      - { upstream_id: "codepipeline-us-west-2", name: "AWS CodePipeline", group: "Oregon (us-west-2)", position: 325 }
+      - { upstream_id: "codepipeline-us-west-1", name: "AWS CodePipeline", group: "N. California (us-west-1)", position: 326 }
+      - { upstream_id: "codepipeline-us-gov-east-1", name: "AWS CodePipeline", group: "US-East (us-gov-east-1)", position: 327 }
+      - { upstream_id: "codepipeline-us-gov-west-1", name: "AWS CodePipeline", group: "US-West (us-gov-west-1)", position: 328 }
+      - { upstream_id: "cognito-us-east-2", name: "Amazon Cognito", group: "Ohio (us-east-2)", position: 329 }
+      - { upstream_id: "cognito-us-east-1", name: "Amazon Cognito", group: "N. Virginia (us-east-1)", position: 330 }
+      - { upstream_id: "cognito-us-west-2", name: "Amazon Cognito", group: "Oregon (us-west-2)", position: 331 }
+      - { upstream_id: "cognito-us-west-1", name: "Amazon Cognito", group: "N. California (us-west-1)", position: 332 }
+      - { upstream_id: "cognito-us-gov-east-1", name: "Amazon Cognito", group: "US-East (us-gov-east-1)", position: 333 }
+      - { upstream_id: "cognito-us-gov-west-1", name: "Amazon Cognito", group: "US-West (us-gov-west-1)", position: 334 }
+      - { upstream_id: "comprehend-us-east-2", name: "Amazon Comprehend", group: "Ohio (us-east-2)", position: 335 }
+      - { upstream_id: "comprehend-us-east-1", name: "Amazon Comprehend", group: "N. Virginia (us-east-1)", position: 336 }
+      - { upstream_id: "comprehend-us-west-2", name: "Amazon Comprehend", group: "Oregon (us-west-2)", position: 337 }
+      - { upstream_id: "comprehend-us-gov-west-1", name: "Amazon Comprehend", group: "US-West (us-gov-west-1)", position: 338 }
+      - { upstream_id: "comprehendmedical-us-east-1", name: "Amazon Comprehend Medical", group: "N. Virginia (us-east-1)", position: 339 }
+      - { upstream_id: "comprehendmedical-us-east-2", name: "Amazon Comprehend Medical", group: "Ohio (us-east-2)", position: 340 }
+      - { upstream_id: "comprehendmedical-us-west-2", name: "Amazon Comprehend Medical", group: "Oregon (us-west-2)", position: 341 }
+      - { upstream_id: "comprehendmedical-us-gov-west-1", name: "Amazon Comprehend Medical", group: "US-West (us-gov-west-1)", position: 342 }
+      - { upstream_id: "computeoptimizer-us-east-2", name: "AWS Compute Optimizer", group: "Ohio (us-east-2)", position: 343 }
+      - { upstream_id: "computeoptimizer-us-east-1", name: "AWS Compute Optimizer", group: "N. Virginia (us-east-1)", position: 344 }
+      - { upstream_id: "computeoptimizer-us-west-2", name: "AWS Compute Optimizer", group: "Oregon (us-west-2)", position: 345 }
+      - { upstream_id: "computeoptimizer-us-west-1", name: "AWS Compute Optimizer", group: "N. California (us-west-1)", position: 346 }
+      - { upstream_id: "computeoptimizer-us-gov-east-1", name: "AWS Compute Optimizer", group: "US-East (us-gov-east-1)", position: 347 }
+      - { upstream_id: "computeoptimizer-us-gov-west-1", name: "AWS Compute Optimizer", group: "US-West (us-gov-west-1)", position: 348 }
+      - { upstream_id: "config-us-east-2", name: "AWS Config", group: "Ohio (us-east-2)", position: 349 }
+      - { upstream_id: "config-us-east-1", name: "AWS Config", group: "N. Virginia (us-east-1)", position: 350 }
+      - { upstream_id: "config-us-west-2", name: "AWS Config", group: "Oregon (us-west-2)", position: 351 }
+      - { upstream_id: "config-us-west-1", name: "AWS Config", group: "N. California (us-west-1)", position: 352 }
+      - { upstream_id: "config-us-gov-east-1", name: "AWS Config", group: "US-East (us-gov-east-1)", position: 353 }
+      - { upstream_id: "config-us-gov-west-1", name: "AWS Config", group: "US-West (us-gov-west-1)", position: 354 }
+      - { upstream_id: "connect-us-east-1", name: "Amazon Connect", group: "N. Virginia (us-east-1)", position: 355 }
+      - { upstream_id: "connect-us-west-2", name: "Amazon Connect", group: "Oregon (us-west-2)", position: 356 }
+      - { upstream_id: "connect-us-gov-west-1", name: "Amazon Connect", group: "US-West (us-gov-west-1)", position: 357 }
+      - { upstream_id: "controlcatalog-us-east-2", name: "Control Catalog", group: "Ohio (us-east-2)", position: 358 }
+      - { upstream_id: "controlcatalog-us-east-1", name: "Control Catalog", group: "N. Virginia (us-east-1)", position: 359 }
+      - { upstream_id: "controlcatalog-us-west-2", name: "Control Catalog", group: "Oregon (us-west-2)", position: 360 }
+      - { upstream_id: "controlcatalog-us-west-1", name: "Control Catalog", group: "N. California (us-west-1)", position: 361 }
+      - { upstream_id: "controlcatalog-us-gov-east-1", name: "Control Catalog", group: "US-East (us-gov-east-1)", position: 362 }
+      - { upstream_id: "controlcatalog-us-gov-west-1", name: "Control Catalog", group: "US-West (us-gov-west-1)", position: 363 }
+      - { upstream_id: "controltower-us-east-2", name: "AWS Control Tower", group: "Ohio (us-east-2)", position: 364 }
+      - { upstream_id: "controltower-us-east-1", name: "AWS Control Tower", group: "N. Virginia (us-east-1)", position: 365 }
+      - { upstream_id: "controltower-us-west-2", name: "AWS Control Tower", group: "Oregon (us-west-2)", position: 366 }
+      - { upstream_id: "controltower-us-west-1", name: "AWS Control Tower", group: "N. California (us-west-1)", position: 367 }
+      - { upstream_id: "controltower-us-gov-east-1", name: "AWS Control Tower", group: "US-East (us-gov-east-1)", position: 368 }
+      - { upstream_id: "controltower-us-gov-west-1", name: "AWS Control Tower", group: "US-West (us-gov-west-1)", position: 369 }
+      - { upstream_id: "dataexchange-us-east-2", name: "AWS Data Exchange", group: "Ohio (us-east-2)", position: 370 }
+      - { upstream_id: "dataexchange-us-east-1", name: "AWS Data Exchange", group: "N. Virginia (us-east-1)", position: 371 }
+      - { upstream_id: "dataexchange-us-west-2", name: "AWS Data Exchange", group: "Oregon (us-west-2)", position: 372 }
+      - { upstream_id: "dataexchange-us-west-1", name: "AWS Data Exchange", group: "N. California (us-west-1)", position: 373 }
+      - { upstream_id: "dlm-us-east-2", name: "Amazon Data Lifecycle Manager", group: "Ohio (us-east-2)", position: 374 }
+      - { upstream_id: "dlm-us-east-1", name: "Amazon Data Lifecycle Manager", group: "N. Virginia (us-east-1)", position: 375 }
+      - { upstream_id: "dlm-us-west-2", name: "Amazon Data Lifecycle Manager", group: "Oregon (us-west-2)", position: 376 }
+      - { upstream_id: "dlm-us-west-1", name: "Amazon Data Lifecycle Manager", group: "N. California (us-west-1)", position: 377 }
+      - { upstream_id: "dlm-us-gov-east-1", name: "Amazon Data Lifecycle Manager", group: "US-East (us-gov-east-1)", position: 378 }
+      - { upstream_id: "dlm-us-gov-west-1", name: "Amazon Data Lifecycle Manager", group: "US-West (us-gov-west-1)", position: 379 }
+      - { upstream_id: "datapipeline-us-east-1", name: "AWS Data Pipeline", group: "N. Virginia (us-east-1)", position: 380 }
+      - { upstream_id: "datapipeline-us-west-2", name: "AWS Data Pipeline", group: "Oregon (us-west-2)", position: 381 }
+      - { upstream_id: "datasync-us-east-2", name: "AWS DataSync", group: "Ohio (us-east-2)", position: 382 }
+      - { upstream_id: "datasync-us-east-1", name: "AWS DataSync", group: "N. Virginia (us-east-1)", position: 383 }
+      - { upstream_id: "datasync-us-west-2", name: "AWS DataSync", group: "Oregon (us-west-2)", position: 384 }
+      - { upstream_id: "datasync-us-west-1", name: "AWS DataSync", group: "N. California (us-west-1)", position: 385 }
+      - { upstream_id: "datasync-us-gov-east-1", name: "AWS DataSync", group: "US-East (us-gov-east-1)", position: 386 }
+      - { upstream_id: "datasync-us-gov-west-1", name: "AWS DataSync", group: "US-West (us-gov-west-1)", position: 387 }
+      - { upstream_id: "aws-glue-us-east-1", name: "AWS Glue DataBrew", group: "N. Virginia (us-east-1)", position: 388 }
+      - { upstream_id: "aws-glue-us-east-2", name: "AWS Glue DataBrew", group: "Ohio (us-east-2)", position: 389 }
+      - { upstream_id: "aws-glue-us-west-1", name: "AWS Glue DataBrew", group: "N. California (us-west-1)", position: 390 }
+      - { upstream_id: "aws-glue-us-west-2", name: "AWS Glue DataBrew", group: "Oregon (us-west-2)", position: 391 }
+      - { upstream_id: "aws-glue-us-gov-west-1", name: "AWS Glue DataBrew", group: "US-West (us-gov-west-1)", position: 392 }
+      - { upstream_id: "datazone-us-east-2", name: "Amazon DataZone", group: "Ohio (us-east-2)", position: 393 }
+      - { upstream_id: "datazone-us-east-1", name: "Amazon DataZone", group: "N. Virginia (us-east-1)", position: 394 }
+      - { upstream_id: "datazone-us-west-2", name: "Amazon DataZone", group: "Oregon (us-west-2)", position: 395 }
+      - { upstream_id: "dms-us-east-2", name: "AWS Database Migration Service", group: "Ohio (us-east-2)", position: 396 }
+      - { upstream_id: "dms-us-east-1", name: "AWS Database Migration Service", group: "N. Virginia (us-east-1)", position: 397 }
+      - { upstream_id: "dms-us-west-2", name: "AWS Database Migration Service", group: "Oregon (us-west-2)", position: 398 }
+      - { upstream_id: "dms-us-west-1", name: "AWS Database Migration Service", group: "N. California (us-west-1)", position: 399 }
+      - { upstream_id: "dms-us-gov-east-1", name: "AWS Database Migration Service", group: "US-East (us-gov-east-1)", position: 400 }
+      - { upstream_id: "dms-us-gov-west-1", name: "AWS Database Migration Service", group: "US-West (us-gov-west-1)", position: 401 }
+      - { upstream_id: "deepracer-us-east-1", name: "AWS DeepRacer", group: "N. Virginia (us-east-1)", position: 402 }
+      - { upstream_id: "devops-agent-us-east-1", name: "AWS DevOps Agent", group: "N. Virginia (us-east-1)", position: 403 }
+      - { upstream_id: "devops-agent-us-west-2", name: "AWS DevOps Agent", group: "Oregon (us-west-2)", position: 404 }
+      - { upstream_id: "devops-guru-us-east-2", name: "Amazon DevOps Guru", group: "Ohio (us-east-2)", position: 405 }
+      - { upstream_id: "devops-guru-us-east-1", name: "Amazon DevOps Guru", group: "N. Virginia (us-east-1)", position: 406 }
+      - { upstream_id: "devops-guru-us-west-2", name: "Amazon DevOps Guru", group: "Oregon (us-west-2)", position: 407 }
+      - { upstream_id: "devops-guru-us-west-1", name: "Amazon DevOps Guru", group: "N. California (us-west-1)", position: 408 }
+      - { upstream_id: "devicefarm-us-west-2", name: "AWS Device Farm", group: "Oregon (us-west-2)", position: 409 }
+      - { upstream_id: "directconnect-us-east-2", name: "AWS Direct Connect", group: "Ohio (us-east-2)", position: 410 }
+      - { upstream_id: "directconnect-us-east-1", name: "AWS Direct Connect", group: "N. Virginia (us-east-1)", position: 411 }
+      - { upstream_id: "directconnect-us-west-2", name: "AWS Direct Connect", group: "Oregon (us-west-2)", position: 412 }
+      - { upstream_id: "directconnect-us-west-1", name: "AWS Direct Connect", group: "N. California (us-west-1)", position: 413 }
+      - { upstream_id: "directconnect-us-gov-east-1", name: "AWS Direct Connect", group: "US-East (us-gov-east-1)", position: 414 }
+      - { upstream_id: "directconnect-us-gov-west-1", name: "AWS Direct Connect", group: "US-West (us-gov-west-1)", position: 415 }
+      - { upstream_id: "directoryservice-us-east-2", name: "AWS Directory Service", group: "Ohio (us-east-2)", position: 416 }
+      - { upstream_id: "directoryservice-us-east-1", name: "AWS Directory Service", group: "N. Virginia (us-east-1)", position: 417 }
+      - { upstream_id: "directoryservice-us-west-2", name: "AWS Directory Service", group: "Oregon (us-west-2)", position: 418 }
+      - { upstream_id: "directoryservice-us-west-1", name: "AWS Directory Service", group: "N. California (us-west-1)", position: 419 }
+      - { upstream_id: "directoryservice-us-gov-east-1", name: "AWS Directory Service", group: "US-East (us-gov-east-1)", position: 420 }
+      - { upstream_id: "directoryservice-us-gov-west-1", name: "AWS Directory Service", group: "US-West (us-gov-west-1)", position: 421 }
+      - { upstream_id: "docdb-us-east-2", name: "Amazon DocumentDB", group: "Ohio (us-east-2)", position: 422 }
+      - { upstream_id: "docdb-us-east-1", name: "Amazon DocumentDB", group: "N. Virginia (us-east-1)", position: 423 }
+      - { upstream_id: "docdb-us-west-2", name: "Amazon DocumentDB", group: "Oregon (us-west-2)", position: 424 }
+      - { upstream_id: "docdb-us-gov-east-1", name: "Amazon DocumentDB", group: "US-East (us-gov-east-1)", position: 425 }
+      - { upstream_id: "docdb-us-gov-west-1", name: "Amazon DocumentDB", group: "US-West (us-gov-west-1)", position: 426 }
+      - { upstream_id: "dynamodb-us-east-2", name: "Amazon DynamoDB", group: "Ohio (us-east-2)", position: 427 }
+      - { upstream_id: "dynamodb-us-east-1", name: "Amazon DynamoDB", group: "N. Virginia (us-east-1)", position: 428 }
+      - { upstream_id: "dynamodb-us-west-2", name: "Amazon DynamoDB", group: "Oregon (us-west-2)", position: 429 }
+      - { upstream_id: "dynamodb-us-west-1", name: "Amazon DynamoDB", group: "N. California (us-west-1)", position: 430 }
+      - { upstream_id: "dynamodb-us-gov-east-1", name: "Amazon DynamoDB", group: "US-East (us-gov-east-1)", position: 431 }
+      - { upstream_id: "dynamodb-us-gov-west-1", name: "Amazon DynamoDB", group: "US-West (us-gov-west-1)", position: 432 }
+      - { upstream_id: "ec2-us-east-2", name: "Amazon Elastic Compute Cloud", group: "Ohio (us-east-2)", position: 433 }
+      - { upstream_id: "ec2-us-east-1", name: "Amazon Elastic Compute Cloud", group: "N. Virginia (us-east-1)", position: 434 }
+      - { upstream_id: "ec2-us-west-2", name: "Amazon Elastic Compute Cloud", group: "Oregon (us-west-2)", position: 435 }
+      - { upstream_id: "ec2-us-west-1", name: "Amazon Elastic Compute Cloud", group: "N. California (us-west-1)", position: 436 }
+      - { upstream_id: "ec2-us-gov-east-1", name: "Amazon Elastic Compute Cloud", group: "US-East (us-gov-east-1)", position: 437 }
+      - { upstream_id: "ec2-us-gov-west-1", name: "Amazon Elastic Compute Cloud", group: "US-West (us-gov-west-1)", position: 438 }
+      - { upstream_id: "managedssh-us-east-2", name: "Amazon EC2 Instance Connect", group: "Ohio (us-east-2)", position: 439 }
+      - { upstream_id: "managedssh-us-east-1", name: "Amazon EC2 Instance Connect", group: "N. Virginia (us-east-1)", position: 440 }
+      - { upstream_id: "managedssh-us-west-2", name: "Amazon EC2 Instance Connect", group: "Oregon (us-west-2)", position: 441 }
+      - { upstream_id: "managedssh-us-west-1", name: "Amazon EC2 Instance Connect", group: "N. California (us-west-1)", position: 442 }
+      - { upstream_id: "managedssh-us-gov-east-1", name: "Amazon EC2 Instance Connect", group: "US-East (us-gov-east-1)", position: 443 }
+      - { upstream_id: "managedssh-us-gov-west-1", name: "Amazon EC2 Instance Connect", group: "US-West (us-gov-west-1)", position: 444 }
+      - { upstream_id: "ec2serialconsole-us-east-2", name: "EC2 Serial Console", group: "Ohio (us-east-2)", position: 445 }
+      - { upstream_id: "ec2serialconsole-us-east-1", name: "EC2 Serial Console", group: "N. Virginia (us-east-1)", position: 446 }
+      - { upstream_id: "ec2serialconsole-us-west-2", name: "EC2 Serial Console", group: "Oregon (us-west-2)", position: 447 }
+      - { upstream_id: "ec2serialconsole-us-west-1", name: "EC2 Serial Console", group: "N. California (us-west-1)", position: 448 }
+      - { upstream_id: "ec2serialconsole-us-gov-east-1", name: "EC2 Serial Console", group: "US-East (us-gov-east-1)", position: 449 }
+      - { upstream_id: "ec2serialconsole-us-gov-west-1", name: "EC2 Serial Console", group: "US-West (us-gov-west-1)", position: 450 }
+      - { upstream_id: "ecr-us-east-2", name: "Amazon Elastic Container Registry", group: "Ohio (us-east-2)", position: 451 }
+      - { upstream_id: "ecr-us-east-1", name: "Amazon Elastic Container Registry", group: "N. Virginia (us-east-1)", position: 452 }
+      - { upstream_id: "ecr-us-west-2", name: "Amazon Elastic Container Registry", group: "Oregon (us-west-2)", position: 453 }
+      - { upstream_id: "ecr-us-west-1", name: "Amazon Elastic Container Registry", group: "N. California (us-west-1)", position: 454 }
+      - { upstream_id: "ecr-us-gov-east-1", name: "Amazon Elastic Container Registry", group: "US-East (us-gov-east-1)", position: 455 }
+      - { upstream_id: "ecr-us-gov-west-1", name: "Amazon Elastic Container Registry", group: "US-West (us-gov-west-1)", position: 456 }
+      - { upstream_id: "spencer", name: "Amazon Elastic Container Registry Public", group: "Global", position: 457 }
+      - { upstream_id: "elasticfilesystem-us-east-2", name: "Amazon Elastic File System", group: "Ohio (us-east-2)", position: 458 }
+      - { upstream_id: "elasticfilesystem-us-east-1", name: "Amazon Elastic File System", group: "N. Virginia (us-east-1)", position: 459 }
+      - { upstream_id: "elasticfilesystem-us-west-2", name: "Amazon Elastic File System", group: "Oregon (us-west-2)", position: 460 }
+      - { upstream_id: "elasticfilesystem-us-west-1", name: "Amazon Elastic File System", group: "N. California (us-west-1)", position: 461 }
+      - { upstream_id: "elasticfilesystem-us-gov-east-1", name: "Amazon Elastic File System", group: "US-East (us-gov-east-1)", position: 462 }
+      - { upstream_id: "elasticfilesystem-us-gov-west-1", name: "Amazon Elastic File System", group: "US-West (us-gov-west-1)", position: 463 }
+      - { upstream_id: "elb-us-east-2", name: "Amazon Elastic Load Balancing", group: "Ohio (us-east-2)", position: 464 }
+      - { upstream_id: "elb-us-east-1", name: "Amazon Elastic Load Balancing", group: "N. Virginia (us-east-1)", position: 465 }
+      - { upstream_id: "elb-us-west-2", name: "Amazon Elastic Load Balancing", group: "Oregon (us-west-2)", position: 466 }
+      - { upstream_id: "elb-us-west-1", name: "Amazon Elastic Load Balancing", group: "N. California (us-west-1)", position: 467 }
+      - { upstream_id: "elb-us-gov-east-1", name: "Amazon Elastic Load Balancing", group: "US-East (us-gov-east-1)", position: 468 }
+      - { upstream_id: "elb-us-gov-west-1", name: "Amazon Elastic Load Balancing", group: "US-West (us-gov-west-1)", position: 469 }
+      - { upstream_id: "emr-us-east-2", name: "Amazon Elastic MapReduce", group: "Ohio (us-east-2)", position: 470 }
+      - { upstream_id: "emr-us-east-1", name: "Amazon Elastic MapReduce", group: "N. Virginia (us-east-1)", position: 471 }
+      - { upstream_id: "emr-us-west-2", name: "Amazon Elastic MapReduce", group: "Oregon (us-west-2)", position: 472 }
+      - { upstream_id: "emr-us-west-1", name: "Amazon Elastic MapReduce", group: "N. California (us-west-1)", position: 473 }
+      - { upstream_id: "emr-us-gov-east-1", name: "Amazon Elastic MapReduce", group: "US-East (us-gov-east-1)", position: 474 }
+      - { upstream_id: "emr-us-gov-west-1", name: "Amazon Elastic MapReduce", group: "US-West (us-gov-west-1)", position: 475 }
+      - { upstream_id: "emrserverless-us-east-2", name: "Amazon EMR Serverless", group: "Ohio (us-east-2)", position: 476 }
+      - { upstream_id: "emrserverless-us-east-1", name: "Amazon EMR Serverless", group: "N. Virginia (us-east-1)", position: 477 }
+      - { upstream_id: "emrserverless-us-west-2", name: "Amazon EMR Serverless", group: "Oregon (us-west-2)", position: 478 }
+      - { upstream_id: "emrserverless-us-west-1", name: "Amazon EMR Serverless", group: "N. California (us-west-1)", position: 479 }
+      - { upstream_id: "emrserverless-us-gov-east-1", name: "Amazon EMR Serverless", group: "US-East (us-gov-east-1)", position: 480 }
+      - { upstream_id: "emrserverless-us-gov-west-1", name: "Amazon EMR Serverless", group: "US-West (us-gov-west-1)", position: 481 }
+      - { upstream_id: "elasticache-us-east-2", name: "Amazon ElastiCache", group: "Ohio (us-east-2)", position: 482 }
+      - { upstream_id: "elasticache-us-east-1", name: "Amazon ElastiCache", group: "N. Virginia (us-east-1)", position: 483 }
+      - { upstream_id: "elasticache-us-west-2", name: "Amazon ElastiCache", group: "Oregon (us-west-2)", position: 484 }
+      - { upstream_id: "elasticache-us-west-1", name: "Amazon ElastiCache", group: "N. California (us-west-1)", position: 485 }
+      - { upstream_id: "elasticache-us-gov-east-1", name: "Amazon ElastiCache", group: "US-East (us-gov-east-1)", position: 486 }
+      - { upstream_id: "elasticache-us-gov-west-1", name: "Amazon ElastiCache", group: "US-West (us-gov-west-1)", position: 487 }
+      - { upstream_id: "elasticbeanstalk-us-east-2", name: "AWS Elastic Beanstalk", group: "Ohio (us-east-2)", position: 488 }
+      - { upstream_id: "elasticbeanstalk-us-east-1", name: "AWS Elastic Beanstalk", group: "N. Virginia (us-east-1)", position: 489 }
+      - { upstream_id: "elasticbeanstalk-us-west-2", name: "AWS Elastic Beanstalk", group: "Oregon (us-west-2)", position: 490 }
+      - { upstream_id: "elasticbeanstalk-us-west-1", name: "AWS Elastic Beanstalk", group: "N. California (us-west-1)", position: 491 }
+      - { upstream_id: "elasticbeanstalk-us-gov-east-1", name: "AWS Elastic Beanstalk", group: "US-East (us-gov-east-1)", position: 492 }
+      - { upstream_id: "elasticbeanstalk-us-gov-west-1", name: "AWS Elastic Beanstalk", group: "US-West (us-gov-west-1)", position: 493 }
+      - { upstream_id: "ecs-us-east-2", name: "Amazon Elastic Container Service", group: "Ohio (us-east-2)", position: 494 }
+      - { upstream_id: "ecs-us-east-1", name: "Amazon Elastic Container Service", group: "N. Virginia (us-east-1)", position: 495 }
+      - { upstream_id: "ecs-us-west-2", name: "Amazon Elastic Container Service", group: "Oregon (us-west-2)", position: 496 }
+      - { upstream_id: "ecs-us-west-1", name: "Amazon Elastic Container Service", group: "N. California (us-west-1)", position: 497 }
+      - { upstream_id: "ecs-us-gov-east-1", name: "Amazon Elastic Container Service", group: "US-East (us-gov-east-1)", position: 498 }
+      - { upstream_id: "ecs-us-gov-west-1", name: "Amazon Elastic Container Service", group: "US-West (us-gov-west-1)", position: 499 }
+      - { upstream_id: "drs-us-east-2", name: "AWS Elastic Disaster Recovery", group: "Ohio (us-east-2)", position: 500 }
+      - { upstream_id: "drs-us-east-1", name: "AWS Elastic Disaster Recovery", group: "N. Virginia (us-east-1)", position: 501 }
+      - { upstream_id: "drs-us-west-2", name: "AWS Elastic Disaster Recovery", group: "Oregon (us-west-2)", position: 502 }
+      - { upstream_id: "drs-us-west-1", name: "AWS Elastic Disaster Recovery", group: "N. California (us-west-1)", position: 503 }
+      - { upstream_id: "drs-us-gov-east-1", name: "AWS Elastic Disaster Recovery", group: "US-East (us-gov-east-1)", position: 504 }
+      - { upstream_id: "drs-us-gov-west-1", name: "AWS Elastic Disaster Recovery", group: "US-West (us-gov-west-1)", position: 505 }
+      - { upstream_id: "eks-us-east-2", name: "Amazon Elastic Kubernetes Service", group: "Ohio (us-east-2)", position: 506 }
+      - { upstream_id: "eks-us-east-1", name: "Amazon Elastic Kubernetes Service", group: "N. Virginia (us-east-1)", position: 507 }
+      - { upstream_id: "eks-us-west-2", name: "Amazon Elastic Kubernetes Service", group: "Oregon (us-west-2)", position: 508 }
+      - { upstream_id: "eks-us-west-1", name: "Amazon Elastic Kubernetes Service", group: "N. California (us-west-1)", position: 509 }
+      - { upstream_id: "eks-us-gov-east-1", name: "Amazon Elastic Kubernetes Service", group: "US-East (us-gov-east-1)", position: 510 }
+      - { upstream_id: "eks-us-gov-west-1", name: "Amazon Elastic Kubernetes Service", group: "US-West (us-gov-west-1)", position: 511 }
+      - { upstream_id: "entityresolution-us-east-2", name: "AWS Entity Resolution", group: "Ohio (us-east-2)", position: 512 }
+      - { upstream_id: "entityresolution-us-east-1", name: "AWS Entity Resolution", group: "N. Virginia (us-east-1)", position: 513 }
+      - { upstream_id: "entityresolution-us-west-2", name: "AWS Entity Resolution", group: "Oregon (us-west-2)", position: 514 }
+      - { upstream_id: "events-us-east-2", name: "Amazon EventBridge", group: "Ohio (us-east-2)", position: 515 }
+      - { upstream_id: "events-us-east-1", name: "Amazon EventBridge", group: "N. Virginia (us-east-1)", position: 516 }
+      - { upstream_id: "events-us-west-2", name: "Amazon EventBridge", group: "Oregon (us-west-2)", position: 517 }
+      - { upstream_id: "events-us-west-1", name: "Amazon EventBridge", group: "N. California (us-west-1)", position: 518 }
+      - { upstream_id: "events-us-gov-east-1", name: "Amazon EventBridge", group: "US-East (us-gov-east-1)", position: 519 }
+      - { upstream_id: "events-us-gov-west-1", name: "Amazon EventBridge", group: "US-West (us-gov-west-1)", position: 520 }
+      - { upstream_id: "scheduler-us-east-2", name: "Amazon EventBridge Scheduler", group: "Ohio (us-east-2)", position: 521 }
+      - { upstream_id: "scheduler-us-east-1", name: "Amazon EventBridge Scheduler", group: "N. Virginia (us-east-1)", position: 522 }
+      - { upstream_id: "scheduler-us-west-2", name: "Amazon EventBridge Scheduler", group: "Oregon (us-west-2)", position: 523 }
+      - { upstream_id: "scheduler-us-west-1", name: "Amazon EventBridge Scheduler", group: "N. California (us-west-1)", position: 524 }
+      - { upstream_id: "scheduler-us-gov-east-1", name: "Amazon EventBridge Scheduler", group: "US-East (us-gov-east-1)", position: 525 }
+      - { upstream_id: "scheduler-us-gov-west-1", name: "Amazon EventBridge Scheduler", group: "US-West (us-gov-west-1)", position: 526 }
+      - { upstream_id: "evidently-us-east-2", name: "Amazon CloudWatch Evidently", group: "Ohio (us-east-2)", position: 527 }
+      - { upstream_id: "evidently-us-east-1", name: "Amazon CloudWatch Evidently", group: "N. Virginia (us-east-1)", position: 528 }
+      - { upstream_id: "evidently-us-west-2", name: "Amazon CloudWatch Evidently", group: "Oregon (us-west-2)", position: 529 }
+      - { upstream_id: "fsx-us-east-2", name: "Amazon FSx", group: "Ohio (us-east-2)", position: 530 }
+      - { upstream_id: "fsx-us-east-1", name: "Amazon FSx", group: "N. Virginia (us-east-1)", position: 531 }
+      - { upstream_id: "fsx-us-west-2", name: "Amazon FSx", group: "Oregon (us-west-2)", position: 532 }
+      - { upstream_id: "fsx-us-west-1", name: "Amazon FSx", group: "N. California (us-west-1)", position: 533 }
+      - { upstream_id: "fsx-us-gov-east-1", name: "Amazon FSx", group: "US-East (us-gov-east-1)", position: 534 }
+      - { upstream_id: "fsx-us-gov-west-1", name: "Amazon FSx", group: "US-West (us-gov-west-1)", position: 535 }
+      - { upstream_id: "fargate-us-east-2", name: "AWS Fargate", group: "Ohio (us-east-2)", position: 536 }
+      - { upstream_id: "fargate-us-east-1", name: "AWS Fargate", group: "N. Virginia (us-east-1)", position: 537 }
+      - { upstream_id: "fargate-us-west-2", name: "AWS Fargate", group: "Oregon (us-west-2)", position: 538 }
+      - { upstream_id: "fargate-us-west-1", name: "AWS Fargate", group: "N. California (us-west-1)", position: 539 }
+      - { upstream_id: "fargate-us-gov-east-1", name: "AWS Fargate", group: "US-East (us-gov-east-1)", position: 540 }
+      - { upstream_id: "fargate-us-gov-west-1", name: "AWS Fargate", group: "US-West (us-gov-west-1)", position: 541 }
+      - { upstream_id: "fis-us-east-2", name: "AWS Fault Injection Service", group: "Ohio (us-east-2)", position: 542 }
+      - { upstream_id: "fis-us-east-1", name: "AWS Fault Injection Service", group: "N. Virginia (us-east-1)", position: 543 }
+      - { upstream_id: "fis-us-west-2", name: "AWS Fault Injection Service", group: "Oregon (us-west-2)", position: 544 }
+      - { upstream_id: "fis-us-west-1", name: "AWS Fault Injection Service", group: "N. California (us-west-1)", position: 545 }
+      - { upstream_id: "fis-us-gov-east-1", name: "AWS Fault Injection Service", group: "US-East (us-gov-east-1)", position: 546 }
+      - { upstream_id: "fis-us-gov-west-1", name: "AWS Fault Injection Service", group: "US-West (us-gov-west-1)", position: 547 }
+      - { upstream_id: "finspace-us-east-2", name: "Amazon FinSpace", group: "Ohio (us-east-2)", position: 548 }
+      - { upstream_id: "finspace-us-east-1", name: "Amazon FinSpace", group: "N. Virginia (us-east-1)", position: 549 }
+      - { upstream_id: "finspace-us-west-2", name: "Amazon FinSpace", group: "Oregon (us-west-2)", position: 550 }
+      - { upstream_id: "fms-us-east-2", name: "AWS Firewall Manager", group: "Ohio (us-east-2)", position: 551 }
+      - { upstream_id: "fms-us-east-1", name: "AWS Firewall Manager", group: "N. Virginia (us-east-1)", position: 552 }
+      - { upstream_id: "fms-us-west-2", name: "AWS Firewall Manager", group: "Oregon (us-west-2)", position: 553 }
+      - { upstream_id: "fms-us-west-1", name: "AWS Firewall Manager", group: "N. California (us-west-1)", position: 554 }
+      - { upstream_id: "fms-us-gov-east-1", name: "AWS Firewall Manager", group: "US-East (us-gov-east-1)", position: 555 }
+      - { upstream_id: "fms-us-gov-west-1", name: "AWS Firewall Manager", group: "US-West (us-gov-west-1)", position: 556 }
+      - { upstream_id: "amazonforecast-us-east-2", name: "Amazon Forecast", group: "Ohio (us-east-2)", position: 557 }
+      - { upstream_id: "amazonforecast-us-east-1", name: "Amazon Forecast", group: "N. Virginia (us-east-1)", position: 558 }
+      - { upstream_id: "amazonforecast-us-west-2", name: "Amazon Forecast", group: "Oregon (us-west-2)", position: 559 }
+      - { upstream_id: "frauddetector-us-east-2", name: "Amazon Fraud Detector", group: "Ohio (us-east-2)", position: 560 }
+      - { upstream_id: "frauddetector-us-east-1", name: "Amazon Fraud Detector", group: "N. Virginia (us-east-1)", position: 561 }
+      - { upstream_id: "frauddetector-us-west-2", name: "Amazon Fraud Detector", group: "Oregon (us-west-2)", position: 562 }
+      - { upstream_id: "freertos-us-east-2", name: "Amazon FreeRTOS", group: "Ohio (us-east-2)", position: 563 }
+      - { upstream_id: "freertos-us-east-1", name: "Amazon FreeRTOS", group: "N. Virginia (us-east-1)", position: 564 }
+      - { upstream_id: "freertos-us-west-2", name: "Amazon FreeRTOS", group: "Oregon (us-west-2)", position: 565 }
+      - { upstream_id: "freertos-us-west-1", name: "Amazon FreeRTOS", group: "N. California (us-west-1)", position: 566 }
+      - { upstream_id: "gamelift-us-east-2", name: "Amazon GameLift Servers", group: "Ohio (us-east-2)", position: 567 }
+      - { upstream_id: "gamelift-us-east-1", name: "Amazon GameLift Servers", group: "N. Virginia (us-east-1)", position: 568 }
+      - { upstream_id: "gamelift-us-west-2", name: "Amazon GameLift Servers", group: "Oregon (us-west-2)", position: 569 }
+      - { upstream_id: "gamelift-us-west-1", name: "Amazon GameLift Servers", group: "N. California (us-west-1)", position: 570 }
+      - { upstream_id: "glacier-us-east-2", name: "Amazon Glacier", group: "Ohio (us-east-2)", position: 571 }
+      - { upstream_id: "glacier-us-east-1", name: "Amazon Glacier", group: "N. Virginia (us-east-1)", position: 572 }
+      - { upstream_id: "glacier-us-west-2", name: "Amazon Glacier", group: "Oregon (us-west-2)", position: 573 }
+      - { upstream_id: "glacier-us-west-1", name: "Amazon Glacier", group: "N. California (us-west-1)", position: 574 }
+      - { upstream_id: "glacier-us-gov-east-1", name: "Amazon Glacier", group: "US-East (us-gov-east-1)", position: 575 }
+      - { upstream_id: "glacier-us-gov-west-1", name: "Amazon Glacier", group: "US-West (us-gov-west-1)", position: 576 }
+      - { upstream_id: "globalaccelerator", name: "AWS Global Accelerator", group: "Global", position: 577 }
+      - { upstream_id: "glue-us-east-2", name: "AWS Glue", group: "Ohio (us-east-2)", position: 578 }
+      - { upstream_id: "glue-us-east-1", name: "AWS Glue", group: "N. Virginia (us-east-1)", position: 579 }
+      - { upstream_id: "glue-us-west-2", name: "AWS Glue", group: "Oregon (us-west-2)", position: 580 }
+      - { upstream_id: "glue-us-west-1", name: "AWS Glue", group: "N. California (us-west-1)", position: 581 }
+      - { upstream_id: "glue-us-gov-east-1", name: "AWS Glue", group: "US-East (us-gov-east-1)", position: 582 }
+      - { upstream_id: "glue-us-gov-west-1", name: "AWS Glue", group: "US-West (us-gov-west-1)", position: 583 }
+      - { upstream_id: "awsgreengrass-us-east-2", name: "AWS IoT Greengrass", group: "Ohio (us-east-2)", position: 584 }
+      - { upstream_id: "awsgreengrass-us-east-1", name: "AWS IoT Greengrass", group: "N. Virginia (us-east-1)", position: 585 }
+      - { upstream_id: "awsgreengrass-us-west-2", name: "AWS IoT Greengrass", group: "Oregon (us-west-2)", position: 586 }
+      - { upstream_id: "awsgreengrass-us-gov-east-1", name: "AWS IoT Greengrass", group: "US-East (us-gov-east-1)", position: 587 }
+      - { upstream_id: "awsgreengrass-us-gov-west-1", name: "AWS IoT Greengrass", group: "US-West (us-gov-west-1)", position: 588 }
+      - { upstream_id: "groundstation-us-east-2", name: "AWS Ground Station", group: "Ohio (us-east-2)", position: 589 }
+      - { upstream_id: "groundstation-us-east-1", name: "AWS Ground Station", group: "N. Virginia (us-east-1)", position: 590 }
+      - { upstream_id: "groundstation-us-west-2", name: "AWS Ground Station", group: "Oregon (us-west-2)", position: 591 }
+      - { upstream_id: "guardduty-us-east-2", name: "Amazon GuardDuty", group: "Ohio (us-east-2)", position: 592 }
+      - { upstream_id: "guardduty-us-east-1", name: "Amazon GuardDuty", group: "N. Virginia (us-east-1)", position: 593 }
+      - { upstream_id: "guardduty-us-west-2", name: "Amazon GuardDuty", group: "Oregon (us-west-2)", position: 594 }
+      - { upstream_id: "guardduty-us-west-1", name: "Amazon GuardDuty", group: "N. California (us-west-1)", position: 595 }
+      - { upstream_id: "guardduty-us-gov-east-1", name: "Amazon GuardDuty", group: "US-East (us-gov-east-1)", position: 596 }
+      - { upstream_id: "guardduty-us-gov-west-1", name: "Amazon GuardDuty", group: "US-West (us-gov-west-1)", position: 597 }
+      - { upstream_id: "healthimaging-us-east-1", name: "AWS HealthImaging", group: "N. Virginia (us-east-1)", position: 598 }
+      - { upstream_id: "healthimaging-us-west-2", name: "AWS HealthImaging", group: "Oregon (us-west-2)", position: 599 }
+      - { upstream_id: "healthlake-us-east-2", name: "AWS HealthLake", group: "Ohio (us-east-2)", position: 600 }
+      - { upstream_id: "healthlake-us-east-1", name: "AWS HealthLake", group: "N. Virginia (us-east-1)", position: 601 }
+      - { upstream_id: "healthlake-us-west-2", name: "AWS HealthLake", group: "Oregon (us-west-2)", position: 602 }
+      - { upstream_id: "iam", name: "AWS Identity and Access Management", group: "Global", position: 603 }
+      - { upstream_id: "iam-us-gov-east-1", name: "AWS Identity and Access Management", group: "US-East (us-gov-east-1)", position: 604 }
+      - { upstream_id: "iam-us-gov-west-1", name: "AWS Identity and Access Management", group: "US-West (us-gov-west-1)", position: 605 }
+      - { upstream_id: "iamidentitycenter-us-east-2", name: "AWS IAM Identity Center", group: "Ohio (us-east-2)", position: 606 }
+      - { upstream_id: "iamidentitycenter-us-east-1", name: "AWS IAM Identity Center", group: "N. Virginia (us-east-1)", position: 607 }
+      - { upstream_id: "iamidentitycenter-us-west-2", name: "AWS IAM Identity Center", group: "Oregon (us-west-2)", position: 608 }
+      - { upstream_id: "iamidentitycenter-us-west-1", name: "AWS IAM Identity Center", group: "N. California (us-west-1)", position: 609 }
+      - { upstream_id: "iamidentitycenter-us-gov-east-1", name: "AWS IAM Identity Center", group: "US-East (us-gov-east-1)", position: 610 }
+      - { upstream_id: "iamidentitycenter-us-gov-west-1", name: "AWS IAM Identity Center", group: "US-West (us-gov-west-1)", position: 611 }
+      - { upstream_id: "iamrolesanywhere-us-east-2", name: "AWS Identity and Access Management Roles Anywhere", group: "Ohio (us-east-2)", position: 612 }
+      - { upstream_id: "iamrolesanywhere-us-east-1", name: "AWS Identity and Access Management Roles Anywhere", group: "N. Virginia (us-east-1)", position: 613 }
+      - { upstream_id: "iamrolesanywhere-us-west-2", name: "AWS Identity and Access Management Roles Anywhere", group: "Oregon (us-west-2)", position: 614 }
+      - { upstream_id: "iamrolesanywhere-us-west-1", name: "AWS Identity and Access Management Roles Anywhere", group: "N. California (us-west-1)", position: 615 }
+      - { upstream_id: "iamrolesanywhere-us-gov-east-1", name: "AWS Identity and Access Management Roles Anywhere", group: "US-East (us-gov-east-1)", position: 616 }
+      - { upstream_id: "iamrolesanywhere-us-gov-west-1", name: "AWS Identity and Access Management Roles Anywhere", group: "US-West (us-gov-west-1)", position: 617 }
+      - { upstream_id: "imagebuilder-us-east-2", name: "EC2 Image Builder", group: "Ohio (us-east-2)", position: 618 }
+      - { upstream_id: "imagebuilder-us-east-1", name: "EC2 Image Builder", group: "N. Virginia (us-east-1)", position: 619 }
+      - { upstream_id: "imagebuilder-us-west-2", name: "EC2 Image Builder", group: "Oregon (us-west-2)", position: 620 }
+      - { upstream_id: "imagebuilder-us-west-1", name: "EC2 Image Builder", group: "N. California (us-west-1)", position: 621 }
+      - { upstream_id: "imagebuilder-us-gov-east-1", name: "EC2 Image Builder", group: "US-East (us-gov-east-1)", position: 622 }
+      - { upstream_id: "imagebuilder-us-gov-west-1", name: "EC2 Image Builder", group: "US-West (us-gov-west-1)", position: 623 }
+      - { upstream_id: "import-export", name: "AWS Import/Export", group: "Global", position: 624 }
+      - { upstream_id: "import-export-us-gov-east-1", name: "AWS Import/Export", group: "US-East (us-gov-east-1)", position: 625 }
+      - { upstream_id: "import-export-us-gov-west-1", name: "AWS Import/Export", group: "US-West (us-gov-west-1)", position: 626 }
+      - { upstream_id: "infrastructureperformance-us-east-2", name: "Infrastructure Performance", group: "Ohio (us-east-2)", position: 627 }
+      - { upstream_id: "infrastructureperformance-us-east-1", name: "Infrastructure Performance", group: "N. Virginia (us-east-1)", position: 628 }
+      - { upstream_id: "infrastructureperformance-us-west-2", name: "Infrastructure Performance", group: "Oregon (us-west-2)", position: 629 }
+      - { upstream_id: "infrastructureperformance-us-west-1", name: "Infrastructure Performance", group: "N. California (us-west-1)", position: 630 }
+      - { upstream_id: "inspector-us-east-2", name: "Amazon Inspector", group: "Ohio (us-east-2)", position: 631 }
+      - { upstream_id: "inspector-us-east-1", name: "Amazon Inspector", group: "N. Virginia (us-east-1)", position: 632 }
+      - { upstream_id: "inspector-us-west-2", name: "Amazon Inspector", group: "Oregon (us-west-2)", position: 633 }
+      - { upstream_id: "inspector-us-west-1", name: "Amazon Inspector", group: "N. California (us-west-1)", position: 634 }
+      - { upstream_id: "inspector-us-gov-east-1", name: "Amazon Inspector", group: "US-East (us-gov-east-1)", position: 635 }
+      - { upstream_id: "inspector-us-gov-west-1", name: "Amazon Inspector", group: "US-West (us-gov-west-1)", position: 636 }
+      - { upstream_id: "ivs-us-east-1", name: "Amazon Interactive Video Service", group: "N. Virginia (us-east-1)", position: 637 }
+      - { upstream_id: "ivs-us-west-2", name: "Amazon Interactive Video Service", group: "Oregon (us-west-2)", position: 638 }
+      - { upstream_id: "internetconnectivity-us-east-2", name: "AWS Internet Connectivity", group: "Ohio (us-east-2)", position: 639 }
+      - { upstream_id: "internetconnectivity-us-east-1", name: "AWS Internet Connectivity", group: "N. Virginia (us-east-1)", position: 640 }
+      - { upstream_id: "internetconnectivity-us-west-2", name: "AWS Internet Connectivity", group: "Oregon (us-west-2)", position: 641 }
+      - { upstream_id: "internetconnectivity-us-west-1", name: "AWS Internet Connectivity", group: "N. California (us-west-1)", position: 642 }
+      - { upstream_id: "internetconnectivity-us-gov-east-1", name: "AWS Internet Connectivity", group: "US-East (us-gov-east-1)", position: 643 }
+      - { upstream_id: "internetconnectivity-us-gov-west-1", name: "AWS Internet Connectivity", group: "US-West (us-gov-west-1)", position: 644 }
+      - { upstream_id: "internetmonitor-us-east-2", name: "Amazon CloudWatch Internet Monitor", group: "Ohio (us-east-2)", position: 645 }
+      - { upstream_id: "internetmonitor-us-east-1", name: "Amazon CloudWatch Internet Monitor", group: "N. Virginia (us-east-1)", position: 646 }
+      - { upstream_id: "internetmonitor-us-west-2", name: "Amazon CloudWatch Internet Monitor", group: "Oregon (us-west-2)", position: 647 }
+      - { upstream_id: "internetmonitor-us-west-1", name: "Amazon CloudWatch Internet Monitor", group: "N. California (us-west-1)", position: 648 }
+      - { upstream_id: "awsiot-us-east-2", name: "AWS IoT Core", group: "Ohio (us-east-2)", position: 649 }
+      - { upstream_id: "awsiot-us-east-1", name: "AWS IoT Core", group: "N. Virginia (us-east-1)", position: 650 }
+      - { upstream_id: "awsiot-us-west-2", name: "AWS IoT Core", group: "Oregon (us-west-2)", position: 651 }
+      - { upstream_id: "awsiot-us-west-1", name: "AWS IoT Core", group: "N. California (us-west-1)", position: 652 }
+      - { upstream_id: "awsiot-us-gov-east-1", name: "AWS IoT Core", group: "US-East (us-gov-east-1)", position: 653 }
+      - { upstream_id: "awsiot-us-gov-west-1", name: "AWS IoT Core", group: "US-West (us-gov-west-1)", position: 654 }
+      - { upstream_id: "iotdevicedefender-us-east-2", name: "AWS IoT Device Defender", group: "Ohio (us-east-2)", position: 655 }
+      - { upstream_id: "iotdevicedefender-us-east-1", name: "AWS IoT Device Defender", group: "N. Virginia (us-east-1)", position: 656 }
+      - { upstream_id: "iotdevicedefender-us-west-2", name: "AWS IoT Device Defender", group: "Oregon (us-west-2)", position: 657 }
+      - { upstream_id: "iotdevicedefender-us-west-1", name: "AWS IoT Device Defender", group: "N. California (us-west-1)", position: 658 }
+      - { upstream_id: "iotdevicedefender-us-gov-east-1", name: "AWS IoT Device Defender", group: "US-East (us-gov-east-1)", position: 659 }
+      - { upstream_id: "iotdevicedefender-us-gov-west-1", name: "AWS IoT Device Defender", group: "US-West (us-gov-west-1)", position: 660 }
+      - { upstream_id: "awsiotdevicemanagement-us-east-2", name: "AWS IoT Device Management", group: "Ohio (us-east-2)", position: 661 }
+      - { upstream_id: "awsiotdevicemanagement-us-east-1", name: "AWS IoT Device Management", group: "N. Virginia (us-east-1)", position: 662 }
+      - { upstream_id: "awsiotdevicemanagement-us-west-2", name: "AWS IoT Device Management", group: "Oregon (us-west-2)", position: 663 }
+      - { upstream_id: "awsiotdevicemanagement-us-west-1", name: "AWS IoT Device Management", group: "N. California (us-west-1)", position: 664 }
+      - { upstream_id: "awsiotdevicemanagement-us-gov-east-1", name: "AWS IoT Device Management", group: "US-East (us-gov-east-1)", position: 665 }
+      - { upstream_id: "awsiotdevicemanagement-us-gov-west-1", name: "AWS IoT Device Management", group: "US-West (us-gov-west-1)", position: 666 }
+      - { upstream_id: "iotsitewise-us-east-2", name: "AWS IoT SiteWise", group: "Ohio (us-east-2)", position: 667 }
+      - { upstream_id: "iotsitewise-us-east-1", name: "AWS IoT SiteWise", group: "N. Virginia (us-east-1)", position: 668 }
+      - { upstream_id: "iotsitewise-us-west-2", name: "AWS IoT SiteWise", group: "Oregon (us-west-2)", position: 669 }
+      - { upstream_id: "iotsitewise-us-gov-west-1", name: "AWS IoT SiteWise", group: "US-West (us-gov-west-1)", position: 670 }
+      - { upstream_id: "iottwinmaker-us-east-1", name: "AWS IoT TwinMaker", group: "N. Virginia (us-east-1)", position: 671 }
+      - { upstream_id: "iottwinmaker-us-west-2", name: "AWS IoT TwinMaker", group: "Oregon (us-west-2)", position: 672 }
+      - { upstream_id: "iottwinmaker-us-gov-west-1", name: "AWS IoT TwinMaker", group: "US-West (us-gov-west-1)", position: 673 }
+      - { upstream_id: "kms-us-east-2", name: "AWS Key Management Service", group: "Ohio (us-east-2)", position: 674 }
+      - { upstream_id: "kms-us-east-1", name: "AWS Key Management Service", group: "N. Virginia (us-east-1)", position: 675 }
+      - { upstream_id: "kms-us-west-2", name: "AWS Key Management Service", group: "Oregon (us-west-2)", position: 676 }
+      - { upstream_id: "kms-us-west-1", name: "AWS Key Management Service", group: "N. California (us-west-1)", position: 677 }
+      - { upstream_id: "kms-us-gov-east-1", name: "AWS Key Management Service", group: "US-East (us-gov-east-1)", position: 678 }
+      - { upstream_id: "kms-us-gov-west-1", name: "AWS Key Management Service", group: "US-West (us-gov-west-1)", position: 679 }
+      - { upstream_id: "kendra-us-east-2", name: "Amazon Kendra", group: "Ohio (us-east-2)", position: 680 }
+      - { upstream_id: "kendra-us-east-1", name: "Amazon Kendra", group: "N. Virginia (us-east-1)", position: 681 }
+      - { upstream_id: "kendra-us-west-2", name: "Amazon Kendra", group: "Oregon (us-west-2)", position: 682 }
+      - { upstream_id: "kendra-us-gov-west-1", name: "Amazon Kendra", group: "US-West (us-gov-west-1)", position: 683 }
+      - { upstream_id: "kendraranking-us-east-2", name: "Amazon Kendra Intelligent Ranking", group: "Ohio (us-east-2)", position: 684 }
+      - { upstream_id: "kendraranking-us-east-1", name: "Amazon Kendra Intelligent Ranking", group: "N. Virginia (us-east-1)", position: 685 }
+      - { upstream_id: "kendraranking-us-west-2", name: "Amazon Kendra Intelligent Ranking", group: "Oregon (us-west-2)", position: 686 }
+      - { upstream_id: "cassandra-us-east-2", name: "Amazon Keyspaces", group: "Ohio (us-east-2)", position: 687 }
+      - { upstream_id: "cassandra-us-east-1", name: "Amazon Keyspaces", group: "N. Virginia (us-east-1)", position: 688 }
+      - { upstream_id: "cassandra-us-west-2", name: "Amazon Keyspaces", group: "Oregon (us-west-2)", position: 689 }
+      - { upstream_id: "cassandra-us-west-1", name: "Amazon Keyspaces", group: "N. California (us-west-1)", position: 690 }
+      - { upstream_id: "kinesis-us-east-2", name: "Amazon Kinesis Data Streams", group: "Ohio (us-east-2)", position: 691 }
+      - { upstream_id: "kinesis-us-east-1", name: "Amazon Kinesis Data Streams", group: "N. Virginia (us-east-1)", position: 692 }
+      - { upstream_id: "kinesis-us-west-2", name: "Amazon Kinesis Data Streams", group: "Oregon (us-west-2)", position: 693 }
+      - { upstream_id: "kinesis-us-west-1", name: "Amazon Kinesis Data Streams", group: "N. California (us-west-1)", position: 694 }
+      - { upstream_id: "kinesis-us-gov-east-1", name: "Amazon Kinesis Data Streams", group: "US-East (us-gov-east-1)", position: 695 }
+      - { upstream_id: "kinesis-us-gov-west-1", name: "Amazon Kinesis Data Streams", group: "US-West (us-gov-west-1)", position: 696 }
+      - { upstream_id: "kinesisanalytics-us-east-2", name: "Amazon Managed Service for Apache Flink", group: "Ohio (us-east-2)", position: 697 }
+      - { upstream_id: "kinesisanalytics-us-east-1", name: "Amazon Managed Service for Apache Flink", group: "N. Virginia (us-east-1)", position: 698 }
+      - { upstream_id: "kinesisanalytics-us-west-2", name: "Amazon Managed Service for Apache Flink", group: "Oregon (us-west-2)", position: 699 }
+      - { upstream_id: "kinesisanalytics-us-west-1", name: "Amazon Managed Service for Apache Flink", group: "N. California (us-west-1)", position: 700 }
+      - { upstream_id: "kinesisanalytics-us-gov-east-1", name: "Amazon Managed Service for Apache Flink", group: "US-East (us-gov-east-1)", position: 701 }
+      - { upstream_id: "kinesisanalytics-us-gov-west-1", name: "Amazon Managed Service for Apache Flink", group: "US-West (us-gov-west-1)", position: 702 }
+      - { upstream_id: "firehose-us-east-2", name: "Amazon Data Firehose", group: "Ohio (us-east-2)", position: 703 }
+      - { upstream_id: "firehose-us-east-1", name: "Amazon Data Firehose", group: "N. Virginia (us-east-1)", position: 704 }
+      - { upstream_id: "firehose-us-west-2", name: "Amazon Data Firehose", group: "Oregon (us-west-2)", position: 705 }
+      - { upstream_id: "firehose-us-west-1", name: "Amazon Data Firehose", group: "N. California (us-west-1)", position: 706 }
+      - { upstream_id: "firehose-us-gov-east-1", name: "Amazon Data Firehose", group: "US-East (us-gov-east-1)", position: 707 }
+      - { upstream_id: "firehose-us-gov-west-1", name: "Amazon Data Firehose", group: "US-West (us-gov-west-1)", position: 708 }
+      - { upstream_id: "kinesisvideo-us-east-2", name: "Amazon Kinesis Video Streams", group: "Ohio (us-east-2)", position: 709 }
+      - { upstream_id: "kinesisvideo-us-east-1", name: "Amazon Kinesis Video Streams", group: "N. Virginia (us-east-1)", position: 710 }
+      - { upstream_id: "kinesisvideo-us-west-2", name: "Amazon Kinesis Video Streams", group: "Oregon (us-west-2)", position: 711 }
+      - { upstream_id: "kinesisvideo-us-gov-east-1", name: "Amazon Kinesis Video Streams", group: "US-East (us-gov-east-1)", position: 712 }
+      - { upstream_id: "kinesisvideo-us-gov-west-1", name: "Amazon Kinesis Video Streams", group: "US-West (us-gov-west-1)", position: 713 }
+      - { upstream_id: "kiro-us-east-1", name: "Kiro", group: "N. Virginia (us-east-1)", position: 714 }
+      - { upstream_id: "lakeformation-us-east-2", name: "AWS Lake Formation", group: "Ohio (us-east-2)", position: 715 }
+      - { upstream_id: "lakeformation-us-east-1", name: "AWS Lake Formation", group: "N. Virginia (us-east-1)", position: 716 }
+      - { upstream_id: "lakeformation-us-west-2", name: "AWS Lake Formation", group: "Oregon (us-west-2)", position: 717 }
+      - { upstream_id: "lakeformation-us-west-1", name: "AWS Lake Formation", group: "N. California (us-west-1)", position: 718 }
+      - { upstream_id: "lakeformation-us-gov-east-1", name: "AWS Lake Formation", group: "US-East (us-gov-east-1)", position: 719 }
+      - { upstream_id: "lakeformation-us-gov-west-1", name: "AWS Lake Formation", group: "US-West (us-gov-west-1)", position: 720 }
+      - { upstream_id: "lambda-us-east-2", name: "AWS Lambda", group: "Ohio (us-east-2)", position: 721 }
+      - { upstream_id: "lambda-us-east-1", name: "AWS Lambda", group: "N. Virginia (us-east-1)", position: 722 }
+      - { upstream_id: "lambda-us-west-2", name: "AWS Lambda", group: "Oregon (us-west-2)", position: 723 }
+      - { upstream_id: "lambda-us-west-1", name: "AWS Lambda", group: "N. California (us-west-1)", position: 724 }
+      - { upstream_id: "lambda-us-gov-east-1", name: "AWS Lambda", group: "US-East (us-gov-east-1)", position: 725 }
+      - { upstream_id: "lambda-us-gov-west-1", name: "AWS Lambda", group: "US-West (us-gov-west-1)", position: 726 }
+      - { upstream_id: "appwizard-us-east-2", name: "AWS Launch Wizard", group: "Ohio (us-east-2)", position: 727 }
+      - { upstream_id: "appwizard-us-east-1", name: "AWS Launch Wizard", group: "N. Virginia (us-east-1)", position: 728 }
+      - { upstream_id: "appwizard-us-west-2", name: "AWS Launch Wizard", group: "Oregon (us-west-2)", position: 729 }
+      - { upstream_id: "appwizard-us-west-1", name: "AWS Launch Wizard", group: "N. California (us-west-1)", position: 730 }
+      - { upstream_id: "appwizard-us-gov-east-1", name: "AWS Launch Wizard", group: "US-East (us-gov-east-1)", position: 731 }
+      - { upstream_id: "appwizard-us-gov-west-1", name: "AWS Launch Wizard", group: "US-West (us-gov-west-1)", position: 732 }
+      - { upstream_id: "lex-us-east-1", name: "Amazon Lex", group: "N. Virginia (us-east-1)", position: 733 }
+      - { upstream_id: "lex-us-west-2", name: "Amazon Lex", group: "Oregon (us-west-2)", position: 734 }
+      - { upstream_id: "lex-us-gov-west-1", name: "Amazon Lex", group: "US-West (us-gov-west-1)", position: 735 }
+      - { upstream_id: "licensemanager-us-east-2", name: "AWS License Manager", group: "Ohio (us-east-2)", position: 736 }
+      - { upstream_id: "licensemanager-us-east-1", name: "AWS License Manager", group: "N. Virginia (us-east-1)", position: 737 }
+      - { upstream_id: "licensemanager-us-west-2", name: "AWS License Manager", group: "Oregon (us-west-2)", position: 738 }
+      - { upstream_id: "licensemanager-us-west-1", name: "AWS License Manager", group: "N. California (us-west-1)", position: 739 }
+      - { upstream_id: "licensemanager-us-gov-east-1", name: "AWS License Manager", group: "US-East (us-gov-east-1)", position: 740 }
+      - { upstream_id: "licensemanager-us-gov-west-1", name: "AWS License Manager", group: "US-West (us-gov-west-1)", position: 741 }
+      - { upstream_id: "lightsail-us-east-2", name: "Amazon Lightsail", group: "Ohio (us-east-2)", position: 742 }
+      - { upstream_id: "lightsail-us-east-1", name: "Amazon Lightsail", group: "N. Virginia (us-east-1)", position: 743 }
+      - { upstream_id: "lightsail-us-west-2", name: "Amazon Lightsail", group: "Oregon (us-west-2)", position: 744 }
+      - { upstream_id: "locationservice-us-east-2", name: "Amazon Location Service", group: "Ohio (us-east-2)", position: 745 }
+      - { upstream_id: "locationservice-us-east-1", name: "Amazon Location Service", group: "N. Virginia (us-east-1)", position: 746 }
+      - { upstream_id: "locationservice-us-west-2", name: "Amazon Location Service", group: "Oregon (us-west-2)", position: 747 }
+      - { upstream_id: "locationservice-us-gov-west-1", name: "Amazon Location Service", group: "US-West (us-gov-west-1)", position: 748 }
+      - { upstream_id: "lookoutequipment-us-east-1", name: "Amazon Lookout for Equipment", group: "N. Virginia (us-east-1)", position: 749 }
+      - { upstream_id: "mq-us-east-2", name: "Amazon MQ", group: "Ohio (us-east-2)", position: 750 }
+      - { upstream_id: "mq-us-east-1", name: "Amazon MQ", group: "N. Virginia (us-east-1)", position: 751 }
+      - { upstream_id: "mq-us-west-2", name: "Amazon MQ", group: "Oregon (us-west-2)", position: 752 }
+      - { upstream_id: "mq-us-west-1", name: "Amazon MQ", group: "N. California (us-west-1)", position: 753 }
+      - { upstream_id: "mq-us-gov-east-1", name: "Amazon MQ", group: "US-East (us-gov-east-1)", position: 754 }
+      - { upstream_id: "mq-us-gov-west-1", name: "Amazon MQ", group: "US-West (us-gov-west-1)", position: 755 }
+      - { upstream_id: "aml-us-east-1", name: "Amazon Machine Learning", group: "N. Virginia (us-east-1)", position: 756 }
+      - { upstream_id: "macie-us-east-2", name: "Amazon Macie", group: "Ohio (us-east-2)", position: 757 }
+      - { upstream_id: "macie-us-east-1", name: "Amazon Macie", group: "N. Virginia (us-east-1)", position: 758 }
+      - { upstream_id: "macie-us-west-2", name: "Amazon Macie", group: "Oregon (us-west-2)", position: 759 }
+      - { upstream_id: "macie-us-west-1", name: "Amazon Macie", group: "N. California (us-west-1)", position: 760 }
+      - { upstream_id: "m2-us-east-2", name: "AWS Mainframe Modernization", group: "Ohio (us-east-2)", position: 761 }
+      - { upstream_id: "m2-us-east-1", name: "AWS Mainframe Modernization", group: "N. Virginia (us-east-1)", position: 762 }
+      - { upstream_id: "m2-us-west-2", name: "AWS Mainframe Modernization", group: "Oregon (us-west-2)", position: 763 }
+      - { upstream_id: "m2-us-west-1", name: "AWS Mainframe Modernization", group: "N. California (us-west-1)", position: 764 }
+      - { upstream_id: "m2-us-gov-east-1", name: "AWS Mainframe Modernization", group: "US-East (us-gov-east-1)", position: 765 }
+      - { upstream_id: "m2-us-gov-west-1", name: "AWS Mainframe Modernization", group: "US-West (us-gov-west-1)", position: 766 }
+      - { upstream_id: "managedblockchain-us-east-1", name: "Amazon Managed Blockchain", group: "N. Virginia (us-east-1)", position: 767 }
+      - { upstream_id: "managedblockchain-us-gov-west-1", name: "Amazon Managed Blockchain", group: "US-West (us-gov-west-1)", position: 768 }
+      - { upstream_id: "grafana-us-east-2", name: "Amazon Managed Grafana", group: "Ohio (us-east-2)", position: 769 }
+      - { upstream_id: "grafana-us-east-1", name: "Amazon Managed Grafana", group: "N. Virginia (us-east-1)", position: 770 }
+      - { upstream_id: "grafana-us-west-2", name: "Amazon Managed Grafana", group: "Oregon (us-west-2)", position: 771 }
+      - { upstream_id: "grafana-us-gov-east-1", name: "Amazon Managed Grafana", group: "US-East (us-gov-east-1)", position: 772 }
+      - { upstream_id: "grafana-us-gov-west-1", name: "Amazon Managed Grafana", group: "US-West (us-gov-west-1)", position: 773 }
+      - { upstream_id: "aps-us-east-2", name: "Amazon Managed Service for Prometheus", group: "Ohio (us-east-2)", position: 774 }
+      - { upstream_id: "aps-us-east-1", name: "Amazon Managed Service for Prometheus", group: "N. Virginia (us-east-1)", position: 775 }
+      - { upstream_id: "aps-us-west-2", name: "Amazon Managed Service for Prometheus", group: "Oregon (us-west-2)", position: 776 }
+      - { upstream_id: "aps-us-gov-east-1", name: "Amazon Managed Service for Prometheus", group: "US-East (us-gov-east-1)", position: 777 }
+      - { upstream_id: "aps-us-gov-west-1", name: "Amazon Managed Service for Prometheus", group: "US-West (us-gov-west-1)", position: 778 }
+      - { upstream_id: "kafka-us-east-2", name: "Amazon Managed Streaming for Apache Kafka", group: "Ohio (us-east-2)", position: 779 }
+      - { upstream_id: "kafka-us-east-1", name: "Amazon Managed Streaming for Apache Kafka", group: "N. Virginia (us-east-1)", position: 780 }
+      - { upstream_id: "kafka-us-west-2", name: "Amazon Managed Streaming for Apache Kafka", group: "Oregon (us-west-2)", position: 781 }
+      - { upstream_id: "kafka-us-west-1", name: "Amazon Managed Streaming for Apache Kafka", group: "N. California (us-west-1)", position: 782 }
+      - { upstream_id: "kafka-us-gov-east-1", name: "Amazon Managed Streaming for Apache Kafka", group: "US-East (us-gov-east-1)", position: 783 }
+      - { upstream_id: "kafka-us-gov-west-1", name: "Amazon Managed Streaming for Apache Kafka", group: "US-West (us-gov-west-1)", position: 784 }
+      - { upstream_id: "airflow-us-east-2", name: "Amazon Managed Workflows for Apache Airflow", group: "Ohio (us-east-2)", position: 785 }
+      - { upstream_id: "airflow-us-east-1", name: "Amazon Managed Workflows for Apache Airflow", group: "N. Virginia (us-east-1)", position: 786 }
+      - { upstream_id: "airflow-us-west-2", name: "Amazon Managed Workflows for Apache Airflow", group: "Oregon (us-west-2)", position: 787 }
+      - { upstream_id: "airflow-us-west-1", name: "Amazon Managed Workflows for Apache Airflow", group: "N. California (us-west-1)", position: 788 }
+      - { upstream_id: "management-console", name: "AWS Management Console", group: "Global", position: 789 }
+      - { upstream_id: "management-console-us-gov-east-1", name: "AWS Management Console", group: "US-East (us-gov-east-1)", position: 790 }
+      - { upstream_id: "management-console-us-gov-west-1", name: "AWS Management Console", group: "US-West (us-gov-west-1)", position: 791 }
+      - { upstream_id: "marketplace", name: "AWS Marketplace", group: "Global", position: 792 }
+      - { upstream_id: "marketplace-us-gov-east-1", name: "AWS Marketplace", group: "US-East (us-gov-east-1)", position: 793 }
+      - { upstream_id: "marketplace-us-gov-west-1", name: "AWS Marketplace", group: "US-West (us-gov-west-1)", position: 794 }
+      - { upstream_id: "memorydb-us-east-2", name: "Amazon MemoryDB for Redis", group: "Ohio (us-east-2)", position: 795 }
+      - { upstream_id: "memorydb-us-east-1", name: "Amazon MemoryDB for Redis", group: "N. Virginia (us-east-1)", position: 796 }
+      - { upstream_id: "memorydb-us-west-2", name: "Amazon MemoryDB for Redis", group: "Oregon (us-west-2)", position: 797 }
+      - { upstream_id: "memorydb-us-west-1", name: "Amazon MemoryDB for Redis", group: "N. California (us-west-1)", position: 798 }
+      - { upstream_id: "memorydb-us-gov-east-1", name: "Amazon MemoryDB for Redis", group: "US-East (us-gov-east-1)", position: 799 }
+      - { upstream_id: "memorydb-us-gov-west-1", name: "Amazon MemoryDB for Redis", group: "US-West (us-gov-west-1)", position: 800 }
+      - { upstream_id: "migrationhub-us-east-1", name: "AWS Migration Hub", group: "N. Virginia (us-east-1)", position: 801 }
+      - { upstream_id: "migrationhub-us-west-2", name: "AWS Migration Hub", group: "Oregon (us-west-2)", position: 802 }
+      - { upstream_id: "migrationhuborchestrator-us-east-1", name: "AWS Migration Hub Orchestrator", group: "N. Virginia (us-east-1)", position: 803 }
+      - { upstream_id: "migrationhuborchestrator-us-west-2", name: "AWS Migration Hub Orchestrator", group: "Oregon (us-west-2)", position: 804 }
+      - { upstream_id: "migrationhubstrategy-us-east-1", name: "AWS Migration Hub Strategy Recommendations", group: "N. Virginia (us-east-1)", position: 805 }
+      - { upstream_id: "migrationhubstrategy-us-west-2", name: "AWS Migration Hub Strategy Recommendations", group: "Oregon (us-west-2)", position: 806 }
+      - { upstream_id: "monitron-us-east-1", name: "Amazon Monitron", group: "N. Virginia (us-east-1)", position: 807 }
+      - { upstream_id: "multipleservices-us-east-2", name: "Multiple services", group: "Ohio (us-east-2)", position: 808 }
+      - { upstream_id: "multipleservices-us-east-1", name: "Multiple services", group: "N. Virginia (us-east-1)", position: 809 }
+      - { upstream_id: "multipleservices-us-west-2", name: "Multiple services", group: "Oregon (us-west-2)", position: 810 }
+      - { upstream_id: "multipleservices-us-west-1", name: "Multiple services", group: "N. California (us-west-1)", position: 811 }
+      - { upstream_id: "natgateway-us-east-2", name: "AWS NAT Gateway", group: "Ohio (us-east-2)", position: 812 }
+      - { upstream_id: "natgateway-us-east-1", name: "AWS NAT Gateway", group: "N. Virginia (us-east-1)", position: 813 }
+      - { upstream_id: "natgateway-us-west-2", name: "AWS NAT Gateway", group: "Oregon (us-west-2)", position: 814 }
+      - { upstream_id: "natgateway-us-west-1", name: "AWS NAT Gateway", group: "N. California (us-west-1)", position: 815 }
+      - { upstream_id: "natgateway-us-gov-east-1", name: "AWS NAT Gateway", group: "US-East (us-gov-east-1)", position: 816 }
+      - { upstream_id: "natgateway-us-gov-west-1", name: "AWS NAT Gateway", group: "US-West (us-gov-west-1)", position: 817 }
+      - { upstream_id: "neptune-db-us-east-2", name: "Amazon Neptune", group: "Ohio (us-east-2)", position: 818 }
+      - { upstream_id: "neptune-db-us-east-1", name: "Amazon Neptune", group: "N. Virginia (us-east-1)", position: 819 }
+      - { upstream_id: "neptune-db-us-west-2", name: "Amazon Neptune", group: "Oregon (us-west-2)", position: 820 }
+      - { upstream_id: "neptune-db-us-west-1", name: "Amazon Neptune", group: "N. California (us-west-1)", position: 821 }
+      - { upstream_id: "neptune-db-us-gov-east-1", name: "Amazon Neptune", group: "US-East (us-gov-east-1)", position: 822 }
+      - { upstream_id: "neptune-db-us-gov-west-1", name: "Amazon Neptune", group: "US-West (us-gov-west-1)", position: 823 }
+      - { upstream_id: "networkaccessanalyzer-us-east-2", name: "Network Access Analyzer", group: "Ohio (us-east-2)", position: 824 }
+      - { upstream_id: "networkaccessanalyzer-us-east-1", name: "Network Access Analyzer", group: "N. Virginia (us-east-1)", position: 825 }
+      - { upstream_id: "networkaccessanalyzer-us-west-2", name: "Network Access Analyzer", group: "Oregon (us-west-2)", position: 826 }
+      - { upstream_id: "networkaccessanalyzer-us-west-1", name: "Network Access Analyzer", group: "N. California (us-west-1)", position: 827 }
+      - { upstream_id: "reachabilityanalyzer-us-east-2", name: "Reachability Analyzer", group: "Ohio (us-east-2)", position: 828 }
+      - { upstream_id: "reachabilityanalyzer-us-east-1", name: "Reachability Analyzer", group: "N. Virginia (us-east-1)", position: 829 }
+      - { upstream_id: "reachabilityanalyzer-us-west-2", name: "Reachability Analyzer", group: "Oregon (us-west-2)", position: 830 }
+      - { upstream_id: "reachabilityanalyzer-us-west-1", name: "Reachability Analyzer", group: "N. California (us-west-1)", position: 831 }
+      - { upstream_id: "notifications", name: "AWS User Notifications", group: "Global", position: 832 }
+      - { upstream_id: "omics-us-east-2", name: "AWS HealthOmics", group: "Ohio (us-east-2)", position: 833 }
+      - { upstream_id: "omics-us-east-1", name: "AWS HealthOmics", group: "N. Virginia (us-east-1)", position: 834 }
+      - { upstream_id: "omics-us-west-2", name: "AWS HealthOmics", group: "Oregon (us-west-2)", position: 835 }
+      - { upstream_id: "one-us-east-1", name: "Amazon One Enterprise", group: "N. Virginia (us-east-1)", position: 836 }
+      - { upstream_id: "elasticsearch-us-east-2", name: "Amazon OpenSearch Service", group: "Ohio (us-east-2)", position: 837 }
+      - { upstream_id: "elasticsearch-us-east-1", name: "Amazon OpenSearch Service", group: "N. Virginia (us-east-1)", position: 838 }
+      - { upstream_id: "elasticsearch-us-west-2", name: "Amazon OpenSearch Service", group: "Oregon (us-west-2)", position: 839 }
+      - { upstream_id: "elasticsearch-us-west-1", name: "Amazon OpenSearch Service", group: "N. California (us-west-1)", position: 840 }
+      - { upstream_id: "elasticsearch-us-gov-east-1", name: "Amazon OpenSearch Service", group: "US-East (us-gov-east-1)", position: 841 }
+      - { upstream_id: "elasticsearch-us-gov-west-1", name: "Amazon OpenSearch Service", group: "US-West (us-gov-west-1)", position: 842 }
+      - { upstream_id: "organizations", name: "AWS Organizations", group: "Global", position: 843 }
+      - { upstream_id: "organizations-us-gov-east-1", name: "AWS Organizations", group: "US-East (us-gov-east-1)", position: 844 }
+      - { upstream_id: "organizations-us-gov-west-1", name: "AWS Organizations", group: "US-West (us-gov-west-1)", position: 845 }
+      - { upstream_id: "outposts-us-east-2", name: "AWS Outposts", group: "Ohio (us-east-2)", position: 846 }
+      - { upstream_id: "outposts-us-east-1", name: "AWS Outposts", group: "N. Virginia (us-east-1)", position: 847 }
+      - { upstream_id: "outposts-us-west-2", name: "AWS Outposts", group: "Oregon (us-west-2)", position: 848 }
+      - { upstream_id: "outposts-us-west-1", name: "AWS Outposts", group: "N. California (us-west-1)", position: 849 }
+      - { upstream_id: "outposts-us-gov-east-1", name: "AWS Outposts", group: "US-East (us-gov-east-1)", position: 850 }
+      - { upstream_id: "outposts-us-gov-west-1", name: "AWS Outposts", group: "US-West (us-gov-west-1)", position: 851 }
+      - { upstream_id: "pcs-us-east-2", name: "AWS Parallel Computing Service", group: "Ohio (us-east-2)", position: 852 }
+      - { upstream_id: "pcs-us-east-1", name: "AWS Parallel Computing Service", group: "N. Virginia (us-east-1)", position: 853 }
+      - { upstream_id: "pcs-us-west-2", name: "AWS Parallel Computing Service", group: "Oregon (us-west-2)", position: 854 }
+      - { upstream_id: "pcs-us-gov-east-1", name: "AWS Parallel Computing Service", group: "US-East (us-gov-east-1)", position: 855 }
+      - { upstream_id: "pcs-us-gov-west-1", name: "AWS Parallel Computing Service", group: "US-West (us-gov-west-1)", position: 856 }
+      - { upstream_id: "personalize-us-east-2", name: "Amazon Personalize", group: "Ohio (us-east-2)", position: 857 }
+      - { upstream_id: "personalize-us-east-1", name: "Amazon Personalize", group: "N. Virginia (us-east-1)", position: 858 }
+      - { upstream_id: "personalize-us-west-2", name: "Amazon Personalize", group: "Oregon (us-west-2)", position: 859 }
+      - { upstream_id: "pinpoint-us-east-2", name: "Amazon Pinpoint", group: "Ohio (us-east-2)", position: 860 }
+      - { upstream_id: "pinpoint-us-east-1", name: "Amazon Pinpoint", group: "N. Virginia (us-east-1)", position: 861 }
+      - { upstream_id: "pinpoint-us-west-2", name: "Amazon Pinpoint", group: "Oregon (us-west-2)", position: 862 }
+      - { upstream_id: "pinpoint-us-gov-west-1", name: "Amazon Pinpoint", group: "US-West (us-gov-west-1)", position: 863 }
+      - { upstream_id: "polly-us-east-2", name: "Amazon Polly", group: "Ohio (us-east-2)", position: 864 }
+      - { upstream_id: "polly-us-east-1", name: "Amazon Polly", group: "N. Virginia (us-east-1)", position: 865 }
+      - { upstream_id: "polly-us-west-2", name: "Amazon Polly", group: "Oregon (us-west-2)", position: 866 }
+      - { upstream_id: "polly-us-west-1", name: "Amazon Polly", group: "N. California (us-west-1)", position: 867 }
+      - { upstream_id: "polly-us-gov-west-1", name: "Amazon Polly", group: "US-West (us-gov-west-1)", position: 868 }
+      - { upstream_id: "apipricing-us-east-1", name: "AWS Price List Service", group: "N. Virginia (us-east-1)", position: 869 }
+      - { upstream_id: "pcaconnectorad-us-east-2", name: "AWS Private CA Connector for Active Directory", group: "Ohio (us-east-2)", position: 870 }
+      - { upstream_id: "pcaconnectorad-us-east-1", name: "AWS Private CA Connector for Active Directory", group: "N. Virginia (us-east-1)", position: 871 }
+      - { upstream_id: "pcaconnectorad-us-west-2", name: "AWS Private CA Connector for Active Directory", group: "Oregon (us-west-2)", position: 872 }
+      - { upstream_id: "pcaconnectorad-us-west-1", name: "AWS Private CA Connector for Active Directory", group: "N. California (us-west-1)", position: 873 }
+      - { upstream_id: "acm-pca-us-east-2", name: "AWS Private Certificate Authority", group: "Ohio (us-east-2)", position: 874 }
+      - { upstream_id: "acm-pca-us-east-1", name: "AWS Private Certificate Authority", group: "N. Virginia (us-east-1)", position: 875 }
+      - { upstream_id: "acm-pca-us-west-2", name: "AWS Private Certificate Authority", group: "Oregon (us-west-2)", position: 876 }
+      - { upstream_id: "acm-pca-us-west-1", name: "AWS Private Certificate Authority", group: "N. California (us-west-1)", position: 877 }
+      - { upstream_id: "acm-pca-us-gov-east-1", name: "AWS Private Certificate Authority", group: "US-East (us-gov-east-1)", position: 878 }
+      - { upstream_id: "acm-pca-us-gov-west-1", name: "AWS Private Certificate Authority", group: "US-West (us-gov-west-1)", position: 879 }
+      - { upstream_id: "proton-us-east-2", name: "AWS Proton", group: "Ohio (us-east-2)", position: 880 }
+      - { upstream_id: "proton-us-east-1", name: "AWS Proton", group: "N. Virginia (us-east-1)", position: 881 }
+      - { upstream_id: "proton-us-west-2", name: "AWS Proton", group: "Oregon (us-west-2)", position: 882 }
+      - { upstream_id: "quicksight-us-east-2", name: "Amazon Quick Suite", group: "Ohio (us-east-2)", position: 883 }
+      - { upstream_id: "quicksight-us-east-1", name: "Amazon Quick Suite", group: "N. Virginia (us-east-1)", position: 884 }
+      - { upstream_id: "quicksight-us-west-2", name: "Amazon Quick Suite", group: "Oregon (us-west-2)", position: 885 }
+      - { upstream_id: "quicksight-us-gov-east-1", name: "Amazon Quick Suite", group: "US-East (us-gov-east-1)", position: 886 }
+      - { upstream_id: "quicksight-us-gov-west-1", name: "Amazon Quick Suite", group: "US-West (us-gov-west-1)", position: 887 }
+      - { upstream_id: "rds-us-east-2", name: "Amazon Relational Database Service", group: "Ohio (us-east-2)", position: 888 }
+      - { upstream_id: "rds-us-east-1", name: "Amazon Relational Database Service", group: "N. Virginia (us-east-1)", position: 889 }
+      - { upstream_id: "rds-us-west-2", name: "Amazon Relational Database Service", group: "Oregon (us-west-2)", position: 890 }
+      - { upstream_id: "rds-us-west-1", name: "Amazon Relational Database Service", group: "N. California (us-west-1)", position: 891 }
+      - { upstream_id: "rds-us-gov-east-1", name: "Amazon Relational Database Service", group: "US-East (us-gov-east-1)", position: 892 }
+      - { upstream_id: "rds-us-gov-west-1", name: "Amazon Relational Database Service", group: "US-West (us-gov-west-1)", position: 893 }
+      - { upstream_id: "rtbfabric-us-east-1", name: "AWS RTB Fabric", group: "N. Virginia (us-east-1)", position: 894 }
+      - { upstream_id: "rtbfabric-us-west-2", name: "AWS RTB Fabric", group: "Oregon (us-west-2)", position: 895 }
+      - { upstream_id: "redshift-us-east-2", name: "Amazon Redshift", group: "Ohio (us-east-2)", position: 896 }
+      - { upstream_id: "redshift-us-east-1", name: "Amazon Redshift", group: "N. Virginia (us-east-1)", position: 897 }
+      - { upstream_id: "redshift-us-west-2", name: "Amazon Redshift", group: "Oregon (us-west-2)", position: 898 }
+      - { upstream_id: "redshift-us-west-1", name: "Amazon Redshift", group: "N. California (us-west-1)", position: 899 }
+      - { upstream_id: "redshift-us-gov-east-1", name: "Amazon Redshift", group: "US-East (us-gov-east-1)", position: 900 }
+      - { upstream_id: "redshift-us-gov-west-1", name: "Amazon Redshift", group: "US-West (us-gov-west-1)", position: 901 }
+      - { upstream_id: "rekognition-us-east-2", name: "Amazon Rekognition", group: "Ohio (us-east-2)", position: 902 }
+      - { upstream_id: "rekognition-us-east-1", name: "Amazon Rekognition", group: "N. Virginia (us-east-1)", position: 903 }
+      - { upstream_id: "rekognition-us-west-2", name: "Amazon Rekognition", group: "Oregon (us-west-2)", position: 904 }
+      - { upstream_id: "rekognition-us-west-1", name: "Amazon Rekognition", group: "N. California (us-west-1)", position: 905 }
+      - { upstream_id: "rekognition-us-gov-west-1", name: "Amazon Rekognition", group: "US-West (us-gov-west-1)", position: 906 }
+      - { upstream_id: "resiliencehub-us-east-2", name: "AWS Resilience Hub", group: "Ohio (us-east-2)", position: 907 }
+      - { upstream_id: "resiliencehub-us-east-1", name: "AWS Resilience Hub", group: "N. Virginia (us-east-1)", position: 908 }
+      - { upstream_id: "resiliencehub-us-west-2", name: "AWS Resilience Hub", group: "Oregon (us-west-2)", position: 909 }
+      - { upstream_id: "resiliencehub-us-west-1", name: "AWS Resilience Hub", group: "N. California (us-west-1)", position: 910 }
+      - { upstream_id: "resiliencehub-us-gov-east-1", name: "AWS Resilience Hub", group: "US-East (us-gov-east-1)", position: 911 }
+      - { upstream_id: "resiliencehub-us-gov-west-1", name: "AWS Resilience Hub", group: "US-West (us-gov-west-1)", position: 912 }
+      - { upstream_id: "ram-us-east-2", name: "AWS Resource Access Manager", group: "Ohio (us-east-2)", position: 913 }
+      - { upstream_id: "ram-us-east-1", name: "AWS Resource Access Manager", group: "N. Virginia (us-east-1)", position: 914 }
+      - { upstream_id: "ram-us-west-2", name: "AWS Resource Access Manager", group: "Oregon (us-west-2)", position: 915 }
+      - { upstream_id: "ram-us-west-1", name: "AWS Resource Access Manager", group: "N. California (us-west-1)", position: 916 }
+      - { upstream_id: "ram-us-gov-east-1", name: "AWS Resource Access Manager", group: "US-East (us-gov-east-1)", position: 917 }
+      - { upstream_id: "ram-us-gov-west-1", name: "AWS Resource Access Manager", group: "US-West (us-gov-west-1)", position: 918 }
+      - { upstream_id: "resourcegroupstaggingapi-us-east-2", name: "AWS Resource Groups Tagging API", group: "Ohio (us-east-2)", position: 919 }
+      - { upstream_id: "resourcegroupstaggingapi-us-east-1", name: "AWS Resource Groups Tagging API", group: "N. Virginia (us-east-1)", position: 920 }
+      - { upstream_id: "resourcegroupstaggingapi-us-west-2", name: "AWS Resource Groups Tagging API", group: "Oregon (us-west-2)", position: 921 }
+      - { upstream_id: "resourcegroupstaggingapi-us-west-1", name: "AWS Resource Groups Tagging API", group: "N. California (us-west-1)", position: 922 }
+      - { upstream_id: "resourcegroupstaggingapi-us-gov-east-1", name: "AWS Resource Groups Tagging API", group: "US-East (us-gov-east-1)", position: 923 }
+      - { upstream_id: "resourcegroupstaggingapi-us-gov-west-1", name: "AWS Resource Groups Tagging API", group: "US-West (us-gov-west-1)", position: 924 }
+      - { upstream_id: "route53", name: "Amazon Route 53", group: "Global", position: 925 }
+      - { upstream_id: "route53-us-gov-east-1", name: "Amazon Route 53", group: "US-East (us-gov-east-1)", position: 926 }
+      - { upstream_id: "route53-us-gov-west-1", name: "Amazon Route 53", group: "US-West (us-gov-west-1)", position: 927 }
+      - { upstream_id: "route53apprecoverycontroller", name: "Amazon Route 53 Application Recovery Controller", group: "Global", position: 928 }
+      - { upstream_id: "route53domainregistration", name: "Amazon Route 53 Domain Registration", group: "Global", position: 929 }
+      - { upstream_id: "route53globalresolver", name: "Amazon Route 53 Global Resolver", group: "Global", position: 930 }
+      - { upstream_id: "route53privatedns-us-east-2", name: "Amazon Route 53 Private DNS", group: "Ohio (us-east-2)", position: 931 }
+      - { upstream_id: "route53privatedns-us-east-1", name: "Amazon Route 53 Private DNS", group: "N. Virginia (us-east-1)", position: 932 }
+      - { upstream_id: "route53privatedns-us-west-2", name: "Amazon Route 53 Private DNS", group: "Oregon (us-west-2)", position: 933 }
+      - { upstream_id: "route53privatedns-us-west-1", name: "Amazon Route 53 Private DNS", group: "N. California (us-west-1)", position: 934 }
+      - { upstream_id: "route53privatedns-us-gov-east-1", name: "Amazon Route 53 Private DNS", group: "US-East (us-gov-east-1)", position: 935 }
+      - { upstream_id: "route53privatedns-us-gov-west-1", name: "Amazon Route 53 Private DNS", group: "US-West (us-gov-west-1)", position: 936 }
+      - { upstream_id: "route53resolver-us-east-2", name: "Amazon Route 53 Resolver", group: "Ohio (us-east-2)", position: 937 }
+      - { upstream_id: "route53resolver-us-east-1", name: "Amazon Route 53 Resolver", group: "N. Virginia (us-east-1)", position: 938 }
+      - { upstream_id: "route53resolver-us-west-2", name: "Amazon Route 53 Resolver", group: "Oregon (us-west-2)", position: 939 }
+      - { upstream_id: "route53resolver-us-west-1", name: "Amazon Route 53 Resolver", group: "N. California (us-west-1)", position: 940 }
+      - { upstream_id: "route53resolver-us-gov-east-1", name: "Amazon Route 53 Resolver", group: "US-East (us-gov-east-1)", position: 941 }
+      - { upstream_id: "route53resolver-us-gov-west-1", name: "Amazon Route 53 Resolver", group: "US-West (us-gov-west-1)", position: 942 }
+      - { upstream_id: "s3-us-east-2", name: "Amazon Simple Storage Service", group: "Ohio (us-east-2)", position: 943 }
+      - { upstream_id: "s3-us-east-1", name: "Amazon Simple Storage Service", group: "N. Virginia (us-east-1)", position: 944 }
+      - { upstream_id: "s3-us-west-2", name: "Amazon Simple Storage Service", group: "Oregon (us-west-2)", position: 945 }
+      - { upstream_id: "s3-us-west-1", name: "Amazon Simple Storage Service", group: "N. California (us-west-1)", position: 946 }
+      - { upstream_id: "s3-us-gov-east-1", name: "Amazon Simple Storage Service", group: "US-East (us-gov-east-1)", position: 947 }
+      - { upstream_id: "s3-us-gov-west-1", name: "Amazon Simple Storage Service", group: "US-West (us-gov-west-1)", position: 948 }
+      - { upstream_id: "sns-us-east-2", name: "Amazon Simple Notification Service", group: "Ohio (us-east-2)", position: 949 }
+      - { upstream_id: "sns-us-east-1", name: "Amazon Simple Notification Service", group: "N. Virginia (us-east-1)", position: 950 }
+      - { upstream_id: "sns-us-west-2", name: "Amazon Simple Notification Service", group: "Oregon (us-west-2)", position: 951 }
+      - { upstream_id: "sns-us-west-1", name: "Amazon Simple Notification Service", group: "N. California (us-west-1)", position: 952 }
+      - { upstream_id: "sns-us-gov-east-1", name: "Amazon Simple Notification Service", group: "US-East (us-gov-east-1)", position: 953 }
+      - { upstream_id: "sns-us-gov-west-1", name: "Amazon Simple Notification Service", group: "US-West (us-gov-west-1)", position: 954 }
+      - { upstream_id: "sqs-us-east-2", name: "Amazon Simple Queue Service", group: "Ohio (us-east-2)", position: 955 }
+      - { upstream_id: "sqs-us-east-1", name: "Amazon Simple Queue Service", group: "N. Virginia (us-east-1)", position: 956 }
+      - { upstream_id: "sqs-us-west-2", name: "Amazon Simple Queue Service", group: "Oregon (us-west-2)", position: 957 }
+      - { upstream_id: "sqs-us-west-1", name: "Amazon Simple Queue Service", group: "N. California (us-west-1)", position: 958 }
+      - { upstream_id: "sqs-us-gov-east-1", name: "Amazon Simple Queue Service", group: "US-East (us-gov-east-1)", position: 959 }
+      - { upstream_id: "sqs-us-gov-west-1", name: "Amazon Simple Queue Service", group: "US-West (us-gov-west-1)", position: 960 }
+      - { upstream_id: "ec2systemsmanager-us-east-2", name: "AWS Systems Manager", group: "Ohio (us-east-2)", position: 961 }
+      - { upstream_id: "ec2systemsmanager-us-east-1", name: "AWS Systems Manager", group: "N. Virginia (us-east-1)", position: 962 }
+      - { upstream_id: "ec2systemsmanager-us-west-2", name: "AWS Systems Manager", group: "Oregon (us-west-2)", position: 963 }
+      - { upstream_id: "ec2systemsmanager-us-west-1", name: "AWS Systems Manager", group: "N. California (us-west-1)", position: 964 }
+      - { upstream_id: "ec2systemsmanager-us-gov-east-1", name: "AWS Systems Manager", group: "US-East (us-gov-east-1)", position: 965 }
+      - { upstream_id: "ec2systemsmanager-us-gov-west-1", name: "AWS Systems Manager", group: "US-West (us-gov-west-1)", position: 966 }
+      - { upstream_id: "swf-us-east-2", name: "Amazon Simple Workflow Service", group: "Ohio (us-east-2)", position: 967 }
+      - { upstream_id: "swf-us-east-1", name: "Amazon Simple Workflow Service", group: "N. Virginia (us-east-1)", position: 968 }
+      - { upstream_id: "swf-us-west-2", name: "Amazon Simple Workflow Service", group: "Oregon (us-west-2)", position: 969 }
+      - { upstream_id: "swf-us-west-1", name: "Amazon Simple Workflow Service", group: "N. California (us-west-1)", position: 970 }
+      - { upstream_id: "swf-us-gov-east-1", name: "Amazon Simple Workflow Service", group: "US-East (us-gov-east-1)", position: 971 }
+      - { upstream_id: "swf-us-gov-west-1", name: "Amazon Simple Workflow Service", group: "US-West (us-gov-west-1)", position: 972 }
+      - { upstream_id: "sagemaker-us-east-2", name: "Amazon SageMaker", group: "Ohio (us-east-2)", position: 973 }
+      - { upstream_id: "sagemaker-us-east-1", name: "Amazon SageMaker", group: "N. Virginia (us-east-1)", position: 974 }
+      - { upstream_id: "sagemaker-us-west-2", name: "Amazon SageMaker", group: "Oregon (us-west-2)", position: 975 }
+      - { upstream_id: "sagemaker-us-west-1", name: "Amazon SageMaker", group: "N. California (us-west-1)", position: 976 }
+      - { upstream_id: "sagemaker-us-gov-east-1", name: "Amazon SageMaker", group: "US-East (us-gov-east-1)", position: 977 }
+      - { upstream_id: "sagemaker-us-gov-west-1", name: "Amazon SageMaker", group: "US-West (us-gov-west-1)", position: 978 }
+      - { upstream_id: "sagemaker-unified-studio-us-east-2", name: "SageMaker Unified Studio", group: "Ohio (us-east-2)", position: 979 }
+      - { upstream_id: "sagemaker-unified-studio-us-east-1", name: "SageMaker Unified Studio", group: "N. Virginia (us-east-1)", position: 980 }
+      - { upstream_id: "sagemaker-unified-studio-us-west-2", name: "SageMaker Unified Studio", group: "Oregon (us-west-2)", position: 981 }
+      - { upstream_id: "secretsmanager-us-east-2", name: "AWS Secrets Manager", group: "Ohio (us-east-2)", position: 982 }
+      - { upstream_id: "secretsmanager-us-east-1", name: "AWS Secrets Manager", group: "N. Virginia (us-east-1)", position: 983 }
+      - { upstream_id: "secretsmanager-us-west-2", name: "AWS Secrets Manager", group: "Oregon (us-west-2)", position: 984 }
+      - { upstream_id: "secretsmanager-us-west-1", name: "AWS Secrets Manager", group: "N. California (us-west-1)", position: 985 }
+      - { upstream_id: "secretsmanager-us-gov-east-1", name: "AWS Secrets Manager", group: "US-East (us-gov-east-1)", position: 986 }
+      - { upstream_id: "secretsmanager-us-gov-west-1", name: "AWS Secrets Manager", group: "US-West (us-gov-west-1)", position: 987 }
+      - { upstream_id: "securityhub-us-east-2", name: "AWS Security Hub", group: "Ohio (us-east-2)", position: 988 }
+      - { upstream_id: "securityhub-us-east-1", name: "AWS Security Hub", group: "N. Virginia (us-east-1)", position: 989 }
+      - { upstream_id: "securityhub-us-west-2", name: "AWS Security Hub", group: "Oregon (us-west-2)", position: 990 }
+      - { upstream_id: "securityhub-us-west-1", name: "AWS Security Hub", group: "N. California (us-west-1)", position: 991 }
+      - { upstream_id: "securityhub-us-gov-east-1", name: "AWS Security Hub", group: "US-East (us-gov-east-1)", position: 992 }
+      - { upstream_id: "securityhub-us-gov-west-1", name: "AWS Security Hub", group: "US-West (us-gov-west-1)", position: 993 }
+      - { upstream_id: "security-ir-us-east-2", name: "AWS Security Incident Response", group: "Ohio (us-east-2)", position: 994 }
+      - { upstream_id: "security-ir-us-east-1", name: "AWS Security Incident Response", group: "N. Virginia (us-east-1)", position: 995 }
+      - { upstream_id: "security-ir-us-west-2", name: "AWS Security Incident Response", group: "Oregon (us-west-2)", position: 996 }
+      - { upstream_id: "securitylake-us-east-2", name: "Amazon Security Lake", group: "Ohio (us-east-2)", position: 997 }
+      - { upstream_id: "securitylake-us-east-1", name: "Amazon Security Lake", group: "N. Virginia (us-east-1)", position: 998 }
+      - { upstream_id: "securitylake-us-west-2", name: "Amazon Security Lake", group: "Oregon (us-west-2)", position: 999 }
+      - { upstream_id: "securitylake-us-west-1", name: "Amazon Security Lake", group: "N. California (us-west-1)", position: 1000 }
+      - { upstream_id: "securitylake-us-gov-east-1", name: "Amazon Security Lake", group: "US-East (us-gov-east-1)", position: 1001 }
+      - { upstream_id: "securitylake-us-gov-west-1", name: "Amazon Security Lake", group: "US-West (us-gov-west-1)", position: 1002 }
+      - { upstream_id: "sts-us-east-2", name: "AWS Security Token Service", group: "Ohio (us-east-2)", position: 1003 }
+      - { upstream_id: "sts-us-east-1", name: "AWS Security Token Service", group: "N. Virginia (us-east-1)", position: 1004 }
+      - { upstream_id: "sts-us-west-2", name: "AWS Security Token Service", group: "Oregon (us-west-2)", position: 1005 }
+      - { upstream_id: "sts-us-west-1", name: "AWS Security Token Service", group: "N. California (us-west-1)", position: 1006 }
+      - { upstream_id: "sts-us-gov-east-1", name: "AWS Security Token Service", group: "US-East (us-gov-east-1)", position: 1007 }
+      - { upstream_id: "sts-us-gov-west-1", name: "AWS Security Token Service", group: "US-West (us-gov-west-1)", position: 1008 }
+      - { upstream_id: "serverlessrepo-us-east-1", name: "AWS Serverless Application Repository", group: "N. Virginia (us-east-1)", position: 1009 }
+      - { upstream_id: "serverlessrepo-us-east-2", name: "AWS Serverless Application Repository", group: "Ohio (us-east-2)", position: 1010 }
+      - { upstream_id: "serverlessrepo-us-west-1", name: "AWS Serverless Application Repository", group: "N. California (us-west-1)", position: 1011 }
+      - { upstream_id: "serverlessrepo-us-west-2", name: "AWS Serverless Application Repository", group: "Oregon (us-west-2)", position: 1012 }
+      - { upstream_id: "serverlessrepo-us-gov-east-1", name: "AWS Serverless Application Repository", group: "US-East (us-gov-east-1)", position: 1013 }
+      - { upstream_id: "serverlessrepo-us-gov-west-1", name: "AWS Serverless Application Repository", group: "US-West (us-gov-west-1)", position: 1014 }
+      - { upstream_id: "servicecatalog-us-east-2", name: "AWS Service Catalog", group: "Ohio (us-east-2)", position: 1015 }
+      - { upstream_id: "servicecatalog-us-east-1", name: "AWS Service Catalog", group: "N. Virginia (us-east-1)", position: 1016 }
+      - { upstream_id: "servicecatalog-us-west-2", name: "AWS Service Catalog", group: "Oregon (us-west-2)", position: 1017 }
+      - { upstream_id: "servicecatalog-us-west-1", name: "AWS Service Catalog", group: "N. California (us-west-1)", position: 1018 }
+      - { upstream_id: "servicecatalog-us-gov-east-1", name: "AWS Service Catalog", group: "US-East (us-gov-east-1)", position: 1019 }
+      - { upstream_id: "servicecatalog-us-gov-west-1", name: "AWS Service Catalog", group: "US-West (us-gov-west-1)", position: 1020 }
+      - { upstream_id: "servicequotas-us-east-2", name: "AWS Service Quotas", group: "Ohio (us-east-2)", position: 1021 }
+      - { upstream_id: "servicequotas-us-east-1", name: "AWS Service Quotas", group: "N. Virginia (us-east-1)", position: 1022 }
+      - { upstream_id: "servicequotas-us-west-2", name: "AWS Service Quotas", group: "Oregon (us-west-2)", position: 1023 }
+      - { upstream_id: "servicequotas-us-west-1", name: "AWS Service Quotas", group: "N. California (us-west-1)", position: 1024 }
+      - { upstream_id: "servicequotas-us-gov-east-1", name: "AWS Service Quotas", group: "US-East (us-gov-east-1)", position: 1025 }
+      - { upstream_id: "servicequotas-us-gov-west-1", name: "AWS Service Quotas", group: "US-West (us-gov-west-1)", position: 1026 }
+      - { upstream_id: "signin-us-east-2", name: "AWS Sign-In", group: "Ohio (us-east-2)", position: 1027 }
+      - { upstream_id: "signin-us-east-1", name: "AWS Sign-In", group: "N. Virginia (us-east-1)", position: 1028 }
+      - { upstream_id: "signin-us-west-2", name: "AWS Sign-In", group: "Oregon (us-west-2)", position: 1029 }
+      - { upstream_id: "signin-us-west-1", name: "AWS Sign-In", group: "N. California (us-west-1)", position: 1030 }
+      - { upstream_id: "signin-us-gov-east-1", name: "AWS Sign-In", group: "US-East (us-gov-east-1)", position: 1031 }
+      - { upstream_id: "signin-us-gov-west-1", name: "AWS Sign-In", group: "US-West (us-gov-west-1)", position: 1032 }
+      - { upstream_id: "signup", name: "AWS Sign Up", group: "Global", position: 1033 }
+      - { upstream_id: "ses-us-east-2", name: "Amazon Simple Email Service", group: "Ohio (us-east-2)", position: 1034 }
+      - { upstream_id: "ses-us-east-1", name: "Amazon Simple Email Service", group: "N. Virginia (us-east-1)", position: 1035 }
+      - { upstream_id: "ses-us-west-2", name: "Amazon Simple Email Service", group: "Oregon (us-west-2)", position: 1036 }
+      - { upstream_id: "ses-us-west-1", name: "Amazon Simple Email Service", group: "N. California (us-west-1)", position: 1037 }
+      - { upstream_id: "ses-us-gov-east-1", name: "Amazon Simple Email Service", group: "US-East (us-gov-east-1)", position: 1038 }
+      - { upstream_id: "ses-us-gov-west-1", name: "Amazon Simple Email Service", group: "US-West (us-gov-west-1)", position: 1039 }
+      - { upstream_id: "simpledb-us-east-1", name: "Amazon SimpleDB", group: "N. Virginia (us-east-1)", position: 1040 }
+      - { upstream_id: "simpledb-us-west-2", name: "Amazon SimpleDB", group: "Oregon (us-west-2)", position: 1041 }
+      - { upstream_id: "simpledb-us-west-1", name: "Amazon SimpleDB", group: "N. California (us-west-1)", position: 1042 }
+      - { upstream_id: "state-us-east-2", name: "AWS Step Functions", group: "Ohio (us-east-2)", position: 1043 }
+      - { upstream_id: "state-us-east-1", name: "AWS Step Functions", group: "N. Virginia (us-east-1)", position: 1044 }
+      - { upstream_id: "state-us-west-2", name: "AWS Step Functions", group: "Oregon (us-west-2)", position: 1045 }
+      - { upstream_id: "state-us-west-1", name: "AWS Step Functions", group: "N. California (us-west-1)", position: 1046 }
+      - { upstream_id: "state-us-gov-east-1", name: "AWS Step Functions", group: "US-East (us-gov-east-1)", position: 1047 }
+      - { upstream_id: "state-us-gov-west-1", name: "AWS Step Functions", group: "US-West (us-gov-west-1)", position: 1048 }
+      - { upstream_id: "storagegateway-us-east-2", name: "AWS Storage Gateway", group: "Ohio (us-east-2)", position: 1049 }
+      - { upstream_id: "storagegateway-us-east-1", name: "AWS Storage Gateway", group: "N. Virginia (us-east-1)", position: 1050 }
+      - { upstream_id: "storagegateway-us-west-2", name: "AWS Storage Gateway", group: "Oregon (us-west-2)", position: 1051 }
+      - { upstream_id: "storagegateway-us-west-1", name: "AWS Storage Gateway", group: "N. California (us-west-1)", position: 1052 }
+      - { upstream_id: "storagegateway-us-gov-east-1", name: "AWS Storage Gateway", group: "US-East (us-gov-east-1)", position: 1053 }
+      - { upstream_id: "storagegateway-us-gov-west-1", name: "AWS Storage Gateway", group: "US-West (us-gov-west-1)", position: 1054 }
+      - { upstream_id: "supportcenter", name: "AWS Support Center", group: "Global", position: 1055 }
+      - { upstream_id: "supportcenter-us-gov-west-1", name: "AWS Support Center", group: "US-West (us-gov-west-1)", position: 1056 }
+      - { upstream_id: "supportapi", name: "AWS Support API", group: "Global", position: 1057 }
+      - { upstream_id: "supportapi-us-gov-east-1", name: "AWS Support API", group: "US-East (us-gov-east-1)", position: 1058 }
+      - { upstream_id: "supportapi-us-gov-west-1", name: "AWS Support API", group: "US-West (us-gov-west-1)", position: 1059 }
+      - { upstream_id: "textract-us-east-2", name: "Amazon Textract", group: "Ohio (us-east-2)", position: 1060 }
+      - { upstream_id: "textract-us-east-1", name: "Amazon Textract", group: "N. Virginia (us-east-1)", position: 1061 }
+      - { upstream_id: "textract-us-west-2", name: "Amazon Textract", group: "Oregon (us-west-2)", position: 1062 }
+      - { upstream_id: "textract-us-west-1", name: "Amazon Textract", group: "N. California (us-west-1)", position: 1063 }
+      - { upstream_id: "textract-us-gov-east-1", name: "Amazon Textract", group: "US-East (us-gov-east-1)", position: 1064 }
+      - { upstream_id: "textract-us-gov-west-1", name: "Amazon Textract", group: "US-West (us-gov-west-1)", position: 1065 }
+      - { upstream_id: "timestream-us-east-2", name: "Amazon Timestream", group: "Ohio (us-east-2)", position: 1066 }
+      - { upstream_id: "timestream-us-east-1", name: "Amazon Timestream", group: "N. Virginia (us-east-1)", position: 1067 }
+      - { upstream_id: "timestream-us-west-2", name: "Amazon Timestream", group: "Oregon (us-west-2)", position: 1068 }
+      - { upstream_id: "timestream-us-gov-west-1", name: "Amazon Timestream", group: "US-West (us-gov-west-1)", position: 1069 }
+      - { upstream_id: "trafficmirroring-us-east-2", name: "Traffic Mirroring", group: "Ohio (us-east-2)", position: 1070 }
+      - { upstream_id: "trafficmirroring-us-east-1", name: "Traffic Mirroring", group: "N. Virginia (us-east-1)", position: 1071 }
+      - { upstream_id: "trafficmirroring-us-west-2", name: "Traffic Mirroring", group: "Oregon (us-west-2)", position: 1072 }
+      - { upstream_id: "trafficmirroring-us-west-1", name: "Traffic Mirroring", group: "N. California (us-west-1)", position: 1073 }
+      - { upstream_id: "trafficmirroring-us-gov-east-1", name: "Traffic Mirroring", group: "US-East (us-gov-east-1)", position: 1074 }
+      - { upstream_id: "trafficmirroring-us-gov-west-1", name: "Traffic Mirroring", group: "US-West (us-gov-west-1)", position: 1075 }
+      - { upstream_id: "transcribe-us-east-2", name: "Amazon Transcribe", group: "Ohio (us-east-2)", position: 1076 }
+      - { upstream_id: "transcribe-us-east-1", name: "Amazon Transcribe", group: "N. Virginia (us-east-1)", position: 1077 }
+      - { upstream_id: "transcribe-us-west-2", name: "Amazon Transcribe", group: "Oregon (us-west-2)", position: 1078 }
+      - { upstream_id: "transcribe-us-west-1", name: "Amazon Transcribe", group: "N. California (us-west-1)", position: 1079 }
+      - { upstream_id: "transcribe-us-gov-east-1", name: "Amazon Transcribe", group: "US-East (us-gov-east-1)", position: 1080 }
+      - { upstream_id: "transcribe-us-gov-west-1", name: "Amazon Transcribe", group: "US-West (us-gov-west-1)", position: 1081 }
+      - { upstream_id: "transfer-us-east-2", name: "AWS Transfer Family", group: "Ohio (us-east-2)", position: 1082 }
+      - { upstream_id: "transfer-us-east-1", name: "AWS Transfer Family", group: "N. Virginia (us-east-1)", position: 1083 }
+      - { upstream_id: "transfer-us-west-2", name: "AWS Transfer Family", group: "Oregon (us-west-2)", position: 1084 }
+      - { upstream_id: "transfer-us-west-1", name: "AWS Transfer Family", group: "N. California (us-west-1)", position: 1085 }
+      - { upstream_id: "transfer-us-gov-east-1", name: "AWS Transfer Family", group: "US-East (us-gov-east-1)", position: 1086 }
+      - { upstream_id: "transfer-us-gov-west-1", name: "AWS Transfer Family", group: "US-West (us-gov-west-1)", position: 1087 }
+      - { upstream_id: "transitgateway-us-east-2", name: "AWS Transit Gateway", group: "Ohio (us-east-2)", position: 1088 }
+      - { upstream_id: "transitgateway-us-east-1", name: "AWS Transit Gateway", group: "N. Virginia (us-east-1)", position: 1089 }
+      - { upstream_id: "transitgateway-us-west-2", name: "AWS Transit Gateway", group: "Oregon (us-west-2)", position: 1090 }
+      - { upstream_id: "transitgateway-us-west-1", name: "AWS Transit Gateway", group: "N. California (us-west-1)", position: 1091 }
+      - { upstream_id: "transitgateway-us-gov-east-1", name: "AWS Transit Gateway", group: "US-East (us-gov-east-1)", position: 1092 }
+      - { upstream_id: "transitgateway-us-gov-west-1", name: "AWS Transit Gateway", group: "US-West (us-gov-west-1)", position: 1093 }
+      - { upstream_id: "translate-us-east-2", name: "Amazon Translate", group: "Ohio (us-east-2)", position: 1094 }
+      - { upstream_id: "translate-us-east-1", name: "Amazon Translate", group: "N. Virginia (us-east-1)", position: 1095 }
+      - { upstream_id: "translate-us-west-2", name: "Amazon Translate", group: "Oregon (us-west-2)", position: 1096 }
+      - { upstream_id: "translate-us-west-1", name: "Amazon Translate", group: "N. California (us-west-1)", position: 1097 }
+      - { upstream_id: "translate-us-gov-west-1", name: "Amazon Translate", group: "US-West (us-gov-west-1)", position: 1098 }
+      - { upstream_id: "trustedadvisor", name: "AWS Trusted Advisor", group: "Global", position: 1099 }
+      - { upstream_id: "trustedadvisor-us-gov-east-1", name: "AWS Trusted Advisor", group: "US-East (us-gov-east-1)", position: 1100 }
+      - { upstream_id: "trustedadvisor-us-gov-west-1", name: "AWS Trusted Advisor", group: "US-West (us-gov-west-1)", position: 1101 }
+      - { upstream_id: "vmimportexport-us-east-2", name: "VM Import/Export", group: "Ohio (us-east-2)", position: 1102 }
+      - { upstream_id: "vmimportexport-us-east-1", name: "VM Import/Export", group: "N. Virginia (us-east-1)", position: 1103 }
+      - { upstream_id: "vmimportexport-us-west-2", name: "VM Import/Export", group: "Oregon (us-west-2)", position: 1104 }
+      - { upstream_id: "vmimportexport-us-west-1", name: "VM Import/Export", group: "N. California (us-west-1)", position: 1105 }
+      - { upstream_id: "vmimportexport-us-gov-east-1", name: "VM Import/Export", group: "US-East (us-gov-east-1)", position: 1106 }
+      - { upstream_id: "vmimportexport-us-gov-west-1", name: "VM Import/Export", group: "US-West (us-gov-west-1)", position: 1107 }
+      - { upstream_id: "vpc-us-east-2", name: "Amazon Virtual Private Cloud", group: "Ohio (us-east-2)", position: 1108 }
+      - { upstream_id: "vpc-us-east-1", name: "Amazon Virtual Private Cloud", group: "N. Virginia (us-east-1)", position: 1109 }
+      - { upstream_id: "vpc-us-west-2", name: "Amazon Virtual Private Cloud", group: "Oregon (us-west-2)", position: 1110 }
+      - { upstream_id: "vpc-us-west-1", name: "Amazon Virtual Private Cloud", group: "N. California (us-west-1)", position: 1111 }
+      - { upstream_id: "vpc-us-gov-east-1", name: "Amazon Virtual Private Cloud", group: "US-East (us-gov-east-1)", position: 1112 }
+      - { upstream_id: "vpc-us-gov-west-1", name: "Amazon Virtual Private Cloud", group: "US-West (us-gov-west-1)", position: 1113 }
+      - { upstream_id: "vpclattice-us-east-2", name: "Amazon VPC Lattice", group: "Ohio (us-east-2)", position: 1114 }
+      - { upstream_id: "vpclattice-us-east-1", name: "Amazon VPC Lattice", group: "N. Virginia (us-east-1)", position: 1115 }
+      - { upstream_id: "vpclattice-us-west-2", name: "Amazon VPC Lattice", group: "Oregon (us-west-2)", position: 1116 }
+      - { upstream_id: "vpclattice-us-west-1", name: "Amazon VPC Lattice", group: "N. California (us-west-1)", position: 1117 }
+      - { upstream_id: "privatelink-us-east-2", name: "AWS VPCE PrivateLink", group: "Ohio (us-east-2)", position: 1118 }
+      - { upstream_id: "privatelink-us-east-1", name: "AWS VPCE PrivateLink", group: "N. Virginia (us-east-1)", position: 1119 }
+      - { upstream_id: "privatelink-us-west-2", name: "AWS VPCE PrivateLink", group: "Oregon (us-west-2)", position: 1120 }
+      - { upstream_id: "privatelink-us-west-1", name: "AWS VPCE PrivateLink", group: "N. California (us-west-1)", position: 1121 }
+      - { upstream_id: "privatelink-us-gov-east-1", name: "AWS VPCE PrivateLink", group: "US-East (us-gov-east-1)", position: 1122 }
+      - { upstream_id: "privatelink-us-gov-west-1", name: "AWS VPCE PrivateLink", group: "US-West (us-gov-west-1)", position: 1123 }
+      - { upstream_id: "vpnvpc-us-east-2", name: "AWS Site-to-Site VPN", group: "Ohio (us-east-2)", position: 1124 }
+      - { upstream_id: "vpnvpc-us-east-1", name: "AWS Site-to-Site VPN", group: "N. Virginia (us-east-1)", position: 1125 }
+      - { upstream_id: "vpnvpc-us-west-2", name: "AWS Site-to-Site VPN", group: "Oregon (us-west-2)", position: 1126 }
+      - { upstream_id: "vpnvpc-us-west-1", name: "AWS Site-to-Site VPN", group: "N. California (us-west-1)", position: 1127 }
+      - { upstream_id: "vpnvpc-us-gov-east-1", name: "AWS Site-to-Site VPN", group: "US-East (us-gov-east-1)", position: 1128 }
+      - { upstream_id: "vpnvpc-us-gov-west-1", name: "AWS Site-to-Site VPN", group: "US-West (us-gov-west-1)", position: 1129 }
+      - { upstream_id: "verifiedaccess-us-east-2", name: "AWS Verified Access", group: "Ohio (us-east-2)", position: 1130 }
+      - { upstream_id: "verifiedaccess-us-east-1", name: "AWS Verified Access", group: "N. Virginia (us-east-1)", position: 1131 }
+      - { upstream_id: "verifiedaccess-us-west-2", name: "AWS Verified Access", group: "Oregon (us-west-2)", position: 1132 }
+      - { upstream_id: "verifiedaccess-us-west-1", name: "AWS Verified Access", group: "N. California (us-west-1)", position: 1133 }
+      - { upstream_id: "verifiedaccess-us-gov-east-1", name: "AWS Verified Access", group: "US-East (us-gov-east-1)", position: 1134 }
+      - { upstream_id: "verifiedaccess-us-gov-west-1", name: "AWS Verified Access", group: "US-West (us-gov-west-1)", position: 1135 }
+      - { upstream_id: "awswaf-us-east-2", name: "AWS WAF", group: "Ohio (us-east-2)", position: 1136 }
+      - { upstream_id: "awswaf-us-east-1", name: "AWS WAF", group: "N. Virginia (us-east-1)", position: 1137 }
+      - { upstream_id: "awswaf-us-west-2", name: "AWS WAF", group: "Oregon (us-west-2)", position: 1138 }
+      - { upstream_id: "awswaf-us-west-1", name: "AWS WAF", group: "N. California (us-west-1)", position: 1139 }
+      - { upstream_id: "awswaf-us-gov-east-1", name: "AWS WAF", group: "US-East (us-gov-east-1)", position: 1140 }
+      - { upstream_id: "awswaf-us-gov-west-1", name: "AWS WAF", group: "US-West (us-gov-west-1)", position: 1141 }
+      - { upstream_id: "wellarchitected-us-east-1", name: "AWS Well-Architected Tool", group: "N. Virginia (us-east-1)", position: 1142 }
+      - { upstream_id: "wellarchitected-us-east-2", name: "AWS Well-Architected Tool", group: "Ohio (us-east-2)", position: 1143 }
+      - { upstream_id: "wellarchitected-us-west-1", name: "AWS Well-Architected Tool", group: "N. California (us-west-1)", position: 1144 }
+      - { upstream_id: "wellarchitected-us-west-2", name: "AWS Well-Architected Tool", group: "Oregon (us-west-2)", position: 1145 }
+      - { upstream_id: "wellarchitected-us-gov-east-1", name: "AWS Well-Architected Tool", group: "US-East (us-gov-east-1)", position: 1146 }
+      - { upstream_id: "wellarchitected-us-gov-west-1", name: "AWS Well-Architected Tool", group: "US-West (us-gov-west-1)", position: 1147 }
+      - { upstream_id: "wickr-us-east-1", name: "AWS Wickr", group: "N. Virginia (us-east-1)", position: 1148 }
+      - { upstream_id: "wickr-us-gov-west-1", name: "AWS Wickr", group: "US-West (us-gov-west-1)", position: 1149 }
+      - { upstream_id: "workmail-us-east-1", name: "Amazon WorkMail", group: "N. Virginia (us-east-1)", position: 1150 }
+      - { upstream_id: "workmail-us-west-2", name: "Amazon WorkMail", group: "Oregon (us-west-2)", position: 1151 }
+      - { upstream_id: "workspaces-us-east-2", name: "Amazon WorkSpaces", group: "Ohio (us-east-2)", position: 1152 }
+      - { upstream_id: "workspaces-us-east-1", name: "Amazon WorkSpaces", group: "N. Virginia (us-east-1)", position: 1153 }
+      - { upstream_id: "workspaces-us-west-2", name: "Amazon WorkSpaces", group: "Oregon (us-west-2)", position: 1154 }
+      - { upstream_id: "workspaces-us-gov-east-1", name: "Amazon WorkSpaces", group: "US-East (us-gov-east-1)", position: 1155 }
+      - { upstream_id: "workspaces-us-gov-west-1", name: "Amazon WorkSpaces", group: "US-West (us-gov-west-1)", position: 1156 }
+      - { upstream_id: "thinclient-us-east-1", name: "Amazon WorkSpaces Thin Client", group: "N. Virginia (us-east-1)", position: 1157 }
+      - { upstream_id: "thinclient-us-west-2", name: "Amazon WorkSpaces Thin Client", group: "Oregon (us-west-2)", position: 1158 }
+      - { upstream_id: "workspacesweb-us-east-1", name: "Amazon WorkSpaces Secure Browser", group: "N. Virginia (us-east-1)", position: 1159 }
+      - { upstream_id: "workspacesweb-us-west-2", name: "Amazon WorkSpaces Secure Browser", group: "Oregon (us-west-2)", position: 1160 }
+      - { upstream_id: "xray-us-east-2", name: "AWS X-Ray", group: "Ohio (us-east-2)", position: 1161 }
+      - { upstream_id: "xray-us-east-1", name: "AWS X-Ray", group: "N. Virginia (us-east-1)", position: 1162 }
+      - { upstream_id: "xray-us-west-2", name: "AWS X-Ray", group: "Oregon (us-west-2)", position: 1163 }
+      - { upstream_id: "xray-us-west-1", name: "AWS X-Ray", group: "N. California (us-west-1)", position: 1164 }
+      - { upstream_id: "xray-us-gov-east-1", name: "AWS X-Ray", group: "US-East (us-gov-east-1)", position: 1165 }
+      - { upstream_id: "xray-us-gov-west-1", name: "AWS X-Ray", group: "US-West (us-gov-west-1)", position: 1166 }
+      - { upstream_id: "repostspace-us-east-1", name: "AWS re:Post Private", group: "N. Virginia (us-east-1)", position: 1167 }
+      - { upstream_id: "repostspace-us-west-2", name: "AWS re:Post Private", group: "Oregon (us-west-2)", position: 1168 }

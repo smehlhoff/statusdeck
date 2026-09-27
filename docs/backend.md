@@ -20,7 +20,7 @@ and reconcile the catalog before serving work.
 | [auth/](../backend/src/auth/) | Credentials/cookies → administrator/session identity; bootstrap and credential operations serialize changes through database locks |
 | [domain.rs](../backend/src/domain.rs) | Shared normalized health, severity, lifecycle, snapshots and semantic fingerprints; preserves upstream values separately |
 | [providers/](../backend/src/providers/) | Reviewed source configuration + fetch context → snapshot, unchanged metadata or typed ProviderError |
-| [polling/](../backend/src/polling/) | Due subscribed sources → reconciled observations, events and delivery rows; also heartbeat, freshness and cleanup work |
+| [polling/](../backend/src/polling/) | Due enabled sources → reconciled observations, events and delivery rows; also heartbeat, freshness and cleanup work |
 | [notifications/](../backend/src/notifications/) | Eligible delivery rows + encrypted channel configuration → outbound HTTP and persisted attempt outcome |
 | [logging.rs](../backend/src/logging.rs), [retry_after.rs](../backend/src/retry_after.rs) | Tracing setup and shared Retry-After parsing (seconds or HTTP date) |
 
@@ -258,7 +258,10 @@ service allowlist. Marketo discovers services whose registry environments includ
 Americas. A failed or empty inventory fails the poll instead of retiring components.
 Monitoring all components includes newly collected components automatically.
 Explicit component selections and component-specific alert rules do not expand.
-Only sources with enabled monitors are polled.
+All enabled catalog sources are polled before subscription, so users can select
+from discovered components when configuring coverage. Discovery still respects
+each source's collection scope and upstream availability; a new installation
+shows seed components until its first successful poll.
 
 Successful polls update component names and metadata by upstream ID and mark
 components missing from the scoped snapshot inactive immediately. Failed polls do
@@ -351,7 +354,10 @@ provider phase.
 
 ## Polling and reconciliation
 
-The worker polls due sources with enabled subscriptions. Leases coordinate claims,
+The worker polls all due enabled catalog sources, including unsubscribed providers.
+This refreshes component inventories, status and available incident history on the
+existing schedules. Subscriptions control dashboard coverage and alert eligibility;
+unsubscribing retains collection and history. Leases coordinate claims,
 concurrency limits bound work, and transient failures use backoff. Unchanged
 responses refresh source freshness without creating new observations.
 

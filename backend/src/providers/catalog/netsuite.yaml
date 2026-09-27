@@ -116,3 +116,141 @@ providers:
         name: US San Jose 2
         group: Application UI
         position: 24
+      - { upstream_id: "9g39k7trcbmc", name: "US Ashburn 1", group: "Asynchronous Services", position: 25 }
+      - { upstream_id: "ztsfl1nmgkrk", name: "US Ashburn 1", group: "Email", position: 26 }
+      - { upstream_id: "zxdb34wyrxxy", name: "US Ashburn 1", group: "SuiteAnalytics Connect", position: 27 }
+      - { upstream_id: "kh66j8zkpjxj", name: "US Ashburn 1", group: "SuiteAnswers", position: 28 }
+      - { upstream_id: "cnldqjfbyq9h", name: "US Ashburn 1", group: "SuiteCommerce", position: 29 }
+      - { upstream_id: "t9q65t39w0rc", name: "US Ashburn 1", group: "SuiteTalk", position: 30 }
+      - { upstream_id: "f8wf5n4hjfgf", name: "US Ashburn 2", group: "Asynchronous Services", position: 31 }
+      - { upstream_id: "zybt5cbbqgm8", name: "US Ashburn 2", group: "Email", position: 32 }
+      - { upstream_id: "149f4zdmf0cp", name: "US Ashburn 2", group: "SuiteAnalytics Connect", position: 33 }
+      - { upstream_id: "5vhhzxr745n4", name: "US Ashburn 2", group: "SuiteAnswers", position: 34 }
+      - { upstream_id: "kyd9v3f7bz6x", name: "US Ashburn 2", group: "SuiteCommerce", position: 35 }
+      - { upstream_id: "xjt96cxwsh17", name: "US Ashburn 2", group: "SuiteTalk", position: 36 }
+      - { upstream_id: "r2j8ckxj08cb", name: "US Ashburn 3", group: "Asynchronous Services", position: 37 }
+      - { upstream_id: "lv82gwcjfv33", name: "US Ashburn 3", group: "Email", position: 38 }
+      - { upstream_id: "jjx89hl75l0c", name: "US Ashburn 3", group: "SuiteAnalytics Connect", position: 39 }
+      - { upstream_id: "424pxg84kwp6", name: "US Ashburn 3", group: "SuiteAnswers", position: 40 }
+      - { upstream_id: "6c7w5xtb1lx8", name: "US Ashburn 3", group: "SuiteCommerce", position: 41 }
+      - { upstream_id: "tqh23qxgpc3c", name: "US Ashburn 3", group: "SuiteTalk", position: 42 }
+      - { upstream_id: "3zhxydk4tf4y", name: "US Ashburn 4", group: "Asynchronous Services", position: 43 }
+      - { upstream_id: "d7pxp6mhmh82", name: "US Ashburn 4", group: "Email", position: 44 }
+      - { upstream_id: "n3dbkn54qp7b", name: "US Ashburn 4", group: "SuiteAnalytics Connect", position: 45 }
+      - { upstream_id: "3d1wbyyb5r5b", name: "US Ashburn 4", group: "SuiteAnswers", position: 46 }
+      - { upstream_id: "95c0pv1kfjtr", name: "US Ashburn 4", group: "SuiteCommerce", position: 47 }
+      - { upstream_id: "7ztwc8f35267", name: "US Ashburn 4", group: "SuiteTalk", position: 48 }
+      - { upstream_id: "jlv9r6v52689", name: "US Ashburn 5", group: "Asynchronous Services", position: 49 }
+      - { upstream_id: "qb0pmkrddv1m", name: "US Ashburn 5", group: "Email", position: 50 }
+      - { upstream_id: "ngt7zf56fl03", name: "US Ashburn 5", group: "SuiteAnalytics Connect", position: 51 }
+      - { upstream_id: "x704t06rt5mj", name: "US Ashburn 5", group: "SuiteAnswers", position: 52 }
+      - { upstream_id: "0nvf683cqbp7", name: "US Ashburn 5", group: "SuiteCommerce", position: 53 }
+      - { upstream_id: "fwkxxddqpzh5", name: "US Ashburn 5", group: "SuiteTalk", position: 54 }
+      - { upstream_id: "cctzch9x04qp", name: "US Phoenix 1", group: "Asynchronous Services", position: 55 }
+      - { upstream_id: "bnk91pk7gs0m", name: "US Phoenix 1", group: "Email", position: 56 }
+      - { upstream_id: "bf2k4lyp7rjz", name: "US Phoenix 1", group: "SuiteAnalytics Connect", position: 57 }
+      - { upstream_id: "j7mkgl3pwbr1", name: "US Phoenix 1", group: "SuiteAnswers", position: 58 }
+      - { upstream_id: "trkfpllxt8k4", name: "US Phoenix 1", group: "SuiteCommerce", position: 59 }
+      - { upstream_id: "2f60hhpgd50l", name: "US Phoenix 1", group: "SuiteTalk", position: 60 }
+      - { upstream_id: "pc7jld30xhdv", name: "US Phoenix 2", group: "Asynchronous Services", position: 61 }
+      - { upstream_id: "n1d2tlls39jw", name: "US Phoenix 2", group: "Email", position: 62 }
+      - { upstream_id: "c8zffgl3fv6z", name: "US Phoenix 2", group: "SuiteAnalytics Connect", position: 63 }
+      - { upstream_id: "cld1tdvr4ky9", name: "US Phoenix 2", group: "SuiteAnswers", position: 64 }
+      - { upstream_id: "d77lf8kjp6kx", name: "US Phoenix 2", group: "SuiteCommerce", position: 65 }
+      - { upstream_id: "y5xfbhzsc80x", name: "US Phoenix 2", group: "SuiteTalk", position: 66 }
+      - { upstream_id: "z8mjwzykmsh0", name: "US Phoenix 3", group: "Asynchronous Services", position: 67 }
+      - { upstream_id: "09tcrpprw3jf", name: "US Phoenix 3", group: "Email", position: 68 }
+      - { upstream_id: "7zdbhkzl9mw2", name: "US Phoenix 3", group: "SuiteAnalytics Connect", position: 69 }
+      - { upstream_id: "tpcw2vmyngkk", name: "US Phoenix 3", group: "SuiteAnswers", position: 70 }
+      - { upstream_id: "qv1l50ckxhwd", name: "US Phoenix 3", group: "SuiteCommerce", position: 71 }
+      - { upstream_id: "f3qgf2s23w4q", name: "US Phoenix 3", group: "SuiteTalk", position: 72 }
+      - { upstream_id: "c773x9ygkqf5", name: "US Phoenix 4", group: "Asynchronous Services", position: 73 }
+      - { upstream_id: "nw9qzqzlv5fk", name: "US Phoenix 4", group: "Email", position: 74 }
+      - { upstream_id: "hvsn0w9xq38z", name: "US Phoenix 4", group: "SuiteAnalytics Connect", position: 75 }
+      - { upstream_id: "ss48sjtjkpkj", name: "US Phoenix 4", group: "SuiteAnswers", position: 76 }
+      - { upstream_id: "nt05p18kzt2g", name: "US Phoenix 4", group: "SuiteCommerce", position: 77 }
+      - { upstream_id: "102swvjk4056", name: "US Phoenix 4", group: "SuiteTalk", position: 78 }
+      - { upstream_id: "3hnjvn02649b", name: "US Phoenix 5", group: "Asynchronous Services", position: 79 }
+      - { upstream_id: "08f7cdp70jsy", name: "US Phoenix 5", group: "Email", position: 80 }
+      - { upstream_id: "md9x9p3dwtrm", name: "US Phoenix 5", group: "SuiteAnalytics Connect", position: 81 }
+      - { upstream_id: "vk8ndn30ps8z", name: "US Phoenix 5", group: "SuiteAnswers", position: 82 }
+      - { upstream_id: "w5ks8xfh67jm", name: "US Phoenix 5", group: "SuiteCommerce", position: 83 }
+      - { upstream_id: "9twtm6dn00m0", name: "US Phoenix 5", group: "SuiteTalk", position: 84 }
+      - { upstream_id: "fzs8tb4jlxlt", name: "US San Jose 1", group: "Asynchronous Services", position: 85 }
+      - { upstream_id: "sy6vjggjxjtl", name: "US San Jose 1", group: "Email", position: 86 }
+      - { upstream_id: "vc494dp7l2l1", name: "US San Jose 1", group: "SuiteAnalytics Connect", position: 87 }
+      - { upstream_id: "p8h72cj22gq2", name: "US San Jose 1", group: "SuiteAnswers", position: 88 }
+      - { upstream_id: "48srwpq8xj2s", name: "US San Jose 1", group: "SuiteCommerce", position: 89 }
+      - { upstream_id: "fh371j5hwvs0", name: "US San Jose 1", group: "SuiteTalk", position: 90 }
+      - { upstream_id: "b2j8s9mjb5nw", name: "US San Jose 2", group: "Asynchronous Services", position: 91 }
+      - { upstream_id: "6p1x4tsgvm8f", name: "US San Jose 2", group: "Email", position: 92 }
+      - { upstream_id: "pl231b0bs96g", name: "US San Jose 2", group: "SuiteAnalytics Connect", position: 93 }
+      - { upstream_id: "x1z7p7xsl18m", name: "US San Jose 2", group: "SuiteAnswers", position: 94 }
+      - { upstream_id: "nfwpl4gylnlv", name: "US San Jose 2", group: "SuiteCommerce", position: 95 }
+      - { upstream_id: "njh062rcvkwg", name: "US San Jose 2", group: "SuiteTalk", position: 96 }
+      - { upstream_id: "l1v51gsfx7p0", name: "US Ashburn 6", group: "Asynchronous Services", position: 97 }
+      - { upstream_id: "lstg8ln9gmts", name: "US Ashburn 6", group: "Email", position: 98 }
+      - { upstream_id: "jrpdq569vlp8", name: "US Ashburn 6", group: "SuiteAnalytics Connect", position: 99 }
+      - { upstream_id: "kc23shprmwmf", name: "US Ashburn 6", group: "SuiteAnswers", position: 100 }
+      - { upstream_id: "2v9tkd4lkjj9", name: "US Ashburn 6", group: "SuiteCommerce", position: 101 }
+      - { upstream_id: "d80rmkwwyt8t", name: "US Ashburn 6", group: "SuiteTalk", position: 102 }
+      - { upstream_id: "np8n2cnt9hy4", name: "US Phoenix 6", group: "Asynchronous Services", position: 103 }
+      - { upstream_id: "l3rh6h987553", name: "US Phoenix 6", group: "Email", position: 104 }
+      - { upstream_id: "p7tjqbbr81d4", name: "US Phoenix 6", group: "SuiteAnalytics Connect", position: 105 }
+      - { upstream_id: "lz65h9rpssjs", name: "US Phoenix 6", group: "SuiteAnswers", position: 106 }
+      - { upstream_id: "hy5kdwz7m668", name: "US Phoenix 6", group: "SuiteCommerce", position: 107 }
+      - { upstream_id: "4f8hfj2bcpdd", name: "US Phoenix 6", group: "SuiteTalk", position: 108 }
+      - { upstream_id: "b0svqm4xw74n", name: "US Ashburn 7", group: "Asynchronous Services", position: 109 }
+      - { upstream_id: "0mr9ltf066g5", name: "US Ashburn 7", group: "Email", position: 110 }
+      - { upstream_id: "r91t19wbr6bz", name: "US Ashburn 7", group: "SuiteAnalytics Connect", position: 111 }
+      - { upstream_id: "k66xpgm190pm", name: "US Ashburn 7", group: "SuiteAnswers", position: 112 }
+      - { upstream_id: "vhjq3rhkp8zp", name: "US Ashburn 7", group: "SuiteCommerce", position: 113 }
+      - { upstream_id: "rhff8zv19fwv", name: "US Ashburn 7", group: "SuiteTalk", position: 114 }
+      - { upstream_id: "92yqhdlbjjs0", name: "US Phoenix 7", group: "Asynchronous Services", position: 115 }
+      - { upstream_id: "32vbqsh41ry3", name: "US Phoenix 7", group: "Email", position: 116 }
+      - { upstream_id: "r8c78gh5krl7", name: "US Phoenix 7", group: "SuiteAnalytics Connect", position: 117 }
+      - { upstream_id: "jcynp0xlhhhv", name: "US Phoenix 7", group: "SuiteAnswers", position: 118 }
+      - { upstream_id: "qzv7d62sdscx", name: "US Phoenix 7", group: "SuiteCommerce", position: 119 }
+      - { upstream_id: "27x84xc76tf5", name: "US Phoenix 7", group: "SuiteTalk", position: 120 }
+      - { upstream_id: "30sl7xrd8nk7", name: "US Ashburn 8", group: "Asynchronous Services", position: 121 }
+      - { upstream_id: "8bnpcxzlwjnw", name: "US Ashburn 8", group: "Email", position: 122 }
+      - { upstream_id: "fw3jzkb9x85n", name: "US Ashburn 8", group: "SuiteAnalytics Connect", position: 123 }
+      - { upstream_id: "59v3vlck8pzm", name: "US Ashburn 8", group: "SuiteAnswers", position: 124 }
+      - { upstream_id: "v20l812f1dj1", name: "US Ashburn 8", group: "SuiteCommerce", position: 125 }
+      - { upstream_id: "32ks36rv3v8z", name: "US Ashburn 8", group: "SuiteTalk", position: 126 }
+      - { upstream_id: "dzxpckv32jb4", name: "US Phoenix 8", group: "Asynchronous Services", position: 127 }
+      - { upstream_id: "mssmdnww2n46", name: "US Phoenix 8", group: "Email", position: 128 }
+      - { upstream_id: "q4txqyrvkj20", name: "US Phoenix 8", group: "SuiteAnalytics Connect", position: 129 }
+      - { upstream_id: "l20w6lkkvlpt", name: "US Phoenix 8", group: "SuiteAnswers", position: 130 }
+      - { upstream_id: "44ph2127k229", name: "US Phoenix 8", group: "SuiteCommerce", position: 131 }
+      - { upstream_id: "76558fqbswk7", name: "US Phoenix 8", group: "SuiteTalk", position: 132 }
+      - { upstream_id: "lkyy0lg9vlwh", name: "US Chicago 1", group: "SuiteAnalytics Connect", position: 133 }
+      - { upstream_id: "c6tfcgttmvtr", name: "US Chicago 1", group: "SuiteAnswers", position: 134 }
+      - { upstream_id: "kl8rxn8dry9p", name: "US Chicago 1", group: "SuiteTalk", position: 135 }
+      - { upstream_id: "p7gb6sbwnsn9", name: "US Chicago 1", group: "SuiteCommerce", position: 136 }
+      - { upstream_id: "ww4zwbkclft1", name: "US Chicago 1", group: "Email", position: 137 }
+      - { upstream_id: "l0fxt1xkfb22", name: "US Chicago 1", group: "Asynchronous Services", position: 138 }
+      - { upstream_id: "5stbnzzwf2d3", name: "US Chicago 2", group: "SuiteTalk", position: 139 }
+      - { upstream_id: "hzcgrfp6gznf", name: "US Chicago 2", group: "SuiteCommerce", position: 140 }
+      - { upstream_id: "cvwmy0v2p9lh", name: "US Chicago 2", group: "SuiteAnalytics Connect", position: 141 }
+      - { upstream_id: "sgklkljc8kfg", name: "US Chicago 2", group: "SuiteAnswers", position: 142 }
+      - { upstream_id: "s9dqkldvxsln", name: "US Chicago 3", group: "SuiteCommerce", position: 143 }
+      - { upstream_id: "yf4kr0wsw4w2", name: "US Chicago 3", group: "SuiteTalk", position: 144 }
+      - { upstream_id: "mf5cx6yqt9bz", name: "US Chicago 3", group: "SuiteAnswers", position: 145 }
+      - { upstream_id: "2wty0q011r76", name: "US Chicago 3", group: "SuiteAnalytics Connect", position: 146 }
+      - { upstream_id: "flczf3vdb7z0", name: "US Chicago 2", group: "Asynchronous Services", position: 147 }
+      - { upstream_id: "6p20m2ky28nd", name: "US Chicago 2", group: "Email", position: 148 }
+      - { upstream_id: "c3cr984t8z4m", name: "US Chicago 4", group: "SuiteAnalytics Connect", position: 149 }
+      - { upstream_id: "7bjm3tkghctq", name: "US Chicago 4", group: "SuiteTalk", position: 150 }
+      - { upstream_id: "qrd1r4str695", name: "US Chicago 4", group: "SuiteCommerce", position: 151 }
+      - { upstream_id: "wq572lgjbznp", name: "US Chicago 4", group: "SuiteAnswers", position: 152 }
+      - { upstream_id: "pzzcrk55xz8b", name: "US Chicago 3", group: "Email", position: 153 }
+      - { upstream_id: "dj9wjy8gbnd5", name: "US Chicago 3", group: "Asynchronous Services", position: 154 }
+      - { upstream_id: "5bc7xd8kbjrz", name: "US Chicago 5", group: "SuiteCommerce", position: 155 }
+      - { upstream_id: "s4q0nq81h2kg", name: "US Chicago 5", group: "SuiteAnalytics Connect", position: 156 }
+      - { upstream_id: "rxbwlyrpwkxj", name: "US Chicago 5", group: "SuiteAnswers", position: 157 }
+      - { upstream_id: "p2xv5n8mlkjr", name: "US Chicago 5", group: "SuiteTalk", position: 158 }
+      - { upstream_id: "56q4lbj8pv4z", name: "US Chicago 4", group: "Email", position: 159 }
+      - { upstream_id: "kq2xwg93sglj", name: "US Chicago 4", group: "Asynchronous Services", position: 160 }
+      - { upstream_id: "0jflmk540hqz", name: "US Chicago 5", group: "Asynchronous Services", position: 161 }
+      - { upstream_id: "rf9jfs2fhqh2", name: "US Chicago 5", group: "Email", position: 162 }

@@ -80,6 +80,12 @@ export interface CatalogProvider {
   active: boolean;
 }
 
+export interface CatalogEntry extends CatalogProvider {
+  selected_component_count: number;
+  selected_service_count: number;
+  selected_group_count: number;
+}
+
 export interface Component {
   id: string;
   upstream_id: string;

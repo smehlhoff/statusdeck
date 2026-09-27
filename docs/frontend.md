@@ -18,7 +18,7 @@ with reusable presentation in [components/](../frontend/src/components/).
 | --- | --- | --- |
 | `/login` | [Login](../frontend/src/features/auth/Login.tsx) | CSRF bootstrap and session creation; unauthenticated requests to other paths also show this screen |
 | `/` | [Dashboard](../frontend/src/features/dashboard/Dashboard.tsx) | `/dashboard`; monitored health, filters, pins and rotating authenticated wallboard |
-| `/catalog`, `/catalog/:id` | [Catalog](../frontend/src/features/catalog/Catalog.tsx), [ProviderDetail](../frontend/src/features/catalog/ProviderDetail.tsx), [ReliabilityHistory](../frontend/src/features/catalog/ReliabilityHistory.tsx) | `/catalog/providers`, `/monitors`, provider detail/reliability; discovery and component selection |
+| `/catalog`, `/catalog/:id`, `/catalog/:id/coverage` | [Catalog](../frontend/src/features/catalog/Catalog.tsx), [ProviderDetail](../frontend/src/features/catalog/ProviderDetail.tsx), [ReliabilityHistory](../frontend/src/features/catalog/ReliabilityHistory.tsx) | `/catalog/providers`, `/monitors`, provider detail/reliability; discovery and component selection |
 | `/incidents`, `/incidents/:id` | [Incidents](../frontend/src/features/incidents/Incidents.tsx), [IncidentDetail](../frontend/src/features/incidents/IncidentDetail.tsx), [IncidentComments](../frontend/src/features/incidents/IncidentComments.tsx) | Incident feed/detail and comments; provider evidence, maintenance and internal notes |
 | `/bookmarks`, `/my-comments` | [Bookmarks](../frontend/src/features/incidents/Bookmarks.tsx), [MyComments](../frontend/src/features/incidents/MyComments.tsx), [PersonalIncidentFilters](../frontend/src/features/incidents/PersonalIncidentFilters.tsx) | `/bookmarks`, `/my-comments`; paginated account records and URL filters |
 | `/analytics` | [Analytics](../frontend/src/features/analytics/Analytics.tsx) | `/analytics`; period/scope/maintenance filters and impact statistics |
@@ -64,7 +64,9 @@ the client has no independent request timeout. Default queries stay fresh for
 Account preferences are stored on the server. Pins, the initial theme cache and
 the incident advanced-filter expansion preference are local to the browser.
 Shareable incident, bookmark, personal-comment and analytics filters live in the
-URL; unsaved forms and catalog filters use component state.
+URL; unsaved forms and catalog filters use component state. The authenticated
+shell retains catalog filters, loaded rows and scroll position when opening
+coverage, so returning to Providers restores the previous view within the session.
 
 [usePinnedProviders](../frontend/src/hooks/usePinnedProviders.ts) stores per-user
 provider IDs and listens for storage changes in other tabs.
@@ -99,8 +101,23 @@ records, initial load failure and failed background refresh have distinct states
 
 ## Monitoring and reliability
 
-Subscriptions select whole providers or specific components. Provider-wide
-status, selected coverage and feed freshness remain distinct so a healthy
+Subscriptions select whole providers or specific components. The dedicated
+[coverage editor](../frontend/src/features/catalog/Coverage.tsx) searches service
+names, region/group labels and upstream IDs, and groups equal service names while
+preserving individual component IDs. Search and filters never change selections;
+bulk actions affect only matching components. Global groups remain explicitly
+selectable. Previously selected inactive components remain available for review
+and removal. An explicit selection requires at least one component and does not
+automatically include future components; all-components coverage does.
+
+The catalog list includes selected component, distinct service and distinct group
+counts for enabled, explicit selections, including inactive selected components.
+It does not load each provider's component inventory to show coverage summaries.
+Saving refreshes monitoring caches and returns to Providers. Failed saves retain
+the draft. Unsaved coverage blocks route changes and browser unload; drafts are
+not persisted across reloads.
+
+Provider-wide status, selected coverage and feed freshness remain distinct so a healthy
 selection does not hide broader provider trouble or stale information.
 
 Bulk subscription actions apply to the full catalog, independent of visible
@@ -112,7 +129,7 @@ consumes the provider-detail component array; it performs no network requests or
 subscription mutations. It groups equal service names while preserving individual
 component IDs and region/group labels. Search and selected/affected filters operate
 on the supplied inventory. Inactive components remain identifiable as no longer
-reported; components without observations remain unknown. The catalog's monitor controls and
+reported; components without observations remain unknown. The coverage editor and
 the alert-rule component picker own their respective selections.
 
 Reliability and Analytics describe provider-reported history, not measured uptime.

@@ -1871,55 +1871,29 @@ h2 {
   gap: 0.5rem;
 }
 
-.component-picker {
+.catalog-coverage-summary {
   display: grid;
+  gap: 0.25rem;
   margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  gap: 0.55rem;
-}
-
-.component-picker-heading > div {
-  display: flex;
-  flex-direction: column;
-}
-
-.component-picker-heading span {
-  font-size: 0.75rem;
-  font-weight: 450;
-}
-
-.coverage-mode {
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  font-weight: 650;
-}
-
-.coverage-mode select {
-  display: block;
-  width: 100%;
-  min-height: 38px;
-  margin-top: 0.35rem;
-  padding: 0.45rem 0.65rem;
-}
-
-.component-options {
-  display: grid;
-  overflow-y: auto;
-  max-height: 280px;
-  padding: 0.25rem;
+  padding: 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 9px;
-  gap: 0.2rem;
-}
-
-.component-option {
-  padding: 0.45rem;
-  border-radius: 6px;
-}
-
-.component-option:hover {
+  border-radius: 8px;
   background: var(--surface-subtle);
+  font-size: 0.78rem;
+}
+
+.catalog-card.coverage-selected {
+  border-color: var(--accent-border);
+}
+
+.coverage-selected .catalog-coverage-summary {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+}
+
+.catalog-coverage-summary span {
+  color: var(--muted);
+  font-size: 0.7rem;
 }
 
 .check {

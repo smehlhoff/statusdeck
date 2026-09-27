@@ -25,6 +25,9 @@ pub(super) struct CatalogProviderRow {
     tags: Vec<String>,
     official_url: String,
     active: bool,
+    selected_component_count: i64,
+    selected_service_count: i64,
+    selected_group_count: i64,
 }
 
 #[derive(Debug, FromRow)]
@@ -53,7 +56,23 @@ pub(super) async fn catalog_providers(
 ) -> Result<Json<Vec<CatalogProviderRow>>, ApiError> {
     let _ = authenticated_user(&state, &headers).await?;
     let rows = sqlx::query_as::<_, CatalogProviderRow>(
-        "SELECT id, slug, name, description, tags, official_url, active FROM providers WHERE active ORDER BY name",
+        r#"
+        SELECT p.id, p.slug, p.name, p.description, p.tags, p.official_url, p.active,
+               coverage.selected_component_count, coverage.selected_service_count,
+               coverage.selected_group_count
+        FROM providers p
+        CROSS JOIN LATERAL (
+            SELECT count(*) AS selected_component_count,
+                   count(DISTINCT c.name) AS selected_service_count,
+                   count(DISTINCT c.group_name) AS selected_group_count
+            FROM monitored_providers m
+            JOIN monitored_components selected ON selected.monitored_provider_id = m.id
+            JOIN components c ON c.id = selected.component_id
+            WHERE m.provider_id = p.id AND m.enabled AND NOT m.monitor_all_components
+        ) coverage
+        WHERE p.active
+        ORDER BY p.name
+        "#,
     )
     .fetch_all(&state.database.pool)
     .await
