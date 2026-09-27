@@ -136,6 +136,10 @@ pub(super) async fn cleanup_raw_payloads(pool: &PgPool, retention_days: u32) -> 
 }
 
 pub(super) async fn cleanup_expired_sessions(pool: &PgPool) -> Result<()> {
+    sqlx::query("DELETE FROM oidc_login_attempts WHERE state_hash IN (SELECT state_hash FROM oidc_login_attempts WHERE expires_at <= now() LIMIT 1000)")
+        .execute(pool).await?;
+    sqlx::query("DELETE FROM oidc_logout_events WHERE (issuer,jti) IN (SELECT issuer,jti FROM oidc_logout_events WHERE expires_at <= now() LIMIT 1000)")
+        .execute(pool).await?;
     sqlx::query("DELETE FROM sessions WHERE id IN (SELECT id FROM sessions WHERE expires_at <= now() OR last_seen_at <= now() - interval '7 days' ORDER BY expires_at LIMIT 1000)")
         .execute(pool)
         .await?;

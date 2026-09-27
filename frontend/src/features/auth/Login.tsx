@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import type { FormEvent } from "react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -9,8 +10,42 @@ export function Login({ onLogin }: { onLogin: (user: User) => Promise<void> }) {
   const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(
+    new URLSearchParams(location.search).has("oidc")
+      ? "Single sign-on failed or expired. Try again, or use email and password."
+      : "",
+  );
   const [busy, setBusy] = useState(false);
+
+  const methods = useQuery({
+    queryKey: ["auth-methods"],
+    queryFn: () =>
+      api<{ oidc: { enabled: boolean; available: boolean; label: string } }>(
+        "/api/v1/auth/methods",
+      ),
+    retry: false,
+    staleTime: 0,
+  });
+
+  async function signInWithSso() {
+    setBusy(true);
+    setError("");
+    try {
+      await ensureCsrf();
+      const result = await api<{ authorization_url: string }>(
+        "/api/v1/auth/oidc/start",
+        { method: "POST" },
+      );
+      window.location.assign(result.authorization_url);
+    } catch (error) {
+      setError(
+        error instanceof ApiFailure
+          ? error.message
+          : "Single sign-on is unavailable. Use email and password.",
+      );
+      setBusy(false);
+    }
+  }
 
   async function submit(event: FormEvent) {
     event.preventDefault();
@@ -49,6 +84,26 @@ export function Login({ onLogin }: { onLogin: (user: User) => Promise<void> }) {
           <div className="alert error" role="alert">
             {error}
           </div>
+        )}
+        {methods.data?.oidc.enabled && (
+          <>
+            {methods.data.oidc.available ? (
+              <button
+                type="button"
+                className="button primary wide"
+                disabled={busy}
+                onClick={() => void signInWithSso()}
+              >
+                Sign in with {methods.data.oidc.label}
+              </button>
+            ) : (
+              <p role="status">
+                Single sign-on is unavailable or has not been linked. Use email
+                and password.
+              </p>
+            )}
+            <hr className="login-divider" />
+          </>
         )}
         <label>
           Email

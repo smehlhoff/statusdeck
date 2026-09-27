@@ -17,6 +17,7 @@ import { formatDateTime } from "../../utils/display";
 import { useProfile } from "./profileContext";
 import { Appearance } from "./Appearance";
 import { SecurityActivity } from "./SecurityActivity";
+import { SingleSignOn } from "./SingleSignOn";
 import { TimeZoneSelect } from "./TimeZoneSelect";
 
 function message(error: unknown): string {
@@ -54,6 +55,7 @@ const PROFILE_SECTIONS = [
   ["appearance", "Appearance"],
   ["email", "Login email"],
   ["password", "Password"],
+  ["sso", "Single sign-on"],
   ["security", "Security activity"],
   ["sessions", "Session history"],
 ] as const;
@@ -251,6 +253,7 @@ export function Profile() {
           ))}
         </nav>
         <div className="profile-content">
+          {section === "sso" && <SingleSignOn />}
           {section === "identity" && (
             <section
               className="card profile-section"
@@ -673,7 +676,10 @@ export function Profile() {
                                 {session.ip_address ?? "IP unavailable"}
                               </strong>
                               <p className="muted">
-                                {deviceName(session.user_agent)}
+                                {deviceName(session.user_agent)} ·{" "}
+                                {session.authentication_method === "oidc"
+                                  ? "SSO"
+                                  : "Local"}
                               </p>
                             </div>
                           </td>

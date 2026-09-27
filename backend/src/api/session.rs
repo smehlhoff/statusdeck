@@ -105,15 +105,7 @@ pub(super) async fn session_create(
         ));
     };
     clear_login_attempts(&state, &headers, &email).await;
-    let ip_address = if state.config.trust_proxy {
-        headers
-            .get("x-forwarded-for")
-            .and_then(|value| value.to_str().ok())
-            .and_then(|value| value.split(',').next())
-            .and_then(|value| value.trim().parse::<IpAddr>().ok())
-    } else {
-        Some(peer.ip())
-    };
+    let ip_address = client_ip(&state, &headers, peer);
     let token = auth::create_session(
         &state.database.pool,
         &user,
@@ -125,8 +117,9 @@ pub(super) async fn session_create(
     )
     .await
     .map_err(ApiError::internal)?;
-    sqlx::query("INSERT INTO audit_log (actor_user_id, action, entity_type, entity_id) VALUES ($1, 'session.login_succeeded', 'session', $1)")
+    sqlx::query("INSERT INTO audit_log (actor_user_id, action, entity_type, entity_id, metadata) VALUES ($1, 'session.login_succeeded', 'session', $1, $2)")
         .bind(user.id)
+        .bind(json!({"method":"local", "correlation_id":super::request::correlation_id()}))
         .execute(&state.database.pool)
         .await
         .map_err(ApiError::internal)?;
@@ -239,4 +232,16 @@ pub(super) async fn session_delete(
         )],
     )
         .into_response())
+}
+
+pub(super) fn client_ip(state: &AppState, headers: &HeaderMap, peer: SocketAddr) -> Option<IpAddr> {
+    if state.config.trust_proxy {
+        headers
+            .get("x-forwarded-for")
+            .and_then(|value| value.to_str().ok())
+            .and_then(|value| value.split(',').next())
+            .and_then(|value| value.trim().parse::<IpAddr>().ok())
+    } else {
+        Some(peer.ip())
+    }
 }

@@ -53,6 +53,7 @@ export interface DisplayPreferences {
 }
 
 export interface ProfileSession {
+  authentication_method: "local" | "oidc";
   id: string;
   created_at: string;
   last_seen_at: string;

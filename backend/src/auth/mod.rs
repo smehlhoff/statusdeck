@@ -1,4 +1,5 @@
 pub mod bootstrap;
+pub(crate) mod oidc;
 
 use argon2::{Argon2, PasswordHash, PasswordHasher, PasswordVerifier};
 use axum::http::{HeaderMap, header};
@@ -132,6 +133,9 @@ pub async fn lookup_session(
         "UPDATE sessions s SET last_seen_at = now() FROM users u
          WHERE u.id = s.user_id AND s.token_hash = $1 AND s.expires_at > now()
            AND s.last_seen_at > now() - interval '7 days' AND u.enabled
+           AND (s.authentication_method = 'local' OR EXISTS (
+               SELECT 1 FROM oidc_identities i JOIN oidc_configuration c ON c.singleton
+               WHERE i.id = s.oidc_identity_id AND NOT i.needs_relink AND i.configuration_key = c.identity_key))
          RETURNING u.id, u.email, u.role, s.id, u.credential_version",
     )
     .bind(hash_token(token, key)?)
@@ -227,7 +231,7 @@ pub(crate) fn random_token() -> String {
     URL_SAFE_NO_PAD.encode(bytes)
 }
 
-fn hash_token(token: &str, key: &[u8]) -> anyhow::Result<Vec<u8>> {
+pub(crate) fn hash_token(token: &str, key: &[u8]) -> anyhow::Result<Vec<u8>> {
     let mut mac = HmacSha256::new_from_slice(key)
         .map_err(|_| anyhow::anyhow!("session key could not initialize HMAC"))?;
     mac.update(token.as_bytes());

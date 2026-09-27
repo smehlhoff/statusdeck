@@ -206,11 +206,11 @@ pub fn normalize_email(value: &str) -> Result<String> {
     Ok(normalized)
 }
 
-fn optional(name: &str) -> Option<String> {
+pub(crate) fn optional(name: &str) -> Option<String> {
     env::var(name).ok().filter(|value| !value.is_empty())
 }
 
-fn secret(value_name: &str, file_name: &str) -> Result<Secret> {
+pub(crate) fn secret(value_name: &str, file_name: &str) -> Result<Secret> {
     optional_secret(value_name, file_name)?
         .with_context(|| format!("{value_name} or {file_name} is required"))
 }

@@ -121,7 +121,10 @@ pub(super) struct ProfilePatch {
 }
 
 // Profile/security mutations serialize on the user and recheck the session after locking.
-async fn lock_user(tx: &mut Transaction<'_, Postgres>, user: &User) -> Result<Uuid, ApiError> {
+pub(super) async fn lock_user(
+    tx: &mut Transaction<'_, Postgres>,
+    user: &User,
+) -> Result<Uuid, ApiError> {
     sqlx::query_scalar::<_, Uuid>("SELECT id FROM users WHERE id = $1 AND enabled FOR UPDATE")
         .bind(user.id)
         .fetch_optional(&mut **tx)
@@ -243,7 +246,7 @@ pub(super) struct PasswordRequest {
     new_password: String,
 }
 
-async fn verify_credentials(
+pub(super) async fn verify_credentials(
     state: &AppState,
     headers: &HeaderMap,
     user: &User,
@@ -320,7 +323,7 @@ async fn change_credentials(
     } else {
         "profile.email_changed"
     };
-    let row = sqlx::query_as::<_, ProfileRow>("UPDATE users SET email = COALESCE($2, email), password_hash = COALESCE($3, password_hash), credential_version = credential_version + 1, updated_at = now() WHERE id = $1 AND credential_version = $4 RETURNING id, email, role, display_name, preferences")
+    let row = sqlx::query_as::<_, ProfileRow>("UPDATE users SET email = COALESCE($2, email), password_hash = COALESCE($3, password_hash), credential_version = credential_version + 1, oidc_generation = oidc_generation + 1, updated_at = now() WHERE id = $1 AND credential_version = $4 RETURNING id, email, role, display_name, preferences")
         .bind(user.id).bind(email).bind(password_hash).bind(version).fetch_optional(&mut *tx).await
         .map_err(|error| {
             if error.as_database_error().is_some_and(|error| error.is_unique_violation()) {
@@ -396,7 +399,8 @@ pub(super) async fn security_activity(
          WHERE actor_user_id = $1 AND action IN (
              'session.login_succeeded', 'session.login_failed', 'session.logout',
              'profile.password_changed', 'profile.email_changed',
-             'profile.session_revoked', 'profile.other_sessions_revoked'
+             'profile.session_revoked', 'profile.other_sessions_revoked',
+             'oidc.login_succeeded', 'oidc.login_denied', 'oidc.linked', 'oidc.disconnected', 'oidc.provider_revoked', 'oidc.settings_updated'
          ) ORDER BY created_at DESC, id DESC LIMIT 100",
     )
     .bind(user.id)
@@ -417,6 +421,7 @@ pub(super) struct SessionRow {
     status: String,
     ended_at: Option<DateTime<Utc>>,
     current: bool,
+    authentication_method: String,
 }
 
 pub(super) async fn sessions(
@@ -426,7 +431,7 @@ pub(super) async fn sessions(
     let user = authenticated_user(&state, &headers).await?;
     let rows = sqlx::query_as::<_, SessionRow>(r#"
         SELECT * FROM (
-            SELECT id, created_at, last_seen_at, expires_at, user_agent,
+            SELECT id, created_at, last_seen_at, expires_at, user_agent, authentication_method,
                 host(ip_address) AS ip_address, id = $2 AS current,
                 CASE WHEN expires_at > now() AND last_seen_at > now() - interval '7 days'
                     THEN 'active' ELSE 'expired' END AS status,
@@ -434,7 +439,7 @@ pub(super) async fn sessions(
                     THEN LEAST(expires_at, last_seen_at + interval '7 days') END AS ended_at
             FROM sessions WHERE user_id = $1
             UNION ALL
-            SELECT id, created_at, last_seen_at, expires_at, user_agent,
+            SELECT id, created_at, last_seen_at, expires_at, user_agent, authentication_method,
                 host(ip_address) AS ip_address, false AS current, status, ended_at
             FROM session_history WHERE user_id = $1 AND ended_at > now() - interval '90 days'
         ) history ORDER BY current DESC, (status = 'active') DESC, last_seen_at DESC, id DESC LIMIT 120
@@ -472,6 +477,7 @@ pub(super) async fn session_revoke(
     if result.rows_affected() == 0 {
         return Err(ApiError::not_found("session not found"));
     }
+    invalidate_oidc_attempts(&mut tx, user.id).await?;
     audit(&mut tx, user.id, "profile.session_revoked", id).await?;
     tx.commit().await.map_err(ApiError::internal)?;
     Ok(StatusCode::NO_CONTENT)
@@ -496,6 +502,7 @@ pub(super) async fn sessions_revoke_others(
         .execute(&mut *tx)
         .await
         .map_err(ApiError::internal)?;
+    invalidate_oidc_attempts(&mut tx, user.id).await?;
     audit(&mut tx, user.id, "profile.other_sessions_revoked", user.id).await?;
     tx.commit().await.map_err(ApiError::internal)?;
     Ok(StatusCode::NO_CONTENT)
@@ -509,5 +516,17 @@ async fn audit(
 ) -> Result<(), ApiError> {
     sqlx::query("INSERT INTO audit_log (actor_user_id, action, entity_type, entity_id) VALUES ($1, $2, CASE WHEN $2 = 'profile.session_revoked' THEN 'session' ELSE 'user' END, $3)")
         .bind(user_id).bind(action).bind(entity_id).execute(&mut **tx).await.map_err(ApiError::internal)?;
+    Ok(())
+}
+
+async fn invalidate_oidc_attempts(
+    tx: &mut Transaction<'_, Postgres>,
+    user_id: Uuid,
+) -> Result<(), ApiError> {
+    sqlx::query("UPDATE users SET oidc_generation = oidc_generation + 1 WHERE id = $1")
+        .bind(user_id)
+        .execute(&mut **tx)
+        .await
+        .map_err(ApiError::internal)?;
     Ok(())
 }
