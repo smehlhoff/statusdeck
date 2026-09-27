@@ -357,7 +357,9 @@ provider phase.
 The worker polls all due enabled catalog sources, including unsubscribed providers.
 This refreshes component inventories, status and available incident history on the
 existing schedules. Subscriptions control dashboard coverage and alert eligibility;
-unsubscribing retains collection and history. Leases coordinate claims,
+unsubscribing retains collection and history. Subscribing schedules a background
+refresh without waiting for a source already locked by polling; that poll or the
+next scheduled poll supplies fresh data. Leases coordinate claims,
 concurrency limits bound work, and transient failures use backoff. Unchanged
 responses refresh source freshness without creating new observations.
 

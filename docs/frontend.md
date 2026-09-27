@@ -121,7 +121,9 @@ Provider-wide status, selected coverage and feed freshness remain distinct so a 
 selection does not hide broader provider trouble or stale information.
 
 Bulk subscription actions apply to the full catalog, independent of visible
-filters. They report partial failures rather than acting as one transaction.
+filters. Cards update optimistically while subscriptions save; failed saves revert
+to their stored state. Bulk actions report partial failures rather than acting as
+one transaction. Provider fetching runs in the background.
 Removing a subscription preserves collected history, comments and bookmarks.
 
 [ProviderComponents](../frontend/src/features/catalog/ProviderComponents.tsx)

@@ -69,6 +69,29 @@ fn validate_component_selection(
     Ok(())
 }
 
+async fn schedule_provider_refresh(
+    tx: &mut sqlx::Transaction<'_, sqlx::Postgres>,
+    provider_id: Uuid,
+) -> Result<(), ApiError> {
+    // An active poll already refreshes coverage; never wait for its reconciliation lock.
+    sqlx::query(
+        r#"
+        UPDATE provider_sources SET next_poll_at = now()
+        WHERE id IN (
+            SELECT source.id FROM provider_sources source
+            JOIN providers provider ON provider.provider_source_id = source.id
+            WHERE provider.id = $1
+            FOR NO KEY UPDATE OF source SKIP LOCKED
+        )
+        "#,
+    )
+    .bind(provider_id)
+    .execute(&mut **tx)
+    .await
+    .map_err(ApiError::internal)?;
+    Ok(())
+}
+
 pub(super) async fn monitor_create(
     headers: HeaderMap,
     State(state): State<AppState>,
@@ -119,7 +142,7 @@ pub(super) async fn monitor_create(
     for component_id in input.component_ids {
         sqlx::query("INSERT INTO monitored_components (monitored_provider_id, provider_id, component_id) VALUES ($1, $2, $3)").bind(row.id).bind(input.provider_id).bind(component_id).execute(&mut *transaction).await.map_err(ApiError::internal)?;
     }
-    sqlx::query("UPDATE provider_sources SET next_poll_at = now() WHERE id = (SELECT provider_source_id FROM providers WHERE id = $1)").bind(input.provider_id).execute(&mut *transaction).await.map_err(ApiError::internal)?;
+    schedule_provider_refresh(&mut transaction, input.provider_id).await?;
     sqlx::query("INSERT INTO audit_log (actor_user_id, action, entity_type, entity_id, metadata) VALUES ($1, 'monitor.created', 'monitor', $2, $3)").bind(user.id).bind(row.id).bind(json!({"provider_id": input.provider_id})).execute(&mut *transaction).await.map_err(ApiError::internal)?;
     fanout_active_incidents_for_provider(&mut transaction, input.provider_id, None).await?;
     transaction.commit().await.map_err(ApiError::internal)?;
@@ -209,11 +232,7 @@ pub(super) async fn monitor_update(
         }
     }
     if enabled && !current.enabled {
-        sqlx::query("UPDATE provider_sources SET next_poll_at = now() WHERE id = (SELECT provider_source_id FROM providers WHERE id = $1)")
-            .bind(current.provider_id)
-            .execute(&mut *tx)
-            .await
-            .map_err(ApiError::internal)?;
+        schedule_provider_refresh(&mut tx, current.provider_id).await?;
     }
     if enabled {
         fanout_active_incidents_for_provider(&mut tx, current.provider_id, None).await?;

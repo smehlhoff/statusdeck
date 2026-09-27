@@ -112,7 +112,8 @@ reconciles the compiled catalog. Migrations run explicitly before application
 startup. Existing credentials and subscriptions survive restarts.
 
 Catalog reconciliation schedules enabled sources for collection, even without
-subscriptions. Subscribing requests an immediate refresh. Current status and hourly history
+subscriptions. Subscribing requests a background refresh without waiting for an
+active poll. Current status and hourly history
 refreshes use independent schedules and retry state, while a shared source lease
 serializes reconciliation. The worker reconciles observations, incidents and
 matching alert work in a database transaction. Semantic deduplication suppresses

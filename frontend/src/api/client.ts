@@ -64,7 +64,13 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
     throw new ApiFailure(
       response.status,
       errorField(payload, "code", "request_failed"),
-      errorField(payload, "detail", "Request failed"),
+      errorField(
+        payload,
+        "detail",
+        response.status === 408 || response.status === 504
+          ? "The request timed out. Please try again."
+          : `Request failed (${response.status}).`,
+      ),
     );
   return payload as T;
 }

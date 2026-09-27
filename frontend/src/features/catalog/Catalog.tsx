@@ -101,16 +101,20 @@ export function Catalog({
 
   const subscribeAll = useMutation({
     mutationFn: () =>
-      runBulkMonitorAction(unsubscribedProviders, (provider) =>
-        api<Monitor>("/api/v1/monitors", {
+      runBulkMonitorAction(unsubscribedProviders, async (provider) => {
+        const saved = await api<Monitor>("/api/v1/monitors", {
           method: "POST",
           body: JSON.stringify({
             provider_id: provider.id,
             monitor_all_components: true,
             component_ids: [],
           }),
-        }),
-      ),
+        });
+        queryClient.setQueryData<Monitor[]>(queryKeys.monitors, (current) => [
+          ...(current ?? []).filter((monitor) => monitor.id !== saved.id),
+          saved,
+        ]);
+      }),
     onMutate: () => setBulkStatus(undefined),
     onSuccess: (result) => {
       notify(
@@ -127,11 +131,16 @@ export function Catalog({
 
   const unsubscribeAll = useMutation({
     mutationFn: () =>
-      runBulkMonitorAction(enabledMonitors, (monitor) =>
-        api<void>(`/api/v1/monitors/${monitor.id}`, {
+      runBulkMonitorAction(enabledMonitors, async (monitor) => {
+        await api<void>(`/api/v1/monitors/${monitor.id}`, {
           method: "DELETE",
-        }),
-      ),
+        });
+        queryClient.setQueryData<Monitor[]>(queryKeys.monitors, (current) =>
+          current?.map((item) =>
+            item.id === monitor.id ? { ...item, enabled: false } : item,
+          ),
+        );
+      }),
     onMutate: () => setBulkStatus(undefined),
     onSuccess: (result) => {
       notify(
@@ -151,6 +160,10 @@ export function Catalog({
     void invalidateMonitoringState(queryClient);
   }
 
+  let bulkAction: "subscribe" | "unsubscribe" | undefined;
+  if (subscribeAll.isPending) bulkAction = "subscribe";
+  else if (unsubscribeAll.isPending) bulkAction = "unsubscribe";
+
   const normalizedSearch = search.toLowerCase();
   const filteredProviders =
     providers.data?.filter((provider) => {
@@ -159,7 +172,9 @@ export function Catalog({
         .toLowerCase();
       return (
         searchable.includes(normalizedSearch) &&
-        (!subscribedOnly || enabledProviderIds.has(provider.id)) &&
+        (!subscribedOnly ||
+          subscribeAll.isPending ||
+          (!unsubscribeAll.isPending && enabledProviderIds.has(provider.id))) &&
         selectedTags.every((tag) => provider.tags.includes(tag))
       );
     }) ?? [];
@@ -281,6 +296,7 @@ export function Catalog({
             <CatalogCard
               key={provider.id}
               provider={provider}
+              bulkAction={bulkAction}
               onConfigure={() =>
                 onRemember({
                   search,
@@ -421,12 +437,14 @@ export function Catalog({
 }
 
 function CatalogCard({
+  bulkAction,
   onConfigure,
   provider,
   monitor,
   selectedTags,
   onTagSelect,
 }: {
+  bulkAction?: "subscribe" | "unsubscribe";
   onConfigure: () => void;
   provider: CatalogEntry;
   monitor: Monitor | undefined;
@@ -464,7 +482,9 @@ function CatalogCard({
     onError: (error) => notify(error.message, "error"),
   });
 
-  const monitored = monitor?.enabled ?? false;
+  const monitored = bulkAction
+    ? bulkAction === "subscribe"
+    : (monitor?.enabled ?? false);
 
   function refreshMonitoringState() {
     void invalidateMonitoringState(queryClient);
@@ -491,15 +511,15 @@ function CatalogCard({
           </div>
           <p className="provider-description">{provider.description}</p>
         </div>
-        {monitored && monitor && (
+        {monitored && (
           <div className="catalog-coverage-summary">
             <strong>
-              {monitor.monitor_all_components
+              {monitor?.monitor_all_components !== false || !monitor.enabled
                 ? "All components"
                 : `${provider.selected_component_count.toLocaleString()} component${provider.selected_component_count === 1 ? "" : "s"} selected`}
             </strong>
             <span>
-              {monitor.monitor_all_components
+              {monitor?.monitor_all_components !== false || !monitor.enabled
                 ? "Includes newly discovered components"
                 : `Services: ${provider.selected_service_count} · Regions / groups: ${provider.selected_group_count}`}
             </span>
@@ -516,7 +536,7 @@ function CatalogCard({
           {monitored ? (
             <button
               className="button danger"
-              disabled={deleteMonitor.isPending}
+              disabled={deleteMonitor.isPending || Boolean(bulkAction)}
               onClick={() => {
                 deleteMonitor.reset();
                 setMonitorIdToRemove(monitor?.id);
@@ -527,7 +547,7 @@ function CatalogCard({
           ) : (
             <button
               className="button primary"
-              disabled={createMonitor.isPending}
+              disabled={createMonitor.isPending || Boolean(bulkAction)}
               onClick={monitorAllComponents}
             >
               Subscribe
