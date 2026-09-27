@@ -19,21 +19,12 @@
   margin-bottom: 0.35rem;
 }
 .rp-controls {
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   align-items: stretch;
   gap: 1rem;
   flex-wrap: wrap;
-}
-.rp-controls label {
-  display: flex;
-  min-width: 0;
-  max-width: 100%;
-  font-size: 0.78rem;
-  font-weight: 650;
-  color: var(--text-secondary);
-}
-.rp-controls select {
-  margin-top: 0;
 }
 .rp-periods {
   display: flex;
@@ -225,8 +216,10 @@
 .provider-reliability {
   margin-block: 1rem;
 }
-.rp-controls select {
-  max-width: 280px;
+.rp-controls .searchable-select {
+  width: 400px;
+  min-width: 0;
+  max-width: 100%;
 }
 .rp-incident-link {
   font-size: 0.78rem;
@@ -244,7 +237,7 @@
   .rp-controls {
     width: 100%;
   }
-  .rp-controls label {
+  .rp-controls .searchable-select {
     width: 100%;
   }
 }

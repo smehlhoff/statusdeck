@@ -140,7 +140,12 @@ The [initial migration](../backend/migrations/0001_initial.sql) creates the comp
 schema, including resend accounting. Run `migrate` before starting the API and
 worker; those processes check migration state but do not apply migrations.
 
-Only `0001_initial.sql` is supplied; it includes Zulip delivery channels.
+Only `0001_initial.sql` is supplied; it includes Zulip delivery channels and the
+OIDC identity, login-attempt, logout-event and encrypted settings schema. The
+former `0002_oidc.sql` and `0003_oidc_settings.sql` have been consolidated into it.
+Databases initialized with the earlier files require explicit schema and
+migration-history reconciliation before using this baseline; do not simply
+rerun the rewritten initial migration or delete migration records.
 SQLx's migrator checks applied migration
 checksums; changing an already-applied file is not an upgrade path. In contrast,
 [startup/readiness](../backend/src/db/mod.rs) checks only the maximum recorded
@@ -330,10 +335,9 @@ secrets, and builds container images. The secret scan uses a versioned,
 checksum-verified Gitleaks binary and redacts detected values from logs. Runtime
 smoke/browser tests and production deployment are separate work. Release
 publishing, artifact retention and recovery schedules are not automated. The
-RustSec exception for `RUSTSEC-2023-0071` covers `rsa` in the lockfile through
-SQLx's optional MySQL driver. This PostgreSQL-only build does not enable MySQL
-or compile `rsa`; `cargo tree --all-features --target all -i rsa` has no entries.
-Revisit the exception if database features change.
+RustSec exception for `RUSTSEC-2023-0071` covers RSA private-key timing operations.
+OIDC uses RSA only for public-key signature verification. Revisit the exception if
+private-key operations or database features change.
 
 The workflow runs on pushes and pull requests. Backend gates are formatting,
 locked check/Clippy/release build, offline catalog validation, migration against
@@ -371,3 +375,63 @@ means the destination accepted the HTTP request. Empty samples and uncertain
 outcomes should not be interpreted as zero failures or proven availability.
 Exact queries and thresholds live in
 [system summary](../backend/src/api/system_summary.rs) and its adjacent SQL files.
+
+## Optional OIDC authentication
+
+For provider walkthroughs, see [Authentik](authentik.md), [Keycloak](keycloak.md),
+and [Authelia](authelia.md).
+
+Apply the migrations before starting the API and worker. Sign in with the local
+administrator account and open **Profile → Single sign-on**. Turn on **Enable
+OpenID Connect** to reveal the issuer URL, client ID, client secret and provider
+label. Register the displayed redirect URI with your provider, enter the current
+local password and save. Then link and confirm the intended provider identity.
+Local email/password sign-in always remains available.
+
+Use a confidential Authorization Code client with S256 PKCE, RS256 ID tokens and
+the `openid` scope. Advanced settings support a discovery URL override,
+`client_secret_basic` or `client_secret_post`, additional trusted endpoint origins,
+a PEM private CA certificate and a session lifetime of 1–28,800 seconds. The issuer
+must match metadata exactly, including its path and trailing slash. Register the
+displayed back-channel logout URL when your provider supports it.
+
+Settings are encrypted in PostgreSQL using the existing application encryption
+key. The client secret is never returned to the browser; leaving its input blank
+preserves it. Saves require a local session, the current password and CSRF
+validation. Changes apply without restarting, and API replicas refresh their
+cached configuration using the shared database revision. Concurrent edits require
+reloading before saving. Configuration changes are recorded in Security activity.
+
+Turning off the toggle hides the provider fields and disables SSO when saved,
+while retaining the settings and linked identity. Disabling SSO revokes its
+sessions and pending flows; changing issuer/client ID also requires relinking.
+Secret rotation invalidates pending flows. Shortening the session lifetime caps
+existing SSO sessions. Local sessions remain available for recovery.
+
+`STATUSDECK_AUTH_MODE` and `STATUSDECK_OIDC_*` are no longer read. Fresh databases
+start with SSO disabled. An existing installation using environment-based OIDC
+settings needs explicit schema reconciliation and revocation of its old SSO
+sessions/flows before settings are re-entered and the account is relinked.
+Preserve the database and application encryption key together when backing up or
+restoring.
+
+`STATUSDECK_BASE_URL` still defines the public application origin. Enabling SSO
+requires HTTPS for the application origin and all provider endpoints, including
+localhost. Provider certificates must be trusted. Configure the public origin and
+secure cookies before enabling SSO. HTTP deployments can still use local
+email/password sign-in.
+The worker does not load provider settings. Saving validates the settings locally;
+discovery and provider availability are checked separately when using SSO.
+
+Discovery metadata and signing keys expire after one minute. The next request
+refreshes them; failed refreshes reject OIDC authentication and logout-token
+validation rather than trusting expired keys, with retries limited to once per
+minute. Unknown key IDs can also trigger a rate-limited JWKS refresh. Local login
+remains available during provider outages.
+
+Back-channel logout is excluded from browser login IP quotas in both Nginx and
+the API. It has a separate four-request concurrency limit, along with the existing
+request-size, timeout and stored-event bounds. Providers must retry temporary
+delivery failures; configure any external ingress so interactive-login quotas do
+not suppress provider logout traffic. Restore client addresses only from explicitly
+trusted proxy hops when applying IP limits to browser login.

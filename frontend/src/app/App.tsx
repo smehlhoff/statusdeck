@@ -50,6 +50,10 @@ const Profile = lazy(() =>
   })),
 );
 
+const SsoInstructions = lazy(
+  () => import("../features/profile/SsoInstructions"),
+);
+
 const Dashboard = lazy(() =>
   import("../features/dashboard/Dashboard").then((module) => ({
     default: module.Dashboard,
@@ -123,6 +127,7 @@ function pageTitle(pathname: string): string {
   if (pathname.startsWith("/system")) return "System";
   if (pathname === "/my-comments") return "My Comments";
   if (pathname === "/bookmarks") return "Bookmarks";
+  if (pathname === "/profile/sso-instructions") return "SSO setup instructions";
   if (pathname === "/profile") return "Profile";
   return "Overview";
 }
@@ -353,6 +358,10 @@ function Shell({
             <Route path="/my-comments" element={<MyComments />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile/sso-instructions"
+              element={<SsoInstructions />}
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
@@ -385,7 +394,10 @@ function App() {
     if (session.isSuccess) {
       if (session.data === null) {
         queryClient.removeQueries({
-          predicate: (query) => query.queryKey[0] !== queryKeys.session[0],
+          // Keep public sign-in options mounted while clearing account data.
+          predicate: (query) =>
+            query.queryKey[0] !== queryKeys.session[0] &&
+            query.queryKey[0] !== "auth-methods",
         });
         queryClient.getMutationCache().clear();
       }

@@ -1,3 +1,4 @@
+import { SearchableSelect } from "../../components/SearchableSelect";
 import { useId, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import type {
@@ -181,22 +182,29 @@ export function ReliabilityCharts({
             </p>
           </div>
           <div className="rp-controls">
-            <label htmlFor="reliability-component">
-              <span className="sr-only">Component</span>
-              <select
-                id="reliability-component"
-                value={component}
-                onChange={(event) => onComponent(event.target.value)}
-              >
-                <option value="all">All provider components</option>
-                {components.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                    {item.group ? ` — ${item.group}` : ""}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <SearchableSelect
+              value={component}
+              onChange={onComponent}
+              label="Component"
+              hideLabel
+              searchLabel="Search provider components"
+              placeholder="Search components"
+              emptyMessage="No matching components."
+              options={[
+                { value: "all", label: "All provider components" },
+                ...components
+                  .map((item) => ({
+                    value: item.id,
+                    label: `${item.name}${item.group ? ` — ${item.group}` : ""}`,
+                  }))
+                  .sort((a, b) =>
+                    a.label.localeCompare(b.label, undefined, {
+                      sensitivity: "base",
+                      numeric: true,
+                    }),
+                  ),
+              ]}
+            />
             <div className="rp-periods" role="group" aria-label="History range">
               {[90, 180, 365].map((value) => (
                 <button

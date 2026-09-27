@@ -11,7 +11,8 @@ CREATE TABLE users (
     display_name text NOT NULL DEFAULT 'Administrator'
         CHECK (char_length(display_name) BETWEEN 1 AND 100),
     preferences jsonb NOT NULL DEFAULT '{"theme":"light","time_zone":"browser","date_format":"locale","time_format":"locale","timestamp_format":"relative","landing_page":"/","refresh_interval_ms":0}'::jsonb,
-    credential_version bigint NOT NULL DEFAULT 0
+    credential_version bigint NOT NULL DEFAULT 0,
+    oidc_generation bigint NOT NULL DEFAULT 0
 );
 
 CREATE TABLE provider_sources (
@@ -255,6 +256,27 @@ CREATE TABLE monitored_components (
     FOREIGN KEY (component_id, provider_id) REFERENCES components(id, provider_id)
 );
 
+CREATE TABLE oidc_configuration (
+    singleton boolean PRIMARY KEY DEFAULT true CHECK (singleton),
+    identity_key text,
+    flow_key text,
+    configuration text,
+    revision bigint NOT NULL DEFAULT 0
+);
+INSERT INTO oidc_configuration DEFAULT VALUES;
+
+CREATE TABLE oidc_identities (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id uuid NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+    issuer text NOT NULL,
+    subject text NOT NULL,
+    configuration_key text NOT NULL,
+    needs_relink boolean NOT NULL DEFAULT false,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    updated_at timestamptz NOT NULL DEFAULT now(),
+    UNIQUE (issuer, subject)
+);
+
 CREATE TABLE sessions (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -263,10 +285,47 @@ CREATE TABLE sessions (
     last_seen_at timestamptz NOT NULL,
     expires_at timestamptz NOT NULL,
     user_agent text,
-    ip_address inet
+    ip_address inet,
+    authentication_method text NOT NULL DEFAULT 'local' CHECK (authentication_method IN ('local', 'oidc')),
+    oidc_identity_id uuid REFERENCES oidc_identities(id),
+    oidc_sid text,
+    CONSTRAINT sessions_oidc_identity CHECK ((authentication_method = 'oidc') = (oidc_identity_id IS NOT NULL))
 );
 
 CREATE INDEX sessions_user_created_idx ON sessions (user_id, created_at DESC, id DESC);
+
+CREATE TABLE oidc_login_attempts (
+    state_hash bytea PRIMARY KEY,
+    browser_hash bytea NOT NULL UNIQUE,
+    nonce text NOT NULL,
+    verifier text,
+    purpose text NOT NULL CHECK (purpose IN ('login', 'link')),
+    user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    session_id uuid REFERENCES sessions(id) ON DELETE CASCADE,
+    credential_version bigint NOT NULL,
+    generation bigint NOT NULL,
+    flow_key text NOT NULL,
+    identity_id uuid REFERENCES oidc_identities(id) ON DELETE CASCADE,
+    candidate_subject text,
+    candidate_sid text,
+    created_at timestamptz NOT NULL DEFAULT now(),
+    expires_at timestamptz NOT NULL DEFAULT now() + interval '10 minutes',
+    CHECK ((purpose = 'link') = (session_id IS NOT NULL))
+);
+CREATE INDEX oidc_attempt_expiry_idx ON oidc_login_attempts (expires_at);
+
+-- Also act as short-lived revocation markers for callbacks already exchanging codes.
+CREATE TABLE oidc_logout_events (
+    issuer text NOT NULL,
+    jti text NOT NULL,
+    sid text,
+    subject text,
+    received_at timestamptz NOT NULL DEFAULT now(),
+    expires_at timestamptz NOT NULL DEFAULT now() + interval '11 minutes',
+    PRIMARY KEY (issuer, jti),
+    CHECK (sid IS NOT NULL OR subject IS NOT NULL)
+);
+CREATE INDEX oidc_logout_expiry_idx ON oidc_logout_events (expires_at);
 
 -- History contains display metadata only, never authentication tokens.
 CREATE TABLE session_history (
@@ -278,7 +337,10 @@ CREATE TABLE session_history (
     ended_at timestamptz NOT NULL,
     user_agent text,
     ip_address inet,
-    status text NOT NULL CHECK (status IN ('expired', 'ended'))
+    status text NOT NULL CHECK (status IN ('expired', 'ended')),
+    authentication_method text NOT NULL DEFAULT 'local',
+    oidc_identity_id uuid,
+    oidc_sid text
 );
 CREATE INDEX session_history_user_seen_idx ON session_history (user_id, last_seen_at DESC, id DESC);
 CREATE INDEX session_history_ended_idx ON session_history (ended_at);
@@ -287,14 +349,15 @@ CREATE INDEX session_history_ended_idx ON session_history (ended_at);
 CREATE FUNCTION archive_session() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
     INSERT INTO session_history
-        (id, user_id, created_at, last_seen_at, expires_at, ended_at, user_agent, ip_address, status)
+        (id, user_id, created_at, last_seen_at, expires_at, ended_at, user_agent, ip_address, status,
+         authentication_method, oidc_identity_id, oidc_sid)
     SELECT OLD.id, OLD.user_id, OLD.created_at, OLD.last_seen_at, OLD.expires_at,
         LEAST(now(), OLD.expires_at, OLD.last_seen_at + interval '7 days'),
         OLD.user_agent, OLD.ip_address,
         CASE WHEN OLD.expires_at <= now() OR OLD.last_seen_at <= now() - interval '7 days'
-            THEN 'expired' ELSE 'ended' END
+            THEN 'expired' ELSE 'ended' END,
+        OLD.authentication_method, OLD.oidc_identity_id, OLD.oidc_sid
     FROM users WHERE id = OLD.user_id;
-
     DELETE FROM session_history WHERE id IN (
         SELECT id FROM session_history WHERE user_id = OLD.user_id
         ORDER BY last_seen_at DESC, id DESC OFFSET 100
@@ -455,7 +518,9 @@ CREATE INDEX audit_log_user_security_idx ON audit_log (actor_user_id, created_at
 WHERE action IN (
     'session.login_succeeded', 'session.login_failed', 'session.logout',
     'profile.password_changed', 'profile.email_changed',
-    'profile.session_revoked', 'profile.other_sessions_revoked'
+    'profile.session_revoked', 'profile.other_sessions_revoked',
+    'oidc.login_succeeded', 'oidc.login_denied', 'oidc.linked',
+    'oidc.disconnected', 'oidc.provider_revoked', 'oidc.settings_updated'
 );
 CREATE INDEX alert_rule_components_component_idx ON alert_rule_components (component_id);
 CREATE INDEX notification_deliveries_event_idx

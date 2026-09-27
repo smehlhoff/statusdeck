@@ -5,6 +5,13 @@ import type { SecurityActivity as Activity } from "../../api/types";
 import { RelativeDateTime } from "../../components/RelativeDateTime";
 
 const ACTIONS: Record<string, string> = {
+  "oidc.settings_updated": "Single sign-on settings updated",
+  "oidc.login_succeeded": "Signed in with SSO",
+  "oidc.login_denied": "SSO sign-in rejected",
+  "oidc.linked": "SSO identity linked; other sessions signed out",
+  "oidc.disconnected": "SSO identity disconnected",
+  "oidc.provider_revoked":
+    "Provider logout received; matching SSO sessions revoked",
   "session.login_succeeded": "Signed in",
   "session.login_failed": "Unsuccessful sign-in attempt",
   "session.logout": "Signed out",

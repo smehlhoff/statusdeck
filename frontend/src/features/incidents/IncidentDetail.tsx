@@ -1,5 +1,6 @@
+import { FieldHelp } from "../../components/FieldHelp";
 import { useQuery } from "@tanstack/react-query";
-import { Fragment, useEffect, useId } from "react";
+import { Fragment, useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { api } from "../../api/client";
 import { LIVE_DATA_REFRESH_INTERVAL_MS, queryKeys } from "../../api/queries";
@@ -491,21 +492,10 @@ export function IncidentDetail() {
 }
 
 function DetailTerm({ label, help }: { label: string; help: string }) {
-  const tooltipId = useId();
   return (
     <dt className="incident-detail-term">
       <span>{label}</span>
-      <button
-        className="field-help-button"
-        type="button"
-        aria-label={`About ${label}`}
-        aria-describedby={tooltipId}
-      >
-        ?
-      </button>
-      <span className="field-help-tooltip" id={tooltipId} role="tooltip">
-        {help}
-      </span>
+      <FieldHelp label={label} help={help} />
     </dt>
   );
 }

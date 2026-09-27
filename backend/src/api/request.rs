@@ -28,6 +28,12 @@ tokio::task_local! {
     static REQUEST_ID: String;
 }
 
+pub(super) fn correlation_id() -> String {
+    REQUEST_ID
+        .try_with(Clone::clone)
+        .unwrap_or_else(|_| Uuid::new_v4().to_string())
+}
+
 #[derive(Debug)]
 pub struct ApiError {
     status: StatusCode,
@@ -115,6 +121,18 @@ pub(super) async fn request_context(request: Request, next: Next) -> Response {
     REQUEST_ID
         .scope(request_id.clone(), async move {
             let mut response = next.run(request).instrument(span.clone()).await;
+            if path == "/api/v1/auth/oidc/callback" {
+                if !response.status().is_redirection() {
+                    response = axum::response::Redirect::to("/login?oidc=failed").into_response();
+                }
+                response
+                    .headers_mut()
+                    .insert(header::CACHE_CONTROL, HeaderValue::from_static("no-store"));
+                response.headers_mut().insert(
+                    header::REFERRER_POLICY,
+                    HeaderValue::from_static("no-referrer"),
+                );
+            }
             if let Ok(value) = HeaderValue::from_str(&request_id) {
                 response.headers_mut().insert("x-request-id", value);
             }
@@ -159,13 +177,17 @@ pub(super) async fn validate_request(
             "The request host is not allowed.",
         ));
     }
-    if !matches!(
-        *request.method(),
-        Method::GET | Method::HEAD | Method::OPTIONS
-    ) && let Some(origin) = request
-        .headers()
-        .get(header::ORIGIN)
-        .and_then(|value| value.to_str().ok())
+    let backchannel = request.method() == Method::POST
+        && request.uri().path() == "/api/v1/auth/oidc/backchannel-logout";
+    if !backchannel
+        && !matches!(
+            *request.method(),
+            Method::GET | Method::HEAD | Method::OPTIONS
+        )
+        && let Some(origin) = request
+            .headers()
+            .get(header::ORIGIN)
+            .and_then(|value| value.to_str().ok())
     {
         let valid = url::Url::parse(origin).is_ok_and(|origin| {
             origin.scheme() == state.config.base_url.scheme()
@@ -184,6 +206,7 @@ pub(super) async fn validate_request(
         .is_some_and(|length| length > 0)
         || request.headers().contains_key(header::TRANSFER_ENCODING);
     if has_body
+        && !backchannel
         && !request
             .headers()
             .get(header::CONTENT_TYPE)

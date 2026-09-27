@@ -54,6 +54,8 @@ channel encryption key with your recovery configuration.
 - [Backend](docs/backend.md): collection, history and notification semantics.
 - [Deployment and operations](docs/deployment.md): configuration, development,
   validation, upgrades and recovery.
+- Single sign-on setup: [Authentik](docs/authentik.md), [Keycloak](docs/keycloak.md),
+  and [Authelia](docs/authelia.md).
 - [Frontend style guide](frontend/STYLE.md): coding conventions.
 
 ## Repository layout

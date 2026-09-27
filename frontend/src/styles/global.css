@@ -1084,10 +1084,7 @@ h2 {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  min-height: 28px;
   margin: 0;
-  padding: 0.25rem 0.55rem;
-  font-size: 0.7rem;
 }
 
 .wallboard-pagination {
@@ -1968,7 +1965,8 @@ select {
 
 input:where(:not([type="checkbox"]):not([type="radio"])),
 select,
-.timezone-trigger {
+.searchable-select-trigger,
+.sso-endpoint pre {
   font-size: 0.78rem;
   font-weight: 650;
 }
@@ -1977,6 +1975,8 @@ select,
 .search input,
 label > input:where(:not([type="checkbox"]):not([type="radio"])),
 label > select,
+.sso-field > input,
+.sso-field > select,
 .signing-secret-field > input {
   display: block;
   width: 100%;
@@ -1991,7 +1991,7 @@ input::placeholder {
 
 input:focus,
 select:focus,
-.timezone-trigger:focus-visible {
+.searchable-select-trigger:focus-visible {
   border-color: var(--accent);
   outline: 3px solid var(--accent-border);
   outline-offset: 2px;
@@ -2561,6 +2561,7 @@ tbody tr:last-child td {
 }
 
 .card form label,
+.profile-section .sso-endpoint dt,
 .filter-grid label,
 .login-card label {
   min-width: 0;
@@ -3510,6 +3511,19 @@ form.filter-grid {
 
 .login-card h1 {
   font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.login-card .button {
+  min-height: 44px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.login-divider {
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
 }
 
 .login-card label {
@@ -4216,7 +4230,8 @@ form.filter-grid {
   line-height: 1.5;
 }
 
-.comment-markdown :is(ul, ol) {
+.comment-markdown :is(ul, ol),
+.sso-provider-guide :is(ul, ol) {
   padding-left: 1.5rem;
 }
 
@@ -4238,7 +4253,8 @@ form.filter-grid {
 }
 
 .provider-message code,
-.comment-markdown code {
+.comment-markdown code,
+.sso-provider-guide code {
   padding: 0.1rem 0.3rem;
   border-radius: 4px;
   background: var(--surface-subtle);
@@ -4246,7 +4262,8 @@ form.filter-grid {
 }
 
 .provider-message pre,
-.comment-markdown pre {
+.comment-markdown pre,
+.sso-provider-guide pre {
   max-width: 100%;
   overflow-x: auto;
   padding: 0.75rem;
@@ -4256,7 +4273,8 @@ form.filter-grid {
 }
 
 .provider-message pre code,
-.comment-markdown pre code {
+.comment-markdown pre code,
+.sso-provider-guide pre code {
   padding: 0;
 }
 
@@ -4266,16 +4284,24 @@ form.filter-grid {
 }
 
 .provider-message table,
-.comment-markdown table {
+.comment-markdown table,
+.sso-provider-guide table {
   width: auto;
   border-collapse: collapse;
   font-size: inherit;
 }
 
 .provider-message :is(th, td),
-.comment-markdown :is(th, td) {
+.comment-markdown :is(th, td),
+.sso-provider-guide :is(th, td) {
   padding: 0.4rem 0.65rem;
   border: 1px solid var(--border-strong);
+}
+
+.provider-message tbody tr:last-child td,
+.comment-markdown tbody tr:last-child td,
+.sso-provider-guide tbody tr:last-child td {
+  border-bottom: 1px solid var(--border-strong);
 }
 
 .comment-content > form {
@@ -4415,10 +4441,32 @@ form.filter-grid {
   gap: 8px;
 }
 .profile-section input,
-.profile-section select {
+.profile-section select,
+.profile-section textarea {
   width: 100%;
   min-width: 0;
   margin-top: 0;
+}
+
+.profile-section textarea {
+  padding: 0.65rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--surface);
+  font: inherit;
+  resize: vertical;
+}
+
+.profile-section .sso-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.profile-section .sso-toggle input {
+  width: auto;
+  min-height: 0;
+  accent-color: var(--button-accent);
 }
 .profile-section form > button {
   justify-self: start;
@@ -4486,12 +4534,13 @@ form.filter-grid {
   }
 }
 
-.timezone-select {
+.searchable-select {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 8px;
 }
-.timezone-trigger {
+.searchable-select-trigger {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -4507,11 +4556,17 @@ form.filter-grid {
   text-align: left;
   gap: 12px;
 }
-.timezone-trigger:disabled {
+.searchable-select-trigger > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.searchable-select-trigger:disabled {
   cursor: default;
   opacity: 0.6;
 }
-.timezone-popup {
+.searchable-select-popup {
   position: absolute;
   z-index: 5;
   top: calc(100% + 4px);
@@ -4523,27 +4578,28 @@ form.filter-grid {
   background: var(--surface);
   box-shadow: 0 8px 24px rgb(0 0 0 / 16%);
 }
-.timezone-options {
+.searchable-select-options {
   max-height: 240px;
   overflow-y: auto;
   margin-top: 8px;
 }
-.timezone-popup input {
+.searchable-select-popup input {
+  width: 100%;
   min-height: 40px;
   padding: 0.55rem 0.7rem;
 }
-.timezone-option {
+.searchable-select-option {
   padding: 8px 10px;
   border-radius: 4px;
   cursor: pointer;
   overflow-wrap: anywhere;
 }
-.timezone-option.active,
-.timezone-option:hover {
+.searchable-select-option.active,
+.searchable-select-option:hover {
   background: var(--accent-soft);
   color: var(--accent-dark);
 }
-.timezone-option[aria-selected="true"] {
+.searchable-select-option[aria-selected="true"] {
   font-weight: 700;
 }
 .appearance-options {
@@ -4742,7 +4798,7 @@ form.filter-grid {
 @media (max-width: 800px) {
   :root input:where(:not([type="checkbox"]):not([type="radio"])),
   :root select,
-  :root .timezone-trigger {
+  :root .searchable-select-trigger {
     min-height: 44px;
     font-size: 1rem;
   }
@@ -4773,7 +4829,7 @@ form.filter-grid {
 
   .comment-editor-modes button,
   .comment-actions button,
-  .timezone-option {
+  .searchable-select-option {
     min-height: 44px;
   }
 }
@@ -4966,7 +5022,7 @@ td {
 .button,
 input,
 select,
-.timezone-trigger,
+.searchable-select-trigger,
 .quick-search-trigger {
   transition:
     border-color 140ms ease,
@@ -4985,14 +5041,14 @@ select,
 
 input:hover,
 select:hover,
-.timezone-trigger:hover,
+.searchable-select-trigger:hover,
 .quick-search-trigger:hover {
   border-color: var(--accent-border);
 }
 
 input:focus,
 select:focus,
-.timezone-trigger:focus-visible {
+.searchable-select-trigger:focus-visible {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
@@ -5037,5 +5093,132 @@ dialog {
 
   .primary-nav a.active {
     box-shadow: inset 0 -3px 0 var(--accent);
+  }
+}
+
+.sso-account {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  margin-top: 24px;
+}
+.sso-account h3 {
+  margin: 0;
+}
+.sso-status {
+  margin-top: 16px;
+}
+
+.sso-identity {
+  margin: 24px 0 16px;
+  max-width: 760px;
+}
+.sso-identity h3 {
+  margin: 0 0 16px;
+}
+.sso-identity-details {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+.sso-identity-details dt {
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.sso-identity-details dd {
+  margin: 0;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+.sso-identity > .profile-help {
+  margin: 16px 0 0;
+}
+
+.sso-confirmation {
+  display: grid;
+  gap: 16px;
+}
+.sso-confirmation > h3,
+.sso-confirmation > .profile-help {
+  margin: 0;
+}
+.sso-confirmation > .button {
+  justify-self: start;
+}
+
+.sso-endpoint dt {
+  margin-bottom: 8px;
+}
+.sso-endpoint dd {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-subtle);
+  color: var(--text);
+}
+.sso-endpoint pre {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.sso-endpoint pre,
+.sso-endpoint code {
+  font-family: inherit;
+}
+.sso-endpoint .button {
+  flex-shrink: 0;
+}
+.dashboard-provider-card .provider-source,
+.profile-section .sso-instructions-button {
+  min-height: 28px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.7rem;
+}
+.sso-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.sso-help-label {
+  width: 100%;
+}
+.sso-help-label .field-help-button {
+  flex-shrink: 0;
+}
+.sso-help-label .field-help-tooltip {
+  max-width: min(300px, 100%);
+  overflow-wrap: anywhere;
+}
+.sso-help-label .field-help-button:focus + .field-help-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+.sso-provider-guide {
+  scroll-margin-top: 88px;
+}
+.sso-provider-guide .comment-table-scroll {
+  margin-bottom: 1em;
+}
+.sso-provider-guide .markdown-content {
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+:root[data-theme="dark"] .sso-provider-guide pre code,
+:root[data-theme="dark"] .sso-provider-guide pre code span {
+  color: var(--text);
+}
+#sso-contents {
+  scroll-margin-top: 88px;
+}
+@media (max-width: 800px) {
+  .sso-provider-guide,
+  #sso-contents {
+    scroll-margin-top: 160px;
   }
 }

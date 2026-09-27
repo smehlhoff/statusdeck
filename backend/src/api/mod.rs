@@ -11,6 +11,7 @@ mod incidents;
 mod monitors;
 mod my_comments;
 mod notification_summaries;
+mod oidc;
 mod profile;
 mod reliability;
 mod request;
@@ -55,14 +56,16 @@ pub struct AppState {
     pub config: Config,
     pub database: Database,
     started_at: Instant,
+    oidc: Arc<crate::auth::oidc::RuntimeCache>,
     login_attempts: Arc<tokio::sync::Mutex<HashMap<String, Vec<Instant>>>>,
     password_verifications: Arc<tokio::sync::Semaphore>,
 }
 
-pub fn router(config: Config, database: Database) -> Router {
+pub async fn router(config: Config, database: Database) -> anyhow::Result<Router> {
     const MAX_CONCURRENT_PASSWORD_VERIFICATIONS: usize = 2;
 
     let state = AppState {
+        oidc: Arc::new(crate::auth::oidc::RuntimeCache::default()),
         started_at: Instant::now(),
         config,
         database,
@@ -71,10 +74,31 @@ pub fn router(config: Config, database: Database) -> Router {
             MAX_CONCURRENT_PASSWORD_VERIFICATIONS,
         )),
     };
-    Router::new()
+    Ok(Router::new()
         .route("/health/live", get(live))
         .route("/health/ready", get(ready))
         .route("/api/v1/csrf", get(csrf))
+        .route("/api/v1/auth/methods", get(oidc::methods))
+        .route("/api/v1/auth/oidc/start", axum::routing::post(oidc::start))
+        .route("/api/v1/auth/oidc/callback", get(oidc::callback))
+        .route(
+            "/api/v1/auth/oidc/backchannel-logout",
+            axum::routing::post(oidc::backchannel).layer(RequestBodyLimitLayer::new(20 * 1024)),
+        )
+        .route(
+            "/api/v1/profile/oidc",
+            get(oidc::status)
+                .put(oidc::update_settings)
+                .delete(oidc::clear_settings),
+        )
+        .route(
+            "/api/v1/profile/oidc/link",
+            axum::routing::post(oidc::link).delete(oidc::disconnect),
+        )
+        .route(
+            "/api/v1/profile/oidc/link/confirm",
+            axum::routing::post(oidc::confirm),
+        )
         .route(
             "/api/v1/profile",
             get(profile::profile).patch(profile::profile_update),
@@ -175,5 +199,5 @@ pub fn router(config: Config, database: Database) -> Router {
             validate_request,
         ))
         .layer(middleware::from_fn(request_context))
-        .with_state(state)
+        .with_state(state))
 }

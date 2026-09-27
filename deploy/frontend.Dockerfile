@@ -7,6 +7,7 @@ COPY frontend/package*.json ./
 RUN npm ci
 
 COPY frontend/ ./
+COPY docs/authentik.md docs/keycloak.md docs/authelia.md /docs/
 
 RUN npm run build
 

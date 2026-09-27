@@ -41,7 +41,7 @@ pub async fn run_api(config: Config) -> Result<()> {
     database.verify_migrations().await?;
     auth::bootstrap::ensure_admin(&database.pool, &config).await?;
     providers::catalog::reconcile(&database.pool, config.poll_interval).await?;
-    let app = api::router(config.clone(), database.clone());
+    let app = api::router(config.clone(), database.clone()).await?;
     let listener = tokio::net::TcpListener::bind(&config.bind).await?;
     tracing::info!(address = %config.bind, "api listening");
     axum::serve(
