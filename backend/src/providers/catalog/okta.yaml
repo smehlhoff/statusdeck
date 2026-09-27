@@ -55,10 +55,6 @@ providers:
         name: OK14 Cell
         group: US
         position: 10
-      - upstream_id: okta.com:15
-        name: OK15 Cell
-        group: US
-        position: 11
       - upstream_id: okta.com:16
         name: OK16 Cell
         group: US
@@ -95,3 +91,4 @@ providers:
         name: OP3 Preview Cell
         group: US
         position: 20
+      - { upstream_id: "okta.com:23", name: "OK23 Cell", group: "US", position: 21 }

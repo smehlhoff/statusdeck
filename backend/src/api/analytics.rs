@@ -124,6 +124,7 @@ struct ImpactedComponentResponse {
     name: String,
     affected_seconds: f64,
     incident_count: usize,
+    unknown_duration_count: usize,
 }
 
 #[derive(Debug, Serialize)]
@@ -419,8 +420,10 @@ fn percentile(values: &[i64], percentile: f64) -> Option<i64> {
     }
     let mut values = values.to_vec();
     values.sort_unstable();
-    let index = ((values.len() - 1) as f64 * percentile).round() as usize;
-    values.get(index).copied()
+    let index = (values.len() - 1) as f64 * percentile;
+    let lower = *values.get(index.floor() as usize)? as f64;
+    let upper = *values.get(index.ceil() as usize)? as f64;
+    Some((lower + (upper - lower) * index.fract()).round() as i64)
 }
 
 fn trend(
@@ -588,6 +591,12 @@ fn impacted_components(
                     .get(&id)
                     .map_or(0.0, |intervals| merged_duration_seconds(intervals)),
                 incident_count: incident_ids_by_component.get(&id).map_or(0, HashSet::len),
+                unknown_duration_count: intervals_by_component.get(&id).map_or(0, |intervals| {
+                    intervals
+                        .iter()
+                        .filter(|interval| interval.duration_unknown)
+                        .count()
+                }),
             },
         )
         .collect::<Vec<_>>();

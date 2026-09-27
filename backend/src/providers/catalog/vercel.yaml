@@ -28,3 +28,32 @@ providers:
       - { upstream_id: 1vhy91zktp01, name: Cron Jobs, group: Global, position: 11 }
       - { upstream_id: jrd979g6ssl0, name: IAD1 - Washington DC, group: CDN, position: 12 }
       - { upstream_id: hb2s3rrdjnhb, name: SFO1 - San Francisco, group: CDN, position: 13 }
+      - { upstream_id: "r1xxpy1znh4j", name: "Drains", group: "Observability", position: 14 }
+      - { upstream_id: "pgvldl1nj3pn", name: "Builds", group: "Secure Compute", position: 15 }
+      - { upstream_id: "561jc7fv8734", name: "Output Generation", group: "v0", position: 16 }
+      - { upstream_id: "rsp3h37vv009", name: "AI Gateway", position: 17 }
+      - { upstream_id: "pps71v7cb51j", name: "Logs", group: "Observability", position: 18 }
+      - { upstream_id: "dtvfcjj0yy4s", name: "Support Center", group: "Dashboard", position: 19 }
+      - { upstream_id: "hvqpg17xq8vv", name: "Dashboard", group: "v0", position: 20 }
+      - { upstream_id: "fzmwv4gvx894", name: "Deploy Hooks", group: "CI/CD", position: 21 }
+      - { upstream_id: "tgqww0wpxntp", name: "Support Chat", group: "Dashboard", position: 22 }
+      - { upstream_id: "5d8svglj5s34", name: "Observability", group: "Observability", position: 23 }
+      - { upstream_id: "s8mxhp2r4ztt", name: "CLE1 - Cleveland, East US", group: "CDN", position: 24 }
+      - { upstream_id: "kscyjm1qp3cw", name: "Speed Insights", group: "Observability", position: 25 }
+      - { upstream_id: "zr2j7y9kv5hd", name: "Web Analytics", group: "Observability", position: 26 }
+      - { upstream_id: "wk5b6sbqbbcd", name: "Community", position: 27 }
+      - { upstream_id: "jy5gmfw81mt7", name: "Data Cache", position: 28 }
+      - { upstream_id: "w94qwkg1z68w", name: "Domain Registration", position: 29 }
+      - { upstream_id: "dj2y0t2qjxc8", name: "Image Optimization", position: 30 }
+      - { upstream_id: "1zjp6drr4vsp", name: "PDX1 - Portland, West US", group: "CDN", position: 31 }
+      - { upstream_id: "4zw94yvf7dt9", name: "Marketplace", position: 32 }
+      - { upstream_id: "y0nl08tmsz12", name: "Queues", position: 33 }
+      - { upstream_id: "hn88nyddhmdm", name: "Remote Caching", position: 34 }
+      - { upstream_id: "1w4lc3s3q2pz", name: "Routing Middleware", position: 35 }
+      - { upstream_id: "w5nffyn79vx9", name: "SAML Single Sign-On", position: 36 }
+      - { upstream_id: "d77dj4pvw5y8", name: "Sandbox", position: 37 }
+      - { upstream_id: "bc3cl3q4jn9m", name: "TLS Certificates", position: 38 }
+      - { upstream_id: "c3yjhlfbv34z", name: "Workflow", position: 39 }
+      - { upstream_id: "7f0jmxhx0cs8", name: "Container Registry", position: 40 }
+      - { upstream_id: "cyntxhdmbf7s", name: "Key Management Service", position: 41 }
+      - { upstream_id: "94yctrfv959n", name: "Connect", position: 42 }

@@ -1,6 +1,10 @@
 import { useId, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import type { ProviderReliability, ReliabilityDay } from "../../api/types";
+import type {
+  Component,
+  ProviderReliability,
+  ReliabilityDay,
+} from "../../api/types";
 import {
   formatDate,
   formatDuration,
@@ -47,7 +51,7 @@ export function ReliabilityCharts({
   providerId,
 }: {
   data: ProviderReliability;
-  components: Array<{ id: string; name: string }>;
+  components: Array<Pick<Component, "id" | "name" | "group">>;
   period: number;
   onPeriod: (value: number) => void;
   component: string;
@@ -83,6 +87,14 @@ export function ReliabilityCharts({
     (sum, day) => sum + day.affected_seconds,
     0,
   );
+  let affectedDuration = "—";
+  if (known > 0) {
+    affectedDuration =
+      affectedSeconds === 0 &&
+      days.some((day) => day.unknown_incident_duration_count > 0)
+        ? "Unknown"
+        : formatDuration(affectedSeconds);
+  }
   const months = days.flatMap((day, index) => {
     const date = new Date(`${day.date}T00:00:00Z`);
     return index === 0 || date.getUTCDate() === 1
@@ -99,7 +111,7 @@ export function ReliabilityCharts({
   });
   const incidentParams = new URLSearchParams({
     provider_id: providerId ?? "",
-    scope: "all",
+    scope: "provider",
     from: active.from,
     to: active.to,
   });
@@ -180,6 +192,7 @@ export function ReliabilityCharts({
                 {components.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.name}
+                    {item.group ? ` — ${item.group}` : ""}
                   </option>
                 ))}
               </select>
@@ -209,11 +222,7 @@ export function ReliabilityCharts({
           </div>
           <div>
             <span>Reported affected time</span>
-            <strong>
-              {affectedSeconds === 0 && unknownDurations > 0
-                ? "Unknown"
-                : formatDuration(affectedSeconds)}
-            </strong>
+            <strong>{affectedDuration}</strong>
             <p>Known durations only; overlapping incidents counted once</p>
           </div>
           <div>
@@ -268,7 +277,7 @@ export function ReliabilityCharts({
                   key={day.date}
                   type="button"
                   className={`rp-day rp-${day.status}`}
-                  aria-label={`${dateLabel(day.date)}: ${LABELS[day.status]}, ${day.incident_count} incidents, ${formatDuration(day.affected_seconds)} affected`}
+                  aria-label={`${dateLabel(day.date)}: ${LABELS[day.status]}. ${dayDescription(day)}`}
                   aria-pressed={active.date === day.date}
                   tabIndex={active.date === day.date ? 0 : -1}
                   title={`${dateLabel(day.date)} · ${LABELS[day.status]}`}

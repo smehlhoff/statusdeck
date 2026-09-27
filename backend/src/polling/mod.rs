@@ -570,7 +570,12 @@ fn is_allowed_incident_link(
             url::Url::parse(official_url)
                 .is_ok_and(|official_url| official_url.host_str() == candidate.host_str())
         })
-        || (adapter == "statuspage" && candidate.host_str() == Some("stspg.io"))
+        || (adapter == "datadog"
+            && crate::providers::datadog::SITES.iter().any(|(_, origin)| {
+                url::Url::parse(origin)
+                    .is_ok_and(|origin| candidate.host_str() == origin.host_str())
+            }))
+        || (matches!(adapter, "statuspage" | "datadog") && candidate.host_str() == Some("stspg.io"))
 }
 
 async fn reconcile(

@@ -20,14 +20,20 @@
 }
 .rp-controls {
   display: flex;
-  align-items: end;
+  align-items: stretch;
   gap: 1rem;
   flex-wrap: wrap;
 }
 .rp-controls label {
+  display: flex;
+  min-width: 0;
+  max-width: 100%;
   font-size: 0.78rem;
   font-weight: 650;
   color: var(--text-secondary);
+}
+.rp-controls select {
+  margin-top: 0;
 }
 .rp-periods {
   display: flex;
@@ -297,6 +303,7 @@
 
 .rp-history-help h2 {
   margin-bottom: 0;
+  line-height: 1.2;
 }
 
 .rp-history-help .field-help-tooltip p {

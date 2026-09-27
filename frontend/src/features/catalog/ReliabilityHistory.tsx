@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../../api/client";
 import { queryKeys, LIVE_DATA_REFRESH_INTERVAL_MS } from "../../api/queries";
-import type { ProviderReliability } from "../../api/types";
+import type { Component, ProviderReliability } from "../../api/types";
 import { LoadingSkeleton } from "../../components/LoadingSkeleton";
 import { resolvedTimeZone } from "../../utils/display";
 import { useProfile } from "../profile/profileContext";
@@ -11,9 +11,11 @@ import { ReliabilityCharts } from "./ReliabilityCharts";
 export function ReliabilityHistory({
   providerId,
   components,
+  monitored,
 }: {
   providerId: string;
-  components: Array<{ id: string; name: string }>;
+  components: Array<Pick<Component, "id" | "name" | "group">>;
+  monitored: boolean;
 }) {
   const { preferences } = useProfile();
   const timeZone = resolvedTimeZone(preferences);
@@ -77,7 +79,7 @@ export function ReliabilityHistory({
         onPeriod={setPeriod}
         component={component}
         onComponent={setComponent}
-        providerId={providerId}
+        providerId={monitored ? providerId : undefined}
       />
     </>
   );

@@ -8,7 +8,8 @@ CROSS JOIN LATERAL (
            count(*) FILTER (WHERE lease_until <= $1) AS expired_claims,
            min(work_started_at) FILTER (WHERE lease_until > $1) AS oldest_started_at
     FROM (
-        SELECT source.lease_until, source.last_attempt_at AS work_started_at
+        SELECT source.lease_until,
+               GREATEST(source.last_attempt_at, source.history_last_attempt_at) AS work_started_at
         FROM provider_sources source
         WHERE heartbeat.role = 'poller' AND source.lease_owner = heartbeat.instance_id
             AND source.lease_until IS NOT NULL

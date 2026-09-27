@@ -1,0 +1,84 @@
+.pc-toolbar {
+  margin-bottom: 1rem;
+}
+.pc-region {
+  min-width: 0;
+  max-width: 100%;
+}
+.pc-region select {
+  margin-top: 0;
+}
+.pc-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.pc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+.pc-row > * {
+  padding: 0.75rem 0.65rem;
+}
+.pc-row > :first-child {
+  border-right: 1px solid var(--border);
+}
+.pc-head {
+  background: var(--surface);
+  font-size: 0.68rem;
+}
+.pc-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  color: var(--text);
+}
+.pc-list {
+  max-height: 36rem;
+  overflow-y: auto;
+}
+.pc-description {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+}
+.pc-service summary {
+  cursor: pointer;
+  list-style: none;
+}
+.pc-service summary::-webkit-details-marker {
+  display: none;
+}
+.pc-service-name::before {
+  content: "›";
+  display: inline-block;
+  margin-right: 0.6rem;
+}
+.pc-service[open] > summary .pc-service-name::before {
+  transform: rotate(90deg);
+}
+.pc-child > :first-child {
+  padding-left: 2rem;
+}
+@media (max-width: 600px) {
+  .pc-head {
+    display: none;
+  }
+  .pc-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+    padding: 0.75rem 0.65rem;
+  }
+  .pc-row > * {
+    padding: 0;
+  }
+  .pc-row > :first-child {
+    border-right: 0;
+  }
+}

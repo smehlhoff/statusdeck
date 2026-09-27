@@ -205,3 +205,135 @@ providers:
         name: Cincinnati, United States - (CVG)
         group: US
         position: 60
+      - { upstream_id: "0hs0rl6hzmvx", name: "Abuse Reports", group: "Cloudflare Sites and Services", position: 61 }
+      - { upstream_id: "w4k8yvhfb3vp", name: "Access", group: "Cloudflare Sites and Services", position: 62 }
+      - { upstream_id: "wq0b65msmwpb", name: "Account Management", group: "Cloudflare Sites and Services", position: 63 }
+      - { upstream_id: "0311l882p558", name: "AI Gateway", group: "Cloudflare Sites and Services", position: 64 }
+      - { upstream_id: "c9mqrzw6nzvg", name: "AI Search", group: "Cloudflare Sites and Services", position: 65 }
+      - { upstream_id: "xm3cq0t85y10", name: "Always Online", group: "Cloudflare Sites and Services", position: 66 }
+      - { upstream_id: "4c231tkdlpcl", name: "Analytics", group: "Cloudflare Sites and Services", position: 67 }
+      - { upstream_id: "g4tb35rs9yw7", name: "API", group: "Cloudflare Sites and Services", position: 68 }
+      - { upstream_id: "g9yx473yjk9t", name: "API Shield", group: "Cloudflare Sites and Services", position: 69 }
+      - { upstream_id: "g9dgngpcdt1x", name: "Apps Marketplace", group: "Cloudflare Sites and Services", position: 70 }
+      - { upstream_id: "3zswxmh2g8j9", name: "Area 1 - API", group: "Cloudflare Sites and Services", position: 71 }
+      - { upstream_id: "lmcb8422fw7b", name: "Area 1 - Dash", group: "Cloudflare Sites and Services", position: 72 }
+      - { upstream_id: "2cwyccg7b7xb", name: "Artifacts", group: "Cloudflare Sites and Services", position: 73 }
+      - { upstream_id: "z9w398bsjvnq", name: "Argo Smart Routing", group: "Cloudflare Sites and Services", position: 74 }
+      - { upstream_id: "2469qcw8rvjp", name: "Audit Logs", group: "Cloudflare Sites and Services", position: 75 }
+      - { upstream_id: "dp8ppfycqxcs", name: "Authoritative DNS", group: "Cloudflare Sites and Services", position: 76 }
+      - { upstream_id: "ll1x88wwz4fq", name: "Billing", group: "Cloudflare Sites and Services", position: 77 }
+      - { upstream_id: "ct59b581pxt8", name: "Blog", group: "Cloudflare Sites and Services", position: 78 }
+      - { upstream_id: "4msl4k5wdcbv", name: "Bring Your Own IP (BYOIP)", group: "Cloudflare Sites and Services", position: 79 }
+      - { upstream_id: "q0dfbn0p6hyt", name: "Browser Isolation", group: "Cloudflare Sites and Services", position: 80 }
+      - { upstream_id: "q9p27cmrspf8", name: "Browser Run", group: "Cloudflare Sites and Services", position: 81 }
+      - { upstream_id: "s0991jwsqllx", name: "Bot Management", group: "Cloudflare Sites and Services", position: 82 }
+      - { upstream_id: "jm1y487rf7p3", name: "Brand Protection", group: "Cloudflare Sites and Services", position: 83 }
+      - { upstream_id: "3q1jnbdbn845", name: "Cache Reserve", group: "Cloudflare Sites and Services", position: 84 }
+      - { upstream_id: "5wnz34mhfhrk", name: "CDN/Cache", group: "Cloudflare Sites and Services", position: 85 }
+      - { upstream_id: "fbvx0hxhhdj0", name: "CDN Cache Purge", group: "Cloudflare Sites and Services", position: 86 }
+      - { upstream_id: "x0tkn0hzrtw7", name: "Challenge Platform", group: "Cloudflare Sites and Services", position: 87 }
+      - { upstream_id: "h2p0jj4ltvcq", name: "Cloud Access Security Broker (CASB)", group: "Cloudflare Sites and Services", position: 88 }
+      - { upstream_id: "bjvm6w2hzjqr", name: "Cloud App Control / Kivera", group: "Cloudflare Sites and Services", position: 89 }
+      - { upstream_id: "99thfnz1q9kr", name: "Cloud Connector", group: "Cloudflare Sites and Services", position: 90 }
+      - { upstream_id: "jm5mggc2wp95", name: "Cloud Network Interconnect (CNI)", group: "Cloudflare Sites and Services", position: 91 }
+      - { upstream_id: "k04jkcpzxn94", name: "Cloudflare One Client", group: "Cloudflare Sites and Services", position: 92 }
+      - { upstream_id: "yph7lndw0dvj", name: "Cloudforce One Reports", group: "Cloudflare Sites and Services", position: 93 }
+      - { upstream_id: "qgh1bfr4hxrl", name: "Community Site", group: "Cloudflare Sites and Services", position: 94 }
+      - { upstream_id: "nd77krz8224v", name: "Containers", group: "Cloudflare Sites and Services", position: 95 }
+      - { upstream_id: "4sfd950kf38n", name: "Custom Pages", group: "Cloudflare Sites and Services", position: 96 }
+      - { upstream_id: "z0yd3sxqjqdm", name: "D1", group: "Cloudflare Sites and Services", position: 97 }
+      - { upstream_id: "2c93ckmbbpd7", name: "Data Localization Suite", group: "Cloudflare Sites and Services", position: 98 }
+      - { upstream_id: "rppy995xymxv", name: "Data Loss Prevention (DLP)", group: "Cloudflare Sites and Services", position: 99 }
+      - { upstream_id: "3sq3s4d20ywk", name: "Dashboard", group: "Cloudflare Sites and Services", position: 100 }
+      - { upstream_id: "rzcwwk4rgb0w", name: "Developer's Site", group: "Cloudflare Sites and Services", position: 101 }
+      - { upstream_id: "nmp96vgn1hpl", name: "Digital Experience Monitoring (DEX)", group: "Cloudflare Sites and Services", position: 102 }
+      - { upstream_id: "5scwd3vmnsyj", name: "Distributed Web Gateway", group: "Cloudflare Sites and Services", position: 103 }
+      - { upstream_id: "ts05t1p1j7r4", name: "DNS Firewall", group: "Cloudflare Sites and Services", position: 104 }
+      - { upstream_id: "4l9qztbt6rbj", name: "DNS Root Servers", group: "Cloudflare Sites and Services", position: 105 }
+      - { upstream_id: "7j656z7tqk7f", name: "DNS Updates", group: "Cloudflare Sites and Services", position: 106 }
+      - { upstream_id: "bty1yz6dhh0v", name: "Durable Objects", group: "Cloudflare Sites and Services", position: 107 }
+      - { upstream_id: "gjb0yzvvrpf6", name: "Email Routing", group: "Cloudflare Sites and Services", position: 108 }
+      - { upstream_id: "h9z388jfrjsm", name: "Email Security (Area1)", group: "Cloudflare Sites and Services", position: 109 }
+      - { upstream_id: "8jjy5n5bfl9v", name: "Email Security (Zero Trust)", group: "Cloudflare Sites and Services", position: 110 }
+      - { upstream_id: "ljfdq8wbsmp6", name: "Email Sending", group: "Cloudflare Sites and Services", position: 111 }
+      - { upstream_id: "7yyjz9qdsjbx", name: "Ethereum Gateway", group: "Cloudflare Sites and Services", position: 112 }
+      - { upstream_id: "d1r0plwsl5qb", name: "Firewall", group: "Cloudflare Sites and Services", position: 113 }
+      - { upstream_id: "gyx2yygg7lmd", name: "Gateway", group: "Cloudflare Sites and Services", position: 114 }
+      - { upstream_id: "4tw744y7kfmw", name: "Geo-Key Manager", group: "Cloudflare Sites and Services", position: 115 }
+      - { upstream_id: "vn1h2pfctsvn", name: "Health Checks", group: "Cloudflare Sites and Services", position: 116 }
+      - { upstream_id: "d0x62dsm4c9n", name: "Hyperdrive", group: "Cloudflare Sites and Services", position: 117 }
+      - { upstream_id: "dw7t39j5syzl", name: "Image Resizing", group: "Cloudflare Sites and Services", position: 118 }
+      - { upstream_id: "3lbj8lp3d750", name: "Images", group: "Cloudflare Sites and Services", position: 119 }
+      - { upstream_id: "8qwmwg7ytljv", name: "Infrastructure", group: "Cloudflare Sites and Services", position: 120 }
+      - { upstream_id: "vskzxm2flpc7", name: "IP Geolocation", group: "Cloudflare Sites and Services", position: 121 }
+      - { upstream_id: "8sn2w5kyxfnp", name: "Load Balancing and Monitoring", group: "Cloudflare Sites and Services", position: 122 }
+      - { upstream_id: "tfnrx45s2b48", name: "Lists", group: "Cloudflare Sites and Services", position: 123 }
+      - { upstream_id: "w324dr932r05", name: "Log Explorer", group: "Cloudflare Sites and Services", position: 124 }
+      - { upstream_id: "k0mgxrls5y1b", name: "Logs", group: "Cloudflare Sites and Services", position: 125 }
+      - { upstream_id: "m1cm5tqpkqtm", name: "Cloudflare Network Firewall", group: "Cloudflare Sites and Services", position: 126 }
+      - { upstream_id: "bjlxcss20fsl", name: "Magic Transit", group: "Cloudflare Sites and Services", position: 127 }
+      - { upstream_id: "qgnxz00j1f2v", name: "Cloudflare WAN", group: "Cloudflare Sites and Services", position: 128 }
+      - { upstream_id: "q3t6mnpmpgt8", name: "Cloudflare One Appliance", group: "Cloudflare Sites and Services", position: 129 }
+      - { upstream_id: "6239kkkfzfnf", name: "Marketing Site", group: "Cloudflare Sites and Services", position: 130 }
+      - { upstream_id: "gcnzpkhvnqs7", name: "MCP Portal", group: "Cloudflare Sites and Services", position: 131 }
+      - { upstream_id: "8wk7c6y5dgfc", name: "Mesh", group: "Cloudflare Sites and Services", position: 132 }
+      - { upstream_id: "j9jl2gb9zywx", name: "Mirage", group: "Cloudflare Sites and Services", position: 133 }
+      - { upstream_id: "4n0gb0kh02gf", name: "Network", group: "Cloudflare Sites and Services", position: 134 }
+      - { upstream_id: "5xvn0m7tthlf", name: "Notifications", group: "Cloudflare Sites and Services", position: 135 }
+      - { upstream_id: "570kfpd0dgg7", name: "Snippets", group: "Cloudflare Sites and Services", position: 136 }
+      - { upstream_id: "mfty6kskddpf", name: "Observatory", group: "Cloudflare Sites and Services", position: 137 }
+      - { upstream_id: "hk5dqm69klkp", name: "Page Shield", group: "Cloudflare Sites and Services", position: 138 }
+      - { upstream_id: "vgxj684rcw7t", name: "Pages", group: "Cloudflare Sites and Services", position: 139 }
+      - { upstream_id: "xr712w0ly7nr", name: "Pipelines", group: "Cloudflare Sites and Services", position: 140 }
+      - { upstream_id: "96gqgftyqk9s", name: "Precursor", group: "Cloudflare Sites and Services", position: 141 }
+      - { upstream_id: "3z7cmdfch5kb", name: "Queues", group: "Cloudflare Sites and Services", position: 142 }
+      - { upstream_id: "hb7g5sq2zz0h", name: "R2", group: "Cloudflare Sites and Services", position: 143 }
+      - { upstream_id: "dxptl93m53d7", name: "R2 Data Catalog", group: "Cloudflare Sites and Services", position: 144 }
+      - { upstream_id: "4mhr088g84gz", name: "R2 SQL", group: "Cloudflare Sites and Services", position: 145 }
+      - { upstream_id: "0fw91jq1bzxx", name: "Radar", group: "Cloudflare Sites and Services", position: 146 }
+      - { upstream_id: "yd553hxj8dbj", name: "Randomness Beacon", group: "Cloudflare Sites and Services", position: 147 }
+      - { upstream_id: "z4wlt5jx9szq", name: "Realtime SFU", group: "Cloudflare Sites and Services", position: 148 }
+      - { upstream_id: "5s616lljfwdz", name: "Realtime TURN Service", group: "Cloudflare Sites and Services", position: 149 }
+      - { upstream_id: "yxhtws7ltl9t", name: "RealtimeKit", group: "Cloudflare Sites and Services", position: 150 }
+      - { upstream_id: "8w536gxk7dvq", name: "Recursive DNS", group: "Cloudflare Sites and Services", position: 151 }
+      - { upstream_id: "kn2xkt469vyh", name: "Registrar", group: "Cloudflare Sites and Services", position: 152 }
+      - { upstream_id: "vsj8h17tq59r", name: "Registration Data Access Protocol (RDAP)", group: "Cloudflare Sites and Services", position: 153 }
+      - { upstream_id: "fvgfcmy66tdr", name: "Replicate", group: "Cloudflare Sites and Services", position: 154 }
+      - { upstream_id: "ch3mwx0hr4k6", name: "Rules", group: "Cloudflare Sites and Services", position: 155 }
+      - { upstream_id: "q2w4kkkzw5gs", name: "Secondary DNS", group: "Cloudflare Sites and Services", position: 156 }
+      - { upstream_id: "18qkc83zzmxb", name: "Security Center", group: "Cloudflare Sites and Services", position: 157 }
+      - { upstream_id: "6dd6ssg7plt0", name: "Spectrum", group: "Cloudflare Sites and Services", position: 158 }
+      - { upstream_id: "fcx388ss9k9x", name: "Speed Optimizations", group: "Cloudflare Sites and Services", position: 159 }
+      - { upstream_id: "47xg28c02lnk", name: "Stream", group: "Cloudflare Sites and Services", position: 160 }
+      - { upstream_id: "cghykwlwsmn5", name: "SSL Certificate Provisioning", group: "Cloudflare Sites and Services", position: 161 }
+      - { upstream_id: "9p2qlpt19nqb", name: "SSL for SaaS Provisioning", group: "Cloudflare Sites and Services", position: 162 }
+      - { upstream_id: "8m7bb706rh1c", name: "Subscriptions", group: "Cloudflare Sites and Services", position: 163 }
+      - { upstream_id: "jzcwkvrc4w4q", name: "Support Site", group: "Cloudflare Sites and Services", position: 164 }
+      - { upstream_id: "ggcvp9h5v6rv", name: "Time Services", group: "Cloudflare Sites and Services", position: 165 }
+      - { upstream_id: "f0jjgwcxtmk8", name: "Trace", group: "Cloudflare Sites and Services", position: 166 }
+      - { upstream_id: "y98zlwj1d7zh", name: "Tunnel", group: "Cloudflare Sites and Services", position: 167 }
+      - { upstream_id: "m4jywscr0n0k", name: "Turnstile", group: "Cloudflare Sites and Services", position: 168 }
+      - { upstream_id: "b92xct6jm48g", name: "User Profiles", group: "Cloudflare Sites and Services", position: 169 }
+      - { upstream_id: "mncrnv8ys2x2", name: "URL Scanner", group: "Cloudflare Sites and Services", position: 170 }
+      - { upstream_id: "dfrxmxffp7r2", name: "Vectorize", group: "Cloudflare Sites and Services", position: 171 }
+      - { upstream_id: "9c7cbxnhk1dq", name: "Waiting Room", group: "Cloudflare Sites and Services", position: 172 }
+      - { upstream_id: "bjvy4v384csg", name: "WARP", group: "Cloudflare Sites and Services", position: 173 }
+      - { upstream_id: "qt59p3cr1grx", name: "Web Analytics", group: "Cloudflare Sites and Services", position: 174 }
+      - { upstream_id: "411nh1g3zgx8", name: "WebSockets", group: "Cloudflare Sites and Services", position: 175 }
+      - { upstream_id: "57srcl8zcn7c", name: "Workers", group: "Cloudflare Sites and Services", position: 176 }
+      - { upstream_id: "zvm7mqn92xzc", name: "Workers AI", group: "Cloudflare Sites and Services", position: 177 }
+      - { upstream_id: "pg21w9xb991r", name: "Workers Assets", group: "Cloudflare Sites and Services", position: 178 }
+      - { upstream_id: "vcpsk0w6g86k", name: "Workers Builds", group: "Cloudflare Sites and Services", position: 179 }
+      - { upstream_id: "wjvmzdf21d4l", name: "Workers Preview", group: "Cloudflare Sites and Services", position: 180 }
+      - { upstream_id: "tmh50tx2nprs", name: "Workers KV", group: "Cloudflare Sites and Services", position: 181 }
+      - { upstream_id: "pqt7t1dwt0dz", name: "Workers Observability", group: "Cloudflare Sites and Services", position: 182 }
+      - { upstream_id: "5df6y9z3fsky", name: "Workflows", group: "Cloudflare Sites and Services", position: 183 }
+      - { upstream_id: "q1h7j6g2jcjw", name: "Wrangler", group: "Cloudflare Sites and Services", position: 184 }
+      - { upstream_id: "qgt2kv10g1yn", name: "Zaraz", group: "Cloudflare Sites and Services", position: 185 }
+      - { upstream_id: "kf0ktv29xrfy", name: "Zero Trust", group: "Cloudflare Sites and Services", position: 186 }
+      - { upstream_id: "276xk3r83js7", name: "Zero Trust Dashboard", group: "Cloudflare Sites and Services", position: 187 }
+      - { upstream_id: "4vx2clltvc89", name: "Zones", group: "Cloudflare Sites and Services", position: 188 }
+      - { upstream_id: "4tv81hqpt2jt", name: "Zone Versioning", group: "Cloudflare Sites and Services", position: 189 }
+      - { upstream_id: "f5b2pq2cgr2x", name: "Workers VPC", group: "Cloudflare Sites and Services", position: 190 }
+      - { upstream_id: "5r6d2zthcqm4", name: "Hagatna, Guam - (GUM)", group: "Oceania", position: 191 }
+      - { upstream_id: "fqmg9rhvkswq", name: "San Juan, Puerto Rico - (SJU)", group: "Latin America & the Caribbean", position: 192 }

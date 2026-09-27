@@ -31,3 +31,24 @@ providers:
       - { upstream_id: s3hr5qhhm94r, name: Observability Query API, group: Observability, position: 15 }
       - { upstream_id: 2ndk16wxw8jt, name: Observability Data Ingest, group: Observability, position: 16 }
       - { upstream_id: 12y9mq78j7hh, name: OpenTelemetry, group: Observability, position: 17 }
+      - { upstream_id: "2hh5b13z44vt", name: "Emails and notifications", group: "Automations (non-core functionality)", position: 18 }
+      - { upstream_id: "4l77j982t79p", name: "Audit log", group: "Global (non-core functionality)", position: 19 }
+      - { upstream_id: "q7sktr3j8cd1", name: "Experiment management", group: "Experimentation (core functionality)", position: 20 }
+      - { upstream_id: "qywwncp0p9zp", name: "Past experiment iterations", group: "Experimentation (non-core functionality)", position: 21 }
+      - { upstream_id: "7h4z5dpj09mx", name: "Context processing", group: "Feature management (non-core functionality)", position: 22 }
+      - { upstream_id: "02b3z1h4j5cl", name: "Rollout management", group: "Guarded Rollouts (core functionality)", position: 23 }
+      - { upstream_id: "gvntrywbr2h3", name: "Config management", group: "Agents (core functionality)", position: 24 }
+      - { upstream_id: "2c1qzwzc7142", name: "Data Export", group: "Feature management (non-core functionality)", position: 25 }
+      - { upstream_id: "1skhs8zvnlm6", name: "Metrics", group: "Global (core functionality)", position: 26 }
+      - { upstream_id: "cz3hzygdr4w2", name: "Rollout results processing", group: "Guarded Rollouts (core functionality)", position: 27 }
+      - { upstream_id: "rhlpbq5f0nzk", name: "Graphs", group: "Agents (core functionality)", position: 28 }
+      - { upstream_id: "g5bksjhndxmj", name: "Flag usage metrics", group: "Feature management (non-core functionality)", position: 29 }
+      - { upstream_id: "zwdp0gr394sw", name: "Docs (launchdarkly.com/docs)", group: "Websites (non-core functionality)", position: 30 }
+      - { upstream_id: "hf1r5xs02ll2", name: "Experiment results processing", group: "Experimentation (core functionality)", position: 31 }
+      - { upstream_id: "tfdyy5j59g6w", name: "Expiring Contexts Targets", group: "Automations (non-core functionality)", position: 32 }
+      - { upstream_id: "02v76bhy9lgc", name: "Rollout results analysis", group: "Guarded Rollouts (core functionality)", position: 33 }
+      - { upstream_id: "xth0rvvf2qnh", name: "Playgrounds and offline evaluations", group: "Agents (core functionality)", position: 34 }
+      - { upstream_id: "2f264mc5ls7f", name: "Experiment results analysis", group: "Experimentation (core functionality)", position: 35 }
+      - { upstream_id: "s9tsyx1529lg", name: "Website (launchdarkly.com)", group: "Websites (non-core functionality)", position: 36 }
+      - { upstream_id: "gdh9p0yvd0ft", name: "AI insights", group: "Agents (core functionality)", position: 37 }
+      - { upstream_id: "qvx81r5dgmxw", name: "Warehouse native experimentation", group: "Experimentation (core functionality)", position: 38 }

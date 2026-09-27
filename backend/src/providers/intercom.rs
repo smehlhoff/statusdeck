@@ -131,30 +131,9 @@ fn parse_snapshot(summary_root: &Value, history: &Value) -> Result<FetchOutcome,
             }
         }
     }
-    let mut incidents = Vec::new();
-    let mut maintenance = Vec::new();
-    for incident in &native {
-        let id = incident
-            .get("id")
-            .and_then(Value::as_str)
-            .filter(|id| !id.is_empty())
-            .ok_or_else(|| ProviderError::Parse("Intercom incident omitted its ID".into()))?;
-        let value = json!({
-            "id": id, "name": incident["name"], "status": incident["status"],
-            "created_at": incident["published_at"],
-            "started_at": incident["component_impacts"].as_array().into_iter().flatten()
-                .filter_map(|impact| super::parse_time(impact.get("start_at"))).min(),
-            "shortlink": format!("https://www.finstatus.com/us-hosting/incidents/{id}"),
-        });
-        if incident["type"] == "maintenance" {
-            maintenance.push(value);
-        } else {
-            incidents.push(value);
-        }
-    }
     let body = serde_json::to_vec(&json!({
         "page": {"url": summary["public_url"]},
-        "components": components, "incidents": incidents, "scheduled_maintenances": maintenance,
+        "components": components, "incidents": [], "scheduled_maintenances": [],
     }))
     .map_err(|error| ProviderError::Parse(error.to_string()))?;
     let FetchOutcome::Fetched(mut snapshot) = statuspage::parse_summary(&body, 200, None, None)?
@@ -163,7 +142,11 @@ fn parse_snapshot(summary_root: &Value, history: &Value) -> Result<FetchOutcome,
             "Intercom parser returned an unexpected response".into(),
         ));
     };
-    statuspage::enrich_incidentio_incidents(&mut snapshot, &json!({"incidents": native}));
+    statuspage::merge_incidentio_incidents(
+        &mut snapshot,
+        &json!({"incidents": native}),
+        "https://www.finstatus.com/us-hosting",
+    )?;
     snapshot.overall = rollup(snapshot.components.iter().map(|component| component.status));
     snapshot.original_overall = snapshot.overall.key().into();
     snapshot.provider_overall = snapshot.overall;

@@ -27,3 +27,4 @@ providers:
       - { upstream_id: 1wd1zrc846g6, name: us-east-2, group: US, position: 10 }
       - { upstream_id: bcpt22h2w3pk, name: us-west-1, group: US, position: 11 }
       - { upstream_id: psf6vmblbsvf, name: us-west-2, group: US, position: 12 }
+      - { upstream_id: "108mxl185pmb", name: "Analytics", position: 13 }

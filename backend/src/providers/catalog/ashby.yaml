@@ -41,3 +41,13 @@ providers:
         name: AI Notetaker
         group: Ashby Products
         position: 6
+      - { upstream_id: "3b27gmlgl18j", name: "Email", group: "Notification Delivery", position: 7 }
+      - { upstream_id: "f36tph7lk7yn", name: "Google", group: "Authentication Services", position: 8 }
+      - { upstream_id: "mwcl1592fcyp", name: "Ashby API", group: "Ashby APIs", position: 9 }
+      - { upstream_id: "zdqgkkwtd5wg", name: "Slack", group: "Notification Delivery", position: 10 }
+      - { upstream_id: "0v09s2qr7slv", name: "Office 365", group: "Authentication Services", position: 11 }
+      - { upstream_id: "yz48k8lqjy18", name: "Reports API", group: "Ashby APIs", position: 12 }
+      - { upstream_id: "t33g1qmh6fpw", name: "Job Post API", group: "Ashby APIs", position: 13 }
+      - { upstream_id: "3mdmyk9bdx8f", name: "Magic Link", group: "Authentication Services", position: 14 }
+      - { upstream_id: "z344ncv2j895", name: "Documentation", group: "Ashby APIs", position: 15 }
+      - { upstream_id: "xjr34gh7mxdn", name: "Single Sign On", group: "Authentication Services", position: 16 }

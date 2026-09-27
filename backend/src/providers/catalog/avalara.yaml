@@ -38,3 +38,82 @@ providers:
       - { upstream_id: l5rzp8xph7xf, name: E-Invoicing and Live Reporting, group: E-Invoicing, position: 21 }
       - { upstream_id: 6cw76blv9tdz, name: Active Status Monitoring, group: E-Invoicing, position: 22 }
       - { upstream_id: pd2pn8r60kxq, name: Avalara Developer Portal, group: Developer, position: 23 }
+      - { upstream_id: "xbbcx4slr6n9", name: "Avalara AvaTax Excise", group: "Avalara Excise", position: 24 }
+      - { upstream_id: "19k4w7gyp31h", name: "Avalara Main Number", group: "Avalara Toll-Free Phone Numbers", position: 25 }
+      - { upstream_id: "zxwcvft4cfc9", name: "MyLodgeTax", group: "Avalara MyLodgeTax", position: 26 }
+      - { upstream_id: "nbkb1v9jsctt", name: "Avalara Consumer Use (Web-application)", group: "Avalara Consumer Use", position: 27 }
+      - { upstream_id: "sssgtq45wbsr", name: "Avalara Tax Content Console", group: "Avalara Tax Content", position: 28 }
+      - { upstream_id: "fwzx3pgwvk11", name: "Avalara Studio", group: "Avalara Studio", position: 29 }
+      - { upstream_id: "sjryfvl9vp38", name: "Cross Border Quoting", group: "Avalara Cross Border", position: 30 }
+      - { upstream_id: "9t4rfky60mlh", name: "Avalara 1099", group: "Avalara 1099", position: 31 }
+      - { upstream_id: "47scscrnr8vg", name: "One Registration & Licensing", group: "One Registration & Licensing", position: 32 }
+      - { upstream_id: "fd97tw3x518g", name: "Avalara License Management", group: "Avalara Business Licenses", position: 33 }
+      - { upstream_id: "0zzf388jl32p", name: "Avalara Managed VAT Reporting", group: "Avalara Managed VAT Reporting", position: 34 }
+      - { upstream_id: "6j54q89yxttr", name: "Managed Tariff Code Classification", group: "MTCC", position: 35 }
+      - { upstream_id: "php2dcw3nhvh", name: "Platform UI", group: "Avalara Versori", position: 36 }
+      - { upstream_id: "tw207kgr4nc2", name: "Managed Support Survey", group: "Managed Support Survey", position: 37 }
+      - { upstream_id: "cmdmcjyxrtxd", name: "Dynamic Reporting UI", group: "Dynamic Reporting UI", position: 38 }
+      - { upstream_id: "7yvs0y7xppm9", name: "Avalara Returns Excise", group: "Avalara Excise", position: 39 }
+      - { upstream_id: "zms3dhf6d6mt", name: "Avalara Enterprise Support Number", group: "Avalara Toll-Free Phone Numbers", position: 40 }
+      - { upstream_id: "qqbzd98rqd2n", name: "Avalara Tax Content Services", group: "Avalara Tax Content", position: 41 }
+      - { upstream_id: "54mg0rf9xh0m", name: "Cross Border Restrictions", group: "Avalara Cross Border", position: 42 }
+      - { upstream_id: "z0wwzjz297qr", name: "Avalara Registrations & Licensing API", group: "One Registration & Licensing", position: 43 }
+      - { upstream_id: "7pqjhnsyqkth", name: "Avalara 1099 API", group: "Avalara 1099", position: 44 }
+      - { upstream_id: "5cv78ytz013b", name: "Dynamic Reporting Service", group: "Avalara Managed VAT Reporting", position: 45 }
+      - { upstream_id: "ylb2c2088jw5", name: "Mirakl", group: "Avalara Studio", position: 46 }
+      - { upstream_id: "vjsyqjymlp83", name: "Cart", group: "Avalara MyLodgeTax", position: 47 }
+      - { upstream_id: "nfrglsmk3dvs", name: "Platform API", group: "Avalara Versori", position: 48 }
+      - { upstream_id: "clgmkf5bnwqd", name: "Avalara License Managed Services", group: "Avalara Business Licenses", position: 49 }
+      - { upstream_id: "xq493yhk7c40", name: "item-classification unified service", group: "MTCC", position: 50 }
+      - { upstream_id: "08ryrvht370p", name: "MyLodge Support Number", group: "Avalara Toll-Free Phone Numbers", position: 51 }
+      - { upstream_id: "xwpy24jyqxgt", name: "Avalara License Guidance", group: "Avalara Business Licenses", position: 52 }
+      - { upstream_id: "bgxv09ywk8bw", name: "Token Exchange Service", group: "One Registration & Licensing", position: 53 }
+      - { upstream_id: "nh2k75z03qyd", name: "Self-Serve Tariff Code Classification", group: "Avalara Cross Border", position: 54 }
+      - { upstream_id: "dw97wt67vdsg", name: "Avalara Tax Content MCP Server", group: "Avalara Tax Content", position: 55 }
+      - { upstream_id: "b2ml0mhxnsbj", name: "Managed Execution Pool", group: "Avalara Versori", position: 56 }
+      - { upstream_id: "5th3pcbm3dl7", name: "Fax Services", group: "Avalara Exemption Certificate Management", position: 57 }
+      - { upstream_id: "d2d25dz61g69", name: "File Assist Questionnaire", group: "Avalara Business Licenses", position: 58 }
+      - { upstream_id: "zfffsdb3rjn7", name: "Automatic HS Code Classification", group: "Avalara Cross Border", position: 59 }
+      - { upstream_id: "rvd673vfbgcb", name: "Universal Document Router", group: "One Registration & Licensing", position: 60 }
+      - { upstream_id: "x0v3l726gmvn", name: "Inbound/Outbound Services", group: "Avalara Exemption Certificate Management", position: 61 }
+      - { upstream_id: "xm3rc8bsbk7w", name: "Avalara Landed Cost", position: 62 }
+      - { upstream_id: "dw4ncbdwf98s", name: "Avalara AvaTax for Communications SaaS Pro Geo", group: "Avalara AvaTax for Communications", position: 63 }
+      - { upstream_id: "890wlw07k25x", name: "Filing Assist Manager", group: "Avalara Business Licenses", position: 64 }
+      - { upstream_id: "zgwjswhfb245", name: "Cross Border MCP Server", group: "Avalara Cross Border", position: 65 }
+      - { upstream_id: "n3sw7k9lym6q", name: "Avalara AvaTax for Communications SaaS Pro REST", group: "Avalara AvaTax for Communications", position: 66 }
+      - { upstream_id: "pgqmsz7tb6gn", name: "Business Licenses Customer & Partner Sales & Support Portal", group: "Avalara Business Licenses", position: 67 }
+      - { upstream_id: "y4rlmrq5cq5v", name: "Trade Hub", group: "Avalara Cross Border", position: 68 }
+      - { upstream_id: "ysxs5b704fl8", name: "Retail Services", group: "Avalara Exemption Certificate Management", position: 69 }
+      - { upstream_id: "5x4t925txqnr", name: "Avalara VAT Returns Service", position: 70 }
+      - { upstream_id: "9h6hylq3zpcv", name: "Avalara AvaTax for Communications SaaS Pro SOAP", group: "Avalara AvaTax for Communications", position: 71 }
+      - { upstream_id: "93sx725vwm9w", name: "Main License Repository (MLR) API", group: "Avalara Business Licenses", position: 72 }
+      - { upstream_id: "yz5qz89jgbbs", name: "Cross Border Shipment Compliance", group: "Avalara Cross Border", position: 73 }
+      - { upstream_id: "rdknsbj8h6v9", name: "Federal Withholding TIN Verification", group: "Avalara Exemption Certificate Management", position: 74 }
+      - { upstream_id: "7rytcv3ylc69", name: "NRL MCP Server", group: "Avalara Business Licenses", position: 75 }
+      - { upstream_id: "653lrh9yqgk5", name: "Avalara AvaTax for Communications Customer Portal", group: "Avalara AvaTax for Communications", position: 76 }
+      - { upstream_id: "6l1xl943qb95", name: "Background Tasks", group: "Avalara Exemption Certificate Management", position: 77 }
+      - { upstream_id: "cjtr22q33dgm", name: "Avalara AvaTax for Communications SaaS Standard", group: "Avalara AvaTax for Communications", position: 78 }
+      - { upstream_id: "f6zn2s4km52k", name: "Avalara BuyDot", position: 79 }
+      - { upstream_id: "wtvvxg3qdbd4", name: "Avalara AvaTax for Communications Legacy Task Engine", group: "Avalara AvaTax for Communications", position: 80 }
+      - { upstream_id: "bwc844y38jbn", name: "Avalara AvaTax for Communications MCP Server", group: "Avalara AvaTax for Communications", position: 81 }
+      - { upstream_id: "j00js69xjtn3", name: "Avalara MyLodgeTax Pro", position: 82 }
+      - { upstream_id: "mffw14s9cfpf", name: "Avalara Company Service", position: 83 }
+      - { upstream_id: "t1gwvthxfh30", name: "Avalara Property Tax Enterprise", position: 84 }
+      - { upstream_id: "8r1ny3l6wst7", name: "Avalara Property Tax Returns Pro", position: 85 }
+      - { upstream_id: "thr3fvb68rlf", name: "Common Configuration Service", position: 86 }
+      - { upstream_id: "gplgbfz112nh", name: "Avalara VAT Reporting (Cloud)", position: 87 }
+      - { upstream_id: "fb43by08csyw", name: "Extractor Studio", position: 88 }
+      - { upstream_id: "bz4zstcx1288", name: "Avalara Tax Codes Search Website", position: 89 }
+      - { upstream_id: "06hvhy34m06p", name: "Avalara Business API", position: 90 }
+      - { upstream_id: "m4g8mhnsl7tk", name: "Avalara PSQ", position: 91 }
+      - { upstream_id: "ctpfq42l2vr8", name: "INPOSIA Cloud Service", position: 92 }
+      - { upstream_id: "xnsc8lf6wmcc", name: "INPOSIA GPX Monitor", position: 93 }
+      - { upstream_id: "kxtv75n9gfnp", name: "Avalara Tax Research", position: 94 }
+      - { upstream_id: "c4vlxpvrvp4k", name: "Oobj", position: 95 }
+      - { upstream_id: "np4f8gj1b1sm", name: "Avalara Trade Compliance (ATC)", position: 96 }
+      - { upstream_id: "rlxq0gjdhrxx", name: "Global Registration & Licensing (GRL)", position: 97 }
+      - { upstream_id: "9qzj6ccmy2c1", name: "Avalara Capital", position: 98 }
+      - { upstream_id: "1f1dvkhb90cz", name: "Tax Code Classification", position: 99 }
+      - { upstream_id: "b8kvcv3xm92s", name: "DAVO by Avalara", position: 100 }
+      - { upstream_id: "xrcl6b626m21", name: "Avi Orchestrator", position: 101 }
+      - { upstream_id: "qh4k61ys8v02", name: "Avalara 3CE", position: 102 }

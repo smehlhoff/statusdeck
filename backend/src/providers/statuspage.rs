@@ -172,7 +172,7 @@ impl StatusProvider for StatuspageProvider {
                 4 * 1024 * 1024,
             )
             .await?;
-            enrich_incidentio_incidents(&mut snapshot, &native);
+            merge_incidentio_incidents(&mut snapshot, &native, context.base_url.as_str())?;
             if let Some(raw_payload) = snapshot.raw_payload.as_mut().and_then(Value::as_object_mut)
             {
                 raw_payload.insert("native_incidents".into(), native);
@@ -237,10 +237,64 @@ impl StatusProvider for StatuspageProvider {
     }
 }
 
-pub(crate) fn enrich_incidentio_incidents(snapshot: &mut ProviderSnapshot, root: &Value) {
-    let Some(native_incidents) = root.get("incidents").and_then(Value::as_array) else {
-        return;
-    };
+pub(crate) fn merge_incidentio_incidents(
+    snapshot: &mut ProviderSnapshot,
+    root: &Value,
+    page_url: &str,
+) -> Result<(), ProviderError> {
+    let native_incidents = root
+        .get("incidents")
+        .and_then(Value::as_array)
+        .ok_or_else(|| ProviderError::Parse("native incident response omitted incidents".into()))?;
+    let page_url = url::Url::parse(page_url)
+        .map_err(|error| ProviderError::Configuration(error.to_string()))?;
+    let known = snapshot
+        .incidents
+        .iter()
+        .chain(&snapshot.maintenance)
+        .map(|incident| incident.upstream_id.as_str())
+        .collect::<HashSet<_>>();
+    let mut incidents = Vec::new();
+    let mut maintenance = Vec::new();
+    for native in native_incidents {
+        let id = native
+            .get("id")
+            .and_then(Value::as_str)
+            .filter(|id| !id.is_empty())
+            .ok_or_else(|| ProviderError::Parse("native incident omitted its ID".into()))?;
+        if known.contains(id) {
+            continue;
+        }
+        let mut url = page_url.clone();
+        url.path_segments_mut()
+            .map_err(|()| {
+                ProviderError::Configuration(
+                    "native incident URL cannot contain path segments".into(),
+                )
+            })?
+            .pop_if_empty()
+            .push("incidents")
+            .push(id);
+        let value = serde_json::json!({
+            "id": id, "name": native["name"], "status": native["status"],
+            "created_at": native["published_at"], "shortlink": url.as_str(),
+        });
+        if native["type"] == "maintenance" {
+            maintenance.push(value);
+        } else {
+            incidents.push(value);
+        }
+    }
+    snapshot.incidents.extend(parse_incidents(
+        Some(&incidents),
+        IncidentKind::Incident,
+        Some(&page_url),
+    ));
+    snapshot.maintenance.extend(parse_incidents(
+        Some(&maintenance),
+        IncidentKind::Maintenance,
+        Some(&page_url),
+    ));
     let component_names = snapshot
         .components
         .iter()
@@ -262,12 +316,39 @@ pub(crate) fn enrich_incidentio_incidents(snapshot: &mut ProviderSnapshot, root:
         }
         if let Some(phase) = native.get("status").and_then(Value::as_str) {
             incident.original_phase = phase.to_owned();
+            incident.lifecycle = if matches!(phase, "resolved" | "maintenance_complete") {
+                IncidentLifecycle::Resolved
+            } else {
+                IncidentLifecycle::Open
+            };
         }
+        incident.started_at = native
+            .get("component_impacts")
+            .and_then(Value::as_array)
+            .into_iter()
+            .flatten()
+            .filter_map(|impact| parse_time(impact.get("start_at")))
+            .min()
+            .or(incident.started_at);
         incident.created_at = parse_time(native.get("published_at")).or(incident.created_at);
         incident.affected_scopes = incidentio_scopes(
             native.get("affected_components").and_then(Value::as_array),
             &component_names,
         );
+        incident.severity = incident
+            .affected_scopes
+            .iter()
+            .filter_map(|scope| match scope.normalized_status? {
+                NormalizedStatus::MajorOutage => Some(Severity::Critical),
+                NormalizedStatus::PartialOutage => Some(Severity::Major),
+                NormalizedStatus::Degraded => Some(Severity::Minor),
+                NormalizedStatus::Operational | NormalizedStatus::Maintenance => {
+                    Some(Severity::Info)
+                }
+                NormalizedStatus::Unknown => None,
+            })
+            .max()
+            .unwrap_or(incident.severity);
         incident.affected_components = incident
             .affected_scopes
             .iter()
@@ -318,12 +399,34 @@ pub(crate) fn enrich_incidentio_incidents(snapshot: &mut ProviderSnapshot, root:
                     .updates
                     .iter()
                     .rev()
-                    .find(|update| matches!(update.status.as_str(), "resolved" | "completed"))
+                    .find(|update| {
+                        matches!(
+                            update.status.as_str(),
+                            "resolved" | "completed" | "maintenance_complete"
+                        )
+                    })
                     .and_then(|update| update.display_at.or(update.created_at))
                     .or(incident.resolved_at);
             }
         }
+        if let Some(body) = native
+            .pointer("/write_up_contents/markdown")
+            .and_then(Value::as_str)
+            .filter(|body| !body.trim().is_empty())
+        {
+            // The native feed publishes a separate write-up without a publication timestamp.
+            incident.updates.push(ProviderUpdate {
+                upstream_id: Some(format!("{}:postmortem", incident.upstream_id)),
+                status: "postmortem".into(),
+                body: body.to_owned(),
+                created_at: None,
+                updated_at: None,
+                display_at: None,
+                affected_scopes: Vec::new(),
+            });
+        }
     }
+    Ok(())
 }
 
 fn incidentio_scopes(
@@ -565,7 +668,10 @@ async fn merge_event_history(
     serde_json::to_vec(&summary).map_err(|error| ProviderError::Parse(error.to_string()))
 }
 
-fn retain_scoped_incidents(incidents: &mut [ProviderIncident], component_ids: &HashSet<String>) {
+pub(super) fn retain_scoped_incidents(
+    incidents: &mut [ProviderIncident],
+    component_ids: &HashSet<String>,
+) {
     for incident in incidents {
         incident.within_provider_scope = incident.affected_components.is_empty()
             || incident
@@ -652,10 +758,16 @@ pub fn parse_summary(
         .or_else(|| page.get("status").and_then(Value::as_str))
         .unwrap_or("unknown")
         .to_owned();
-    let components = root
+    let component_values = root
         .get("components")
         .and_then(Value::as_array)
-        .ok_or_else(|| ProviderError::Parse("missing components".into()))?
+        .ok_or_else(|| ProviderError::Parse("missing components".into()))?;
+    let groups = component_values
+        .iter()
+        .filter(|value| value.get("group").and_then(Value::as_bool) == Some(true))
+        .filter_map(|value| Some((value.get("id")?.as_str()?, value.get("name")?.as_str()?)))
+        .collect::<HashMap<_, _>>();
+    let components = component_values
         .iter()
         .enumerate()
         .filter_map(|(position, value)| {
@@ -675,6 +787,12 @@ pub fn parse_summary(
                 group: value
                     .get("group_name")
                     .and_then(Value::as_str)
+                    .or_else(|| {
+                        value
+                            .get("group_id")?
+                            .as_str()
+                            .and_then(|id| groups.get(id).copied())
+                    })
                     .map(ToOwned::to_owned),
                 description: value
                     .get("description")

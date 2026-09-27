@@ -25,3 +25,8 @@ providers:
       - { upstream_id: xf0flg39y90r, name: Sign-in and Account Access, group: Global, position: 9 }
       - { upstream_id: m29llqngdb9f, name: File Browser and Search, group: Global, position: 10 }
       - { upstream_id: kxfxzz366mlk, name: Email and Notifications, group: Global, position: 11 }
+      - { upstream_id: "2908hq6p9syq", name: "Admin, Billing & AI credits", position: 12 }
+      - { upstream_id: "l1rxyg394j7z", name: "Community & Forum", position: 13 }
+      - { upstream_id: "791nhyk4ppzz", name: "Figma Motion", position: 14 }
+      - { upstream_id: "vd3ypm9j87p9", name: "Figma Slides", position: 15 }
+      - { upstream_id: "rhbh00nfdk6m", name: "Figma Weave", position: 16 }

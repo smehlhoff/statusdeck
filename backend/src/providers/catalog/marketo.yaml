@@ -13,5 +13,66 @@ providers:
     components:
       - upstream_id: marketo-us
         name: Adobe Marketo Engage (US)
-        group: US
+        group: Americas
         position: 0
+      - { upstream_id: "319012", name: "Predictive Audiences", group: "Americas", position: 1 }
+      - { upstream_id: "319014", name: "Mobile In App Messaging Programs", group: "Americas", position: 2 }
+      - { upstream_id: "319037", name: "Mobile Events Tracking", group: "Americas", position: 3 }
+      - { upstream_id: "319071", name: "MLM HADOOP", group: "Americas", position: 4 }
+      - { upstream_id: "319270", name: "Account lists", group: "Americas", position: 5 }
+      - { upstream_id: "319272", name: "Batch Campaigns", group: "Americas", position: 6 }
+      - { upstream_id: "319274", name: "Calendar", group: "Americas", position: 7 }
+      - { upstream_id: "319276", name: "ABM Dashboards", group: "Americas", position: 8 }
+      - { upstream_id: "319277", name: "Deliverability tools", group: "Americas", position: 9 }
+      - { upstream_id: "319278", name: "Email", group: "Americas", position: 10 }
+      - { upstream_id: "319279", name: "Email Insights", group: "Americas", position: 11 }
+      - { upstream_id: "319280", name: "Email Programs", group: "Americas", position: 12 }
+      - { upstream_id: "319281", name: "Event Program", group: "Americas", position: 13 }
+      - { upstream_id: "319282", name: "Forms", group: "Americas", position: 14 }
+      - { upstream_id: "319285", name: "LaunchPoint integration Partners", group: "Americas", position: 15 }
+      - { upstream_id: "319287", name: "List Import", group: "Americas", position: 16 }
+      - { upstream_id: "319291", name: "Marketing Performance Insights", group: "Americas", position: 17 }
+      - { upstream_id: "319292", name: "Marketing Performance Insight", group: "Americas", position: 18 }
+      - { upstream_id: "319293", name: "Marketo Analytics", group: "Americas", position: 19 }
+      - { upstream_id: "319295", name: "Marketo Sales Connect Analytics", group: "Americas", position: 20 }
+      - { upstream_id: "319296", name: "Marketo Sales Connect Campaign Engine", group: "Americas", position: 21 }
+      - { upstream_id: "319297", name: "Marketo Sales Connect Email Services", group: "Americas", position: 22 }
+      - { upstream_id: "319298", name: "Marketo Sales Connect Google Chrome Extension", group: "Americas", position: 23 }
+      - { upstream_id: "319299", name: "Marketo Sales Connect Live Feed", group: "Americas", position: 24 }
+      - { upstream_id: "319300", name: "Marketo Sales Connect Office 365 Add In", group: "Americas", position: 25 }
+      - { upstream_id: "319301", name: "Marketo Sales Connect Phone Service", group: "Americas", position: 26 }
+      - { upstream_id: "319302", name: "Marketo Sales Connect Search Service", group: "Americas", position: 27 }
+      - { upstream_id: "319303", name: "Marketo Sales Connect SFDC Sync", group: "Americas", position: 28 }
+      - { upstream_id: "319304", name: "Marketo Sales Connect Storage Services", group: "Americas", position: 29 }
+      - { upstream_id: "319305", name: "Marketo Sales Connect Tracker", group: "Americas", position: 30 }
+      - { upstream_id: "319306", name: "Marketo Sales Connect UI Login", group: "Americas", position: 31 }
+      - { upstream_id: "319307", name: "Marketo Sales Insight (MSD UI)", group: "Americas", position: 32 }
+      - { upstream_id: "319308", name: "Marketo Sales Insight (SFDC UI)", group: "Americas", position: 33 }
+      - { upstream_id: "319309", name: "Marketo Sales Insight Google Chrome Extension", group: "Americas", position: 34 }
+      - { upstream_id: "319310", name: "Marketo Sales Insight Outlook Plugin", group: "Americas", position: 35 }
+      - { upstream_id: "319333", name: "Mobile Push Notification Campaigns", group: "Americas", position: 36 }
+      - { upstream_id: "319334", name: "Munchkin API", group: "Americas", position: 37 }
+      - { upstream_id: "319335", name: "Named Accounts", group: "Americas", position: 38 }
+      - { upstream_id: "319336", name: "Nurture / Engagement Programs", group: "Americas", position: 39 }
+      - { upstream_id: "319337", name: "Predictive Content", group: "Americas", position: 40 }
+      - { upstream_id: "319339", name: "Revenue Cycle Analytics", group: "Americas", position: 41 }
+      - { upstream_id: "319342", name: "Salesforce CRM", group: "Americas", position: 42 }
+      - { upstream_id: "319343", name: "Search Engine Optimization", group: "Americas", position: 43 }
+      - { upstream_id: "319344", name: "Segmentations", group: "Americas", position: 44 }
+      - { upstream_id: "319345", name: "Smart Lists", group: "Americas", position: 45 }
+      - { upstream_id: "319347", name: "SOAP API", group: "Americas", position: 46 }
+      - { upstream_id: "319348", name: "Trigger Campaigns", group: "Americas", position: 47 }
+      - { upstream_id: "319350", name: "Web Personalization", group: "Americas", position: 48 }
+      - { upstream_id: "321316", name: "Marketo Engage UI", group: "Americas", position: 49 }
+      - { upstream_id: "321999", name: "Marketo Application Data Streams", group: "Americas", position: 50 }
+      - { upstream_id: "324224", name: "MSI Actions", group: "Americas", position: 51 }
+      - { upstream_id: "519964", name: "Dynamic Chat Core Platform", group: "Americas", position: 52 }
+      - { upstream_id: "545523", name: "AMM Integrations", group: "Americas", position: 53 }
+      - { upstream_id: "548488", name: "Marketo CRM Sync", group: "Americas", position: 54 }
+      - { upstream_id: "548525", name: "Marketo MLM", group: "Americas", position: 55 }
+      - { upstream_id: "548528", name: "Marketo Interactive Webinar", group: "Americas", position: 56 }
+      - { upstream_id: "550444", name: "Audience Export", group: "Americas", position: 57 }
+      - { upstream_id: "550445", name: "Audience Import", group: "Americas", position: 58 }
+      - { upstream_id: "581233", name: "Marketo Release", group: "Americas", position: 59 }
+      - { upstream_id: "608478", name: "Marketo Engage AI", group: "Americas", position: 60 }
+      - { upstream_id: "615818", name: "Marketo Engage Unified Experience (MEUE)", group: "Americas", position: 61 }

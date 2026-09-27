@@ -1,6 +1,7 @@
 pub mod adobe;
 pub mod aws;
 pub mod catalog;
+pub mod datadog;
 pub mod google_cloud;
 pub mod intercom;
 pub mod okta;
@@ -21,7 +22,9 @@ use serde_json::Value;
 use thiserror::Error;
 use url::Url;
 
-use crate::domain::ProviderSnapshot;
+use crate::domain::{
+    IncidentKind, IncidentLifecycle, NormalizedStatus, ProviderIncident, ProviderSnapshot, Severity,
+};
 pub(crate) use crate::retry_after::seconds as retry_after_seconds;
 
 const HISTORY_LOOKBACK_DAYS: i64 = 365;
@@ -142,6 +145,7 @@ pub fn registry(key: &str) -> Result<Box<dyn StatusProvider>, ProviderError> {
     match key {
         "adobe" => Ok(Box::new(adobe::AdobeProvider)),
         "aws" => Ok(Box::new(aws::AwsProvider)),
+        "datadog" => Ok(Box::new(datadog::DatadogProvider)),
         "google_cloud" => Ok(Box::new(google_cloud::GoogleCloudProvider)),
         "intercom" => Ok(Box::new(intercom::IntercomProvider)),
         "okta" => Ok(Box::new(okta::OktaProvider)),
@@ -159,8 +163,9 @@ pub fn registry(key: &str) -> Result<Box<dyn StatusProvider>, ProviderError> {
 #[must_use]
 pub fn adapter_version(key: &str) -> &'static str {
     match key {
-        "adobe" => "adobe-v1",
-        "aws" => "aws-v1",
+        "adobe" => "adobe-v2",
+        "aws" => "aws-v2",
+        "datadog" => "datadog-v1",
         "google_cloud" => "google-cloud-v1",
         "intercom" => "intercom-v1",
         "okta" => "okta-v1",
@@ -211,7 +216,7 @@ pub(crate) fn normalize_incident_timestamps(
     }
     if incident.resolved_at.is_none()
         && incident.lifecycle == crate::domain::IncidentLifecycle::Resolved
-        && matches!(adapter, "statuspage" | "adobe")
+        && matches!(adapter, "statuspage" | "datadog" | "adobe")
     {
         incident.resolved_at = incident
             .updates
@@ -393,4 +398,27 @@ async fn fetch_json(
     }
     let body = json_body(response, maximum_bytes).await?;
     serde_json::from_slice(&body).map_err(|error| ProviderError::Parse(error.to_string()))
+}
+
+// Adobe and Okta derive component health from incident severity and active maintenance.
+fn incident_status(incident: &ProviderIncident) -> NormalizedStatus {
+    if incident.kind == IncidentKind::Maintenance {
+        return NormalizedStatus::Maintenance;
+    }
+    match incident.severity {
+        Severity::Critical | Severity::Major => NormalizedStatus::MajorOutage,
+        Severity::Minor => NormalizedStatus::Degraded,
+        Severity::Info => NormalizedStatus::PartialOutage,
+    }
+}
+
+fn affects_current_status(incident: &ProviderIncident) -> bool {
+    if incident.lifecycle == IncidentLifecycle::Resolved {
+        return false;
+    }
+    incident.kind == IncidentKind::Incident
+        || matches!(
+            incident.original_phase.to_ascii_lowercase().as_str(),
+            "started" | "in progress" | "in_progress" | "ongoing"
+        )
 }

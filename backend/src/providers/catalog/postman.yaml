@@ -17,9 +17,6 @@ providers:
       - { upstream_id: yd763bkzgtgp, name: Browser Platform, group: Global, position: 1 }
       - { upstream_id: 6p1fq1q27p48, name: Login, group: Global, position: 2 }
       - { upstream_id: 2qwj5yj4dd1p, name: Monitors, group: Global, position: 3 }
-      - { upstream_id: s6f85vsfgs0d, name: Mocks, group: Global, position: 4 }
-      - { upstream_id: 3vjknn1q8nsm, name: Postman API, group: Global, position: 5 }
-      - { upstream_id: bv6g2w5c9bvy, name: Search, group: Global, position: 6 }
       - { upstream_id: k14n5hnrpqss, name: API Network, group: Global, position: 7 }
       - { upstream_id: z20p2dbm7l9c, name: Public Collection Documentation, group: Global, position: 8 }
       - { upstream_id: bprxgtx0551h, name: Newman, group: Global, position: 9 }
@@ -28,3 +25,14 @@ providers:
       - { upstream_id: tpym246hbkmn, name: API Builder, group: Global, position: 12 }
       - { upstream_id: 3wtq4z74p3rv, name: Postman CLI, group: Global, position: 13 }
       - { upstream_id: 4rwk712jf36d, name: Agent Mode, group: Global, position: 14 }
+      - { upstream_id: "4rvnts3yqmcr", name: "Postman Mocks", group: "US", position: 15 }
+      - { upstream_id: "zgyq9tfp50r8", name: "Postman API", group: "US", position: 16 }
+      - { upstream_id: "44c30341mpbf", name: "Run Button", group: "US", position: 17 }
+      - { upstream_id: "pb0wgwm8s804", name: "Postman Search", group: "US", position: 18 }
+      - { upstream_id: "xbbdyty488ls", name: "Postman Learning Center and Documentation", group: "US", position: 19 }
+      - { upstream_id: "8gbj8vqp6q0v", name: "Postman Support and  Community Forum", group: "US", position: 20 }
+      - { upstream_id: "8rvcdymgz9dr", name: "Postman Interceptor", group: "US", position: 21 }
+      - { upstream_id: "4h2f09y1y6gw", name: "Marketing Website", group: "US", position: 22 }
+      - { upstream_id: "ytjt89rxl61c", name: "Postbot", group: "US", position: 23 }
+      - { upstream_id: "1wj634bs58jp", name: "API Specifications", group: "US", position: 24 }
+      - { upstream_id: "x08ythhdpfvx", name: "Collection Runner", group: "US", position: 25 }

@@ -121,6 +121,8 @@ function activeFilterLabel(
       providers?.find((provider) => provider.id === value)?.name ?? value;
   } else if (name === "scope" && value === "all") {
     displayValue = "All provider events";
+  } else if (name === "scope" && value === "provider") {
+    displayValue = "Provider coverage";
   } else if (name === "activity" && value === "active") {
     displayValue = "Active";
   } else if (name === "from" || name === "to") {
@@ -542,6 +544,7 @@ export function Incidents() {
                 defaultValue={searchParams.get("scope") ?? "monitored"}
               >
                 <option value="monitored">My monitored coverage</option>
+                <option value="provider">Provider coverage</option>
                 <option value="all">All provider events</option>
               </select>
             </label>

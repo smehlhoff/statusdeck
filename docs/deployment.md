@@ -55,7 +55,7 @@ encryption key and administrator password; administrator email is passed directl
 | `STATUSDECK_DEFAULT_POLL_INTERVAL`              | `300` seconds                            | Positive, at most 86,400; startup reconciliation applies it to catalog sources                                    |
 | `STATUSDECK_STALE_MULTIPLIER`                   | `3`                                      | Integer 1–100; effective stale threshold has a 15-minute minimum                                                  |
 | `STATUSDECK_GLOBAL_POLL_CONCURRENCY`            | `10`                                     | Integer 1–100; per worker, also influences pool size                                                              |
-| `STATUSDECK_PER_HOST_CONCURRENCY`               | `2`                                      | Integer 1–100, cannot exceed global concurrency; per worker batch                                                 |
+| `STATUSDECK_PER_HOST_CONCURRENCY`               | `2`                                      | Integer 1–100, cannot exceed global concurrency; source jobs per base-URL host per worker batch, not individual HTTP requests |
 | `STATUSDECK_RAW_PAYLOAD_RETENTION_DAYS`         | `7`                                      | Integer 1–3,650; applies to poll payloads, not all history                                                        |
 | `STATUSDECK_TRUSTED_HOSTS`                      | Empty                                    | Comma-separated hostnames, not origins; empty disables host filtering. Compose appends localhost                  |
 | `STATUSDECK_SESSION_COOKIE_SECURE`              | `false`                                  | Boolean `true`/`false`; must be true if base URL is HTTPS                                                         |
@@ -145,11 +145,12 @@ SQLx's migrator checks applied migration
 checksums; changing an already-applied file is not an upgrade path. In contrast,
 [startup/readiness](../backend/src/db/mod.rs) checks only the maximum recorded
 version and success flags, not checksums or actual table definitions. A ready
-API is therefore not evidence that a database created by an older variant of
-`0001` is compatible. Databases with an older `0001` checksum or the former
-`0002_zulip_channel.sql` applied require explicit schema/migration-history
-reconciliation before using this consolidated history. No conversion migration
-for such databases is provided.
+API is therefore not evidence that a database created by a different variant of
+`0001` is compatible. A database with a different applied checksum or additional
+migration versions needs explicit schema/migration-history reconciliation.
+No conversion or down migration is provided. The available repository does not
+establish which legacy schema variants operators may have deployed; maintainers
+must supply that inventory before defining an upgrade path.
 
 For a database compatible with the checked-in migration history:
 

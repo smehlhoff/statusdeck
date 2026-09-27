@@ -260,12 +260,16 @@ export function Analytics() {
         <section className="card impacted-components-card">
           <div className="section-heading">
             <div>
-              <h2>Top components with recorded incidents</h2>
+              <h2>
+                Top components with recorded{" "}
+                {includeMaintenance ? "events" : "incidents"}
+              </h2>
             </div>
           </div>
           {data.impacted_components.length === 0 ? (
             <p className="analytics-empty muted">
-              No component-level incidents are stored for this period.
+              No component-level {includeMaintenance ? "events" : "incidents"}{" "}
+              are stored for this period.
             </p>
           ) : (
             <ul className="impacted-component-list">
@@ -293,12 +297,21 @@ export function Analytics() {
                     </div>
                     <div className="impacted-component-metrics">
                       <strong>
-                        {formatDuration(component.affected_seconds)}
+                        {component.affected_seconds === 0 &&
+                        component.unknown_duration_count > 0
+                          ? "Unknown"
+                          : formatDuration(component.affected_seconds)}
                       </strong>
                       <small>
-                        {component.incident_count} incident
+                        {component.incident_count}{" "}
+                        {includeMaintenance ? "event" : "incident"}
                         {component.incident_count === 1 ? "" : "s"}
                       </small>
+                      {component.unknown_duration_count > 0 && (
+                        <small>
+                          {component.unknown_duration_count} unknown durations
+                        </small>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -352,7 +365,9 @@ export function Analytics() {
                         })
                       }
                     >
-                      {label}
+                      {label === "Incidents" && includeMaintenance
+                        ? "Events"
+                        : label}
                       <span aria-hidden="true">
                         {providerSort.column === label ? sortIndicator : " ↕"}
                       </span>
@@ -374,7 +389,9 @@ export function Analytics() {
                       {provider.name}
                     </Link>
                   </td>
-                  <td data-label="Incidents">{provider.incident_count}</td>
+                  <td data-label={includeMaintenance ? "Events" : "Incidents"}>
+                    {provider.incident_count}
+                  </td>
                   <td data-label="Major">{provider.major_incident_count}</td>
                   <td data-label="Minor">
                     {Math.max(
@@ -586,7 +603,9 @@ function AnalyticsMethodDialog({ onClose }: { onClose: () => void }) {
       <p>
         <strong>Restore statistics:</strong> Median, p95 and p99 use full
         durations of resolved incidents overlapping the period, including
-        first-report fallbacks.
+        first-report fallbacks. Percentiles interpolate between adjacent values;
+        the median of an even-sized sample averages its two middle values.
+        Results are rounded to seconds.
       </p>
       <p>
         <strong>Unknown duration:</strong> Missing or inconsistent timestamps.
@@ -740,8 +759,8 @@ function TrendChart({ data }: { data: AnalyticsData }) {
           <p className="muted">
             Recorded impact with known duration
             {data.filters.include_maintenance
-              ? " and planned maintenance"
-              : ", excluding planned maintenance"}
+              ? " and maintenance"
+              : ", excluding maintenance"}
             .
           </p>
         </div>

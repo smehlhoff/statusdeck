@@ -10,6 +10,11 @@ the supplied containers use PostgreSQL 18 and Nginx. Dependency versions are
 recorded in [Cargo.lock](../backend/Cargo.lock) and
 [package-lock.json](../frontend/package-lock.json).
 
+Start with this guide for boundaries and flows, [deployment](deployment.md) to
+run the project, and the [frontend](frontend.md) / [backend](backend.md) guides
+when changing a subsystem. These describe the current checkout; a running
+installation can still contain older code or observations.
+
 ## System boundaries
 
 ```mermaid
@@ -173,22 +178,6 @@ and notification destinations. There is no inbound provider webhook receiver.
 Logs, source observations, worker heartbeats and delivery attempts provide
 operational evidence. Backups must preserve both the database and the encryption
 key needed to recover channel configuration.
-
-## Evidence and open questions
-
-These guides describe repository behavior, not a live-provider availability audit
-or a production capacity assessment. Source code, migrations and deployment files
-are authoritative; architectural interpretations are labeled above. Generated
-`graphify-out/` relationships are navigation aids and can include inferred edges.
-
-Maintainers still need to define a browser support matrix and runtime test
-coverage. Release, ingress, recovery and dependency-audit decisions are collected
-under [CI and release process](deployment.md#ci-and-release-process).
-
-The source comment above `incident_timing` still says publication never establishes
-duration, while the view uses publication as the fallback start for incidents.
-The [backend timing guide](backend.md#analytics-and-reliability) documents the SQL
-behavior.
 
 ## Documentation
 

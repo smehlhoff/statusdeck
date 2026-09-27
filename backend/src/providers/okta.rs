@@ -1,13 +1,13 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use async_trait::async_trait;
 use chrono::{DateTime, NaiveDate, NaiveDateTime, TimeZone, Utc};
 use serde_json::{Value, json};
 
 use super::{
-    FetchContext, FetchOutcome, ProviderError, StatusProvider, conditional_request,
-    conditional_response_metadata, http_client, response_body, response_content_type,
-    retry_after_seconds,
+    FetchContext, FetchOutcome, ProviderError, StatusProvider, affects_current_status,
+    conditional_request, conditional_response_metadata, http_client, incident_status,
+    response_body, response_content_type, retry_after_seconds,
 };
 use crate::domain::{
     IncidentKind, IncidentLifecycle, NormalizedStatus, ProviderComponent, ProviderIncident,
@@ -17,29 +17,6 @@ use crate::domain::{
 #[derive(Default)]
 pub struct OktaProvider;
 
-const US_CELLS: &[(&str, &str)] = &[
-    ("okta.com:1", "OK1 Cell"),
-    ("okta.com:2", "OK2 Cell"),
-    ("okta.com:3", "OK3 Cell"),
-    ("okta.com:4", "OK4 Cell"),
-    ("okta.com:6", "OK6 Cell"),
-    ("okta.com:7", "OK7 Cell"),
-    ("okta.com:8", "OK8 Cell"),
-    ("okta.com:9", "OK9 Cell"),
-    ("okta.com:11", "OK11 Cell"),
-    ("okta.com:12", "OK12 Cell"),
-    ("okta.com:14", "OK14 Cell"),
-    ("okta.com:15", "OK15 Cell"),
-    ("okta.com:16", "OK16 Cell"),
-    ("okta.com:17", "OK17 Cell"),
-    ("okta.com:18", "OK18 Cell"),
-    ("okta.com:19", "OK19 Cell"),
-    ("okta.com:20", "OK20 Cell"),
-    ("okta.com:22", "OK22 Cell"),
-    ("oktapreview.com:1", "OP1 Preview Cell"),
-    ("oktapreview.com:2", "OP2 Preview Cell"),
-    ("oktapreview.com:3", "OP3 Preview Cell"),
-];
 #[async_trait]
 impl StatusProvider for OktaProvider {
     fn validate_config(&self, config: &Value) -> Result<(), ProviderError> {
@@ -113,6 +90,7 @@ fn parse_page(
     last_modified: Option<String>,
     content_type: Option<String>,
 ) -> Result<FetchOutcome, ProviderError> {
+    let cells = us_cells(body)?;
     let values = embedded_array(body, "incidents")?;
     let planned = embedded_array(body, "planned-outages")?;
     if values.iter().chain(&planned).any(|value| {
@@ -131,7 +109,7 @@ fn parse_page(
     maintenance.sort_by(|left, right| left.upstream_id.cmp(&right.upstream_id));
 
     let mut component_statuses = HashMap::new();
-    for (id, _) in US_CELLS {
+    for (id, _) in &cells {
         component_statuses.insert(*id, NormalizedStatus::Operational);
     }
     for incident in incidents
@@ -141,7 +119,7 @@ fn parse_page(
     {
         let status = incident_status(incident);
         let targets = if incident.affected_components.is_empty() {
-            US_CELLS.iter().map(|(id, _)| *id).collect::<Vec<_>>()
+            cells.iter().map(|(id, _)| *id).collect::<Vec<_>>()
         } else {
             incident
                 .affected_components
@@ -157,14 +135,14 @@ fn parse_page(
             }
         }
     }
-    let components = US_CELLS
+    let components = cells
         .iter()
         .enumerate()
         .map(|(position, (id, name))| {
             let status = component_statuses[id];
             ProviderComponent {
                 upstream_id: (*id).to_owned(),
-                name: (*name).to_owned(),
+                name: name.clone(),
                 group: Some("US".into()),
                 description: None,
                 status,
@@ -196,7 +174,51 @@ fn parse_page(
     }))
 }
 
+fn us_cells(body: &str) -> Result<Vec<(&str, String)>, ProviderError> {
+    let mut cells = Vec::new();
+    let mut seen = HashSet::new();
+    for id in embedded_text(body, "cellList")?.split(',').map(str::trim) {
+        let (_, number) = id.split_once(':').ok_or_else(|| {
+            ProviderError::Parse("Okta cellList contained an invalid cell ID".into())
+        })?;
+        if number.is_empty()
+            || !number.bytes().all(|byte| byte.is_ascii_digit())
+            || !seen.insert(id)
+        {
+            return Err(ProviderError::Parse(
+                "Okta cellList contained an invalid or duplicate cell".into(),
+            ));
+        }
+        if let Some(name) = us_cell_name(id) {
+            cells.push((id, name));
+        }
+    }
+    if cells.is_empty() {
+        return Err(ProviderError::Parse(
+            "Okta cellList omitted US cells".into(),
+        ));
+    }
+    Ok(cells)
+}
+
+fn us_cell_name(id: &str) -> Option<String> {
+    let (domain, number) = id.split_once(':')?;
+    if number.is_empty() || !number.bytes().all(|byte| byte.is_ascii_digit()) {
+        return None;
+    }
+    match domain {
+        "okta.com" => Some(format!("OK{number} Cell")),
+        "oktapreview.com" => Some(format!("OP{number} Preview Cell")),
+        _ => None,
+    }
+}
+
 fn embedded_array(body: &str, id: &str) -> Result<Vec<Value>, ProviderError> {
+    serde_json::from_str(embedded_text(body, id)?)
+        .map_err(|error| ProviderError::Parse(format!("invalid Okta {id}: {error}")))
+}
+
+fn embedded_text<'a>(body: &'a str, id: &str) -> Result<&'a str, ProviderError> {
     let marker = format!("data-id=\"{id}\">");
     let start = body
         .find(&marker)
@@ -206,8 +228,7 @@ fn embedded_array(body: &str, id: &str) -> Result<Vec<Value>, ProviderError> {
         .find("</span>")
         .map(|position| start + position)
         .ok_or_else(|| ProviderError::Parse(format!("Okta page truncated {id}")))?;
-    serde_json::from_str(&body[start..end])
-        .map_err(|error| ProviderError::Parse(format!("invalid Okta {id}: {error}")))
+    Ok(&body[start..end])
 }
 
 fn updates_by_incident(values: &[Value]) -> HashMap<String, Vec<ProviderUpdate>> {
@@ -255,7 +276,7 @@ fn parse_incidents(
             let affected_components = impacted
                 .into_iter()
                 .flat_map(|cells| cells.split(';'))
-                .filter(|cell| US_CELLS.iter().any(|(id, _)| id == cell))
+                .filter(|cell| us_cell_name(cell).is_some())
                 .map(ToOwned::to_owned)
                 .collect::<Vec<_>>();
             if impacted.is_some_and(|cells| !cells.is_empty()) && affected_components.is_empty() {
@@ -445,28 +466,6 @@ fn okta_severity(category: Option<&str>) -> Severity {
         value if value.contains("degradation") => Severity::Minor,
         _ => Severity::Info,
     }
-}
-
-fn incident_status(incident: &ProviderIncident) -> NormalizedStatus {
-    if incident.kind == IncidentKind::Maintenance {
-        return NormalizedStatus::Maintenance;
-    }
-    match incident.severity {
-        Severity::Critical | Severity::Major => NormalizedStatus::MajorOutage,
-        Severity::Minor => NormalizedStatus::Degraded,
-        Severity::Info => NormalizedStatus::PartialOutage,
-    }
-}
-
-fn affects_current_status(incident: &ProviderIncident) -> bool {
-    if incident.lifecycle == IncidentLifecycle::Resolved {
-        return false;
-    }
-    incident.kind == IncidentKind::Incident
-        || matches!(
-            incident.original_phase.to_ascii_lowercase().as_str(),
-            "started" | "in progress" | "in_progress" | "ongoing"
-        )
 }
 
 fn timestamp(value: Option<&Value>) -> Option<DateTime<Utc>> {

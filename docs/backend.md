@@ -139,7 +139,7 @@ array; selected mode requires at least one component belonging to its provider.
 
 | Method and path | Input → response; source |
 | --- | --- |
-| `GET /incidents` | Filtered cursor page `{items, next_cursor}`; [incidents.rs](../backend/src/api/incidents.rs) |
+| `GET /incidents` | Filters below, including `scope=monitored\|provider\|all` → cursor page `{items, next_cursor}`; [incidents.rs](../backend/src/api/incidents.rs) |
 | `GET /incidents/{id}` | `{incident, providers, components, scopes, updates}`; incident handler |
 | `GET /incidents/{id}/comments`, `POST /incidents/{id}/comments` | Cursor page with `total_count`, or `{body}` → created comment (201); [comments.rs](../backend/src/api/comments.rs) |
 | `PATCH /incidents/{id}/comments/{comment_id}`, `DELETE /incidents/{id}/comments/{comment_id}` | Replace `{body}` or delete an incident comment |
@@ -160,8 +160,8 @@ limited to 500 characters and excludes null characters. Comments require
 
 | Method and path | Input → response; source |
 | --- | --- |
-| `GET /notification-channels`, `POST /notification-channels` | Array, or `{name, channel_type, target, signing_secret?, token?}` → redacted channel (201); [channels.rs](../backend/src/api/channels.rs) |
-| `PATCH /notification-channels/{id}`, `DELETE /notification-channels/{id}` | Update name/type/target/signing secret/token/enabled, or soft-delete; deletion returns 409 while a non-deleted rule references the channel |
+| `GET /notification-channels`, `POST /notification-channels` | Array, or `{name, channel_type, target, signing_secret?, token?, bot_email?, stream?, topic?}` → redacted channel (201); [channels.rs](../backend/src/api/channels.rs) |
+| `PATCH /notification-channels/{id}`, `DELETE /notification-channels/{id}` | Update channel fields/enabled, or soft-delete; deletion returns 409 while a non-deleted rule references the channel |
 | `POST /notification-channels/{id}/test` | Queue real test → 202 `{delivery_id, event_id, status: "queued"}` |
 | `GET /alert-rules`, `POST /alert-rules` | Array, or rule configuration → rule with provider/component/channel IDs (201); [rules.rs](../backend/src/api/rules.rs) |
 | `PATCH /alert-rules/{id}`, `DELETE /alert-rules/{id}` | Update rule fields/enabled or soft-delete |
@@ -174,7 +174,7 @@ limited to 500 characters and excludes null characters. Comments require
 | `GET /system/deliveries/{id}/attempts` | Array of attempts with response class/status, error and ambiguity; diagnostics handler |
 | `POST /system/deliveries/{id}/resend` | Requeue eligible delivery → same 202 shape as channel test, or 409; [delivery_resend.rs](../backend/src/api/delivery_resend.rs) |
 
-Channel types are `webhook`, `discord`, `slack`, `mattermost`, `gotify` and
+Channel types are `webhook`, `discord`, `slack`, `mattermost`, `gotify`,
 `ntfy` and `zulip`.
 Generic signing secrets, when supplied, require 32–4,096 characters; Gotify
 requires an application token; ntfy permits an optional bearer token. Zulip
@@ -219,6 +219,10 @@ A monitor selects either all components or an explicit set belonging to its
 provider. Removing a monitor disables collection without deleting history.
 Incident-feed and analytics `all` scope broadens event/component coverage but
 still requires subscribed providers; retained incidents remain accessible by ID.
+The incident feed also accepts `scope=provider`: all events within the provider's
+configured geographic/product coverage, independent of selected monitor components.
+Reliability-day links use this scope to match the calendar and are shown only for
+enabled monitors, since the incident feed requires a subscription.
 
 Alert rules select monitored providers and optionally narrow their components.
 An empty component selection means all monitored components of the selected
@@ -244,6 +248,29 @@ origins, adapters and collection scope. Startup reconciles catalog metadata whil
 preserving historical identities. Catalog changes require a rebuild/restart;
 there is no arbitrary-URL provider management API.
 
+Collection scope and monitoring selection are separate. `component_scope: listed`
+accepts only catalog IDs, so new upstream components require a reviewed catalog
+update. `component_scope: all` accepts components returned by the adapter, subject
+to any configured filters; for example, NetSuite discovers names beginning with
+`US `. AWS discovers published `us-*` service-region pairs (including GovCloud)
+and unregionalized global services. Its YAML entries are initial seeds, not a
+service allowlist. Marketo discovers services whose registry environments include
+Americas. A failed or empty inventory fails the poll instead of retiring components.
+Monitoring all components includes newly collected components automatically.
+Explicit component selections and component-specific alert rules do not expand.
+Only sources with enabled monitors are polled.
+
+Successful polls update component names and metadata by upstream ID and mark
+components missing from the scoped snapshot inactive immediately. Failed polls do
+not deactivate components. Inactive records and history are retained; the same ID
+returning reactivates its existing record. All-component monitors exclude inactive
+components, while explicitly selected inactive components contribute `unknown`
+status. A replacement ID is a separate component and needs catalog review for
+listed sources; selections are not transferred by matching names. Catalog startup
+reconciliation seeds configured entries as active, and the next successful poll checks
+their presence. There is no dedicated notification for component additions or
+removals.
+
 Adapters normalize official status and incident feeds into shared snapshots:
 provider/component health, incidents and maintenance, affected scopes, timing,
 raw evidence and feed completeness. Original classifications are retained
@@ -251,9 +278,20 @@ alongside normalized values. Network requests have bounded time and payload
 limits. See [providers/mod.rs](../backend/src/providers/mod.rs) for the adapter
 contract and shared HTTP behavior.
 
+Marketo preserves the existing aggregate component ID for monitoring and history.
+Native service health follows explicit service IDs in Americas incident updates;
+an active aggregate incident without mapped service IDs leaves individual service
+health unknown rather than assigning the outage to every service. Registry and
+event feeds are both fetched on each poll so an unchanged event feed cannot hide
+catalog changes.
+
 Some sources need supplemental component, incident or maintenance feeds.
-Statuspage-compatible feeds can use native enrichment when upstream data omits
-affected components. Explicit update scopes can fill missing incident scopes;
+Statuspage-compatible feeds merge native Incident.io records, including incidents
+and maintenance absent from the shorter compatibility archive. The native data
+supplies affected components, impact severity, timelines, actual impact starts,
+and separately published postmortems. Postmortems without a publication timestamp
+retain an unknown timestamp. Intercom uses the same importer for its US hosting feed.
+Explicit update scopes can fill missing incident scopes;
 component names are not guessed from titles or prose. Structured provider HTML
 is preserved where needed for links and sanitized by the frontend.
 
@@ -269,15 +307,16 @@ ETag/Last-Modified, known active IDs, history-refresh intent and a shared deadli
 | Adapter source | Feed strategy and constraint |
 | --- | --- |
 | [statuspage.rs](../backend/src/providers/statuspage.rs) | Summary plus optional component/incident/maintenance paths; Incident.io-compatible separate history is treated as incomplete for absence resolution |
-| [statusio.rs](../backend/src/providers/statusio.rs) | Status.io status endpoint with required catalog `page_id`; listed component coverage |
+| [datadog.rs](../backend/src/providers/datadog.rs) | One provider combining five official US Statuspage sites; site-qualified component/incident IDs, grouped components, and atomic polling across all sites |
+| [statusio.rs](../backend/src/providers/statusio.rs) | Status.io current status endpoint with required catalog `page_id`; listed component coverage and no separate resolved-event archive importer |
 | [intercom.rs](../backend/src/providers/intercom.rs) | Native Incident.io US hosting summary and bounded recent history; the compatible API ignores region selection, so only native regional feeds are used |
 | [slack.rs](../backend/src/providers/slack.rs) | Current status, history/detail lookup for missing active records and resolution-note enrichment |
 | [google_cloud.rs](../backend/src/providers/google_cloud.rs) | Product and incident JSON; shared adapter for Google Cloud and Gemini catalogs |
-| [aws.rs](../backend/src/providers/aws.rs) | Current events and public S3 history, UTF-16 decoding and scoped service recovery |
-| [salesforce.rs](../backend/src/providers/salesforce.rs) | Services, active incidents, maintenance and historical incidents from Trust API |
+| [aws.rs](../backend/src/providers/aws.rs) | Published S3 service inventory restricted to US/GovCloud/global; current events and public S3 history, UTF-16 decoding and scoped service recovery |
+| [salesforce.rs](../backend/src/providers/salesforce.rs) | Services, active incidents and paginated maintenance/history from Trust API; date-windowed maintenance requires explicit resolution |
 | [pagerduty.rs](../backend/src/providers/pagerduty.rs) | Services, impacts, enum dictionaries and post details/history |
-| [adobe.rs](../backend/src/providers/adobe.rs) | Adobe StatusEvents and message collections, restricted to Marketo US coverage |
-| [okta.rs](../backend/src/providers/okta.rs) | Structured arrays embedded in status-page HTML, US cells and postmortem timing; depends on upstream page structure |
+| [adobe.rs](../backend/src/providers/adobe.rs) | Adobe registry and StatusEvents for Marketo Americas services plus the existing aggregate; explicit service IDs determine individual impact |
+| [okta.rs](../backend/src/providers/okta.rs) | Structured arrays and the published cellList embedded in status-page HTML, US cells and postmortem timing; depends on upstream page structure |
 
 Adding YAML alone does not register a source: update the compiled catalog list and
 approved source tuple in [catalog/mod.rs](../backend/src/providers/catalog/mod.rs).
@@ -286,9 +325,29 @@ supports listed IDs or supported name-prefix scope and selected endpoint overrid
 the validator enforces adapter-specific combinations. Keep
 [PROVIDERS.md](../PROVIDERS.md) aligned and run the offline catalog check.
 
+Statuspage component groups are resolved from the upstream `group_id` when the
+feed does not supply `group_name`, preserving regional identity for repeated
+service names. Okta reads its published US production/preview cell list during
+ordinary polls; malformed, duplicate, or empty cell inventories fail the poll
+without replacing stored components. Historical incidents can still reference
+older US cells. Catalog synchronization does not enable monitoring subscriptions,
+and existing component selections are preserved.
+
 New resolved historical imports share a 365-day lookback. Ongoing events and
 known active events needed for recovery reconciliation are exempt. This limits
 imports, not retained history, and does not promise a full year of source data.
+An hourly history refresh requests the archive available through that adapter;
+it does not crawl every public history page. Compatibility feeds can expose fewer
+records than native feeds, which is why the Incident.io paths merge both.
+
+Salesforce maintenance includes the Trust API's 30-day lookback and future windows,
+paginated in batches of up to 1,000 records. Incident history uses batches of 100,
+with two page requests at a time to stay within the shared polling deadline.
+Both stop after 100 pages and fail the fetch on truncation or repeated IDs rather
+than accepting an incomplete result. Maintenance falling outside the date window
+does not prove recovery, so Salesforce records require an explicit terminal status;
+both `Canceled` and `Cancelled` are treated as resolved while retaining the original
+provider phase.
 
 ## Polling and reconciliation
 
@@ -308,6 +367,9 @@ delay a due status check. Status work wins when both lanes are due. Normal
 scheduling adds deterministic jitter; retryable transport/429/408/5xx failures use lane-local
 backoff capped at 30 minutes, while parse/configuration failures return to that
 lane's normal interval.
+The per-host limit counts source jobs by their configured base-URL host; it is
+not a semaphore around every HTTP request. Adapters such as Datadog and Salesforce
+can make parallel subrequests within a single job's deadline.
 
 Reconciliation transactionally updates components and current status, records
 semantic changes, stores incident updates, and creates matching delivery work.
@@ -364,11 +426,9 @@ the request URL and includes it in the JSON publish body. Zulip requires an HTTP
 form-encoded `type=stream`, JSON-encoded `to` (channel name), `topic` and `content`,
 using HTTP Basic authentication with the encrypted bot email/API key. All alerts
 for a delivery channel use its configured topic; direct messages are not supported.
-To configure delivery, create a Zulip bot, grant it permission to post to the
-target channel, then select Zulip in Notifications and enter its API endpoint,
-bot email, API key, channel name and topic. Use Send test and inspect the
-delivery outcome in System diagnostics. Omitted or null
-`bot_email`, `stream`, and `topic` updates preserve saved values.
+The bot must have permission to post to its configured channel. Omitted or null
+`bot_email`, `stream`, and `topic` updates preserve saved values; channel-field
+validation is described in [the API contract](#alerts-and-diagnostics).
 Private-target opt-in still requires HTTPS with a valid certificate; notification HTTP proxies are not
 supported.
 
@@ -500,15 +560,33 @@ Analytics clips impact to the selected period and merges overlaps per provider,
 then sums across providers. Totals can therefore exceed elapsed wall time.
 Restoration statistics use full durations of resolved incidents overlapping the
 period; ongoing and unknown-duration events are excluded.
+Percentiles use linear interpolation between adjacent sorted durations, rounded
+to seconds; the median averages the two middle values for even-sized samples.
+Component summaries retain unknown-duration counts instead of presenting missing
+timing as zero impact. Enabling maintenance labels combined counts as events.
+
+| Derived value | Contract |
+| --- | --- |
+| Known/count date | Explicit start, maintenance planned start, publication, then first observation; the last fallback locates a record but never establishes impact duration |
+| Analytics period | Rolling 7/30/90/365 days ending at query time; trend buckets are 1, 7, 7 or 30 days respectively, with a shorter final bucket when needed |
+| Analytics incident count | Unique events overlapping the period when duration is known, or located by their known date when duration is unknown; maintenance is included only when requested |
+| Major/minor chart bands | Major includes `major` and `critical`; minor includes the remaining severities, including `info`. These are chart groupings, not new upstream classifications |
+| Reliability frequency | Incident counts by known date, once per event; daily and monthly affected time instead include overlapping incident intervals |
+| Timing precision | Affected-time aggregates retain fractional seconds; individual durations and restoration inputs use whole seconds, with interpolated percentiles rounded at output |
+
+Incident detail returns duration from the same timing view. Distinct update IDs
+are retained even when bodies or import timestamps coincide; timeline display
+prefers source display time. Presentation grouping is owned by the frontend.
 
 Reliability uses calendar days in the requested IANA time zone, including the
 current partial day. Period and daily boundaries use PostgreSQL's time-zone
 conversion so skipped or repeated local midnights are handled consistently.
 A healthy day means a successful observation with no
 matching recorded event, not proven continuous uptime.
-Maintenance is marked separately and does not contribute affected time to
-Reliability history. History completeness and period comparisons are not
-established. Exact calculations live in the
+Maintenance is marked separately and does not contribute affected time or
+incident-duration uncertainty to Reliability history. Unknown maintenance
+durations remain visible in the all-event warnings. History completeness and
+period comparisons are not established. Exact calculations live in the
 [migrations](../backend/migrations/), [analytics handler](../backend/src/api/analytics.rs)
 and [reliability query](../backend/src/api/reliability.sql).
 

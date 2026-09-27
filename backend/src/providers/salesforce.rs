@@ -35,15 +35,14 @@ impl StatusProvider for SalesforceProvider {
         let client = http_client(context)?;
         let services_url = endpoint(&context.base_url, "/v1/services")?;
         let incidents_url = endpoint(&context.base_url, "/v1/incidents/active")?;
-        let maintenance_url = endpoint(&context.base_url, "/v1/maintenances")?;
         let (services, incidents, maintenance) = tokio::try_join!(
             fetch_json(&client, services_url, 2 * 1024 * 1024),
             fetch_json(&client, incidents_url, 2 * 1024 * 1024),
-            fetch_json(&client, maintenance_url, 4 * 1024 * 1024),
+            fetch_events(&client, context, IncidentKind::Maintenance),
         )?;
-        let mut snapshot = parse_snapshot(services, incidents, maintenance)?;
+        let mut snapshot = parse_snapshot(services, incidents, Value::Array(maintenance))?;
         if context.refresh_history {
-            let history = fetch_history(&client, context).await?;
+            let history = fetch_events(&client, context, IncidentKind::Incident).await?;
             for value in &history {
                 let mut event = parse_event(value, IncidentKind::Incident).ok_or_else(|| {
                     ProviderError::Parse("Salesforce history incident omitted its ID".into())
@@ -67,48 +66,65 @@ impl StatusProvider for SalesforceProvider {
     }
 }
 
-async fn fetch_history(
+async fn fetch_events(
     client: &reqwest::Client,
     context: &FetchContext,
+    kind: IncidentKind,
 ) -> Result<Vec<Value>, ProviderError> {
-    const PAGE_SIZE: usize = 100;
     const MAX_PAGES: usize = 100;
-    let since = (Utc::now() - chrono::Duration::days(super::HISTORY_LOOKBACK_DAYS)).to_rfc3339();
-    let mut history = Vec::new();
-    let mut seen = HashSet::new();
-    for page in 0..MAX_PAGES {
-        let mut url = endpoint(&context.base_url, "/v1/incidents")?;
+    // Preserve the Trust API's default maintenance lookback, including future windows.
+    const MAINTENANCE_LOOKBACK_DAYS: i64 = 30;
+    let (path, page_size, lookback_days) = match kind {
+        IncidentKind::Incident => ("/v1/incidents", 100, super::HISTORY_LOOKBACK_DAYS),
+        IncidentKind::Maintenance => ("/v1/maintenances", 1000, MAINTENANCE_LOOKBACK_DAYS),
+    };
+    let since = (Utc::now() - chrono::Duration::days(lookback_days)).to_rfc3339();
+    let fetch_page = async |page: usize| {
+        let mut url = endpoint(&context.base_url, path)?;
         url.query_pairs_mut()
             .append_pair("startTime", &since)
-            .append_pair("limit", &PAGE_SIZE.to_string())
-            .append_pair("offset", &(page * PAGE_SIZE).to_string())
+            .append_pair("limit", &page_size.to_string())
+            .append_pair("offset", &(page * page_size).to_string())
             .append_pair("sort", "id")
-            .append_pair("order", "DESC");
-        let body = fetch_json(client, url, 4 * 1024 * 1024).await?;
-        let Value::Array(values) = body else {
-            return Err(ProviderError::Parse(
-                "Salesforce history response must be an array".into(),
-            ));
-        };
-        for value in &values {
-            let id = value.get("id").and_then(Value::as_i64).ok_or_else(|| {
-                ProviderError::Parse("Salesforce history incident omitted its numeric ID".into())
-            })?;
-            if !seen.insert(id) {
-                return Err(ProviderError::Parse(
-                    "Salesforce history pagination repeated an incident".into(),
-                ));
+            .append_pair("order", "ASC");
+        fetch_json(client, url, 4 * 1024 * 1024).await
+    };
+    let mut events = Vec::new();
+    let mut seen = HashSet::new();
+    // Bound concurrency to fit the polling deadline, and inspect pages in offset order.
+    for page in (0..MAX_PAGES).step_by(2) {
+        let (first, second) = tokio::join!(fetch_page(page), fetch_page(page + 1));
+        for body in [first, second] {
+            let Value::Array(values) = body? else {
+                return Err(ProviderError::Parse(format!(
+                    "Salesforce {path} response must be an array"
+                )));
+            };
+            if values.len() > page_size {
+                return Err(ProviderError::Parse(format!(
+                    "Salesforce {path} response exceeded its page size"
+                )));
+            }
+            for value in &values {
+                let id = value.get("id").and_then(Value::as_i64).ok_or_else(|| {
+                    ProviderError::Parse(format!("Salesforce {path} event omitted its numeric ID"))
+                })?;
+                if !seen.insert(id) {
+                    return Err(ProviderError::Parse(format!(
+                        "Salesforce {path} pagination repeated an event"
+                    )));
+                }
+            }
+            let complete = values.len() < page_size;
+            events.extend(values);
+            if complete {
+                return Ok(events);
             }
         }
-        let complete = values.len() < PAGE_SIZE;
-        history.extend(values);
-        if complete {
-            return Ok(history);
-        }
     }
-    Err(ProviderError::Parse(
-        "Salesforce history exceeded its pagination limit".into(),
-    ))
+    Err(ProviderError::Parse(format!(
+        "Salesforce {path} exceeded its pagination limit"
+    )))
 }
 
 fn parse_snapshot(
@@ -203,7 +219,8 @@ fn parse_snapshot(
         components,
         incidents,
         maintenance,
-        active_incident_set_complete: true,
+        // Maintenance has a date window; falling outside it does not confirm recovery.
+        active_incident_set_complete: false,
         response: ResponseMetadata {
             status: 200,
             etag: None,
@@ -318,7 +335,7 @@ fn salesforce_status(severity: Option<&str>) -> NormalizedStatus {
 fn event_lifecycle(phase: &str) -> IncidentLifecycle {
     if matches!(
         phase.to_ascii_lowercase().as_str(),
-        "completed" | "resolved" | "cancelled"
+        "completed" | "resolved" | "canceled" | "cancelled"
     ) {
         IncidentLifecycle::Resolved
     } else {

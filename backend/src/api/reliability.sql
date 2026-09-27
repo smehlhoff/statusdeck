@@ -31,6 +31,7 @@ WITH intervals AS MATERIALIZED (
            count(e.id) FILTER (WHERE e.kind = 'incident') AS incident_count,
            count(e.id) FILTER (WHERE e.kind = 'maintenance') AS maintenance_count,
            count(e.id) FILTER (WHERE e.duration_unknown) AS unknown_duration_count,
+           count(e.id) FILTER (WHERE e.kind = 'incident' AND e.duration_unknown) AS unknown_incident_duration_count,
            CASE
                WHEN bool_or(e.kind = 'incident' AND e.severity IN ('major', 'critical')) THEN 'major'
                WHEN bool_or(e.kind = 'incident') THEN 'minor'
@@ -65,6 +66,7 @@ SELECT jsonb_build_object(
         'started_major_count', COALESCE((SELECT major FROM starts s WHERE s.day = daily.day), 0),
         'started_minor_count', COALESCE((SELECT minor FROM starts s WHERE s.day = daily.day), 0),
         'unknown_duration_count', unknown_duration_count, 'incident_count', incident_count, 'maintenance_count', maintenance_count,
+        'unknown_incident_duration_count', unknown_incident_duration_count,
         'affected_seconds', (SELECT COALESCE(sum(extract(epoch FROM upper(span) - lower(span))), 0) FROM unnest(spans) span)
     ) ORDER BY day) FROM daily)
 )

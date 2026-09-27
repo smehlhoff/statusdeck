@@ -124,6 +124,7 @@ export interface ReliabilityDay {
   maintenance_count: number;
   affected_seconds: number;
   unknown_duration_count: number;
+  unknown_incident_duration_count: number;
 }
 
 export interface ProviderReliability {
@@ -198,6 +199,7 @@ export interface Analytics {
     name: string;
     affected_seconds: number;
     incident_count: number;
+    unknown_duration_count: number;
   }>;
   providers: Array<{
     provider_id: string;

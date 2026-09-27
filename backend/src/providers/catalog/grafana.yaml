@@ -30,3 +30,129 @@ providers:
       - { upstream_id: 43jd9wwclvwy, name: OpenTelemetry Ingest, group: AWS US East, position: 13 }
       - { upstream_id: 72qxjs1p29q7, name: Frontend Observability, group: AWS US East, position: 14 }
       - { upstream_id: m0qkgdzwyr6l, name: Grafana.com, group: Global, position: 15 }
+      - { upstream_id: "3gvy1n7fg4x4", name: "GCk6 App", group: "Performance and Load Testing", position: 16 }
+      - { upstream_id: "8s9ngcb02t90", name: "Support Tickets", group: "Website and Support", position: 17 }
+      - { upstream_id: "m79yjv169r06", name: "Cloud Test Runs", group: "Performance and Load Testing", position: 18 }
+      - { upstream_id: "wbhrnd130mb0", name: "Cloud Output Test Runs", group: "Performance and Load Testing", position: 19 }
+      - { upstream_id: "z9074fpyx6sb", name: "Result Analysis", group: "Performance and Load Testing", position: 20 }
+      - { upstream_id: "236539c2nt69", name: "Test Scheduling", group: "Performance and Load Testing", position: 21 }
+      - { upstream_id: "qwkkscbddtdw", name: "Private Load Zones", group: "Performance and Load Testing", position: 22 }
+      - { upstream_id: "8n34hh3y2yd0", name: "Cloud logs", group: "Performance and Load Testing", position: 23 }
+      - { upstream_id: "ss3pbvgtm7fk", name: "AWS US West - prod-us-west-0", group: "Profiles", position: 24 }
+      - { upstream_id: "4bg82ggqdrz3", name: "AWS US West - prod-us-west-0", group: "AI and Machine Learning", position: 25 }
+      - { upstream_id: "6rlxmdg0t6v3", name: "AWS US West - prod-us-west-0", group: "Logs", position: 26 }
+      - { upstream_id: "xkt72z558pwp", name: "AWS US West - prod-us-west-0", group: "OpenTelemetry Ingest Endpoint", position: 27 }
+      - { upstream_id: "qf9z45tkj8s4", name: "AWS US West - prod-us-west-0", group: "Frontend Observability", position: 28 }
+      - { upstream_id: "t0592d5sxhgh", name: "AWS US East - prod-us-east-2", group: "Grafana", position: 29 }
+      - { upstream_id: "wb63bdf311zx", name: "Azure US Central - us-central2", group: "Profiles", position: 30 }
+      - { upstream_id: "qt1bbc3yrddv", name: "AWS US East - prod-us-east-0", group: "Grafana Assistant", position: 31 }
+      - { upstream_id: "8wq97lhx59x7", name: "AWS US West - prod-us-west-0", group: "Grafana", position: 32 }
+      - { upstream_id: "r4t5cjg79lkv", name: "AWS US East - prod-us-east-0", group: "Private Datasource Connect (PDC)", position: 33 }
+      - { upstream_id: "vdtfhpf8zpdz", name: "AWS US East - prod-us-east-2", group: "Grafana Assistant", position: 34 }
+      - { upstream_id: "z5ysrlvblv9t", name: "Integrations", position: 35 }
+      - { upstream_id: "2lgxvw5jzjy2", name: "AWS US West - prod-us-west-0", group: "Private Datasource Connect (PDC)", position: 36 }
+      - { upstream_id: "8bpfp6sdks03", name: "AWS US West - prod-us-west-0", group: "Grafana Assistant", position: 37 }
+      - { upstream_id: "5g4m1v2h0gpv", name: "AWS US East - prod-us-east-0", group: "Knowledge Graph", position: 38 }
+      - { upstream_id: "0s4n2mv9hwv9", name: "Cost Management and Billing", position: 39 }
+      - { upstream_id: "tpk4cdhtsm82", name: "Azure US Central - us-central2", group: "Logs", position: 40 }
+      - { upstream_id: "h6c5t69fh0lr", name: "Azure US Central - us-central2", group: "OpenTelemetry Ingest Endpoint", position: 41 }
+      - { upstream_id: "mvjcv18gtsbb", name: "Azure US Central - us-central2", group: "AI and Machine Learning", position: 42 }
+      - { upstream_id: "0s84b5yjppwy", name: "Azure US Central - us-central2", group: "Frontend Observability", position: 43 }
+      - { upstream_id: "yj8j4cxstxz0", name: "AWS US East - prod-us-east-3", group: "Knowledge Graph", position: 44 }
+      - { upstream_id: "7hzxytvzk3mz", name: "Azure US Central - us-central2", group: "Private Datasource Connect (PDC)", position: 45 }
+      - { upstream_id: "3jbh6nyxv692", name: "Fleet Management", position: 46 }
+      - { upstream_id: "2gj2jt684k11", name: "Azure US Central - us-central7", group: "Logs", position: 47 }
+      - { upstream_id: "f8d07l1x67r7", name: "AWS US West - prod-us-west-0", group: "Knowledge Graph", position: 48 }
+      - { upstream_id: "fs80tlfpb7kx", name: "Azure US Central - us-central2", group: "Grafana", position: 49 }
+      - { upstream_id: "1mxpk7q1bkb6", name: "Incident Management and Response (IRM)", position: 50 }
+      - { upstream_id: "n01mwnhf678k", name: "Azure US Central - us-central2", group: "Grafana Assistant", position: 51 }
+      - { upstream_id: "d8n320b96n2x", name: "Public Snapshots", position: 52 }
+      - { upstream_id: "v60p22nl676w", name: "GCP US Central - prod-us-central-0", group: "Profiles", position: 53 }
+      - { upstream_id: "q6rgjfs9prs5", name: "AWS US East - prod-us-east-3: API", group: "Synthetic Monitoring", position: 54 }
+      - { upstream_id: "fff4xbm4qv94", name: "Azure US Central - prod-us-central-7", group: "Knowledge Graph", position: 55 }
+      - { upstream_id: "cjgks1bz26rw", name: "AWS US East - prod-us-east-3: Public Probes", group: "Synthetic Monitoring", position: 56 }
+      - { upstream_id: "tfr4g652mxn5", name: "AWS US West - prod-us-west-0: Querying", group: "Metrics", position: 57 }
+      - { upstream_id: "gbzxphtz5lwk", name: "AWS US West - prod-us-west-0: API", group: "Synthetic Monitoring", position: 58 }
+      - { upstream_id: "kctg5mxt6xpp", name: "GCP US Central - prod-us-central-0", group: "AI and Machine Learning", position: 59 }
+      - { upstream_id: "prvf5mm6kh38", name: "GCP US Central - prod-us-central-0", group: "OpenTelemetry Ingest Endpoint", position: 60 }
+      - { upstream_id: "k8k4wprtwgz9", name: "AWS US West - prod-us-west-0: Ingestion", group: "Metrics", position: 61 }
+      - { upstream_id: "pz96v0pznswg", name: "AWS US West - prod-us-west-0: Public Probes", group: "Synthetic Monitoring", position: 62 }
+      - { upstream_id: "fn320fztp9hc", name: "GCP US Central - prod-us-central-0", group: "Frontend Observability", position: 63 }
+      - { upstream_id: "l72f5c7651n5", name: "GCP US Central - prod-us-central-0", group: "Logs", position: 64 }
+      - { upstream_id: "wpkdzdqpdf7d", name: "AWS US East - prod-us-east-3", group: "OpenTelemetry Ingest Endpoint", position: 65 }
+      - { upstream_id: "26n64wbncm2j", name: "AWS US East - prod-us-east-3", group: "AI and Machine Learning", position: 66 }
+      - { upstream_id: "y081wmnk39py", name: "GCP US Central - prod-us-central-0", group: "Private Datasource Connect (PDC)", position: 67 }
+      - { upstream_id: "98skfgrdgchf", name: "GCP US Central - prod-us-central-5", group: "Logs", position: 68 }
+      - { upstream_id: "bwz6jth8r6qk", name: "Azure US Central - prod-us-central2: API", group: "Synthetic Monitoring", position: 69 }
+      - { upstream_id: "xb8m6tjchkht", name: "GCP US East - prod-us-east-1", group: "Private Datasource Connect (PDC)", position: 70 }
+      - { upstream_id: "4gf2kxp258h2", name: "GCP US Central - prod-us-central-0", group: "Grafana Assistant", position: 71 }
+      - { upstream_id: "j05h37kmp5x3", name: "Federal Cloud - AWS US Gov West", group: "Logs", position: 72 }
+      - { upstream_id: "qqj6ssvvsqmq", name: "GCP US Central - prod-us-central-0", group: "Grafana", position: 73 }
+      - { upstream_id: "43fvknltd9m1", name: "Azure US Central - prod-us-central2: Public Probes", group: "Synthetic Monitoring", position: 74 }
+      - { upstream_id: "kr2bkfg6r3q4", name: "GCP US Central - prod-us-central-3", group: "Grafana Assistant", position: 75 }
+      - { upstream_id: "vgv3t5h3q1qy", name: "AWS US East - prod-us-east-3", group: "Logs", position: 76 }
+      - { upstream_id: "ql2hwfkmnyrr", name: "Azure US Central - us-central2: Querying", group: "Metrics", position: 77 }
+      - { upstream_id: "m7cr9xxllhpn", name: "GCP US Central - prod-us-central-3", group: "Grafana", position: 78 }
+      - { upstream_id: "81f9yfcnyxsg", name: "AWS US East - prod-us-east-0: Metrics Generator", group: "Traces", position: 79 }
+      - { upstream_id: "l1hs6x2ml5hn", name: "Azure US Central - prod-us-central7: API", group: "Synthetic Monitoring", position: 80 }
+      - { upstream_id: "qp0s0s1dkqht", name: "GCP US Central - prod-us-central-4", group: "Grafana Assistant", position: 81 }
+      - { upstream_id: "thwsfnmmw8yx", name: "GCP US Central - prod-us-central-0", group: "Knowledge Graph", position: 82 }
+      - { upstream_id: "d1qqwsst6by9", name: "Azure US Central - us-central2: Ingestion", group: "Metrics", position: 83 }
+      - { upstream_id: "jky8f03q6zfj", name: "GCP US Central - prod-us-central-4", group: "Grafana", position: 84 }
+      - { upstream_id: "ctqprgdj7scn", name: "AWS US West - prod-us-west-0: Querying", group: "Traces", position: 85 }
+      - { upstream_id: "k82d2w8b7lcz", name: "Azure US Central - prod-us-central7: Public Probes", group: "Synthetic Monitoring", position: 86 }
+      - { upstream_id: "66xk1htkzm07", name: "GCP US East - prod-us-east-1", group: "Grafana Assistant", position: 87 }
+      - { upstream_id: "mzjntqvmywq3", name: "AWS US East - prod-us-east-2", group: "Private Datasource Connect (PDC)", position: 88 }
+      - { upstream_id: "qrdysj4824ld", name: "GCP US East - prod-us-east-1", group: "Knowledge Graph", position: 89 }
+      - { upstream_id: "2yn7w8rnphcp", name: "GCP US East - prod-us-east-1", group: "Grafana", position: 90 }
+      - { upstream_id: "2cc4g3q2g0xn", name: "AWS US West - prod-us-west-0: Rule Evaluation", group: "Alerting and SLO", position: 91 }
+      - { upstream_id: "l502n5x60s2m", name: "AWS US West - prod-us-west-0: Ingestion", group: "Traces", position: 92 }
+      - { upstream_id: "gxyxxd4nr755", name: "Azure US Central - us-central7: Ingestion", group: "Metrics", position: 93 }
+      - { upstream_id: "4vfjcc6ptw32", name: "play.grafana.org", group: "Grafana", position: 94 }
+      - { upstream_id: "2fvfdmcnplg5", name: "AWS US West - prod-us-west-0: Alertmanager and Rules Configuration API", group: "Alerting and SLO", position: 95 }
+      - { upstream_id: "vy7fxf1zsfkl", name: "AWS US West - prod-us-west-0: Metrics Generator", group: "Traces", position: 96 }
+      - { upstream_id: "57jn84fvz98t", name: "AWS US West - prod-us-west-0: Alertmanager", group: "Alerting and SLO", position: 97 }
+      - { upstream_id: "4sk1vxpqgb7s", name: "Federal Cloud - AWS US Gov West", group: "Grafana", position: 98 }
+      - { upstream_id: "dn1fhrg75vrd", name: "AWS US East - prod-us-east-3", group: "Grafana Assistant", position: 99 }
+      - { upstream_id: "hy0247hvwzry", name: "AWS US East - prod-us-east-3", group: "Grafana", position: 100 }
+      - { upstream_id: "zb9pfcch5qw1", name: "GCP US Central - prod-us-central-7", group: "Grafana", position: 101 }
+      - { upstream_id: "23wmy7zb3076", name: "Azure US Central - us-central2: Rule Evaluation", group: "Alerting and SLO", position: 102 }
+      - { upstream_id: "hrz0zytmsvzw", name: "Azure US Central - us-central2: Querying", group: "Traces", position: 103 }
+      - { upstream_id: "tpvdjr2xyb7x", name: "Azure US Central - us-central2: Alertmanager and Rules Configuration API", group: "Alerting and SLO", position: 104 }
+      - { upstream_id: "k4x5wpztwzcq", name: "Azure US Central - us-central2: Ingestion", group: "Traces", position: 105 }
+      - { upstream_id: "y5ymzvw0c99f", name: "Azure US Central - us-central2: Alertmanager", group: "Alerting and SLO", position: 106 }
+      - { upstream_id: "3lqbsd6gbn1r", name: "Azure US Central - us-central2: Metrics Generator", group: "Traces", position: 107 }
+      - { upstream_id: "xjv0q11xqq2b", name: "Azure US Central - us-central7: Ingestion", group: "Traces", position: 108 }
+      - { upstream_id: "d5gnddsryq15", name: "AWS East (VA) prod-us-east-1", group: "Grafana", position: 109 }
+      - { upstream_id: "yx5996c1lfnj", name: "GCP US Central - prod-us-central-0: API", group: "Synthetic Monitoring", position: 110 }
+      - { upstream_id: "jhc34sjt42wd", name: "GCP US Central - prod-us-central-0: Querying", group: "Metrics", position: 111 }
+      - { upstream_id: "7p6gpdprypb9", name: "GCP US Central - prod-us-central-0: Public Probes", group: "Synthetic Monitoring", position: 112 }
+      - { upstream_id: "fg4xzyccz85n", name: "AWS West prod-us-west-2", group: "Grafana", position: 113 }
+      - { upstream_id: "1tt4gx4t4q87", name: "GCP US Central - prod-us-central-0: Ingestion", group: "Metrics", position: 114 }
+      - { upstream_id: "cp7lzhn0jrgw", name: "GCP US Central - prod-us-central-5: Querying", group: "Metrics", position: 115 }
+      - { upstream_id: "l778xg16mls4", name: "GCP US Central - prod-us-central-5: Ingestion", group: "Metrics", position: 116 }
+      - { upstream_id: "dw1zzwblgd66", name: "GCS US - cortex-prod-04: Ingestion", group: "Metrics", position: 117 }
+      - { upstream_id: "wg8xtz9dq3j4", name: "GCS US - cortex-prod-04: Querying", group: "Metrics", position: 118 }
+      - { upstream_id: "90x90mfp0tj5", name: "Federal Cloud - AWS US Gov West", group: "Metrics", position: 119 }
+      - { upstream_id: "slqwr2vp7rrn", name: "Azure US Central - prod-us-central-7: Querying", group: "Metrics", position: 120 }
+      - { upstream_id: "7xgglzcpb274", name: "Azure US Central - prod-us-central-7: Ingestion", group: "Metrics", position: 121 }
+      - { upstream_id: "pwlnwwwjlpwg", name: "GCP US East - prod-us-east-1: API", group: "Synthetic Monitoring", position: 122 }
+      - { upstream_id: "xkjgscz19z6c", name: "GCP US Central - prod-us-central-0: Rule Evaluation", group: "Alerting and SLO", position: 123 }
+      - { upstream_id: "7jyhc50smfkc", name: "GCP US East - prod-us-east-1: Public Probes", group: "Synthetic Monitoring", position: 124 }
+      - { upstream_id: "qjwn7tbhdl8y", name: "GCP US Central - prod-us-central-0: Alertmanager and Rules Configuration API", group: "Alerting and SLO", position: 125 }
+      - { upstream_id: "9xz0880z67zl", name: "GCP US Central - prod-us-central-0: Querying", group: "Traces", position: 126 }
+      - { upstream_id: "q88twf02jwxz", name: "AWS US East - prod-us-east-2: API", group: "Synthetic Monitoring", position: 127 }
+      - { upstream_id: "x2sf2zvf07cy", name: "GCP US Central - prod-us-central-0: Alertmanager", group: "Alerting and SLO", position: 128 }
+      - { upstream_id: "t7pbglh025rz", name: "GCP US Central - prod-us-central-0: Ingestion", group: "Traces", position: 129 }
+      - { upstream_id: "nqnp5qhjq5fq", name: "AWS US East - prod-us-east-2: Public Probes", group: "Synthetic Monitoring", position: 130 }
+      - { upstream_id: "p1qsknnnbdqn", name: "GCP US Central - prod-us-central-0: Metrics Generator", group: "Traces", position: 131 }
+      - { upstream_id: "lv9z30y5w7lm", name: "Federal Cloud - AWS US Gov West", group: "Alerting and SLO", position: 132 }
+      - { upstream_id: "6prz8xx323ym", name: "AWS US East - prod-us-east-2: Querying", group: "Traces", position: 133 }
+      - { upstream_id: "bgpplfx1cz4r", name: "AWS US East - prod-us-east-2: Ingestion", group: "Traces", position: 134 }
+      - { upstream_id: "cmzwpyr8bqq1", name: "AWS US East - prod-us-east-2: Metrics Generator", group: "Traces", position: 135 }
+      - { upstream_id: "5r0fnpc11np4", name: "GCP US Central - prod-us-central-5: Querying", group: "Traces", position: 136 }
+      - { upstream_id: "x1brj4vmt5py", name: "GCP US Central - prod-us-central-5: Ingestion", group: "Traces", position: 137 }
+      - { upstream_id: "3k70lb3bytq2", name: "Federal Cloud - AWS US Gov West", group: "Traces", position: 138 }
+      - { upstream_id: "zstphlt7hkx4", name: "AWS US East - prod-us-east-3: Querying", group: "Traces", position: 139 }
+      - { upstream_id: "c4xq0y1xrywv", name: "AWS US East - prod-us-east-3: Ingestion", group: "Traces", position: 140 }
+      - { upstream_id: "97ndftl19f6c", name: "AWS US East - prod-us-east-3: Metrics Generator", group: "Traces", position: 141 }

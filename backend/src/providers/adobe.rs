@@ -1,11 +1,12 @@
+use std::collections::BTreeSet;
+
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use serde_json::{Value, json};
 
 use super::{
-    FetchContext, FetchOutcome, ProviderError, StatusProvider, conditional_request,
-    conditional_response_metadata, http_client, json_body, response_content_type,
-    retry_after_seconds,
+    FetchContext, FetchOutcome, ProviderError, StatusProvider, affects_current_status, endpoint,
+    fetch_json, http_client, incident_status,
 };
 use crate::domain::{
     IncidentKind, IncidentLifecycle, NormalizedStatus, ProviderComponent, ProviderIncident,
@@ -36,55 +37,25 @@ impl StatusProvider for AdobeProvider {
 
     async fn fetch_snapshot(&self, context: &FetchContext) -> Result<FetchOutcome, ProviderError> {
         let client = http_client(context)?;
-        let request = client.get(
-            context
-                .base_url
-                .join("/adobestatus/StatusEvents")
-                .map_err(|error| ProviderError::Configuration(error.to_string()))?,
-        );
-        let response = conditional_request(request, context)
-            .send()
-            .await
-            .map_err(|error| ProviderError::Transport(error.to_string()))?;
-        let metadata = conditional_response_metadata(&response);
-        if response.status().as_u16() == 304 {
-            return Ok(FetchOutcome::NotModified {
-                status: 304,
-                etag: metadata.etag,
-                last_modified: metadata.last_modified,
-            });
-        }
-        if response.status().as_u16() == 429 {
-            return Err(ProviderError::RateLimited {
-                retry_after_seconds: retry_after_seconds(response.headers()),
-                content_type: response_content_type(response.headers()),
-            });
-        }
-        if !response.status().is_success() {
-            return Err(ProviderError::Http {
-                status: response.status().as_u16(),
-                content_type: response_content_type(response.headers()),
-            });
-        }
-        let body = json_body(response, 12 * 1024 * 1024).await?;
-        parse_events(
-            &body,
-            metadata.status,
-            metadata.etag,
-            metadata.last_modified,
-        )
+        let (events, registry) = tokio::try_join!(
+            fetch_json(
+                &client,
+                endpoint(&context.base_url, "/adobestatus/StatusEvents")?,
+                12 * 1024 * 1024
+            ),
+            fetch_json(
+                &client,
+                endpoint(&context.base_url, "/adobestatus/SnowServiceRegistry")?,
+                12 * 1024 * 1024
+            ),
+        )?;
+        parse_events(events, registry)
     }
 }
 
-fn parse_events(
-    body: &[u8],
-    status: u16,
-    etag: Option<String>,
-    last_modified: Option<String>,
-) -> Result<FetchOutcome, ProviderError> {
+fn parse_events(root: Value, registry: Value) -> Result<FetchOutcome, ProviderError> {
     let observed_at = Utc::now();
-    let root: Value =
-        serde_json::from_slice(body).map_err(|error| ProviderError::Parse(error.to_string()))?;
+    let mut services = marketo_services(&registry)?;
     for path in ["/incidentEvent/incidents", "/maintenanceEvent/maintenance"] {
         let events = root
             .pointer(path)
@@ -110,12 +81,14 @@ fn parse_events(
         IncidentKind::Incident,
         &incident_messages,
         observed_at,
+        &services,
     );
     let maintenance = parse_event_collection(
         root.pointer("/maintenanceEvent/maintenance"),
         IncidentKind::Maintenance,
         &maintenance_messages,
         observed_at,
+        &services,
     );
     let active_statuses = incidents
         .iter()
@@ -129,32 +102,137 @@ fn parse_events(
     } else {
         component_status
     };
+    // Product-level impact without service IDs cannot establish individual service health.
+    let active = incidents
+        .iter()
+        .chain(&maintenance)
+        .filter(|incident| affects_current_status(incident))
+        .collect::<Vec<_>>();
+    let unscoped_impact = active
+        .iter()
+        .any(|incident| incident.affected_components.len() == 1);
+    for service in &mut services {
+        service.status = active
+            .iter()
+            .filter(|incident| incident.affected_components.contains(&service.upstream_id))
+            .map(|incident| incident_status(incident))
+            .max_by_key(|status| status.rank())
+            .unwrap_or(if unscoped_impact {
+                NormalizedStatus::Unknown
+            } else {
+                NormalizedStatus::Operational
+            });
+        service.original_status = service.status.key().to_owned();
+    }
+    services.insert(
+        0,
+        ProviderComponent {
+            upstream_id: MARKETO_US_COMPONENT_ID.into(),
+            name: "Adobe Marketo Engage (US)".into(),
+            group: Some("Americas".into()),
+            description: Some("Aggregate coverage for Marketo Americas environments".into()),
+            status: component_status,
+            original_status: component_status.key().to_owned(),
+            position: 0,
+        },
+    );
     Ok(FetchOutcome::Fetched(ProviderSnapshot {
         observed_at,
         overall: component_status,
         original_overall: component_status.key().to_owned(),
         provider_overall: component_status,
         provider_original_overall: component_status.key().to_owned(),
-        components: vec![ProviderComponent {
-            upstream_id: MARKETO_US_COMPONENT_ID.into(),
-            name: "Adobe Marketo Engage (US)".into(),
-            group: Some("US".into()),
-            description: Some("Marketo Ashburn and San Jose data centers".into()),
-            status: component_status,
-            original_status: component_status.key().to_owned(),
-            position: 0,
-        }],
+        components: services,
         incidents,
         maintenance,
         active_incident_set_complete: true,
         response: ResponseMetadata {
-            status,
-            etag,
-            last_modified,
+            status: 200,
+            etag: None,
+            last_modified: None,
             content_type: Some("application/json".into()),
         },
-        raw_payload: Some(root),
+        raw_payload: Some(json!({"events": root, "registry": registry})),
     }))
+}
+
+fn marketo_services(registry: &Value) -> Result<Vec<ProviderComponent>, ProviderError> {
+    let product = registry
+        .pointer(&format!("/products/{MARKETO_PRODUCT_ID}"))
+        .ok_or_else(|| ProviderError::Parse("Adobe registry omitted Marketo".into()))?;
+    let offerings = product
+        .get("productOfferings")
+        .and_then(Value::as_array)
+        .ok_or_else(|| ProviderError::Parse("Adobe registry omitted Marketo offerings".into()))?;
+    let mut owners = vec![product];
+    for id in offerings {
+        let offering = id
+            .as_str()
+            .and_then(|id| registry["offerings"].get(id))
+            .ok_or_else(|| ProviderError::Parse("Adobe registry omitted an offering".into()))?;
+        owners.push(offering);
+    }
+    let mut ids = BTreeSet::new();
+    for owner in owners {
+        let services = owner
+            .get("productServices")
+            .and_then(Value::as_array)
+            .ok_or_else(|| {
+                ProviderError::Parse("Adobe registry omitted product services".into())
+            })?;
+        for id in services {
+            ids.insert(id.as_str().filter(|id| !id.is_empty()).ok_or_else(|| {
+                ProviderError::Parse("Adobe registry contained an invalid service ID".into())
+            })?);
+        }
+    }
+    let mut components = Vec::new();
+    for id in ids {
+        let service = &registry["services"][id];
+        let name = service
+            .get("name")
+            .and_then(Value::as_str)
+            .filter(|name| !name.is_empty())
+            .ok_or_else(|| ProviderError::Parse("Adobe registry omitted a service name".into()))?;
+        let environments = service
+            .get("serviceEnvironments")
+            .and_then(Value::as_array)
+            .ok_or_else(|| {
+                ProviderError::Parse("Adobe registry omitted service environments".into())
+            })?;
+        let mut americas = false;
+        for environment in environments {
+            let regions = environment
+                .as_str()
+                .and_then(|id| registry["environments"].get(id))
+                .and_then(|env| env.get("regionId"))
+                .and_then(Value::as_array)
+                .ok_or_else(|| {
+                    ProviderError::Parse("Adobe registry omitted environment regions".into())
+                })?;
+            americas |= regions
+                .iter()
+                .any(|region| region.as_str() == Some("Americas"));
+        }
+        if !americas {
+            continue;
+        }
+        components.push(ProviderComponent {
+            upstream_id: id.to_owned(),
+            name: name.to_owned(),
+            group: Some("Americas".into()),
+            description: None,
+            status: NormalizedStatus::Unknown,
+            original_status: "unknown".into(),
+            position: i32::try_from(components.len() + 1).unwrap_or(i32::MAX),
+        });
+    }
+    if components.is_empty() {
+        return Err(ProviderError::Parse(
+            "Adobe registry contained no Marketo Americas services".into(),
+        ));
+    }
+    Ok(components)
 }
 
 fn messages(root: &Value, collection: &str) -> Value {
@@ -168,6 +246,7 @@ fn parse_event_collection(
     kind: IncidentKind,
     messages: &Value,
     observed_at: DateTime<Utc>,
+    services: &[ProviderComponent],
 ) -> Vec<ProviderIncident> {
     let mut incidents = collection
         .and_then(Value::as_object)
@@ -288,7 +367,22 @@ fn parse_event_collection(
                             .and_then(DateTime::from_timestamp_secs)
                     })
                     .flatten(),
-                affected_components: vec![MARKETO_US_COMPONENT_ID.into()],
+                affected_components: std::iter::once(MARKETO_US_COMPONENT_ID.to_owned())
+                    .chain(
+                        services
+                            .iter()
+                            .filter(|service| {
+                                latest
+                                    .pointer("/serviceImpact/productServices")
+                                    .and_then(Value::as_array)
+                                    .is_some_and(|ids| {
+                                        ids.iter()
+                                            .any(|id| id.as_str() == Some(&service.upstream_id))
+                                    })
+                            })
+                            .map(|service| service.upstream_id.clone()),
+                    )
+                    .collect(),
                 affected_scopes: Vec::new(),
                 within_provider_scope: true,
                 metadata: serde_json::json!({}),
@@ -348,26 +442,4 @@ fn lifecycle(
         }
         _ => IncidentLifecycle::Open,
     }
-}
-
-fn incident_status(incident: &ProviderIncident) -> NormalizedStatus {
-    if incident.kind == IncidentKind::Maintenance {
-        return NormalizedStatus::Maintenance;
-    }
-    match incident.severity {
-        Severity::Critical | Severity::Major => NormalizedStatus::MajorOutage,
-        Severity::Minor => NormalizedStatus::Degraded,
-        Severity::Info => NormalizedStatus::PartialOutage,
-    }
-}
-
-fn affects_current_status(incident: &ProviderIncident) -> bool {
-    if incident.lifecycle == IncidentLifecycle::Resolved {
-        return false;
-    }
-    incident.kind == IncidentKind::Incident
-        || matches!(
-            incident.original_phase.to_ascii_lowercase().as_str(),
-            "started" | "in progress" | "in_progress" | "ongoing"
-        )
 }

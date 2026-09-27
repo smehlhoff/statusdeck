@@ -38,7 +38,7 @@ function monthlyBuckets(days: ReliabilityDay[]) {
     bucket.major += day.started_major_count;
     bucket.minor += day.started_minor_count;
     bucket.seconds += day.affected_seconds;
-    bucket.unknownDurations += day.unknown_duration_count;
+    bucket.unknownDurations += day.unknown_incident_duration_count;
     bucket.recorded += Number(day.status !== "unknown");
     bucket.days += 1;
   }
@@ -57,7 +57,7 @@ export function ReliabilityTrends({ days }: { days: ReliabilityDay[] }) {
     0,
   );
   const unknownDurations = days.reduce(
-    (sum, day) => sum + day.unknown_duration_count,
+    (sum, day) => sum + day.unknown_incident_duration_count,
     0,
   );
   const seconds = buckets.reduce((sum, bucket) => sum + bucket.seconds, 0);

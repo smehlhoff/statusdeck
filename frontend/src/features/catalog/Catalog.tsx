@@ -46,6 +46,7 @@ export function Catalog() {
   const queryClient = useQueryClient();
   const { notify } = useToast();
   const [search, setSearch] = useState("");
+  const [subscribedOnly, setSubscribedOnly] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -138,6 +139,7 @@ export function Catalog() {
         .toLowerCase();
       return (
         searchable.includes(normalizedSearch) &&
+        (!subscribedOnly || enabledProviderIds.has(provider.id)) &&
         selectedTags.every((tag) => provider.tags.includes(tag))
       );
     }) ?? [];
@@ -146,7 +148,7 @@ export function Catalog() {
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE);
-  }, [normalizedSearch, selectedTags]);
+  }, [normalizedSearch, selectedTags, subscribedOnly]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -201,23 +203,24 @@ export function Catalog() {
     catalogContent = (
       <EmptyState
         title={
-          search || selectedTags.length
+          search || selectedTags.length || subscribedOnly
             ? "No matching providers"
             : "No providers available"
         }
         description={
-          search || selectedTags.length
-            ? "Try a different search or clear the selected categories."
+          search || selectedTags.length || subscribedOnly
+            ? "Try a different search or clear the selected filters."
             : "Providers will appear here when they are available in the catalog."
         }
         action={
-          search || selectedTags.length ? (
+          search || selectedTags.length || subscribedOnly ? (
             <button
               className="button ghost"
               type="button"
               onClick={() => {
                 setSearch("");
                 setSelectedTags([]);
+                setSubscribedOnly(false);
               }}
             >
               Clear filters
@@ -311,6 +314,14 @@ export function Catalog() {
               placeholder="Search by provider name or category"
             />
           </label>
+          <button
+            className={`button ${subscribedOnly ? "primary" : "ghost"}`}
+            type="button"
+            aria-pressed={subscribedOnly}
+            onClick={() => setSubscribedOnly((current) => !current)}
+          >
+            Subscribed only
+          </button>
         </div>
         {bulkStatus && (
           <p

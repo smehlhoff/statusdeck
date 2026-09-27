@@ -14,17 +14,37 @@ providers:
     name: PagerDuty
     components:
       - { upstream_id: PDACBTY, name: Events API, group: US, position: 0 }
-      - { upstream_id: PA1RAE8, name: Events API, group: EU, position: 1 }
       - { upstream_id: PKJOCIO, name: REST API, group: US, position: 2 }
-      - { upstream_id: PHN0C5L, name: REST API, group: EU, position: 3 }
       - { upstream_id: PWS3A1I, name: Web Application, group: US, position: 4 }
-      - { upstream_id: PSFFZPV, name: Web Application, group: EU, position: 5 }
       - { upstream_id: PP6UYA5, name: Mobile Application, group: US, position: 6 }
-      - { upstream_id: P8X6XKF, name: Mobile Application, group: EU, position: 7 }
       - { upstream_id: PXMJ5Y2, name: Incident Timeline and Alert Logs, group: US, position: 8 }
-      - { upstream_id: PBZ76NS, name: Incident Timeline and Alert Logs, group: EU, position: 9 }
       - { upstream_id: PRAXTAU, name: Business Services and Status Dashboard, group: US, position: 10 }
-      - { upstream_id: PO19SL4, name: Business Services and Status Dashboard, group: EU, position: 11 }
       - { upstream_id: P3XI84O, name: Other Integrations, group: US, position: 12 }
-      - { upstream_id: PMU48RV, name: Other Integrations, group: EU, position: 13 }
       - { upstream_id: PFSPYI7, name: Runbook Automation, group: Global, position: 14 }
+      - { upstream_id: "PJ1AZXX", name: "Workflow Automation", position: 15 }
+      - { upstream_id: "PF8V6MF", name: "Services (US)", position: 16 }
+      - { upstream_id: "PK7GWG9", name: "SMS (US)", position: 17 }
+      - { upstream_id: "PGYVW3J", name: "Voice (US)", position: 18 }
+      - { upstream_id: "P63OY6Y", name: "Push (US)", position: 19 }
+      - { upstream_id: "PZPJUC6", name: "Email (US)", position: 20 }
+      - { upstream_id: "P7IBRID", name: "Responder Requests (US)", position: 21 }
+      - { upstream_id: "PO91ZQ7", name: "Internal Status Page (US)", position: 22 }
+      - { upstream_id: "P4KIX8S", name: "Webhooks (US)", position: 23 }
+      - { upstream_id: "PQEN46P", name: "Schedules and Escalation Policies (US)", position: 24 }
+      - { upstream_id: "P6VB2EZ", name: "Users and Teams (US)", position: 25 }
+      - { upstream_id: "PYJ6V27", name: "Change Events (US)", position: 26 }
+      - { upstream_id: "P7RLS8E", name: "Log In and SSO (US)", position: 27 }
+      - { upstream_id: "P06PQH1", name: "Account Settings (US)", position: 28 }
+      - { upstream_id: "PVUAAEK", name: "Live Call Routing (US)", position: 29 }
+      - { upstream_id: "PRSFN8R", name: "Incoming Email (US)", position: 30 }
+      - { upstream_id: "PIHG7C5", name: "Developer Site", position: 31 }
+      - { upstream_id: "P40SXLU", name: "External Status Page (US)", position: 32 }
+      - { upstream_id: "P0A2QU0", name: "Jira Cloud (US)", position: 33 }
+      - { upstream_id: "P7768GB", name: "Zendesk (US)", position: 34 }
+      - { upstream_id: "P5ZQDNU", name: "Jira Server (US)", position: 35 }
+      - { upstream_id: "PFK0Q1H", name: "Microsoft Teams (US)", position: 36 }
+      - { upstream_id: "PYBROA4", name: "Slack (US)", position: 37 }
+      - { upstream_id: "PQ8BYT1", name: "Analytics (US)", position: 38 }
+      - { upstream_id: "P99LI4Q", name: "Incident Workflows (US)", position: 39 }
+      - { upstream_id: "PQVSQBQ", name: "Jeli", position: 40 }
+      - { upstream_id: "PW2UL3D", name: "PagerDuty Advance", position: 41 }

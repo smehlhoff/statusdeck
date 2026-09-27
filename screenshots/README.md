@@ -32,6 +32,10 @@
 
 ![Runtime, data, provider and delivery diagnostics](08-system-diagnostics.png)
 
+## My Comments
+
+![Your incident and maintenance comments](09-my-comments.png)
+
 ## Bookmarks
 
 ![Bookmarked incidents and maintenance](10-bookmarks.png)

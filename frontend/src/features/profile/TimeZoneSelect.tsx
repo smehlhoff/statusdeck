@@ -118,7 +118,7 @@ export function TimeZoneSelect({
             aria-activedescendant={
               results[activeIndex] ? `${id}-option-${activeIndex}` : undefined
             }
-            placeholder="Search city or time zone…"
+            placeholder="Search city or time zone"
             autoComplete="off"
             value={search}
             onChange={(event) => {

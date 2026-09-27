@@ -2,12 +2,13 @@ use std::collections::HashSet;
 
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
+use serde::Deserialize;
 use serde_json::Value;
 
-use super::statuspage::{apply_component_scope, configured_strings};
+use super::statuspage::{apply_component_scope, configured_strings, retain_scoped_incidents};
 use super::{
-    FetchContext, FetchOutcome, ProviderError, StatusProvider, endpoint, http_client, json_body,
-    response_content_type, retry_after_seconds,
+    FetchContext, FetchOutcome, ProviderError, StatusProvider, endpoint, fetch_json, http_client,
+    json_body, response_content_type, retry_after_seconds,
 };
 use crate::domain::{
     IncidentKind, IncidentLifecycle, NormalizedStatus, ProviderComponent, ProviderIncident,
@@ -17,37 +18,16 @@ use crate::domain::{
 #[derive(Default)]
 pub struct AwsProvider;
 
-const REGIONAL_SERVICES: &[(&str, &str)] = &[
-    ("ec2", "Amazon EC2"),
-    ("s3", "Amazon S3"),
-    ("rds", "Amazon RDS"),
-    ("dynamodb", "Amazon DynamoDB"),
-    ("lambda", "AWS Lambda"),
-    ("apigateway", "Amazon API Gateway"),
-    ("elb", "Elastic Load Balancing"),
-    ("eks", "Amazon EKS"),
-    ("ecs", "Amazon ECS"),
-    ("sqs", "Amazon SQS"),
-    ("sns", "Amazon SNS"),
-    ("kinesis", "Amazon Kinesis Data Streams"),
-    ("cloudwatch", "Amazon CloudWatch"),
-    ("iamidentitycenter", "AWS IAM Identity Center"),
-    ("sts", "AWS Security Token Service"),
-    ("signin", "AWS Sign-In"),
-    ("connect", "Amazon Connect"),
-];
+const SERVICE_CATALOG_URL: &str =
+    "https://servicedata-us-west-2-prod.s3.amazonaws.com/services.json";
 
-const REGIONS: &[(&str, &str)] = &[
-    ("us-east-1", "US East (N. Virginia)"),
-    ("us-east-2", "US East (Ohio)"),
-    ("us-west-1", "US West (N. California)"),
-    ("us-west-2", "US West (Oregon)"),
-];
-
-const GLOBAL_SERVICES: &[(&str, &str)] = &[
-    ("cloudfront", "Amazon CloudFront"),
-    ("route53", "Amazon Route 53"),
-];
+#[derive(Deserialize)]
+struct Service {
+    service: String,
+    service_name: String,
+    region_id: Option<String>,
+    region_name: Option<String>,
+}
 
 #[async_trait]
 impl StatusProvider for AwsProvider {
@@ -57,15 +37,7 @@ impl StatusProvider for AwsProvider {
                 "AWS status must use the approved public origin".into(),
             ));
         }
-        let configured = configured_strings(config, "component_ids")?;
-        if configured
-            .as_ref()
-            .is_some_and(|ids| ids.iter().any(|id| !known_component(id)))
-        {
-            return Err(ProviderError::Configuration(
-                "AWS catalog contains an unsupported service identifier".into(),
-            ));
-        }
+        configured_strings(config, "component_ids")?;
         Ok(())
     }
 
@@ -75,8 +47,15 @@ impl StatusProvider for AwsProvider {
             .base_url
             .join("/public/currentevents")
             .map_err(|error| ProviderError::Configuration(error.to_string()))?;
-        let root = fetch_events(&client, url).await?;
-        let mut snapshot = parse_snapshot(root, &context.known_active_incidents)?;
+        let (root, services) = tokio::try_join!(
+            fetch_events(&client, url),
+            fetch_json(
+                &client,
+                endpoint(&context.base_url, SERVICE_CATALOG_URL)?,
+                4 * 1024 * 1024,
+            ),
+        )?;
+        let mut snapshot = parse_snapshot(root, services, &context.known_active_incidents)?;
         if context.refresh_history || !context.known_active_incidents.is_empty() {
             let history = fetch_events(
                 &client,
@@ -92,8 +71,9 @@ impl StatusProvider for AwsProvider {
         let component_ids = snapshot
             .components
             .iter()
-            .map(|component| component.upstream_id.as_str())
+            .map(|component| component.upstream_id.clone())
             .collect::<HashSet<_>>();
+        retain_scoped_incidents(&mut snapshot.incidents, &component_ids);
         if let Some(events) = snapshot.raw_payload.as_ref().and_then(Value::as_array) {
             for incident in &mut snapshot.incidents {
                 if let Some(event) = events.iter().find(|event| {
@@ -128,11 +108,6 @@ async fn fetch_events(client: &reqwest::Client, url: url::Url) -> Result<Value, 
     let body = json_body(response, 4 * 1024 * 1024).await?;
     let body = decode_utf16(&body)?;
     serde_json::from_str::<Value>(&body).map_err(|error| ProviderError::Parse(error.to_string()))
-}
-
-// Amazon Connect is published in these two regions within our US scope.
-fn service_available(service: &str, region: &str) -> bool {
-    service != "connect" || matches!(region, "us-east-1" | "us-west-2")
 }
 
 fn merge_history(
@@ -179,7 +154,7 @@ fn merge_history(
     Ok(())
 }
 
-fn apply_service_recovery(incident: &mut ProviderIncident, event: &Value, scope: &HashSet<&str>) {
+fn apply_service_recovery(incident: &mut ProviderIncident, event: &Value, scope: &HashSet<String>) {
     if incident.lifecycle == IncidentLifecycle::Resolved {
         return;
     }
@@ -282,6 +257,7 @@ fn decode_utf16(body: &[u8]) -> Result<String, ProviderError> {
 
 fn parse_snapshot(
     root: Value,
+    services: Value,
     known_active: &HashSet<String>,
 ) -> Result<ProviderSnapshot, ProviderError> {
     let events = root
@@ -291,45 +267,58 @@ fn parse_snapshot(
         .iter()
         .filter(|event| status_code(event.get("status")) != Some(0))
         .collect::<Vec<_>>();
-    let mut components =
-        Vec::with_capacity(REGIONAL_SERVICES.len() * REGIONS.len() + GLOBAL_SERVICES.len());
-    for (region_id, region_name) in REGIONS {
-        for (service_id, service_name) in REGIONAL_SERVICES {
-            if !service_available(service_id, region_id) {
-                continue;
-            }
-            let id = format!("{service_id}-{region_id}");
-            let status = active
-                .iter()
-                .filter_map(|event| service_status(event, &id))
-                .max_by_key(|status| status.rank())
-                .unwrap_or(NormalizedStatus::Operational);
-            components.push(ProviderComponent {
-                upstream_id: id,
-                name: (*service_name).to_owned(),
-                group: Some((*region_name).to_owned()),
-                description: None,
-                status,
-                original_status: status.key().to_owned(),
-                position: i32::try_from(components.len()).unwrap_or(i32::MAX),
-            });
+    let services: Vec<Service> = serde_json::from_value(services)
+        .map_err(|error| ProviderError::Parse(format!("invalid AWS service catalog: {error}")))?;
+    let mut seen = HashSet::new();
+    let mut components = Vec::new();
+    for service in services {
+        if service.service.trim().is_empty()
+            || service.service_name.trim().is_empty()
+            || !seen.insert(service.service.clone())
+            || service
+                .region_id
+                .as_ref()
+                .is_some_and(|region| region.is_empty())
+            || (service.region_id.is_none() && service.region_name.is_some())
+        {
+            return Err(ProviderError::Parse(
+                "AWS service catalog contains missing, duplicate, or ambiguous identifiers".into(),
+            ));
         }
-    }
-    for (id, name) in GLOBAL_SERVICES {
+        if service
+            .region_id
+            .as_ref()
+            .is_some_and(|region| !region.starts_with("us-"))
+        {
+            continue;
+        }
         let status = active
             .iter()
-            .filter_map(|event| service_status(event, id))
+            .filter_map(|event| service_status(event, &service.service))
             .max_by_key(|status| status.rank())
             .unwrap_or(NormalizedStatus::Operational);
+        let group = service.region_id.map_or_else(
+            || "Global".to_owned(),
+            |region| {
+                service
+                    .region_name
+                    .map_or_else(|| region.clone(), |name| format!("{name} ({region})"))
+            },
+        );
         components.push(ProviderComponent {
-            upstream_id: (*id).to_owned(),
-            name: (*name).to_owned(),
-            group: Some("Global".to_owned()),
+            upstream_id: service.service,
+            name: service.service_name,
+            group: Some(group),
             description: None,
             status,
             original_status: status.key().to_owned(),
             position: i32::try_from(components.len()).unwrap_or(i32::MAX),
         });
+    }
+    if components.is_empty() {
+        return Err(ProviderError::Parse(
+            "AWS service catalog contains no US/global services".into(),
+        ));
     }
     let mut incidents = events
         .iter()
@@ -365,21 +354,6 @@ fn parse_snapshot(
         },
         raw_payload: Some(root),
     })
-}
-
-fn known_component(id: &str) -> bool {
-    GLOBAL_SERVICES
-        .iter()
-        .any(|(service_id, _)| id == *service_id)
-        || REGIONS.iter().any(|(region_id, _)| {
-            id.strip_suffix(region_id)
-                .and_then(|prefix| prefix.strip_suffix('-'))
-                .is_some_and(|service_id| {
-                    REGIONAL_SERVICES.iter().any(|(known_service, _)| {
-                        service_id == *known_service && service_available(service_id, region_id)
-                    })
-                })
-        })
 }
 
 // Public dashboard codes: 0 resolved, 1 impacted, 2 degraded, 3 disrupted.

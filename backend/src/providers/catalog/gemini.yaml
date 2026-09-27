@@ -15,3 +15,4 @@ providers:
       - { upstream_id: Z0FZJAMvEB4j3NbCJs6B, name: Gemini on Agent Platform, group: API, position: 0 }
       - { upstream_id: deUeOEPYanfJ9w8cpyBJ, name: Gemini Code Assist, group: Products, position: 1 }
       - { upstream_id: cxUh24jPxEXgyRlaVhuk, name: Gemini Enterprise, group: Products, position: 2 }
+      - { upstream_id: "8830JxTQetM8c4QqvfTB", name: "Financial Research agent in Gemini Enterprise", position: 3 }

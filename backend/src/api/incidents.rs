@@ -139,7 +139,11 @@ pub(super) async fn incidents(
     )?;
     validate_optional_filter("activity", query.activity.as_deref(), &["active"])?;
     validate_optional_filter("kind", query.kind.as_deref(), &["incident", "maintenance"])?;
-    validate_optional_filter("scope", query.scope.as_deref(), &["monitored", "all"])?;
+    validate_optional_filter(
+        "scope",
+        query.scope.as_deref(),
+        &["monitored", "provider", "all"],
+    )?;
     validate_optional_filter(
         "maintenance_window",
         query.maintenance_window.as_deref(),
@@ -223,7 +227,7 @@ pub(super) async fn incidents(
             SELECT COALESCE(published.provider_activity_at, i.first_observed_at) AS activity_at
         ) activity
         WHERE EXISTS (SELECT 1 FROM incident_providers subscribed_link JOIN monitored_providers monitored ON monitored.provider_id = subscribed_link.provider_id AND monitored.enabled WHERE subscribed_link.incident_id = i.id)
-          AND ($13 = 'all' OR (i.within_provider_scope AND EXISTS (
+          AND ($13 = 'all' OR (i.within_provider_scope AND ($13 = 'provider' OR EXISTS (
               SELECT 1 FROM incident_providers scoped_link
               JOIN monitored_providers monitored ON monitored.provider_id = scoped_link.provider_id AND monitored.enabled
               WHERE scoped_link.incident_id = i.id AND (
@@ -231,7 +235,7 @@ pub(super) async fn incidents(
                   OR NOT EXISTS (SELECT 1 FROM incident_components affected WHERE affected.incident_id = i.id)
                   OR EXISTS (SELECT 1 FROM incident_components affected JOIN monitored_components selected ON selected.component_id = affected.component_id WHERE affected.incident_id = i.id AND selected.monitored_provider_id = monitored.id)
               )
-          )))
+          ))))
           AND ($1::text IS NULL OR i.title ILIKE '%' || $1 || '%' OR i.upstream_incident_id ILIKE '%' || $1 || '%')
           AND ($2::uuid IS NULL OR EXISTS (SELECT 1 FROM incident_providers link WHERE link.incident_id = i.id AND link.provider_id = $2))
           AND ($3::uuid[] IS NULL OR EXISTS (SELECT 1 FROM incident_providers link WHERE link.incident_id = i.id AND link.provider_id = ANY($3)))
@@ -299,8 +303,8 @@ pub(super) async fn incident(
     State(state): State<AppState>,
 ) -> Result<Json<IncidentDetailResponse>, ApiError> {
     let user = authenticated_user(&state, &headers).await?;
-    let mut incident = sqlx::query_as::<_, IncidentRow>("SELECT incident.id, incident.upstream_incident_id, incident.title, EXISTS (SELECT 1 FROM incident_bookmarks b WHERE b.incident_id = incident.id AND b.user_id = $2) AS bookmarked, incident.lifecycle, incident.severity, incident.kind, incident.original_phase, incident.original_impact, incident.provider_created_at, incident.provider_started_at, incident.provider_updated_at, incident.provider_monitoring_at, incident.provider_resolved_at, incident.provider_metadata, CASE WHEN timing.end_at IS NOT NULL THEN floor(extract(epoch FROM timing.end_at - timing.start_at))::bigint END AS duration_seconds, timing.maintenance_uncertain, incident.planned_start_at, incident.planned_end_at, incident.first_observed_at, incident.official_url, incident.last_observed_at, incident.lifecycle_generation, incident.within_provider_scope, COALESCE((SELECT jsonb_agg(jsonb_build_object('id', provider.id, 'name', provider.name) ORDER BY provider.name, provider.id) FROM incident_providers link JOIN providers provider ON provider.id = link.provider_id WHERE link.incident_id = incident.id), '[]'::jsonb) AS providers FROM incidents incident JOIN incident_timing timing ON timing.id = incident.id WHERE incident.id = $1").bind(id).bind(user.id).fetch_optional(&state.database.pool).await.map_err(ApiError::internal)?.ok_or_else(|| ApiError::not_found("incident not found"))?;
-    let updates = sqlx::query_as::<_, IncidentUpdateResponse>("SELECT selected.id, selected.original_status AS status, selected.body, selected.provider_created_at AS created_at, selected.provider_updated_at AS updated_at, selected.provider_display_at AS display_at, selected.synthesized, COALESCE((SELECT jsonb_agg(jsonb_build_object('id', component.id, 'name', component.name) ORDER BY component.position, component.name) FROM incident_update_components snapshot JOIN components component ON component.id = snapshot.component_id WHERE snapshot.incident_update_id = selected.id), '[]'::jsonb) AS components, COALESCE((SELECT jsonb_agg(jsonb_build_object('type', scope.scope_type, 'upstream_id', scope.upstream_id, 'name', scope.display_name, 'normalized_status', scope.normalized_status, 'original_status', scope.original_status) ORDER BY scope.scope_type, scope.display_name) FROM incident_update_affected_scopes scope WHERE scope.incident_update_id = selected.id), '[]'::jsonb) AS scopes FROM (SELECT DISTINCT ON (provider_created_at, body) id, original_status, body, provider_created_at, provider_updated_at, provider_display_at, synthesized FROM incident_updates WHERE incident_id = $1 ORDER BY provider_created_at, body, CASE WHEN original_status = 'active' THEN 1 ELSE 0 END, id DESC) selected ORDER BY COALESCE(selected.provider_display_at, selected.provider_created_at) ASC NULLS LAST, selected.id ASC").bind(id).fetch_all(&state.database.pool).await.map_err(ApiError::internal)?;
+    let incident = sqlx::query_as::<_, IncidentRow>("SELECT incident.id, incident.upstream_incident_id, incident.title, EXISTS (SELECT 1 FROM incident_bookmarks b WHERE b.incident_id = incident.id AND b.user_id = $2) AS bookmarked, incident.lifecycle, incident.severity, incident.kind, incident.original_phase, incident.original_impact, incident.provider_created_at, incident.provider_started_at, incident.provider_updated_at, incident.provider_monitoring_at, incident.provider_resolved_at, incident.provider_metadata, CASE WHEN timing.end_at IS NOT NULL THEN floor(extract(epoch FROM timing.end_at - timing.start_at))::bigint END AS duration_seconds, timing.maintenance_uncertain, incident.planned_start_at, incident.planned_end_at, incident.first_observed_at, incident.official_url, incident.last_observed_at, incident.lifecycle_generation, incident.within_provider_scope, COALESCE((SELECT jsonb_agg(jsonb_build_object('id', provider.id, 'name', provider.name) ORDER BY provider.name, provider.id) FROM incident_providers link JOIN providers provider ON provider.id = link.provider_id WHERE link.incident_id = incident.id), '[]'::jsonb) AS providers FROM incidents incident JOIN incident_timing timing ON timing.id = incident.id WHERE incident.id = $1").bind(id).bind(user.id).fetch_optional(&state.database.pool).await.map_err(ApiError::internal)?.ok_or_else(|| ApiError::not_found("incident not found"))?;
+    let updates = sqlx::query_as::<_, IncidentUpdateResponse>("SELECT selected.id, selected.original_status AS status, selected.body, selected.provider_created_at AS created_at, selected.provider_updated_at AS updated_at, selected.provider_display_at AS display_at, selected.synthesized, COALESCE((SELECT jsonb_agg(jsonb_build_object('id', component.id, 'name', component.name) ORDER BY component.position, component.name) FROM incident_update_components snapshot JOIN components component ON component.id = snapshot.component_id WHERE snapshot.incident_update_id = selected.id), '[]'::jsonb) AS components, COALESCE((SELECT jsonb_agg(jsonb_build_object('type', scope.scope_type, 'upstream_id', scope.upstream_id, 'name', scope.display_name, 'normalized_status', scope.normalized_status, 'original_status', scope.original_status) ORDER BY scope.scope_type, scope.display_name) FROM incident_update_affected_scopes scope WHERE scope.incident_update_id = selected.id), '[]'::jsonb) AS scopes FROM incident_updates selected WHERE selected.incident_id = $1 ORDER BY COALESCE(selected.provider_display_at, selected.provider_created_at) ASC NULLS LAST, selected.id ASC").bind(id).fetch_all(&state.database.pool).await.map_err(ApiError::internal)?;
     let providers = sqlx::query_as::<_, IncidentProviderResponse>("SELECT s.id, s.slug, s.name, s.official_url FROM incident_providers link JOIN providers s ON s.id = link.provider_id WHERE link.incident_id = $1 ORDER BY s.name, s.id")
         .bind(id)
         .fetch_all(&state.database.pool)
@@ -313,16 +317,6 @@ pub(super) async fn incident(
         .map_err(ApiError::internal)?;
     let scopes = sqlx::query_scalar::<_, Value>("SELECT COALESCE(jsonb_agg(jsonb_build_object('type', scope.scope_type, 'upstream_id', scope.upstream_id, 'name', scope.display_name, 'normalized_status', scope.normalized_status, 'original_status', scope.original_status) ORDER BY scope.scope_type, scope.display_name), '[]'::jsonb) FROM incident_affected_scopes scope WHERE scope.incident_id = $1")
         .bind(id).fetch_one(&state.database.pool).await.map_err(ApiError::internal)?;
-    if incident.official_url.as_deref().is_some_and(|url| {
-        !is_valid_incident_link(
-            url,
-            providers
-                .iter()
-                .map(|provider| provider.official_url.as_str()),
-        )
-    }) {
-        incident.official_url = None;
-    }
     Ok(Json(IncidentDetailResponse {
         incident,
         providers,
@@ -330,28 +324,4 @@ pub(super) async fn incident(
         scopes,
         updates,
     }))
-}
-
-fn is_valid_incident_link<'a>(
-    candidate: &str,
-    provider_urls: impl IntoIterator<Item = &'a str>,
-) -> bool {
-    if candidate.len() > 1024 {
-        return false;
-    }
-    let Ok(candidate) = url::Url::parse(candidate) else {
-        return false;
-    };
-    if candidate.scheme() != "https"
-        || candidate.host_str().is_none()
-        || !candidate.username().is_empty()
-        || candidate.password().is_some()
-    {
-        return false;
-    }
-    candidate.host_str() == Some("stspg.io")
-        || provider_urls.into_iter().any(|provider_url| {
-            url::Url::parse(provider_url)
-                .is_ok_and(|provider_url| provider_url.host_str() == candidate.host_str())
-        })
 }

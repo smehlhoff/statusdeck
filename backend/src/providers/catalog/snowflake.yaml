@@ -41,3 +41,177 @@ providers:
       - { upstream_id: 0df2n68d5788, name: Developer Tools, group: Azure East US 2, position: 23 }
       - { upstream_id: 227yh5znvtr5, name: Business Continuity, group: Azure East US 2, position: 24 }
       - { upstream_id: hh6f39mtrtcw, name: Snowflake Postgres, group: Azure East US 2, position: 25 }
+      - { upstream_id: "pkrzt59vb1cm", name: "Databases, Tables, and Views", group: "AWS - US West (Oregon)", position: 26 }
+      - { upstream_id: "v6f90jy80bt2", name: "Databases, Tables, and Views", group: "Azure - US Gov (Virginia)", position: 27 }
+      - { upstream_id: "y4q5b6lrxd05", name: "Databases, Tables, and Views", group: "AWS - US East (Ohio)", position: 28 }
+      - { upstream_id: "p4xrh74pj5b9", name: "Databases, Tables, and Views", group: "Azure - West US 2 (Washington)", position: 29 }
+      - { upstream_id: "zlpb46zxg9my", name: "Databases, Tables, and Views", group: "GCP - US Central 1 (Iowa)", position: 30 }
+      - { upstream_id: "dz82blbgs9ff", name: "Databases, Tables, and Views", group: "Azure - Central US (Iowa)", position: 31 }
+      - { upstream_id: "mmc7t4jr9mgy", name: "Databases, Tables, and Views", group: "AWS - GovCloud (US-West)", position: 32 }
+      - { upstream_id: "zr63db94448h", name: "Databases, Tables, and Views", group: "AWS - US East (Commercial Gov-Virginia)", position: 33 }
+      - { upstream_id: "29rrzn73bk50", name: "Databases, Tables, and Views", group: "Azure - South Central US (Texas)", position: 34 }
+      - { upstream_id: "n502508rqbzp", name: "Databases, Tables, and Views", group: "GCP - US East 4 (N. Virginia)", position: 35 }
+      - { upstream_id: "5sh1m5mm6qsl", name: "Databases, Tables, and Views", group: "AWS GovCloud - DoD", position: 36 }
+      - { upstream_id: "8wklb2rqhqq8", name: "Databases, Tables, and Views", group: "AWS - US West (Commercial Gov - Oregon)", position: 37 }
+      - { upstream_id: "9drxp0b48xp9", name: "Databases, Tables, and Views", group: "Azure - East US (Virginia)", position: 38 }
+      - { upstream_id: "c9yxl6dydmvr", name: "Databases, Tables, and Views", group: "AWS - GovCloud (US-East)", position: 39 }
+      - { upstream_id: "q9vdrc073xny", name: "Virtual Warehouses", group: "AWS - US West (Oregon)", position: 40 }
+      - { upstream_id: "9sy569pfzrpp", name: "Virtual Warehouses", group: "AWS - GovCloud (US-West)", position: 41 }
+      - { upstream_id: "9mgwyydsy6mv", name: "Virtual Warehouses", group: "AWS - US West (Commercial Gov - Oregon)", position: 42 }
+      - { upstream_id: "bqbyzm9pghqb", name: "Virtual Warehouses", group: "AWS - US East (Ohio)", position: 43 }
+      - { upstream_id: "fcdzssmzj66r", name: "Virtual Warehouses", group: "AWS - US East (Commercial Gov-Virginia)", position: 44 }
+      - { upstream_id: "cynt9kxl8ghm", name: "Virtual Warehouses", group: "AWS GovCloud - DoD", position: 45 }
+      - { upstream_id: "ds4tcffmxw2k", name: "Virtual Warehouses", group: "Azure - West US 2 (Washington)", position: 46 }
+      - { upstream_id: "6dh7qf778gf0", name: "Virtual Warehouses", group: "Azure - South Central US (Texas)", position: 47 }
+      - { upstream_id: "x18fp2ts6q8p", name: "Virtual Warehouses", group: "Azure - Central US (Iowa)", position: 48 }
+      - { upstream_id: "mkxf3pqr5z50", name: "Virtual Warehouses", group: "Azure - US Gov (Virginia)", position: 49 }
+      - { upstream_id: "9kbsymy31620", name: "Virtual Warehouses", group: "GCP - US Central 1 (Iowa)", position: 50 }
+      - { upstream_id: "j8x2f4kjslts", name: "Virtual Warehouses", group: "GCP - US East 4 (N. Virginia)", position: 51 }
+      - { upstream_id: "22zn346ybn8l", name: "Virtual Warehouses", group: "Azure - East US (Virginia)", position: 52 }
+      - { upstream_id: "m31vzp8c1455", name: "Virtual Warehouses", group: "AWS - GovCloud (US-East)", position: 53 }
+      - { upstream_id: "b96r20d6p5g7", name: "Data Loading and Unloading", group: "AWS - US West (Oregon)", position: 54 }
+      - { upstream_id: "vp9k73z69zgc", name: "Data Loading and Unloading", group: "Azure - US Gov (Virginia)", position: 55 }
+      - { upstream_id: "6s5h5mdsx45p", name: "Data Loading and Unloading", group: "AWS - US East (Ohio)", position: 56 }
+      - { upstream_id: "1c5lnwxtrw5j", name: "Data Loading and Unloading", group: "Azure - West US 2 (Washington)", position: 57 }
+      - { upstream_id: "8czthj84sr6v", name: "Data Loading and Unloading", group: "GCP - US Central 1 (Iowa)", position: 58 }
+      - { upstream_id: "jm0vk7pnwhxc", name: "Data Loading and Unloading", group: "Azure - Central US (Iowa)", position: 59 }
+      - { upstream_id: "5kprsgsgybx5", name: "Data Loading and Unloading", group: "AWS - GovCloud (US-West)", position: 60 }
+      - { upstream_id: "gjqt63jhx8w3", name: "Data Loading and Unloading", group: "AWS - US East (Commercial Gov-Virginia)", position: 61 }
+      - { upstream_id: "g2lmzsfsxbtl", name: "Data Loading and Unloading", group: "Azure - South Central US (Texas)", position: 62 }
+      - { upstream_id: "dj3kpjh6v349", name: "Data Loading and Unloading", group: "GCP - US East 4 (N. Virginia)", position: 63 }
+      - { upstream_id: "c5n2yc1shrz3", name: "Data Loading and Unloading", group: "AWS GovCloud - DoD", position: 64 }
+      - { upstream_id: "0fm5pknw3nrd", name: "Data Loading and Unloading", group: "AWS - US West (Commercial Gov - Oregon)", position: 65 }
+      - { upstream_id: "xl9p5mp521rb", name: "Data Loading and Unloading", group: "Azure - East US (Virginia)", position: 66 }
+      - { upstream_id: "cbngrm4ygscm", name: "Data Loading and Unloading", group: "AWS - GovCloud (US-East)", position: 67 }
+      - { upstream_id: "6jy082tyx85d", name: "Applications", group: "AWS - US West (Oregon)", position: 68 }
+      - { upstream_id: "89nmr9s1p26x", name: "Applications", group: "AWS - US East (Ohio)", position: 69 }
+      - { upstream_id: "s6v3s7125zqw", name: "Applications", group: "Azure - West US 2 (Washington)", position: 70 }
+      - { upstream_id: "tp70psw8qfxk", name: "Applications", group: "Azure - Central US (Iowa)", position: 71 }
+      - { upstream_id: "t7x0cm1px4xy", name: "Applications", group: "Azure - US Gov (Virginia)", position: 72 }
+      - { upstream_id: "6b25v2qrp0hh", name: "Applications", group: "GCP - US Central 1 (Iowa)", position: 73 }
+      - { upstream_id: "x82k6dm705bf", name: "Applications", group: "AWS - GovCloud (US-West)", position: 74 }
+      - { upstream_id: "jyjp3cw13zj5", name: "Applications", group: "AWS - US East (Commercial Gov-Virginia)", position: 75 }
+      - { upstream_id: "4vgbh368xczf", name: "Applications", group: "Azure - South Central US (Texas)", position: 76 }
+      - { upstream_id: "96pk8440jc8d", name: "Applications", group: "GCP - US East 4 (N. Virginia)", position: 77 }
+      - { upstream_id: "2bt1z1wxmhk2", name: "Applications", group: "AWS GovCloud - DoD", position: 78 }
+      - { upstream_id: "3dfl35wrlc7t", name: "Applications", group: "AWS - US West (Commercial Gov - Oregon)", position: 79 }
+      - { upstream_id: "bfpcyzsq5thd", name: "Applications", group: "Azure - East US (Virginia)", position: 80 }
+      - { upstream_id: "76cml4s974d0", name: "Applications", group: "AWS - GovCloud (US-East)", position: 81 }
+      - { upstream_id: "kxnwg9d1bb48", name: "Snowpark Container Services", group: "AWS - US West (Oregon)", position: 82 }
+      - { upstream_id: "lgz99lp1tnrc", name: "Snowpark Container Services", group: "AWS - GovCloud (US-West)", position: 83 }
+      - { upstream_id: "6zhhh6q484qw", name: "Snowpark Container Services", group: "AWS - US West (Commercial Gov - Oregon)", position: 84 }
+      - { upstream_id: "pn8ctg9whdbk", name: "Snowpark Container Services", group: "AWS - US East (Ohio)", position: 85 }
+      - { upstream_id: "z1xmz7mqzhg3", name: "Snowpark Container Services", group: "AWS - US East (Commercial Gov-Virginia)", position: 86 }
+      - { upstream_id: "5nbxvf98048f", name: "Snowpark Container Services", group: "AWS GovCloud - DoD", position: 87 }
+      - { upstream_id: "wkg8yb3zm5cz", name: "Snowpark Container Services", group: "Azure - West US 2 (Washington)", position: 88 }
+      - { upstream_id: "65kjb4fr895w", name: "Snowpark Container Services", group: "Azure - South Central US (Texas)", position: 89 }
+      - { upstream_id: "79y7d0y980wf", name: "Snowpark Container Services", group: "Azure - Central US (Iowa)", position: 90 }
+      - { upstream_id: "kpdnjhjm3cy2", name: "Snowpark Container Services", group: "Azure - US Gov (Virginia)", position: 91 }
+      - { upstream_id: "y7bf7vvk2s4w", name: "Snowpark Container Services", group: "GCP - US Central 1 (Iowa)", position: 92 }
+      - { upstream_id: "smrylt79bjwz", name: "Snowpark Container Services", group: "GCP - US East 4 (N. Virginia)", position: 93 }
+      - { upstream_id: "p3628rxhztbk", name: "Snowpark Container Services", group: "Azure - East US (Virginia)", position: 94 }
+      - { upstream_id: "ncz339wt4czc", name: "Snowpark Container Services", group: "AWS - GovCloud (US-East)", position: 95 }
+      - { upstream_id: "0r3twz3f01vb", name: "Security and Privacy Features", group: "AWS - US West (Oregon)", position: 96 }
+      - { upstream_id: "5htq0g7q3v9v", name: "Security and Privacy Features", group: "AWS - GovCloud (US-West)", position: 97 }
+      - { upstream_id: "tpd4c22kftc0", name: "Security and Privacy Features", group: "AWS - US West (Commercial Gov - Oregon)", position: 98 }
+      - { upstream_id: "ksnd430pfhfq", name: "Security and Privacy Features", group: "AWS - US East (Ohio)", position: 99 }
+      - { upstream_id: "6pl33xn2ctw2", name: "Security and Privacy Features", group: "AWS - US East (Commercial Gov-Virginia)", position: 100 }
+      - { upstream_id: "k5gfczcf4qx6", name: "Security and Privacy Features", group: "AWS GovCloud - DoD", position: 101 }
+      - { upstream_id: "gvqrqlb9mxjd", name: "Security and Privacy Features", group: "Azure - West US 2 (Washington)", position: 102 }
+      - { upstream_id: "c0zskv4x2mwf", name: "Security and Privacy Features", group: "Azure - South Central US (Texas)", position: 103 }
+      - { upstream_id: "by854clwg95b", name: "Security and Privacy Features", group: "Azure - Central US (Iowa)", position: 104 }
+      - { upstream_id: "jhvy14nq37q8", name: "Security and Privacy Features", group: "Azure - US Gov (Virginia)", position: 105 }
+      - { upstream_id: "l1jl4cd4c8rt", name: "Security and Privacy Features", group: "GCP - US Central 1 (Iowa)", position: 106 }
+      - { upstream_id: "brdpr4ylgrht", name: "Security and Privacy Features", group: "GCP - US East 4 (N. Virginia)", position: 107 }
+      - { upstream_id: "yn88shysrznw", name: "Security and Privacy Features", group: "Azure - East US (Virginia)", position: 108 }
+      - { upstream_id: "88fkgzl29zpx", name: "Security and Privacy Features", group: "AWS - GovCloud (US-East)", position: 109 }
+      - { upstream_id: "4yr5ymtm3ct6", name: "AI and ML", group: "AWS - US West (Oregon)", position: 110 }
+      - { upstream_id: "ggzrs4lbyr2c", name: "AI and ML", group: "AWS - GovCloud (US-West)", position: 111 }
+      - { upstream_id: "ykppb705gt8t", name: "AI and ML", group: "AWS - US East (Commercial Gov-Virginia)", position: 112 }
+      - { upstream_id: "x5v6mspt03bl", name: "AI and ML", group: "AWS GovCloud - DoD", position: 113 }
+      - { upstream_id: "7lg90ydfjmdm", name: "AI and ML", group: "Azure - West US 2 (Washington)", position: 114 }
+      - { upstream_id: "lxlml1zqdhdk", name: "AI and ML", group: "Azure - South Central US (Texas)", position: 115 }
+      - { upstream_id: "wrwx84d7qypy", name: "AI and ML", group: "Azure - Central US (Iowa)", position: 116 }
+      - { upstream_id: "7w47vlwmgv7q", name: "AI and ML", group: "Azure - US Gov (Virginia)", position: 117 }
+      - { upstream_id: "174hqpxxz1yj", name: "AI and ML", group: "GCP - US Central 1 (Iowa)", position: 118 }
+      - { upstream_id: "58hyxmkm2mk0", name: "AI and ML", group: "GCP - US East 4 (N. Virginia)", position: 119 }
+      - { upstream_id: "508p3cgzvjg4", name: "AI and ML", group: "AWS - US West (Commercial Gov - Oregon)", position: 120 }
+      - { upstream_id: "x9vws0sls60y", name: "AI and ML", group: "AWS - US East (Ohio)", position: 121 }
+      - { upstream_id: "gnrqskxd0y3n", name: "AI and ML", group: "Azure - East US (Virginia)", position: 122 }
+      - { upstream_id: "jq759dyd7pm5", name: "AI and ML", group: "AWS - GovCloud (US-East)", position: 123 }
+      - { upstream_id: "jrwpc18wg2wj", name: "Organization and Account Management", group: "AWS - US West (Oregon)", position: 124 }
+      - { upstream_id: "dg7y5pd2b0jw", name: "Organization and Account Management", group: "AWS - GovCloud (US-West)", position: 125 }
+      - { upstream_id: "cfgpbxps213y", name: "Organization and Account Management", group: "AWS - US West (Commercial Gov - Oregon)", position: 126 }
+      - { upstream_id: "3cr29rv0bn99", name: "Organization and Account Management", group: "AWS - US East (Ohio)", position: 127 }
+      - { upstream_id: "mzrshb195z12", name: "Organization and Account Management", group: "AWS - US East (Commercial Gov-Virginia)", position: 128 }
+      - { upstream_id: "2ypg04jgkpyk", name: "Organization and Account Management", group: "AWS GovCloud - DoD", position: 129 }
+      - { upstream_id: "wl87qcph2z3d", name: "Organization and Account Management", group: "Azure - West US 2 (Washington)", position: 130 }
+      - { upstream_id: "pk02j2js6c43", name: "Organization and Account Management", group: "Azure - South Central US (Texas)", position: 131 }
+      - { upstream_id: "gv62gqy41yyn", name: "Organization and Account Management", group: "Azure - Central US (Iowa)", position: 132 }
+      - { upstream_id: "192rzx38lpq1", name: "Organization and Account Management", group: "Azure - US Gov (Virginia)", position: 133 }
+      - { upstream_id: "pfxxh10mx843", name: "Organization and Account Management", group: "GCP - US East 4 (N. Virginia)", position: 134 }
+      - { upstream_id: "kgzg0p118bzx", name: "Organization and Account Management", group: "GCP - US Central 1 (Iowa)", position: 135 }
+      - { upstream_id: "9w9y4lbq39w4", name: "Organization and Account Management", group: "Azure - East US (Virginia)", position: 136 }
+      - { upstream_id: "6y0cxhmmdhcl", name: "Organization and Account Management", group: "AWS - GovCloud (US-East)", position: 137 }
+      - { upstream_id: "grtc2bndstsw", name: "Listings and Collaboration", group: "AWS - US West (Oregon)", position: 138 }
+      - { upstream_id: "2nfy37lkzrb2", name: "Listings and Collaboration", group: "AWS - GovCloud (US-West)", position: 139 }
+      - { upstream_id: "07w3n1vxphx1", name: "Listings and Collaboration", group: "AWS - US West (Commercial Gov - Oregon)", position: 140 }
+      - { upstream_id: "c0jg1kdbcrsl", name: "Listings and Collaboration", group: "AWS - US East (Ohio)", position: 141 }
+      - { upstream_id: "c6tc1zfpm4sz", name: "Listings and Collaboration", group: "AWS - US East (Commercial Gov-Virginia)", position: 142 }
+      - { upstream_id: "6cpwj0j35w6f", name: "Listings and Collaboration", group: "AWS GovCloud - DoD", position: 143 }
+      - { upstream_id: "2m5n3zvsy8v6", name: "Listings and Collaboration", group: "Azure - West US 2 (Washington)", position: 144 }
+      - { upstream_id: "z5k5kzdwpx6m", name: "Listings and Collaboration", group: "Azure - South Central US (Texas)", position: 145 }
+      - { upstream_id: "k8l7grjw12k1", name: "Listings and Collaboration", group: "Azure - Central US (Iowa)", position: 146 }
+      - { upstream_id: "m15gz39h00h2", name: "Listings and Collaboration", group: "Azure - US Gov (Virginia)", position: 147 }
+      - { upstream_id: "yhd1n0ylpznc", name: "Listings and Collaboration", group: "GCP - US Central 1 (Iowa)", position: 148 }
+      - { upstream_id: "f8mbzl1l0pbm", name: "Listings and Collaboration", group: "GCP - US East 4 (N. Virginia)", position: 149 }
+      - { upstream_id: "fm6wrv1bcqnv", name: "Listings and Collaboration", group: "Azure - East US (Virginia)", position: 150 }
+      - { upstream_id: "tth8gb8xmjn1", name: "Listings and Collaboration", group: "AWS - GovCloud (US-East)", position: 151 }
+      - { upstream_id: "2b3z1vkwnx00", name: "Alerts and Notifications", group: "AWS - US West (Oregon)", position: 152 }
+      - { upstream_id: "v1xgngm46sn1", name: "Alerts and Notifications", group: "AWS - GovCloud (US-West)", position: 153 }
+      - { upstream_id: "fcylzvsq8qdg", name: "Alerts and Notifications", group: "AWS - US West (Commercial Gov - Oregon)", position: 154 }
+      - { upstream_id: "yrxjxk6hv35b", name: "Alerts and Notifications", group: "AWS - US East (Ohio)", position: 155 }
+      - { upstream_id: "41p2gvpvh75j", name: "Alerts and Notifications", group: "AWS - US East (Commercial Gov-Virginia)", position: 156 }
+      - { upstream_id: "64r7tcrdffkh", name: "Alerts and Notifications", group: "AWS GovCloud - DoD", position: 157 }
+      - { upstream_id: "b34j59tkxjkm", name: "Alerts and Notifications", group: "Azure - West US 2 (Washington)", position: 158 }
+      - { upstream_id: "db88nk8ygvyk", name: "Alerts and Notifications", group: "Azure - South Central US (Texas)", position: 159 }
+      - { upstream_id: "gyltllystwx2", name: "Alerts and Notifications", group: "Azure - Central US (Iowa)", position: 160 }
+      - { upstream_id: "fbnqfcvs7rsl", name: "Alerts and Notifications", group: "Azure - US Gov (Virginia)", position: 161 }
+      - { upstream_id: "b3xnpmtvwmkx", name: "Alerts and Notifications", group: "GCP - US Central 1 (Iowa)", position: 162 }
+      - { upstream_id: "vznrqvvjskxt", name: "Alerts and Notifications", group: "GCP - US East 4 (N. Virginia)", position: 163 }
+      - { upstream_id: "mgzzzt5cl4d3", name: "Alerts and Notifications", group: "Azure - East US (Virginia)", position: 164 }
+      - { upstream_id: "ywhppl2rmxnh", name: "Alerts and Notifications", group: "AWS - GovCloud (US-East)", position: 165 }
+      - { upstream_id: "td8xfz5lstgp", name: "Developer Tools", group: "AWS - GovCloud (US-West)", position: 166 }
+      - { upstream_id: "1fp92xn87svk", name: "Developer Tools", group: "AWS - US East (Commercial Gov-Virginia)", position: 167 }
+      - { upstream_id: "vl2mtpxz6kcz", name: "Developer Tools", group: "AWS GovCloud - DoD", position: 168 }
+      - { upstream_id: "058jqrnhwjq4", name: "Developer Tools", group: "Azure - West US 2 (Washington)", position: 169 }
+      - { upstream_id: "f4gtsvrkdwdm", name: "Developer Tools", group: "Azure - South Central US (Texas)", position: 170 }
+      - { upstream_id: "8nkj93g1thl8", name: "Developer Tools", group: "Azure - Central US (Iowa)", position: 171 }
+      - { upstream_id: "r7x9m77t9gys", name: "Developer Tools", group: "Azure - US Gov (Virginia)", position: 172 }
+      - { upstream_id: "9nkkz2s79mhh", name: "Developer Tools", group: "GCP - US Central 1 (Iowa)", position: 173 }
+      - { upstream_id: "6rgsggh2n08c", name: "Developer Tools", group: "AWS - US West (Oregon)", position: 174 }
+      - { upstream_id: "n4qtjnzfk610", name: "Developer Tools", group: "AWS - US West (Commercial Gov - Oregon)", position: 175 }
+      - { upstream_id: "59hwg408q75s", name: "Developer Tools", group: "AWS - US East (Ohio)", position: 176 }
+      - { upstream_id: "1q8mnd8vw1d7", name: "Developer Tools", group: "GCP - US East 4 (N. Virginia)", position: 177 }
+      - { upstream_id: "z6t3359t6m2t", name: "Developer Tools", group: "Azure - East US (Virginia)", position: 178 }
+      - { upstream_id: "qddh87svc5cy", name: "Developer Tools", group: "AWS - GovCloud (US-East)", position: 179 }
+      - { upstream_id: "xjvzhg4llmqt", name: "Business Continuity", group: "AWS - US West (Oregon)", position: 180 }
+      - { upstream_id: "40r8j500yyq7", name: "Business Continuity", group: "AWS - US East (Ohio)", position: 181 }
+      - { upstream_id: "f3qjjz1j9cl7", name: "Business Continuity", group: "Azure - West US 2 (Washington)", position: 182 }
+      - { upstream_id: "n0cfpqr1d9kq", name: "Business Continuity", group: "GCP - US Central 1 (Iowa)", position: 183 }
+      - { upstream_id: "5h1h81sqmjmf", name: "Business Continuity", group: "Azure - US Gov (Virginia)", position: 184 }
+      - { upstream_id: "5vt9n3dxqbg7", name: "Business Continuity", group: "Azure - Central US (Iowa)", position: 185 }
+      - { upstream_id: "q03t37nbgghx", name: "Business Continuity", group: "AWS - GovCloud (US-West)", position: 186 }
+      - { upstream_id: "q82knd1ppp93", name: "Business Continuity", group: "AWS - US East (Commercial Gov-Virginia)", position: 187 }
+      - { upstream_id: "wy3kwwrg8scc", name: "Business Continuity", group: "Azure - South Central US (Texas)", position: 188 }
+      - { upstream_id: "kvfwkd9k2gjp", name: "Business Continuity", group: "GCP - US East 4 (N. Virginia)", position: 189 }
+      - { upstream_id: "djm4nhzglnsk", name: "Business Continuity", group: "AWS GovCloud - DoD", position: 190 }
+      - { upstream_id: "8wvwxfg9tmf1", name: "Business Continuity", group: "AWS - US West (Commercial Gov - Oregon)", position: 191 }
+      - { upstream_id: "v4fn5hl62hsk", name: "Business Continuity", group: "Azure - East US (Virginia)", position: 192 }
+      - { upstream_id: "pxqylfcb7f9z", name: "Business Continuity", group: "AWS - GovCloud (US-East)", position: 193 }
+      - { upstream_id: "yrs2p5z7yl36", name: "Snowflake Postgres", group: "AWS - US West (Oregon)", position: 194 }
+      - { upstream_id: "x8y65tw1v62t", name: "Snowflake Postgres", group: "AWS - US East (Ohio)", position: 195 }
+      - { upstream_id: "w4dqbqjhnd7n", name: "Snowflake Postgres", group: "Azure - West US 2 (Washington)", position: 196 }
+      - { upstream_id: "28n62x91c0k2", name: "Snowflake Postgres", group: "Azure - South Central US (Texas)", position: 197 }
+      - { upstream_id: "xs67d9hd10fr", name: "Snowflake Postgres", group: "Azure - Central US (Iowa)", position: 198 }
+      - { upstream_id: "3057yhnrw9j9", name: "Snowflake Postgres", group: "AWS - GovCloud (US-East)", position: 199 }

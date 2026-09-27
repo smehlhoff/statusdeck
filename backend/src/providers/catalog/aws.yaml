@@ -7,7 +7,7 @@ tags:
   - "Cloud"
   - "Developer tools"
   - "Infrastructure"
-component_scope: listed
+component_scope: all
 providers:
   - slug: aws
     name: AWS United States and Global

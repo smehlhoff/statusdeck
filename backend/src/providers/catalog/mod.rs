@@ -267,7 +267,7 @@ const APPROVED_SOURCES: &[(&str, &str, &str, &str)] = &[
     ),
     (
         "datadog",
-        "statuspage",
+        "datadog",
         "https://status.datadoghq.com",
         "https://status.datadoghq.com",
     ),

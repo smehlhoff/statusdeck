@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useId, useState, type ReactNode } from "react";
 import { ReliabilityHistory } from "./ReliabilityHistory";
+import { ProviderComponents } from "./ProviderComponents";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/client";
 import { MaintenanceWindow } from "../../components/MaintenanceWindow";
@@ -36,11 +37,6 @@ function StatusHeading({ label, help }: { label: string; help: ReactNode }) {
       </span>
     </h2>
   );
-}
-
-function componentStatus(active: boolean, status: string | null) {
-  if (!active) return "No longer reported by provider";
-  return status ? humanizeIdentifier(status) : "Not checked";
 }
 
 export function ProviderDetail() {
@@ -274,35 +270,9 @@ export function ProviderDetail() {
         key={provider.id}
         providerId={provider.id}
         components={provider.components}
+        monitored={Boolean(monitor?.enabled)}
       />
-      <section className="card provider-detail-section provider-components-section">
-        <div className="section-heading">
-          <h2>Components</h2>
-          <span className="muted">
-            {provider.components.length} component
-            {provider.components.length === 1 ? "" : "s"}
-          </span>
-        </div>
-        <ul className="plain-list provider-components-list">
-          {provider.components.map((component) => (
-            <li key={component.id}>
-              <strong>
-                {component.group ? `${component.group}: ` : ""}
-                {component.name}
-              </strong>
-              <span className="muted">
-                {componentStatus(component.active, component.status)}
-                {component.selected ? " · selected" : " · not selected"}
-              </span>
-              {component.description && (
-                <span className="muted provider-component-description">
-                  {component.description}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <ProviderComponents key={provider.id} components={provider.components} />
     </>
   );
 }

@@ -175,6 +175,9 @@ export function AlertRulePanel({
 
   const [draft, setDraft] = useState<RuleDraft>(INITIAL_RULE_DRAFT);
   const [providerSearch, setProviderSearch] = useState("");
+  const [componentSearch, setComponentSearch] = useState<
+    Record<string, string>
+  >({});
   const [ruleError, setRuleError] = useState("");
   const [editingRuleId, setEditingRuleId] = useState<string | null>(null);
   const [editorOpen, setEditorOpen] = useState(false);
@@ -293,6 +296,7 @@ export function AlertRulePanel({
   }
 
   function editRule(rule: Rule) {
+    setComponentSearch({});
     setEditingRuleId(rule.id);
     setDraft(draftFromRule(rule));
     setRuleError("");
@@ -300,6 +304,7 @@ export function AlertRulePanel({
   }
 
   function cloneRule(rule: Rule) {
+    setComponentSearch({});
     setEditingRuleId(null);
     setDraft({
       ...draftFromRule(rule),
@@ -324,6 +329,7 @@ export function AlertRulePanel({
   }
 
   function startRuleForm() {
+    setComponentSearch({});
     setEditingRuleId(null);
     setDraft(INITIAL_RULE_DRAFT);
     setRuleError("");
@@ -550,7 +556,7 @@ export function AlertRulePanel({
                     aria-label="Filter providers"
                     value={providerSearch}
                     onChange={(event) => setProviderSearch(event.target.value)}
-                    placeholder="Filter providers…"
+                    placeholder="Filter providers"
                   />
                   <button
                     className="button ghost"
@@ -663,6 +669,14 @@ export function AlertRulePanel({
                     componentCatalog.data?.filter(
                       (component) => component.provider_id === providerId,
                     ) ?? [];
+                  const search = (componentSearch[providerId] ?? "")
+                    .trim()
+                    .toLowerCase();
+                  const visibleComponents = components.filter((component) =>
+                    `${component.group ?? ""} ${component.name}`
+                      .toLowerCase()
+                      .includes(search),
+                  );
                   const selectableComponentIds = components
                     .filter((component) => component.monitored)
                     .map((component) => component.id);
@@ -729,8 +743,30 @@ export function AlertRulePanel({
                           </button>
                         </span>
                       </summary>
+                      <div className="selection-toolbar">
+                        <input
+                          type="search"
+                          aria-label={`Filter components for ${provider?.name ?? "provider"}`}
+                          placeholder="Filter components by name or region"
+                          value={componentSearch[providerId] ?? ""}
+                          disabled={saveRule.isPending}
+                          onChange={(event) =>
+                            setComponentSearch((current) => ({
+                              ...current,
+                              [providerId]: event.target.value,
+                            }))
+                          }
+                        />
+                      </div>
                       <div className="provider-choice-grid">
-                        {components.map((component) => (
+                        {search &&
+                          componentCatalog.isSuccess &&
+                          visibleComponents.length === 0 && (
+                            <p className="muted" role="status">
+                              No components match your search.
+                            </p>
+                          )}
+                        {visibleComponents.map((component) => (
                           <label
                             className="check choice-card"
                             key={component.id}

@@ -40,3 +40,12 @@ providers:
       - { upstream_id: 01JVCV8YSWZFRSM1G5CVP253SK, name: Codex Web, group: Codex, position: 22 }
       - { upstream_id: 01KMP3KP5M8X0EBTVW6KN327EE, name: VS Code extension, group: Codex, position: 23 }
       - { upstream_id: 01KKAD7C71MCCH3FTREMJH4AAS, name: FedRAMP, group: Compliance, position: 24 }
+      - { upstream_id: 01KTQBYVARFJ5KMCSECM06VKCF, name: Ads Manager, group: Products, position: 25 }
+      - { upstream_id: 01JMXBNJXG1S2D9V65P1ZZTD94, name: Login, group: Products, position: 26 }
+      - { upstream_id: 01JMXBNJXG1YMQPPCPCQX3MPA2, name: File uploads, group: Products, position: 27 }
+      - { upstream_id: 01KMKFAMWKNQ84Z1766MV08ZDE, name: CLI, group: Codex, position: 28 }
+      - { upstream_id: 01JMXBNJXGV1T5GT2M9XA83XNG, name: Conversations, group: Products, position: 29 }
+      - { upstream_id: 01JSFK5QX36ZRW0TW0ZV0ZYFXQ, name: GPTs, group: Products, position: 30 }
+      - { upstream_id: 01JQ7EKW990MSPSWVXC7VPV2ZJ, name: Image Generation, group: Products, position: 31 }
+      - { upstream_id: 01KX45G1SH21AX5DT93D4HMF0P, name: ChatGPT Work, group: Products, position: 32 }
+      - { upstream_id: 01JMXBRMFE6N2NNT7DG6XZQ6PW, name: Chat Completions, group: API, position: 33 }

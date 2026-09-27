@@ -36,3 +36,104 @@ providers:
       - { upstream_id: qhhgb8cl0ztk, name: Dedicated IP, group: Email, position: 20 }
       - { upstream_id: g4hs7h64k9fv, name: Console, group: Developer Tools, position: 21 }
       - { upstream_id: zxhmy448yyn3, name: Event Streams, group: Developer Tools, position: 22 }
+      - { upstream_id: "f7f727f39kx3", name: "Origination US1", group: "ELASTIC SIP TRUNKING US1", position: 23 }
+      - { upstream_id: "7c6yv3vctfqv", name: "Studio", group: "SERVERLESS", position: 24 }
+      - { upstream_id: "ys1jhy2ys04z", name: "Group Rooms", group: "PROGRAMMABLE VIDEO", position: 25 }
+      - { upstream_id: "2n998q57dwnf", name: "Zipwhip Provisioner Dashboard and API", group: "ZIPWHIP TOOLS", position: 26 }
+      - { upstream_id: "8j15n81jrlbn", name: "Conversation Orchestrator", group: "CONVERSATIONS", position: 27 }
+      - { upstream_id: "4yft4fgnwyfh", name: "API v3", group: "SendGrid Mail Sending", position: 28 }
+      - { upstream_id: "5tr5cbm0hs54", name: "Flex Agent Copilot", group: "FLEX", position: 29 }
+      - { upstream_id: "q015c7mrst1s", name: "Peer-to-Peer Rooms", group: "PROGRAMMABLE VIDEO", position: 30 }
+      - { upstream_id: "b3tl520cz8tc", name: "Functions", group: "SERVERLESS", position: 31 }
+      - { upstream_id: "mn1wpm35k4s4", name: "Termination US1", group: "ELASTIC SIP TRUNKING US1", position: 32 }
+      - { upstream_id: "vw9w2zyv9nk5", name: "Flex Agent Desktop", group: "FLEX", position: 33 }
+      - { upstream_id: "fq1snk8q5ybp", name: "Zipwhip Support Ticketing", group: "ZIPWHIP TOOLS", position: 34 }
+      - { upstream_id: "xqxxnl8rsmlc", name: "Conversation Intelligence", group: "CONVERSATIONS", position: 35 }
+      - { upstream_id: "dh4v9m99t24n", name: "SMTP", group: "SendGrid Mail Sending", position: 36 }
+      - { upstream_id: "7vctcn0bhhn2", name: "Event Webhooks", group: "SendGrid Webhooks", position: 37 }
+      - { upstream_id: "6ltxq62mkxd0", name: "Debugger & Alarms", group: "DEVELOPER TOOLS", position: 38 }
+      - { upstream_id: "q4d7rj555ljl", name: "Flex Application Platform", group: "FLEX", position: 39 }
+      - { upstream_id: "txt6v4g6pv74", name: "Authy App", group: "ACCOUNT SECURITY", position: 40 }
+      - { upstream_id: "ld8ss4pqqskp", name: "Assets", group: "SERVERLESS", position: 41 }
+      - { upstream_id: "vd76z27sk12v", name: "Recordings", group: "PROGRAMMABLE VIDEO", position: 42 }
+      - { upstream_id: "qphgn531prd5", name: "Conversation Intelligence (classic)", group: "CONVERSATIONS", position: 43 }
+      - { upstream_id: "wsqmv0q6zrz5", name: "Toll-Free Verification Portal", group: "ZIPWHIP TOOLS", position: 44 }
+      - { upstream_id: "s4jspb6twnwk", name: "API v2", group: "SendGrid Mail Sending", position: 45 }
+      - { upstream_id: "0t27c60k1ql2", name: "Parse API", group: "SendGrid Webhooks", position: 46 }
+      - { upstream_id: "jw9dh2mf4392", name: "Billing", group: "TWILIO PLATFORM", position: 47 }
+      - { upstream_id: "b81y83zrvglj", name: "Documentation", group: "DEVELOPER TOOLS", position: 48 }
+      - { upstream_id: "vyjjd8kdb7vq", name: "TwiML Bins", group: "SERVERLESS", position: 49 }
+      - { upstream_id: "lv1md8v28lhr", name: "Flex Insights", group: "FLEX", position: 50 }
+      - { upstream_id: "0xfc03jgk5g4", name: "Compositions", group: "PROGRAMMABLE VIDEO", position: 51 }
+      - { upstream_id: "68slck3djwv7", name: "Conversation Memory", group: "CONVERSATIONS", position: 52 }
+      - { upstream_id: "4rv9xfxmdjg9", name: "REST API", group: "DEVELOPER TOOLS", position: 53 }
+      - { upstream_id: "jncbcddlmbhn", name: "Network Traversal Service", group: "PROGRAMMABLE VIDEO", position: 54 }
+      - { upstream_id: "qf1ppcsw1jvh", name: "Sync", group: "SERVERLESS", position: 55 }
+      - { upstream_id: "fhrcxjv8wcjs", name: "Flex Queue Stats", group: "FLEX", position: 56 }
+      - { upstream_id: "m8vfg5ddymxk", name: "Enterprise Knowledge", group: "CONVERSATIONS", position: 57 }
+      - { upstream_id: "by1b8ylwwgs6", name: "Go Rooms", group: "PROGRAMMABLE VIDEO", position: 58 }
+      - { upstream_id: "y0thq9hlt5m8", name: "Bulk Export", group: "DEVELOPER TOOLS", position: 59 }
+      - { upstream_id: "yk293200bcps", name: "Flex Teams View", group: "FLEX", position: 60 }
+      - { upstream_id: "tfdww2zxylgd", name: "Queue US1", group: "PROGRAMMABLE VOICE US1", position: 61 }
+      - { upstream_id: "mw3ktpy92305", name: "Flex Admin Console", group: "FLEX", position: 62 }
+      - { upstream_id: "45nc391hhv9v", name: "Video Insights", group: "PROGRAMMABLE VIDEO", position: 63 }
+      - { upstream_id: "dv0j99s68yxn", name: "Text-to-Speech US1", group: "PROGRAMMABLE VOICE US1", position: 64 }
+      - { upstream_id: "vxjqr22fbl36", name: "Flex Routing", group: "FLEX", position: 65 }
+      - { upstream_id: "2vfx22h9nhbk", name: "Realtime Transcriptions", group: "PROGRAMMABLE VIDEO", position: 66 }
+      - { upstream_id: "b9z92qjr2p04", name: "TaskRouter", position: 67 }
+      - { upstream_id: "86c0cvzk43pv", name: "Recording Transcriptions US1", group: "PROGRAMMABLE VOICE US1", position: 68 }
+      - { upstream_id: "7ypw8tsmyr78", name: "Flex Conversations", group: "FLEX", position: 69 }
+      - { upstream_id: "xnzrm2zg4qbv", name: "TwiML US1", group: "PROGRAMMABLE VOICE US1", position: 70 }
+      - { upstream_id: "xv01vfp8wvs4", name: "Customer Support Center", group: "TWILIO PLATFORM", position: 71 }
+      - { upstream_id: "lzm53c2kjxkh", name: "Flex Programmable Chat", group: "FLEX", position: 72 }
+      - { upstream_id: "yf5px6tdl6yt", name: "Voice Insights US1", group: "PROGRAMMABLE VOICE US1", position: 73 }
+      - { upstream_id: "m5b6twz4h52d", name: "Other", group: "TWILIO PLATFORM", position: 74 }
+      - { upstream_id: "h056tfqk3q97", name: "Flex Programmable Voice", group: "FLEX", position: 75 }
+      - { upstream_id: "361mb56zmf8z", name: "Speech Recognition (Gather Speech) US1", group: "PROGRAMMABLE VOICE US1", position: 76 }
+      - { upstream_id: "kvyjw7lg97l1", name: "Account Insights", group: "TWILIO PLATFORM", position: 77 }
+      - { upstream_id: "b1n7jklp0rv4", name: "Proxy", group: "FLEX", position: 78 }
+      - { upstream_id: "hjfntfyhnn4l", name: "INTERCONNECT", position: 79 }
+      - { upstream_id: "gk7b1lwzf93x", name: "Trust Hub", group: "TWILIO PLATFORM", position: 80 }
+      - { upstream_id: "z6wf7g459vzh", name: "Flex Plugins", group: "FLEX", position: 81 }
+      - { upstream_id: "1rcq4fprxs8j", name: "Realtime Transcriptions US1", group: "PROGRAMMABLE VOICE US1", position: 82 }
+      - { upstream_id: "pv5w18vrltfl", name: "PHONE NUMBERS", position: 83 }
+      - { upstream_id: "v95b6qqhp58v", name: "Flex Billing", group: "FLEX", position: 84 }
+      - { upstream_id: "3mryzdr7rssr", name: "Organization", group: "TWILIO PLATFORM", position: 85 }
+      - { upstream_id: "rk4qzxxbwj7t", name: "PROGRAMMABLE CHAT", position: 86 }
+      - { upstream_id: "5bv1plmydbzf", name: "Notify", group: "PROGRAMMABLE MESSAGING", position: 87 }
+      - { upstream_id: "622gcfj89fsh", name: "Pay US1", group: "PROGRAMMABLE VOICE US1", position: 88 }
+      - { upstream_id: "sxwbmz83d77t", name: "Media Streams US1", group: "PROGRAMMABLE VOICE US1", position: 89 }
+      - { upstream_id: "54ft7xt1tqmm", name: "PROXY", position: 90 }
+      - { upstream_id: "dgkv7yc7sqdg", name: "Messaging Insights", group: "PROGRAMMABLE MESSAGING", position: 91 }
+      - { upstream_id: "trrz5ztt7pl8", name: "Verify Silent Network Auth", group: "CARRIER NETWORK", position: 92 }
+      - { upstream_id: "s91kksd3hqjp", name: "Dialogflow US1", group: "PROGRAMMABLE VOICE US1", position: 93 }
+      - { upstream_id: "fsxs9n9yf4m7", name: "Lookup Identity Match", group: "CARRIER NETWORK", position: 94 }
+      - { upstream_id: "jdtgrvyw6w5z", name: "ConversationRelay US1", group: "PROGRAMMABLE VOICE US1", position: 95 }
+      - { upstream_id: "t4bxfcg2ppvb", name: "Lookup Line Type Intelligence [Legacy API]", group: "CARRIER NETWORK", position: 96 }
+      - { upstream_id: "cfy5cxrly95b", name: "Lookup Line Type Intelligence [Twilio API]", group: "CARRIER NETWORK", position: 97 }
+      - { upstream_id: "brty2vw4qv6v", name: "Toll-free verification", group: "PROGRAMMABLE MESSAGING", position: 98 }
+      - { upstream_id: "q0hp6vfr4vvh", name: "Lookup SIM Swap", group: "CARRIER NETWORK", position: 99 }
+      - { upstream_id: "t32hnkr2q793", name: "RCS Messaging", group: "PROGRAMMABLE MESSAGING", position: 100 }
+      - { upstream_id: "48ytpcq9mbrd", name: "FRONTLINE", position: 101 }
+      - { upstream_id: "qt4vzyg2g7b4", name: "Legacy Identity MatchAndAttributes", group: "CARRIER NETWORK", position: 102 }
+      - { upstream_id: "kj97j77088bh", name: "Sender ID", position: 103 }
+      - { upstream_id: "y0hyz9ck5jht", name: "Intelligent Alerts", group: "PROGRAMMABLE MESSAGING", position: 104 }
+      - { upstream_id: "vp66l5zb77p5", name: "SendGrid Marketing Campaigns", position: 105 }
+      - { upstream_id: "sqwjyy7x2sc6", name: "SendGrid API", position: 106 }
+      - { upstream_id: "bdnyxg9w62zm", name: "SendGrid Website", position: 107 }
+      - { upstream_id: "mn4033fd3lft", name: "SendGrid Statistics", position: 108 }
+      - { upstream_id: "r769mtd3rkhv", name: "SendGrid Email Activity", position: 109 }
+      - { upstream_id: "txbr9hz1lqgh", name: "SendGrid Partners", position: 110 }
+      - { upstream_id: "v8vgjrr4qwxs", name: "SendGrid Billing", position: 111 }
+      - { upstream_id: "qk973259tk75", name: "SendGrid Legacy Marketing Campaigns", position: 112 }
+      - { upstream_id: "7d8w22hqrh6s", name: "SMS Long Code, North America", group: "CARRIER NETWORK", position: 113 }
+      - { upstream_id: "qj606bzkg4s8", name: "SMS Long Code, North America", group: "ZIPWHIP MESSAGING", position: 114 }
+      - { upstream_id: "8vdlvw3dsq8h", name: "MMS Long Code, North America", group: "CARRIER NETWORK", position: 115 }
+      - { upstream_id: "llqd4rmn8k8y", name: "MMS Long Code, North America", group: "ZIPWHIP MESSAGING", position: 116 }
+      - { upstream_id: "39mb8cmw8y2v", name: "SMS Short Code, North America", group: "CARRIER NETWORK", position: 117 }
+      - { upstream_id: "k7rg1rqk2nwk", name: "SMS Toll-Free, North America", group: "ZIPWHIP MESSAGING", position: 118 }
+      - { upstream_id: "h0fl7prwfhvm", name: "MMS Short Code, North America", group: "CARRIER NETWORK", position: 119 }
+      - { upstream_id: "5cv0b6y86d2f", name: "MMS Toll-Free, North America", group: "ZIPWHIP MESSAGING", position: 120 }
+      - { upstream_id: "32f2bm54nkvv", name: "SMS Toll-Free, North America", group: "CARRIER NETWORK", position: 121 }
+      - { upstream_id: "tvjwfvczkf46", name: "MMS Toll-Free, North America", group: "CARRIER NETWORK", position: 122 }
+      - { upstream_id: "2v3v92mz2m4h", name: "Voice, North America", group: "CARRIER NETWORK", position: 123 }

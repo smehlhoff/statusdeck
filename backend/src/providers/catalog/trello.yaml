@@ -15,3 +15,6 @@ providers:
     components:
       - { upstream_id: hsr3nvlz0k2l, name: Trello.com, group: Global, position: 0 }
       - { upstream_id: y1nllgnkxn9d, name: API, group: Global, position: 1 }
+      - { upstream_id: "rmthn8dprv1q", name: "Atlassian Support - Support Portal", position: 2 }
+      - { upstream_id: "3zgtmwsprtcs", name: "Atlassian Support Ticketing", position: 3 }
+      - { upstream_id: "x282nv4vfrbx", name: "Atlassian Support Knowledge Base", position: 4 }

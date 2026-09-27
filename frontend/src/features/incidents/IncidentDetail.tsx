@@ -463,7 +463,10 @@ export function IncidentDetail() {
                       {group.updates.map((repeatedUpdate) => (
                         <li key={repeatedUpdate.id}>
                           <RelativeDateTime
-                            value={repeatedUpdate.created_at}
+                            value={
+                              repeatedUpdate.display_at ??
+                              repeatedUpdate.created_at
+                            }
                             fallback="Observed by StatusDeck"
                           />
                         </li>

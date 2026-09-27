@@ -28,3 +28,15 @@ providers:
       - { upstream_id: fvsfbxc1mb16, name: Uptime Monitoring, group: US, position: 12 }
       - { upstream_id: 6gtdt9t60dl0, name: Integration Pipeline, group: Global, position: 13 }
       - { upstream_id: 7wrqyj84ltw7, name: Custom Metrics, group: Global, position: 14 }
+      - { upstream_id: "jkpcsxvvv2hf", name: "Slack", group: "Notification Delivery", position: 15 }
+      - { upstream_id: "ml2wmx3hzlnn", name: "Password-Based", group: "Authentication Services", position: 16 }
+      - { upstream_id: "bprcc4mhbhmm", name: "Google", group: "Authentication Services", position: 17 }
+      - { upstream_id: "tjmyq3lb26w0", name: "Email", group: "Notification Delivery", position: 18 }
+      - { upstream_id: "lqps2hvc2400", name: "GitHub", group: "Authentication Services", position: 19 }
+      - { upstream_id: "jd3tvjnx5l1f", name: "PagerDuty", group: "Notification Delivery", position: 20 }
+      - { upstream_id: "tn9py6p7f85x", name: "Azure DevOps", group: "Authentication Services", position: 21 }
+      - { upstream_id: "z57k9q3r5jsh", name: "Microsoft Teams", group: "Notification Delivery", position: 22 }
+      - { upstream_id: "hsbnk3hxcckr", name: "SAML-Based Single Sign-On", group: "Authentication Services", position: 23 }
+      - { upstream_id: "wdg23fxxbtdh", name: "US Size Analysis Ingestion", group: "US Ingestion", position: 24 }
+      - { upstream_id: "hwlxb931wzmb", name: "Seer", position: 25 }
+      - { upstream_id: "308bk14ywlxz", name: "US Snapshot Ingestion", group: "US Ingestion", position: 26 }

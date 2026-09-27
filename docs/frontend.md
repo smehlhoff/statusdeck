@@ -79,6 +79,12 @@ can pause refresh to keep the list stable. Cached data remains visible after
 refresh failures with a stale/unavailable indication; mutations are not
 implicitly retried.
 
+Analytics has no interval refresh: it uses the query cache, normal refetch behavior
+and invalidation after monitoring changes. Provider detail, reliability and incident
+detail refresh every 60 seconds while visible, independently of the optional
+overview/feed refresh preference. Refetching these APIs reads PostgreSQL; it does
+not force an upstream poll.
+
 The incident page translates the browser-only `provider_tag` filter into catalog
 provider IDs before calling the API. [searchParams.ts](../frontend/src/utils/searchParams.ts)
 selects allowed query parameters; browser filters are not an independent API
@@ -101,10 +107,33 @@ Bulk subscription actions apply to the full catalog, independent of visible
 filters. They report partial failures rather than acting as one transaction.
 Removing a subscription preserves collected history, comments and bookmarks.
 
+[ProviderComponents](../frontend/src/features/catalog/ProviderComponents.tsx)
+consumes the provider-detail component array; it performs no network requests or
+subscription mutations. It groups equal service names while preserving individual
+component IDs and region/group labels. Search and selected/affected filters operate
+on the supplied inventory. Inactive components remain identifiable as no longer
+reported; components without observations remain unknown. The catalog's monitor controls and
+the alert-rule component picker own their respective selections.
+
 Reliability and Analytics describe provider-reported history, not measured uptime.
 Missing timing and incomplete history remain explicit. Maintenance distinguishes
 planned windows, actual activity and unconfirmed completion. Calculation rules
 belong in [backend analytics](backend.md#analytics-and-reliability).
+
+| View | Inputs and navigation contract |
+| --- | --- |
+| Reliability history | Provider ID, 90/180/365 local calendar days, optional component ID and resolved account time zone; filters are local state and query-key inputs |
+| Incident frequency | Daily API start/known-date counts summed into local calendar months; an incident spanning several days is counted once |
+| Reported impact duration | Daily API merged durations summed by month; missing history and unknown timing are distinct from a known zero |
+| Analytics | URL period/scope/maintenance filters; backend summary, trend buckets, component rankings and provider records; Chart.js renders supplied values |
+
+Reliability-day links use incident-feed `scope=provider` and the day's exact time
+bounds, preserving an optional component filter. They appear only for enabled
+monitors because the feed requires a subscription. Analytics links retain their
+own scope, maintenance and period filters. Reliability's calendar-day window and
+Analytics' rolling-day window can differ; their totals need not match simply
+because both display the same number of days. Chart instances are destroyed on
+effect cleanup and rebuilt when data or the resolved theme changes.
 
 ## Incidents and comments
 
@@ -112,6 +141,11 @@ Incident details combine original provider classifications, affected components
 and scopes, source timing, and updates. Repeated equivalent updates are grouped
 for readability while provider-supplied and synthesized observations remain
 distinguishable. Missing provider data remains explicitly unknown.
+The API retains distinct update identities; grouping happens in the browser.
+Timeline timestamps prefer the provider's display time. Native postmortems can
+appear without a timestamp when the source publishes none. Incident-detail
+duration is supplied by the backend's shared timing view, not recalculated from
+rendered messages.
 
 Comments are internal notes: saving one does not modify provider records or send
 notifications. Bookmarks reference the current incident record, and both saved
@@ -119,11 +153,9 @@ incidents and personal comments remain accessible after unsubscription.
 
 ## Notification and account forms
 
-Channel forms never retrieve stored plaintext secrets. Leaving replacement URL,
-signing-secret or Gotify/ntfy/Zulip token fields blank preserves existing values.
-Zulip also requires a bot email, channel name and topic on creation; blank
-replacement fields preserve these values when editing. Its destination is the
-Zulip server’s HTTPS `/api/v1/messages` endpoint.
+Channel forms never retrieve stored plaintext secrets. Blank replacement
+destination/secret fields preserve existing values; channel-specific required
+fields are checked on creation.
 There is no form action to clear a saved secret. A channel test queues a delivery;
 its outcome is available in System diagnostics. Destination and token constraints
 are documented with the [backend channel contract](backend.md#alerts-and-diagnostics).
@@ -193,6 +225,7 @@ Icons/avatars are code-rendered. Brand logos and the favicon are static PNGs in
 [public/](../frontend/public/), referenced by CSS and
 [index.html](../frontend/index.html). Provider reliability also imports its
 [feature stylesheet](../frontend/src/features/catalog/reliability-preview.css).
+The component inventory uses [provider-components.css](../frontend/src/features/catalog/provider-components.css).
 KaTeX fonts and highlighting CSS come from npm dependencies; Vite emits bundled
 assets. There is no separate design-system package or asset service.
 
@@ -230,3 +263,5 @@ are no configured frontend environment variables, SSR server, service worker or
 offline persistence. Commands and matching backend setup are maintained in
 [deployment](deployment.md#local-development-and-checks). The repository has no
 declared browser support matrix or automated browser/accessibility suite.
+Root-level coverage mockups and documentation screenshots are reference material,
+not Vite application inputs or automated validation artifacts.

@@ -22,3 +22,178 @@ providers:
       - { upstream_id: vttvjkwmdfps, name: Zoom Contact Center, group: Global, position: 6 }
       - { upstream_id: g3x1x7ffg5b0, name: Zoom Revenue Accelerator, group: Global, position: 7 }
       - { upstream_id: nyfqtg3bpllm, name: REST API, group: Global, position: 8 }
+      - { upstream_id: "c0vx53f3d6v5", name: "Web Portal (Admin/Users/Provisioning/Dashboard & Reporting)", group: "Zoom Phone - Global", position: 9 }
+      - { upstream_id: "880tc1scvmp2", name: "Zoom Virtual Agent", group: "Zoom Virtual Agent - Global", position: 10 }
+      - { upstream_id: "hybzp260h3n2", name: "Calendar", group: "Zoom Mail", position: 11 }
+      - { upstream_id: "4grcx0jpnvgz", name: "Zoom Blog", position: 12 }
+      - { upstream_id: "s5s5m6flk56z", name: "Zoom Contact Center", group: "Zoom CX - Global", position: 13 }
+      - { upstream_id: "6gr14n06phvd", name: "Slack", group: "Apps by Zoom", position: 14 }
+      - { upstream_id: "452xjnn6zw00", name: "Video SDK", group: "Zoom Build Platform", position: 15 }
+      - { upstream_id: "4jcnpddkkjtq", name: "Zoom AIC", group: "Zoom Workflows", position: 16 }
+      - { upstream_id: "9skbqhkvk721", name: "Download Center & Clients", group: "Zoom Website", position: 17 }
+      - { upstream_id: "jpbprc44q8dm", name: "Third Party Contact Center Integration (Five9/Twilio/Talkdesk/inContact/Genesys)", group: "Zoom Phone - Global", position: 18 }
+      - { upstream_id: "qfc0730q37d7", name: "Chat Messaging: Peer To Peer Messaging, History, Channels, Mobile Push Notifications", group: "Zoom Chat", position: 19 }
+      - { upstream_id: "5848skqwjh49", name: "Zoom Rooms Digital Signage", group: "Zoom Rooms", position: 20 }
+      - { upstream_id: "9fjtsz4n4syv", name: "Deals", group: "Zoom Revenue Accelerator", position: 21 }
+      - { upstream_id: "c506lbzb5km9", name: "Web Portal (Admin/Users/Provisioning)", group: "Zoom CX - Global", position: 22 }
+      - { upstream_id: "yvbblg5f0rdt", name: "Knowledge Base", group: "Zoom Support", position: 23 }
+      - { upstream_id: "03szj78zknyt", name: "Mail", group: "Zoom Mail", position: 24 }
+      - { upstream_id: "pr3j87tpjmy9", name: "Voice Agent", group: "Zoom Virtual Agent - Global", position: 25 }
+      - { upstream_id: "dmnkft8db7rb", name: "Microsoft Teams", group: "Apps by Zoom", position: 26 }
+      - { upstream_id: "fws9k4351knw", name: "CoBrowse SDK", group: "Zoom Build Platform", position: 27 }
+      - { upstream_id: "rmphw6f34qk9", name: "Marketplace", group: "Zoom Developer Platform", position: 28 }
+      - { upstream_id: "c5zk1r6jjm22", name: "Integration (API/Webhook)", group: "Zoom Phone - Global", position: 29 }
+      - { upstream_id: "xj3whqd893h4", name: "User Profiles and Presence", group: "Zoom Chat", position: 30 }
+      - { upstream_id: "65lm23m3qzcc", name: "Email Notifications", group: "Zoom Revenue Accelerator", position: 31 }
+      - { upstream_id: "dnpn46x85j1v", name: "Chatbot", group: "Zoom Support", position: 32 }
+      - { upstream_id: "sd7mcbbyqgbq", name: "Desktop Client (Supervisors/Agents)", group: "Zoom CX - Global", position: 33 }
+      - { upstream_id: "h1rqwzs3zwm0", name: "Zoom Scheduler", group: "Zoom Mail", position: 34 }
+      - { upstream_id: "zhgjct3grx1z", name: "Zoom Clips", position: 35 }
+      - { upstream_id: "db6bc5vbbb4f", name: "Chat Agent", group: "Zoom Virtual Agent - Global", position: 36 }
+      - { upstream_id: "64xz9xmm8sqc", name: "Google Workspace", group: "Apps by Zoom", position: 37 }
+      - { upstream_id: "wmmxrdc459my", name: "Zoom AI Services API", group: "Zoom Build Platform", position: 38 }
+      - { upstream_id: "8gftm750nwzm", name: "Web Portal", group: "Zoom Website", position: 39 }
+      - { upstream_id: "g9n3mgf1jxf1", name: "Webhooks", group: "Zoom Developer Platform", position: 40 }
+      - { upstream_id: "5nb7nq17c6g5", name: "File Transfers: File, Video, Pictures, Voice", group: "Zoom Chat", position: 41 }
+      - { upstream_id: "qmwgsb4jbrst", name: "Zoom Workspace Reservation", group: "Zoom Rooms", position: 42 }
+      - { upstream_id: "t7f6gfs4yh8l", name: "Conversations", group: "Zoom Revenue Accelerator", position: 43 }
+      - { upstream_id: "9mhsm7sbmhnr", name: "Ticketing", group: "Zoom Support", position: 44 }
+      - { upstream_id: "x63vf0zt5bxw", name: "Cisco Rooms registered to Zoom Phone", group: "Zoom Phone - Global", position: 45 }
+      - { upstream_id: "c8x4sz0ll7yj", name: "Web Client (Supervisors/Agents)", group: "Zoom CX - Global", position: 46 }
+      - { upstream_id: "32tsmw7szk49", name: "Zoom AIC", group: "Zoom Mail", position: 47 }
+      - { upstream_id: "3hbqg6y81bwq", name: "Lti Pro", group: "Apps by Zoom", position: 48 }
+      - { upstream_id: "y6gl9nsjx7p4", name: "Admin Portal - Agent Provision", group: "Zoom Virtual Agent - Global", position: 49 }
+      - { upstream_id: "rryv3x03gshj", name: "In-Meeting Chat/Polling", group: "Zoom Meetings", position: 50 }
+      - { upstream_id: "9jpq3dfcwzc3", name: "Archive Message: Archiving IM message with Third-parties and Email Notifications", group: "Zoom Chat", position: 51 }
+      - { upstream_id: "qdrc9p21l7tf", name: "Recordings", group: "Zoom Revenue Accelerator", position: 52 }
+      - { upstream_id: "503cqbhcpvzx", name: "Web Client", group: "Zoom Website", position: 53 }
+      - { upstream_id: "mz7dtbfwbphz", name: "Phone Support", group: "Zoom Support", position: 54 }
+      - { upstream_id: "zw4xrrx3nhyl", name: "Polycom Rooms registered to Zoom Phone", group: "Zoom Phone - Global", position: 55 }
+      - { upstream_id: "ghvwvn740dg7", name: "Developer Documentation Website", group: "Zoom Developer Platform", position: 56 }
+      - { upstream_id: "2x4mw99x40lk", name: "Zoom Visitor Management", group: "Zoom Rooms", position: 57 }
+      - { upstream_id: "kxpygh8cr1d0", name: "Mobile Client (Agents)", group: "Zoom CX - Global", position: 58 }
+      - { upstream_id: "k7v06r2fvkwr", name: "Epic FHIR", group: "Apps by Zoom", position: 59 }
+      - { upstream_id: "1kpn5p3jk097", name: "Admin Portal - Knowledge Base", group: "Zoom Virtual Agent - Global", position: 60 }
+      - { upstream_id: "kt5ypvt1l71m", name: "Search", group: "Zoom Chat", position: 61 }
+      - { upstream_id: "6r3mvdqx37b6", name: "Zoom Rooms", group: "Zoom Website", position: 62 }
+      - { upstream_id: "6zdpxdsqsg56", name: "Zoom Community", group: "Zoom Support", position: 63 }
+      - { upstream_id: "lj388xsd0lyh", name: "3rd Party Integration Clients (e.g. Salesforce, ServiceNow, Zendesk, Meta)", group: "Zoom CX - Global", position: 64 }
+      - { upstream_id: "q8chr9lrz757", name: "Calling (Inbound/Outbound)", group: "Zoom Phone - Global", position: 65 }
+      - { upstream_id: "s25brvcd1wfs", name: "Recording Transcription", group: "Zoom Revenue Accelerator", position: 66 }
+      - { upstream_id: "6x4l2076whdn", name: "Microsoft OneDrive for Organizations", group: "Apps by Zoom", position: 67 }
+      - { upstream_id: "t1kk8yhq1b10", name: "Admin Portal - Reporting Service", group: "Zoom Virtual Agent - Global", position: 68 }
+      - { upstream_id: "2tky4nd16my2", name: "Workspace Reservation Dashboard & Reporting", group: "Zoom Rooms", position: 69 }
+      - { upstream_id: "bv38lgqq0cpz", name: "Cloud Recording", group: "Zoom Developer Platform", position: 70 }
+      - { upstream_id: "08fp2rr1spx0", name: "Integrations/Calendar/Plug-In/Add-In", group: "Zoom Website", position: 71 }
+      - { upstream_id: "33vmdfk84f1d", name: "Reporting Service", group: "Zoom CX - Global", position: 72 }
+      - { upstream_id: "jl5y2tlw4yqf", name: "Zoom Phone Node Service", group: "Zoom Phone - Global", position: 73 }
+      - { upstream_id: "07fc2bfpjgct", name: "Zoom AI", group: "Zoom Chat", position: 74 }
+      - { upstream_id: "fzjy99p7m20t", name: "Admin Portal - Others", group: "Zoom Virtual Agent - Global", position: 75 }
+      - { upstream_id: "9fmvxzjb6b4w", name: "Transcription", group: "Zoom Revenue Accelerator", position: 76 }
+      - { upstream_id: "wd4r76v08631", name: "Translation", group: "Zoom Rooms", position: 77 }
+      - { upstream_id: "1v9cn0m69cc1", name: "Ellkay", group: "Apps by Zoom", position: 78 }
+      - { upstream_id: "vvn0ww0dtxl0", name: "Chat Support", group: "Zoom Support", position: 79 }
+      - { upstream_id: "1v74zmrq81fr", name: "Archiving", group: "Zoom Meetings", position: 80 }
+      - { upstream_id: "s56fnx18jv8d", name: "Dashboard", group: "Zoom Developer Platform", position: 81 }
+      - { upstream_id: "lwp2z0bb192l", name: "Zoom Learning Center", group: "Zoom Website", position: 82 }
+      - { upstream_id: "xg2fb6826c5f", name: "Developer Platform (APIs/Webhooks)", group: "Zoom CX - Global", position: 83 }
+      - { upstream_id: "x3krzfpb1khb", name: "SMS", group: "Zoom Phone - Global", position: 84 }
+      - { upstream_id: "j9xvsn90syd8", name: "Profile Card", group: "Zoom Chat", position: 85 }
+      - { upstream_id: "sxvjt0xxfnbs", name: "Transcription", group: "Zoom Virtual Agent - Global", position: 86 }
+      - { upstream_id: "t3l1kpn3hwkh", name: "Transcription", group: "Zoom Rooms", position: 87 }
+      - { upstream_id: "5m91ktys3kvz", name: "Zoom Support Portal", group: "Zoom Support", position: 88 }
+      - { upstream_id: "rgvf2nl54gbk", name: "Analytics", group: "Zoom Revenue Accelerator", position: 89 }
+      - { upstream_id: "8vtcg8np4n8c", name: "Live Transcription", group: "Zoom Meetings", position: 90 }
+      - { upstream_id: "hz3fmmg26pty", name: "Calling Out", group: "Zoom Developer Platform", position: 91 }
+      - { upstream_id: "v0jkfmpk2rs4", name: "Developer Platform (SDKs)", group: "Zoom CX - Global", position: 92 }
+      - { upstream_id: "zhvj07hl7z83", name: "Zoom AIC", group: "Zoom Phone - Global", position: 93 }
+      - { upstream_id: "wm1bsqy8d9jv", name: "Zoom Website", group: "Zoom Website", position: 94 }
+      - { upstream_id: "tk62l6f2mjgj", name: "Scheduling Displays", group: "Zoom Rooms", position: 95 }
+      - { upstream_id: "6mf5j0clgl2k", name: "Zoom Learning Center", group: "Zoom Support", position: 96 }
+      - { upstream_id: "fbj9pcyz6l3k", name: "Accounts", group: "Zoom Revenue Accelerator", position: 97 }
+      - { upstream_id: "ytpvvb8n0s31", name: "Closed Captioning", group: "Zoom Meetings", position: 98 }
+      - { upstream_id: "nwhdl9ct08pc", name: "PSTN", group: "Zoom Phone - Global", position: 99 }
+      - { upstream_id: "fss62hnxfktd", name: "Zoom Workforce Management", group: "Zoom CX - Global", position: 100 }
+      - { upstream_id: "pp5jzy36n7x4", name: "Zoom Homepage", group: "Zoom Website", position: 101 }
+      - { upstream_id: "h0t98r1t5qfy", name: "People", group: "Zoom Revenue Accelerator", position: 102 }
+      - { upstream_id: "bzwqc10pb1gk", name: "SMS", group: "Zoom CX - Global", position: 103 }
+      - { upstream_id: "c110sm47tmwf", name: "Voicemail/Recording/Call Log", group: "Zoom Phone - Global", position: 104 }
+      - { upstream_id: "3ykc25ly91v3", name: "Zoom Products", group: "Zoom Website", position: 105 }
+      - { upstream_id: "x2tq3l0qc8ny", name: "Teams", group: "Zoom Revenue Accelerator", position: 106 }
+      - { upstream_id: "rhmrtnvc7xrt", name: "Live Streaming", group: "Zoom Meetings", position: 107 }
+      - { upstream_id: "tx9vchnk4pjh", name: "PSTN", group: "Zoom CX - Global", position: 108 }
+      - { upstream_id: "0842bncf5q9f", name: "Zoom Phone", group: "Zoom Phone - Global", position: 109 }
+      - { upstream_id: "lvvzky5xjwht", name: "Contact Sales", group: "Zoom Website", position: 110 }
+      - { upstream_id: "20j2dn2h1q1s", name: "Coaching", group: "Zoom Revenue Accelerator", position: 111 }
+      - { upstream_id: "ntdt65v1f9rv", name: "Meeting Dial-in/Telephony", group: "Zoom Meetings", position: 112 }
+      - { upstream_id: "z76y2sgjbmjx", name: "Provider Exchange (PEX)", group: "Zoom CX - Global", position: 113 }
+      - { upstream_id: "576m25cw4prj", name: "Zoom Canvas", position: 114 }
+      - { upstream_id: "5xglgm6kl1dk", name: "Devices (Softphones/Deskphones)", group: "Zoom Phone - Global", position: 115 }
+      - { upstream_id: "c6mtx2h34ncq", name: "Scoring", group: "Zoom Revenue Accelerator", position: 116 }
+      - { upstream_id: "cfr32f333kg2", name: "Zoom AICW", group: "Zoom Website", position: 117 }
+      - { upstream_id: "3ml2fn8g0psv", name: "Zoom Conference Room Connector", group: "Zoom Meetings", position: 118 }
+      - { upstream_id: "3mgjlwf5953y", name: "Zoom Events", position: 119 }
+      - { upstream_id: "tq7lz19gh9gm", name: "BYOC", group: "Zoom CX - Global", position: 120 }
+      - { upstream_id: "kvrj9x7kgp2b", name: "Transcription", group: "Zoom Phone - Global", position: 121 }
+      - { upstream_id: "mckqcx1hfh5w", name: "Coaching Activity Tracker", group: "Zoom Revenue Accelerator", position: 122 }
+      - { upstream_id: "gkx8x46kw77h", name: "Recording", group: "Zoom Meetings", position: 123 }
+      - { upstream_id: "jmnt9sm0q4b2", name: "Zoom AIC", group: "Zoom CX - Global", position: 124 }
+      - { upstream_id: "97j86xk8dflw", name: "PCI Integration", group: "Zoom Phone - Global", position: 125 }
+      - { upstream_id: "kz6zlh8kdzb8", name: "AI Role Play", group: "Zoom Revenue Accelerator", position: 126 }
+      - { upstream_id: "tj58619r2mcm", name: "Zoom Meeting Invite", group: "Zoom Meetings", position: 127 }
+      - { upstream_id: "vlkjldpx64p2", name: "Video Engagement", group: "Zoom CX - Global", position: 128 }
+      - { upstream_id: "p1kr2fp118x6", name: "Ask ZRA", group: "Zoom Revenue Accelerator", position: 129 }
+      - { upstream_id: "slryp41hcm02", name: "SIP Connected Audio (SCA)", group: "Zoom Meetings", position: 130 }
+      - { upstream_id: "tvtkg7hq9qdd", name: "My Notes", position: 131 }
+      - { upstream_id: "9v6qdjpm1842", name: "Transcription", group: "Zoom CX - Global", position: 132 }
+      - { upstream_id: "mcpltswlvf02", name: "Forecast", group: "Zoom Revenue Accelerator", position: 133 }
+      - { upstream_id: "812f2g41379j", name: "Zoom for Intune", group: "Zoom Meetings", position: 134 }
+      - { upstream_id: "q0w0x5hdvymm", name: "PCI Integration", group: "Zoom CX - Global", position: 135 }
+      - { upstream_id: "jnrr4kl04m9m", name: "Engage", group: "Zoom Revenue Accelerator", position: 136 }
+      - { upstream_id: "4t3x4vc5dxf1", name: "CX Insight", group: "Zoom CX - Global", position: 137 }
+      - { upstream_id: "q4msk5dl4bhm", name: "Zoom Webinars", group: "Zoom Meetings", position: 138 }
+      - { upstream_id: "rgfwsk3p56gd", name: "Cobrowse", group: "Zoom CX - Global", position: 139 }
+      - { upstream_id: "rsh1v3gbhtsy", name: "Zoom AI", group: "Zoom Meetings", position: 140 }
+      - { upstream_id: "398c07wcwfdw", name: "3rd Party Messaging/Social (Inbound/Outbound)", group: "Zoom CX - Global", position: 141 }
+      - { upstream_id: "9qv6bp63zynp", name: "SMS (Send meeting invite via SMS)", group: "Zoom Meetings", position: 142 }
+      - { upstream_id: "gxlzmzd2yp2y", name: "PSTN", group: "Zoom Meetings", position: 143 }
+      - { upstream_id: "6qtv0w61s12m", name: "Meeting Dial-out/Telephony", group: "Zoom Meetings", position: 144 }
+      - { upstream_id: "mnvw31bd360b", name: "AI Image Generation", group: "Zoom Meetings", position: 145 }
+      - { upstream_id: "y2j8tr9wxv49", name: "Real Time Media Streams (RTMS)", group: "Zoom Meetings", position: 146 }
+      - { upstream_id: "dsq3xl6t7s21", name: "Zoom Webinars Plus and Events", group: "Zoom Meetings", position: 147 }
+      - { upstream_id: "y9q5bf5pd4tm", name: "Zoom Subscriptions", position: 148 }
+      - { upstream_id: "7lvp52xc051q", name: "Zoom Workforce Management", position: 149 }
+      - { upstream_id: "gdwqh973jx8h", name: "Zoom Survey", position: 150 }
+      - { upstream_id: "63tynlbcxywz", name: "Clinical Notes", position: 151 }
+      - { upstream_id: "40fjc1kq1jcb", name: "Zoom Tasks", position: 152 }
+      - { upstream_id: "fbpq6mglccwl", name: "Zoom Video Management", position: 153 }
+      - { upstream_id: "2twszjk8b2jy", name: "Zoom Hub", position: 154 }
+      - { upstream_id: "7nqbtwsrd6lm", name: "Zoom Quality Management", position: 155 }
+      - { upstream_id: "jjx4mtk4my78", name: "Zoom Paper", position: 156 }
+      - { upstream_id: "p1jwwf84ngpf", name: "Zoom Slides", position: 157 }
+      - { upstream_id: "8214506690ws", name: "Zoom Sheets", position: 158 }
+      - { upstream_id: "n1llzwc1cxtr", name: "ZoomMate", position: 159 }
+      - { upstream_id: "dvrth3dswrkz", name: "Zoom Node", position: 160 }
+      - { upstream_id: "gtf6dl08hrk1", name: "Zoom Whiteboard", position: 161 }
+      - { upstream_id: "4kh81f5m9fbm", name: "Voice Agent", group: "Zoom Virtual Agent - NORTH AMERICA", position: 162 }
+      - { upstream_id: "yh2t02zm6fhq", name: "Calling (Inbound/Outbound)", group: "Zoom Phone - NORTH AMERICA", position: 163 }
+      - { upstream_id: "y4lbkc6s281b", name: "Voice (Inbound/Outbound)", group: "Zoom CX - NORTH AMERICA", position: 164 }
+      - { upstream_id: "kz70pym162vg", name: "Chat Agent", group: "Zoom Virtual Agent - NORTH AMERICA", position: 165 }
+      - { upstream_id: "5vvw5njz8qg5", name: "SMS/MMS (Inbound/Outbound)", group: "Zoom Phone - NORTH AMERICA", position: 166 }
+      - { upstream_id: "71jcq62p3sy6", name: "Video (Inbound/Outbound)", group: "Zoom CX - NORTH AMERICA", position: 167 }
+      - { upstream_id: "0s4rj3lf1rpx", name: "Devices (Softphones/Deskphones)", group: "Zoom Phone - NORTH AMERICA", position: 168 }
+      - { upstream_id: "cvfl2br01fsf", name: "Chat (Inbound/Outbound)", group: "Zoom CX - NORTH AMERICA", position: 169 }
+      - { upstream_id: "1hghqg91w5zf", name: "BYOC - Premises", group: "Zoom Phone - NORTH AMERICA", position: 170 }
+      - { upstream_id: "rkgptw5lc3pw", name: "SMS/MMS (Inbound/Outbound)", group: "Zoom CX - NORTH AMERICA", position: 171 }
+      - { upstream_id: "0h08kcybkm9y", name: "Provider Exchange", group: "Zoom Phone - NORTH AMERICA", position: 172 }
+      - { upstream_id: "jz1z3rp9rgd8", name: "3rd Party Messaging/Social (Inbound/Outbound)", group: "Zoom CX - NORTH AMERICA", position: 173 }
+      - { upstream_id: "y5ryrz3d2f5n", name: "Emergency Calling", group: "Zoom Phone - NORTH AMERICA", position: 174 }
+      - { upstream_id: "gnzpmr12w06t", name: "Email (Inbound/Outbound)", group: "Zoom CX - NORTH AMERICA", position: 175 }
+      - { upstream_id: "7t0r1gywtg50", name: "Recording Service", group: "Zoom Phone - NORTH AMERICA", position: 176 }
+      - { upstream_id: "tx5hwxgpbj1m", name: "Outbound Dialers", group: "Zoom CX - NORTH AMERICA", position: 177 }
+      - { upstream_id: "bt816jk5w2qr", name: "Remote Control", group: "Zoom CX - NORTH AMERICA", position: 178 }
+      - { upstream_id: "v3f87m80cz52", name: "Hardware Phone", group: "Zoom Phone - NORTH AMERICA", position: 179 }
+      - { upstream_id: "fdfgklvlyyd6", name: "AI Expert Assist", group: "Zoom CX - NORTH AMERICA", position: 180 }
+      - { upstream_id: "r6dchcqc8zx6", name: "Recording Service", group: "Zoom CX - NORTH AMERICA", position: 181 }
+      - { upstream_id: "1z22tc2rdgdy", name: "BYOC - Premises", group: "Zoom CX - NORTH AMERICA", position: 182 }
+      - { upstream_id: "dl6htx4pmddv", name: "Cobrowse", group: "Zoom CX - NORTH AMERICA", position: 183 }

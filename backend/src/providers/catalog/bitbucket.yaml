@@ -23,3 +23,6 @@ providers:
       - { upstream_id: rzh2n85q7vtt, name: Pipelines, group: Global, position: 7 }
       - { upstream_id: g0c8l3nn2vr1, name: Git LFS, group: Global, position: 8 }
       - { upstream_id: fwjr473vzj2z, name: Packages, group: Global, position: 9 }
+      - { upstream_id: "vc7m6mtqmxf9", name: "Email delivery", position: 10 }
+      - { upstream_id: "3hz4wpmhhqxx", name: "Purchasing & Licensing", position: 11 }
+      - { upstream_id: "tmjhkbvskftr", name: "Signup", position: 12 }

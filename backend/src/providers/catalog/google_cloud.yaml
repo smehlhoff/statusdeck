@@ -28,3 +28,197 @@ providers:
       - { upstream_id: dFjdLh2v6zuES6t9ADCB, name: Pub/Sub, group: Data, position: 12 }
       - { upstream_id: 3zaaDb7antc73BM1UAVT, name: Cloud Monitoring, group: Operations, position: 13 }
       - { upstream_id: PuCJ6W2ovoDhLcyvZ1xa, name: Cloud Logging, group: Operations, position: 14 }
+      - { upstream_id: "duAxoF9U3MBmoAihC67y", name: "Access Approval", position: 15 }
+      - { upstream_id: "qar4NvXDickuQgSVbW3G", name: "Access Context Manager", position: 16 }
+      - { upstream_id: "nwct66cGriSwT84M4txQ", name: "Access Transparency", position: 17 }
+      - { upstream_id: "eUntUKqUrHdbBLNcVVXq", name: "Agent Assist", position: 18 }
+      - { upstream_id: "YnURkwq775FEfCuFsviG", name: "Agent Gateway", position: 19 }
+      - { upstream_id: "yVW8aiPWipjd3j67XzDL", name: "Agent Platform Batch Inference", position: 20 }
+      - { upstream_id: "qnhcw8D1c8iMEwP8TzkA", name: "Agent Platform Feature Store", position: 21 }
+      - { upstream_id: "baQeYW2fsPA2vvLCqN93", name: "Agent Platform Managed Training", position: 22 }
+      - { upstream_id: "sWNXmWFmBKpXg2xeTNkH", name: "Agent Platform ML Metadata", position: 23 }
+      - { upstream_id: "sdXM79fz1FS6ekNpu37K", name: "Agent Platform Online Inference", position: 24 }
+      - { upstream_id: "jgyDXnasZm6pwoCR1uif", name: "Agent Platform Pipelines", position: 25 }
+      - { upstream_id: "9TtWTtvEUYnPidW2z4aM", name: "Agent Platform Tensor Board", position: 26 }
+      - { upstream_id: "GewfNoG6JvJ1kjnL9jb8", name: "Agent Platform Workbench Instances", position: 27 }
+      - { upstream_id: "vNncXxtSVvqyhvSkQ6PJ", name: "Agent Search on Agent Platform", position: 28 }
+      - { upstream_id: "RBJadi3nW3S2otn65RRG", name: "AI Commerce Search", position: 29 }
+      - { upstream_id: "eFCqAnWci3AZiqsz1NjQ", name: "AI Platform Prediction", position: 30 }
+      - { upstream_id: "3e2H6fMaAhGSPSSPb8CV", name: "AI Platform Training", position: 31 }
+      - { upstream_id: "fPovtKbaWN9UTepMm3kJ", name: "AlloyDB for PostgreSQL", position: 32 }
+      - { upstream_id: "D6ayar99EiNLHhwcn77V", name: "Anthos Service Mesh", position: 33 }
+      - { upstream_id: "VzyLPL7CtWQqJ9WeKAjp", name: "API Gateway", position: 34 }
+      - { upstream_id: "9Y13BNFy4fJydvjdsN3X", name: "Apigee", position: 35 }
+      - { upstream_id: "XqsbVFxr6HnQX8epsxB6", name: "Apigee Edge Private Cloud", position: 36 }
+      - { upstream_id: "SumcdgBT6GQBzp1vmdXu", name: "Apigee Edge Public Cloud", position: 37 }
+      - { upstream_id: "6gaft97Gv5hGQAJg6D3J", name: "Apigee Hybrid", position: 38 }
+      - { upstream_id: "yWJWs53wK43DqGpQRhPV", name: "Apigee X", position: 39 }
+      - { upstream_id: "ktmqnquav5joiJK6Qy2u", name: "Application Integration", position: 40 }
+      - { upstream_id: "FWjKi5U7KX4FUUPThHAJ", name: "AppSheet", position: 41 }
+      - { upstream_id: "Mjx4zXWSyzoMZYe93m7T", name: "Artifact Analysis", position: 42 }
+      - { upstream_id: "QbBuuiRdsLpMr9WmGwm5", name: "Artifact Registry", position: 43 }
+      - { upstream_id: "iM3fwc8QYSrS4LfUAKc8", name: "Assured Workloads", position: 44 }
+      - { upstream_id: "ROMbb0fOlgEcbJUnv7l1", name: "Audit Manager", position: 45 }
+      - { upstream_id: "BTKKe3nMmYnmor61RveN", name: "AutoML Natural Language", position: 46 }
+      - { upstream_id: "khZkkfZshNi7aiJGRoND", name: "AutoML Tables", position: 47 }
+      - { upstream_id: "qrU1jFoSMYvoEZG8c76T", name: "AutoML Translation", position: 48 }
+      - { upstream_id: "dSJF5QyYo4BLY7hHHtHc", name: "AutoML Video", position: 49 }
+      - { upstream_id: "e1FVLhzB42AENtV9BZ7X", name: "AutoML Vision", position: 50 }
+      - { upstream_id: "2wwSnezzV5o8a8JouBch", name: "Backup and DR", position: 51 }
+      - { upstream_id: "ZftjNV15whrLRaFCDGuM", name: "Backup for GKE", position: 52 }
+      - { upstream_id: "5gQF7Qk9XfQ32pStX6Hb", name: "Bare Metal Solution", position: 53 }
+      - { upstream_id: "8XjnU88URVtZrAL8KRvA", name: "Batch", position: 54 }
+      - { upstream_id: "zd7XntK5LAvk7k3yKVfS", name: "BeyondCorp Enterprise", position: 55 }
+      - { upstream_id: "UdjkJSWTHMj2b11ftW6E", name: "BigQuery Data Transfer Service", position: 56 }
+      - { upstream_id: "emAG7m3iQGzeFsbm1i5n", name: "Binary Authorization", position: 57 }
+      - { upstream_id: "PvdE3tt1VdxKXzSyd8WF", name: "Certificate Authority Service", position: 58 }
+      - { upstream_id: "XCamxjiTSj6nQh48wkjZ", name: "Certificate Manager", position: 59 }
+      - { upstream_id: "FHwvkSZ6RzzDYAvDZXMM", name: "Chronicle Security", position: 60 }
+      - { upstream_id: "GTT16Lf72XZKWArC9VxA", name: "Chronicle SOAR", position: 61 }
+      - { upstream_id: "Kakg69gTC3xFyeJCY2va", name: "Cloud Armor", position: 62 }
+      - { upstream_id: "r1uH3MduHyHHH4P6z18G", name: "Cloud Asset Inventory", position: 63 }
+      - { upstream_id: "oLCqDYkE9NFWQVgctQTL", name: "Cloud Billing", position: 64 }
+      - { upstream_id: "fw8GzBdZdqy4THau7e1y", name: "Cloud Build", position: 65 }
+      - { upstream_id: "ckSRJf2vQwQy188ULGy3", name: "Cloud CDN", position: 66 }
+      - { upstream_id: "rLKDHeeaBiXTeutF1air", name: "Cloud Data Fusion", position: 67 }
+      - { upstream_id: "xeLtpZYNSw1WSYhkuxHL", name: "Cloud Data Loss Prevention", position: 68 }
+      - { upstream_id: "1znb3JVgTit49XKFRA92", name: "Cloud Debugger", position: 69 }
+      - { upstream_id: "BGJQ6jbGK4kUuBTQFZ1G", name: "Cloud Developer Tools", position: 70 }
+      - { upstream_id: "ni83vQdB693cohxna3mw", name: "Cloud Domains", position: 71 }
+      - { upstream_id: "xfbaRzmPSf836WvAy35z", name: "Cloud Endpoints", position: 72 }
+      - { upstream_id: "GXALzYBgpi3XpsLLxLgu", name: "Cloud External Key Manager", position: 73 }
+      - { upstream_id: "jog4nyYkquiLeSK5s26q", name: "Cloud Filestore", position: 74 }
+      - { upstream_id: "CETSkT92V21G6A1x28me", name: "Cloud Firestore", position: 75 }
+      - { upstream_id: "zgodfdJcHiKkGxQYixiZ", name: "Cloud Healthcare", position: 76 }
+      - { upstream_id: "R3HPPUbVeFrApLaqQB4B", name: "Cloud HSM", position: 77 }
+      - { upstream_id: "mMmi5UKZCkVUzFgpTyCw", name: "Cloud IDS", position: 78 }
+      - { upstream_id: "67cSySTL7dwJZo9JWUGU", name: "Cloud Key Management Service", position: 79 }
+      - { upstream_id: "z9PfKanGZYvYNUbnKzRJ", name: "Cloud Machine Learning", position: 80 }
+      - { upstream_id: "LGPLu3M5pcUAKU1z6eP3", name: "Cloud Memorystore", position: 81 }
+      - { upstream_id: "hCNpnTQHkUCCGxJy35Yq", name: "Cloud NAT", position: 82 }
+      - { upstream_id: "99nYJQyC6XLw3vTrQaXo", name: "Cloud Natural Language API", position: 83 }
+      - { upstream_id: "1Md5kNLx570MyBNGCHbK", name: "Cloud Network Insights", position: 84 }
+      - { upstream_id: "FVKK12GiEsGTnM6SyoUc", name: "Cloud Profiler", position: 85 }
+      - { upstream_id: "csyyfUYy88hkeqbv23Mc", name: "Cloud Security Command Center", position: 86 }
+      - { upstream_id: "wF3PG44o1RzTnUW5dycy", name: "Cloud Shell", position: 87 }
+      - { upstream_id: "B2EfFwmTPqzAqHmnpHvm", name: "Cloud Source Repositories", position: 88 }
+      - { upstream_id: "EcNGGUgBtBLrtm4mWvqC", name: "Cloud Spanner", position: 89 }
+      - { upstream_id: "aY6Fbgy6TV4YWoutjhfe", name: "Cloud Storage for Firebase", position: 90 }
+      - { upstream_id: "VXydUfMqEtvZxXJFm56a", name: "Cloud Talent Solution - Job Search", position: 91 }
+      - { upstream_id: "TJB9GjVKN1MB4DTQ2Uhz", name: "Cloud Trace", position: 92 }
+      - { upstream_id: "gCLTpLXcWqCKtcyUyHCF", name: "Cloud Translation", position: 93 }
+      - { upstream_id: "pDkm4vkHrT54mm7iSVHm", name: "Cloud Vision", position: 94 }
+      - { upstream_id: "C4P62W9Xc2zZ1Sk52bbw", name: "Cloud Workflows", position: 95 }
+      - { upstream_id: "5UUXCiH1vfFHXmbDixrB", name: "Cloud Workstations", position: 96 }
+      - { upstream_id: "7Nbc1kZUvPLiihodettN", name: "Colab Enterprise", position: 97 }
+      - { upstream_id: "eSAGSSEKoxh8tTJucdYg", name: "Contact Center AI Platform", position: 98 }
+      - { upstream_id: "WYJx5eWkh8ZrCSQUcP4i", name: "Contact Center Insights", position: 99 }
+      - { upstream_id: "rECkDEKEadgZQkPefibM", name: "Container Registry", position: 100 }
+      - { upstream_id: "NzlvAZEU5D7gveMcRvfr", name: "Customer Experience Agent Studio", position: 101 }
+      - { upstream_id: "TFedVRYgKGRGMSJrUpup", name: "Data Catalog", position: 102 }
+      - { upstream_id: "33gHeZvYSKc7T8Vp6WpD", name: "Database Center", position: 103 }
+      - { upstream_id: "vY4CRgRFNbqUXWWyYGFS", name: "Database Migration Service", position: 104 }
+      - { upstream_id: "JSShQKADMU3uXYNbCRCh", name: "Dataform", position: 105 }
+      - { upstream_id: "Xx5qm9U2ovrN11z2Gd9Q", name: "Dataplex", position: 106 }
+      - { upstream_id: "PXZh68NPz9auRyo4tVfy", name: "Dataproc Metastore", position: 107 }
+      - { upstream_id: "ibJgP4CNKnFojHHw8L3s", name: "Datastream", position: 108 }
+      - { upstream_id: "cYbVAopLISo8XYv4w42R", name: "Developer Connect", position: 109 }
+      - { upstream_id: "BnCicQdHSdxaCv8Ya6Vm", name: "Dialogflow CX", position: 110 }
+      - { upstream_id: "sQqrYvhjMT5crPHKWJFY", name: "Dialogflow ES", position: 111 }
+      - { upstream_id: "GWuqLi6DKb1DkzyRtRuD", name: "Document AI", position: 112 }
+      - { upstream_id: "uu5hjNKf41zvsFyn98ry", name: "Document AI Warehouse", position: 113 }
+      - { upstream_id: "YaFawoMaXnqgY4keUBnW", name: "Eventarc", position: 114 }
+      - { upstream_id: "uAWwkob8rYyzVKgQ8jCH", name: "Firebase Authentication", position: 115 }
+      - { upstream_id: "rn3e8YyTQJ3fTNTfJ41k", name: "Firebase Test Lab", position: 116 }
+      - { upstream_id: "CkXPZEpV9WfyDhZvZUmC", name: "Game Servers", position: 117 }
+      - { upstream_id: "4osgZCUJuuh3whY4B8tt", name: "GKE fleet management", position: 118 }
+      - { upstream_id: "FEmU4vocrrV3j9EFxdMY", name: "Google Cloud Android App", position: 119 }
+      - { upstream_id: "LfZSuE3xdQU46YMFV5fy", name: "Google Cloud Bigtable", position: 120 }
+      - { upstream_id: "Wdsr1n5vyDvCt78qEifm", name: "Google Cloud Console", position: 121 }
+      - { upstream_id: "T9bFoXPqG8w8g1YbWTKY", name: "Google Cloud Dataflow", position: 122 }
+      - { upstream_id: "yjXrEg3Yvy26BauMwr69", name: "Google Cloud Dataproc", position: 123 }
+      - { upstream_id: "MaS3dKoqp1oqkea4qB9U", name: "Google Cloud Datastore", position: 124 }
+      - { upstream_id: "6z5SnvJrJMJQSdJmUQjH", name: "Google Cloud Deploy", position: 125 }
+      - { upstream_id: "tgA7cGBbPQWAbzVdyixN", name: "Google Cloud Identity-Aware Proxy", position: 126 }
+      - { upstream_id: "uoypgc4GWUyzAKRHPjEv", name: "Google Cloud Infrastructure Components", position: 127 }
+      - { upstream_id: "T9fgdTavyR7XkaDKmPSF", name: "Google Cloud iOS App", position: 128 }
+      - { upstream_id: "aFBYazpMvjR9U1asrkcm", name: "Google Cloud IoT", position: 129 }
+      - { upstream_id: "M34rUHuRgyHXMfbUCSq9", name: "Google Cloud Marketplace", position: 130 }
+      - { upstream_id: "dyoHkC2KYU7JxcRYz5ST", name: "Google Cloud Migration Center", position: 131 }
+      - { upstream_id: "vtzMUyQ4z9CbA1x6z85s", name: "Google Cloud NetApp Volumes", position: 132 }
+      - { upstream_id: "Y9fKAQ6BVTQUYomrNN9A", name: "Google Cloud Scheduler", position: 133 }
+      - { upstream_id: "bGThzF7oEGP5jcuDdMuk", name: "Google Cloud Support", position: 134 }
+      - { upstream_id: "tMWyzhyKK4rAzAf7x62h", name: "Google Cloud Tasks", position: 135 }
+      - { upstream_id: "JKyM3LJTqgETjRCvSK6w", name: "Google Distributed Cloud Edge", position: 136 }
+      - { upstream_id: "5x6CGnZvSHQZ26KtxpK1", name: "Hybrid Connectivity", position: 137 }
+      - { upstream_id: "LE1X2BHYANNsHtG1NM1M", name: "Identity Platform", position: 138 }
+      - { upstream_id: "zeBmbgdSyHGTvPAiXwVS", name: "Imagen on Agent Platform", position: 139 }
+      - { upstream_id: "UtpWzLYarncQdqkTNtbM", name: "Infrastructure Manager", position: 140 }
+      - { upstream_id: "dqd7x95MSoscq1rYzY7q", name: "Integration Connectors", position: 141 }
+      - { upstream_id: "LMvx2rrpTLUMwjmgPSiM", name: "Key Access Justifications", position: 142 }
+      - { upstream_id: "JK2HmU4x2QTbdVBVceqV", name: "Lending DocAI", position: 143 }
+      - { upstream_id: "QEyA1YSaAS3rJS6O8wHp", name: "Looker (Google Cloud core)", position: 144 }
+      - { upstream_id: "kEYNqRYFXXHxP9QeFJ1d", name: "Looker Studio", position: 145 }
+      - { upstream_id: "YxkG5FfcC42cQmvBCk4j", name: "Managed Airflow", position: 146 }
+      - { upstream_id: "6NIyMyXGmDuhgEOGEy2z", name: "Managed Lustre", position: 147 }
+      - { upstream_id: "QMZ3IpyG3Ooxotv7JOKV", name: "Managed Service for Apache Kafka", position: 148 }
+      - { upstream_id: "m2BYeday5NQNxnEnY56V", name: "Managed Service for Microsoft Active Directory (AD)", position: 149 }
+      - { upstream_id: "v7DL2fMFnZpCxNwd8KE7", name: "Mandiant Attack Surface Management", position: 150 }
+      - { upstream_id: "uomxopvCRv8y7bvrA1tK", name: "Mandiant Hunt for Chronicle", position: 151 }
+      - { upstream_id: "9aKw9s8p43AYeBmo4Gvx", name: "Mandiant Managed Defense", position: 152 }
+      - { upstream_id: "we27wL2FBSvodeP7GiRS", name: "Mandiant Security Validation", position: 153 }
+      - { upstream_id: "Dvtt8cwUdpUYoGMpt2Fc", name: "Mandiant Threat Intelligence", position: 154 }
+      - { upstream_id: "FK8WX6iZ3FuQL6qUwski", name: "Media CDN", position: 155 }
+      - { upstream_id: "paC6vmsvnjCHsBkp4Wva", name: "Memorystore for Memcached", position: 156 }
+      - { upstream_id: "3yFciKa9NQH7pmbnUYUs", name: "Memorystore for Redis", position: 157 }
+      - { upstream_id: "pAQRwuhqRn7Y1E2we8ds", name: "Memorystore for Redis Cluster", position: 158 }
+      - { upstream_id: "QUDi3IaNvixryrShGpGw", name: "Memorystore for Valkey", position: 159 }
+      - { upstream_id: "EwEFrihT41NLB9mhyWhz", name: "Migrate to Virtual Machines", position: 160 }
+      - { upstream_id: "hpVHo7CE4koq9UQLV3W0", name: "Model Armor", position: 161 }
+      - { upstream_id: "t8Vzas4iWLRcCyNYcvpN", name: "Model Monitoring on Agent Platform", position: 162 }
+      - { upstream_id: "U213XEHGhALownYuxpFM", name: "Model Registry on Agent Platform", position: 163 }
+      - { upstream_id: "kFBKMAzrhno1We6f7Ydk", name: "Network Connectivity Center", position: 164 }
+      - { upstream_id: "BNe4FZaRboHmVivzH6Ku", name: "Network Intelligence Center", position: 165 }
+      - { upstream_id: "FpUicRdE086qJXi9QOP9", name: "Network Security Integration", position: 166 }
+      - { upstream_id: "6hMPXnhAqgDfYy1aYtGN", name: "Network Telemetry", position: 167 }
+      - { upstream_id: "DixAowEQm45KgqXKP5tR", name: "Operations", position: 168 }
+      - { upstream_id: "yhPW7Moi4HFxKGVrtB62", name: "Parallelstore", position: 169 }
+      - { upstream_id: "kSEBrVLOJUyYyh23wyNq", name: "Partner Cross-Cloud Interconnect", position: 170 }
+      - { upstream_id: "g61UXsXN6CgzDJh74UsZ", name: "Payment Gateway", position: 171 }
+      - { upstream_id: "SzESm2Ux129pjDGKWD68", name: "Persistent Disk", position: 172 }
+      - { upstream_id: "jY8GKegoC5RUVERU7vUG", name: "Personalized Service Health", position: 173 }
+      - { upstream_id: "fbzQRKqPfxZ2DUScMGV2", name: "Private Service Connect", position: 174 }
+      - { upstream_id: "uteGYrvV7DSzcC8Yc5fi", name: "Procurement DocAI", position: 175 }
+      - { upstream_id: "5ca2HM3qzeRulGMXksCD", name: "Provisioned Throughput", position: 176 }
+      - { upstream_id: "5DWkcStmv4dFHRHLaRXb", name: "Pub/Sub Lite", position: 177 }
+      - { upstream_id: "BubghYKyn8WLY5wnSjZL", name: "reCAPTCHA Enterprise", position: 178 }
+      - { upstream_id: "jWSoZzR1kkyiDi9C5GMM", name: "Recommendation AI", position: 179 }
+      - { upstream_id: "KszDabrY6XLwow9r8PgZ", name: "Recommender", position: 180 }
+      - { upstream_id: "MRJK8bmwYLMv6Dtg16kU", name: "Resource Manager API", position: 181 }
+      - { upstream_id: "kzGfErQK3HzkFhptoeHH", name: "Secret Manager", position: 182 }
+      - { upstream_id: "T5svkXRa1x7leFpth22S", name: "Secure Source Manager", position: 183 }
+      - { upstream_id: "OEGfhk8cZmli5SCAjAk0", name: "Secure Web Proxy", position: 184 }
+      - { upstream_id: "vmq8TsEZwitKYM6V9BaM", name: "Service Directory", position: 185 }
+      - { upstream_id: "VeQD7Ve6gojUD760zt2O", name: "Service Extensions", position: 186 }
+      - { upstream_id: "mvbUB33MdKYrS5tawfzM", name: "Spectrum Access System", position: 187 }
+      - { upstream_id: "5f5oET9B3whnSFHfwy4d", name: "Speech-to-Text", position: 188 }
+      - { upstream_id: "reC3xJSY6Gzc8n9eYmmj", name: "Storage Transfer Service", position: 189 }
+      - { upstream_id: "2Xt4Wt8rVvbz3UPsHBvx", name: "Text-to-Speech", position: 190 }
+      - { upstream_id: "NroZwL2UMMionesUGP87", name: "Traffic Director", position: 191 }
+      - { upstream_id: "x57hrDXgs8kP2XNBZX34", name: "Transcoder API", position: 192 }
+      - { upstream_id: "2Bc8HTdrcCZrcsTePfQl", name: "Unified Maintenance", position: 193 }
+      - { upstream_id: "p5rCvyraXdeC6HFE8XJJ", name: "Veo on Agent Platform", position: 194 }
+      - { upstream_id: "s0huLpuA7LiYVMlVc8lv", name: "Vertex AI Agent Engine", position: 195 }
+      - { upstream_id: "1UYAL6urhdrrr6emD8ce", name: "Vertex AI AutoML Image", position: 196 }
+      - { upstream_id: "5CfpoAfoMxWT4zGzX4yW", name: "Vertex AI AutoML Tabular", position: 197 }
+      - { upstream_id: "h5DuWxu8KdW1qipvwBta", name: "Vertex AI AutoML Text", position: 198 }
+      - { upstream_id: "gWWqvMgwnZ1a5VQ2kjUw", name: "Vertex AI AutoML Video", position: 199 }
+      - { upstream_id: "T3mQNvrm8YJVLM11N4bq", name: "Vertex AI Data Labeling", position: 200 }
+      - { upstream_id: "FJ8YR1L7CvooMVxbTSD4", name: "Vertex AI Explainable AI", position: 201 }
+      - { upstream_id: "2iFHW5WNBkTWjX5k3jnZ", name: "Vertex AI Matching Engine", position: 202 }
+      - { upstream_id: "SNSm5dv1cRELFSGhuvpc", name: "Vertex AI Vizier", position: 203 }
+      - { upstream_id: "uvfRdNTRepWCCQ7j6TnH", name: "Video Intelligence API", position: 204 }
+      - { upstream_id: "BSGtCUnz6ZmyajsjgTKv", name: "Virtual Private Cloud (VPC)", position: 205 }
+      - { upstream_id: "9H6gWUHvb2ZubeoxzQ1Y", name: "VMWare engine", position: 206 }
+      - { upstream_id: "KM8etHz5u9QRoC7fRVT4", name: "VPC Service Controls", position: 207 }
+      - { upstream_id: "QRxWwYe2wfbZ9zAjW2ww", name: "Web Risk", position: 208 }

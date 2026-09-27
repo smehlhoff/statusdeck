@@ -22,3 +22,4 @@ providers:
       - { upstream_id: prk6bb5j7h4l, name: Atlas Stream Processing, group: Global, position: 5 }
       - { upstream_id: qm4sbrwb7nys, name: VoyageAI Models, group: Global, position: 6 }
       - { upstream_id: kb8k7qml7npt, name: Support Portal, group: Global, position: 7 }
+      - { upstream_id: "q57ng8brt2td", name: "MongoDB Atlas for Government", position: 8 }
