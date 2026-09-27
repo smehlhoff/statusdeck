@@ -583,49 +583,51 @@ function ProviderRow({
             />
           </p>
         )}
-        {provider.outside_scope_incidents > 0 && (
-          <p className="status-context">
-            {viewMode === "cards" ? (
-              <>
-                {provider.outside_scope_incidents} open outside monitored
-                coverage
-              </>
-            ) : (
-              <>
-                {provider.outside_scope_incidents} open provider{" "}
-                {provider.outside_scope_incidents === 1
-                  ? "incident exists"
-                  : "incidents exist"}{" "}
-                outside your configured coverage.{" "}
-                <Link to={`/incidents?provider_id=${provider.id}&scope=all`}>
-                  View all provider incidents
-                </Link>
-              </>
-            )}
-          </p>
-        )}
-        {provider.affected_components.length > 0 && (
-          <p
-            className="provider-affected-components"
-            title={
-              viewMode === "cards"
-                ? `Affected: ${provider.affected_components.join(", ")}`
-                : undefined
-            }
-          >
-            Affected:{" "}
-            {viewMode === "cards"
-              ? `${provider.affected_components.length} component${provider.affected_components.length === 1 ? "" : "s"}`
-              : provider.affected_components.join(", ")}
-          </p>
-        )}
-        {provider.status !== "operational" &&
-          provider.active_incidents === 0 &&
-          provider.open_maintenance === 0 && (
+        <div className="provider-context">
+          {provider.outside_scope_incidents > 0 && (
             <p className="status-context">
-              Provider status only · no matching open incident published
+              {viewMode === "cards" ? (
+                <>
+                  {provider.outside_scope_incidents} open outside monitored
+                  coverage
+                </>
+              ) : (
+                <>
+                  {provider.outside_scope_incidents} open provider{" "}
+                  {provider.outside_scope_incidents === 1
+                    ? "incident exists"
+                    : "incidents exist"}{" "}
+                  outside your configured coverage.{" "}
+                  <Link to={`/incidents?provider_id=${provider.id}&scope=all`}>
+                    View all provider incidents
+                  </Link>
+                </>
+              )}
             </p>
           )}
+          {provider.affected_components.length > 0 && (
+            <p
+              className="provider-affected-components"
+              title={
+                viewMode === "cards"
+                  ? `Affected: ${provider.affected_components.join(", ")}`
+                  : undefined
+              }
+            >
+              Affected:{" "}
+              {viewMode === "cards"
+                ? `${provider.affected_components.length} component${provider.affected_components.length === 1 ? "" : "s"}`
+                : provider.affected_components.join(", ")}
+            </p>
+          )}
+          {provider.status !== "operational" &&
+            provider.active_incidents === 0 &&
+            provider.open_maintenance === 0 && (
+              <p className="status-context">
+                Provider status only · no matching open incident published
+              </p>
+            )}
+        </div>
       </div>
       <div className="provider-events" aria-label="Open provider events">
         {hasEvents ? (

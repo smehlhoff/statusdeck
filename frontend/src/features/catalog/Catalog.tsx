@@ -73,8 +73,15 @@ export function Catalog({
   const [bulkStatus, setBulkStatus] = useState<{
     message: string;
     failed: boolean;
+    tone: "success" | "danger";
   }>();
   const [confirmUnsubscribeAll, setConfirmUnsubscribeAll] = useState(false);
+
+  useEffect(() => {
+    if (!bulkStatus) return;
+    const timer = window.setTimeout(() => setBulkStatus(undefined), 5_000);
+    return () => window.clearTimeout(timer);
+  }, [bulkStatus]);
 
   const providers = useQuery({
     queryKey: queryKeys.catalog,
@@ -124,6 +131,7 @@ export function Catalog({
       setBulkStatus({
         message: bulkResultMessage("Subscribed to", result),
         failed: result.failed > 0,
+        tone: result.failed > 0 ? "danger" : "success",
       });
     },
     onSettled: refreshAllMonitoringState,
@@ -150,6 +158,7 @@ export function Catalog({
       setBulkStatus({
         message: bulkResultMessage("Unsubscribed from", result),
         failed: result.failed > 0,
+        tone: result.failed > 0 ? "danger" : "success",
       });
       setConfirmUnsubscribeAll(false);
     },
@@ -387,10 +396,18 @@ export function Catalog({
         </div>
         {bulkStatus && (
           <p
-            className={`alert${bulkStatus.failed ? " error" : ""}`}
+            className={`alert alert-dismissible ${bulkStatus.tone}`}
             role={bulkStatus.failed ? "alert" : "status"}
           >
-            {bulkStatus.message}
+            <span>{bulkStatus.message}</span>
+            <button
+              className="alert-dismiss"
+              type="button"
+              aria-label="Dismiss notification"
+              onClick={() => setBulkStatus(undefined)}
+            >
+              ×
+            </button>
           </p>
         )}
         {selectedTags.length > 0 && (

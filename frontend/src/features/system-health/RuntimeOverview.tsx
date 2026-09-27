@@ -200,7 +200,7 @@ export function RuntimeOverview(props: Props) {
           {stages.map((stage) => (
             <div
               key={stage.label}
-              className={`pipeline-stage ${healthClass(stage.status)}`}
+              className={`card pipeline-stage ${healthClass(stage.status)}`}
             >
               <span>{stage.label}</span>
               <strong>{stage.status}</strong>
