@@ -1,4 +1,4 @@
-import { copyText } from "../../utils/clipboard";
+import { CopyButton } from "../../components/CopyButton";
 import { useToast } from "../../components/toastContext";
 import { FieldHelp } from "../../components/FieldHelp";
 import { LoadingDots } from "../../components/LoadingDots";
@@ -68,15 +68,6 @@ export function SingleSignOn() {
       }
     },
   });
-
-  async function copyIdentityValue(value: string, label: string) {
-    try {
-      await copyText(value);
-      notify(`${label} copied.`);
-    } catch {
-      notify("Could not copy the account information.", "error");
-    }
-  }
 
   const info = status.data;
   const linked = info?.linked;
@@ -163,16 +154,12 @@ export function SingleSignOn() {
                     <pre>
                       <code>{linked.issuer}</code>
                     </pre>
-                    <button
-                      type="button"
+                    <CopyButton
                       className="button ghost compact"
-                      aria-label="Copy provider"
-                      onClick={() =>
-                        void copyIdentityValue(linked.issuer, "Provider")
-                      }
-                    >
-                      Copy
-                    </button>
+                      ariaLabel="Copy provider"
+                      value={linked.issuer}
+                      errorMessage="Could not copy the account information."
+                    />
                   </dd>
                 </div>
                 <div>
@@ -187,16 +174,12 @@ export function SingleSignOn() {
                     <pre>
                       <code>{linked.subject}</code>
                     </pre>
-                    <button
-                      type="button"
+                    <CopyButton
                       className="button ghost compact"
-                      aria-label="Copy account id"
-                      onClick={() =>
-                        void copyIdentityValue(linked.subject, "Account ID")
-                      }
-                    >
-                      Copy
-                    </button>
+                      ariaLabel="Copy account id"
+                      value={linked.subject}
+                      errorMessage="Could not copy the account information."
+                    />
                   </dd>
                 </div>
               </dl>
@@ -232,16 +215,12 @@ export function SingleSignOn() {
                         <pre>
                           <code>{pending.issuer}</code>
                         </pre>
-                        <button
-                          type="button"
+                        <CopyButton
                           className="button ghost compact"
-                          aria-label="Copy provider"
-                          onClick={() =>
-                            void copyIdentityValue(pending.issuer, "Provider")
-                          }
-                        >
-                          Copy
-                        </button>
+                          ariaLabel="Copy provider"
+                          value={pending.issuer}
+                          errorMessage="Could not copy the account information."
+                        />
                       </dd>
                     </div>
                     <div>
@@ -256,19 +235,12 @@ export function SingleSignOn() {
                         <pre>
                           <code>{pending.subject}</code>
                         </pre>
-                        <button
-                          type="button"
+                        <CopyButton
                           className="button ghost compact"
-                          aria-label="Copy account id"
-                          onClick={() =>
-                            void copyIdentityValue(
-                              pending.subject,
-                              "Account ID",
-                            )
-                          }
-                        >
-                          Copy
-                        </button>
+                          ariaLabel="Copy account id"
+                          value={pending.subject}
+                          errorMessage="Could not copy the account information."
+                        />
                       </dd>
                     </div>
                   </dl>

@@ -1,5 +1,5 @@
 import { FieldHelp } from "../../components/FieldHelp";
-import { copyText } from "../../utils/clipboard";
+import { CopyButton } from "../../components/CopyButton";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useId, useState } from "react";
 import { api } from "../../api/client";
@@ -78,15 +78,6 @@ export function SsoSettings({
       ]);
     },
   });
-
-  async function copyUrl(value: string, label: string) {
-    try {
-      await copyText(value);
-      notify(`${label} copied.`);
-    } catch {
-      notify(`Could not copy ${label.toLowerCase()}.`, "error");
-    }
-  }
 
   return (
     <form
@@ -201,14 +192,12 @@ export function SsoSettings({
                   <pre>
                     <code>{callbackUrl}</code>
                   </pre>
-                  <button
-                    type="button"
+                  <CopyButton
                     className="button ghost compact"
-                    aria-label="Copy redirect URI"
-                    onClick={() => void copyUrl(callbackUrl, "Redirect URI")}
-                  >
-                    Copy
-                  </button>
+                    ariaLabel="Copy redirect URI"
+                    value={callbackUrl}
+                    errorMessage="Could not copy redirect uri."
+                  />
                 </dd>
               </div>
             </dl>
@@ -321,16 +310,12 @@ export function SsoSettings({
                   <pre>
                     <code>{logoutUrl}</code>
                   </pre>
-                  <button
-                    type="button"
+                  <CopyButton
                     className="button ghost compact"
-                    aria-label="Copy back-channel logout URL"
-                    onClick={() =>
-                      void copyUrl(logoutUrl, "Back-channel logout URL")
-                    }
-                  >
-                    Copy
-                  </button>
+                    ariaLabel="Copy back-channel logout URL"
+                    value={logoutUrl}
+                    errorMessage="Could not copy back-channel logout url."
+                  />
                 </dd>
               </div>
             </dl>

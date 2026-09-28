@@ -125,7 +125,11 @@ export function IncidentDetail() {
             >
               Retry
             </button>
-            <Link className="button ghost" to={incidentFeed}>
+            <Link
+              className="button ghost"
+              to={incidentFeed}
+              state={{ restoreScroll: true }}
+            >
               Back to incidents
             </Link>
           </div>
@@ -188,16 +192,30 @@ export function IncidentDetail() {
           </div>
         </div>
         <div className="incident-actions">
+          {incidentSearch !== undefined && (
+            <Link
+              className="button ghost"
+              to={incidentFeed}
+              state={{ restoreScroll: true }}
+            >
+              Back to incidents
+            </Link>
+          )}
           {myCommentsSearch !== undefined && (
             <Link
               className="button ghost"
               to={`/my-comments?${myCommentsSearch}`}
+              state={{ restoreScroll: true }}
             >
               Back to My Comments
             </Link>
           )}
           {bookmarkSearch !== undefined && (
-            <Link className="button ghost" to={`/bookmarks?${bookmarkSearch}`}>
+            <Link
+              className="button ghost"
+              to={`/bookmarks?${bookmarkSearch}`}
+              state={{ restoreScroll: true }}
+            >
               Back to bookmarks
             </Link>
           )}

@@ -97,7 +97,12 @@ export function SearchableSelect({
         aria-controls={open ? `${id}-list` : undefined}
         onClick={() => {
           setSearch("");
-          setActiveIndex(0);
+          setActiveIndex(
+            Math.max(
+              0,
+              options.findIndex((option) => option.value === value),
+            ),
+          );
           setOpen((current) => !current);
         }}
       >

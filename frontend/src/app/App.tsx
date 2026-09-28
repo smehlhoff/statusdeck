@@ -18,6 +18,7 @@ import {
   Routes,
   useLocation,
   useNavigate,
+  useNavigationType,
 } from "react-router-dom";
 import { ApiFailure, api, ensureCsrf } from "../api/client";
 import { queryKeys } from "../api/queries";
@@ -149,6 +150,9 @@ function Shell({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const navigationType = useNavigationType();
+  const listPositions = useRef(new Map<string, number>());
+  const restoreScroll = location.state?.restoreScroll === true;
   const [catalogView, setCatalogView] = useState<CatalogView>();
   const [logoutError, setLogoutError] = useState("");
   const [loggingOut, setLoggingOut] = useState(false);
@@ -189,9 +193,73 @@ function Shell({
   }, [location.pathname]);
 
   useEffect(() => {
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = previous;
+    };
+  }, []);
+
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0 });
     mainRef.current?.focus({ preventScroll: true });
   }, [location.pathname]);
+
+  useLayoutEffect(() => {
+    const isList = ["/incidents", "/bookmarks", "/my-comments"].includes(
+      location.pathname,
+    );
+    if (!isList) return;
+    const key = location.pathname + location.search;
+    const target =
+      navigationType === "POP" || restoreScroll
+        ? (listPositions.current.get(key) ?? 0)
+        : 0;
+    let position = target;
+    let restoring = target > 0;
+    window.scrollTo({ top: 0, left: 0 });
+
+    // Lazy routes and cached query pages must render before restoring a deep position.
+    const observer = new ResizeObserver(restore);
+
+    function restore() {
+      if (!restoring) return;
+      if (
+        document.documentElement.scrollHeight - window.innerHeight >=
+        target
+      ) {
+        window.scrollTo(0, target);
+        restoring = false;
+        observer.disconnect();
+      }
+    }
+
+    function remember() {
+      if (!restoring) position = window.scrollY;
+    }
+
+    function cancelRestore() {
+      restoring = false;
+      observer.disconnect();
+    }
+
+    if (restoring && mainRef.current) observer.observe(mainRef.current);
+    const frame = window.requestAnimationFrame(restore);
+    window.addEventListener("scroll", remember, { passive: true });
+    window.addEventListener("wheel", cancelRestore, { passive: true });
+    window.addEventListener("touchstart", cancelRestore, { passive: true });
+    window.addEventListener("keydown", cancelRestore);
+    const positions = listPositions.current;
+    return () => {
+      positions.set(key, position);
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", remember);
+      window.removeEventListener("wheel", cancelRestore);
+      window.removeEventListener("touchstart", cancelRestore);
+      window.removeEventListener("keydown", cancelRestore);
+    };
+  }, [location.pathname, location.search, navigationType, restoreScroll]);
 
   async function logout() {
     setLogoutError("");
