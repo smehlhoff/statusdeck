@@ -32,13 +32,20 @@ impl Database {
     }
 
     pub async fn migrations_current(&self) -> bool {
-        sqlx::query_as::<_, (Option<i64>, bool)>(
-            "SELECT max(version), COALESCE(bool_and(success), false) FROM _sqlx_migrations",
+        sqlx::query_as::<_, (i64, bool, Vec<u8>)>(
+            "SELECT version, success, checksum FROM _sqlx_migrations ORDER BY version",
         )
-        .fetch_one(&self.pool)
+        .fetch_all(&self.pool)
         .await
-        .is_ok_and(|(version, successful)| {
-            successful && version == Some(expected_migration_version())
+        .is_ok_and(|applied| {
+            applied.len() == MIGRATOR.iter().count()
+                && applied.iter().zip(MIGRATOR.iter()).all(
+                    |((version, successful, checksum), expected)| {
+                        *successful
+                            && *version == expected.version
+                            && checksum.as_slice() == expected.checksum.as_ref()
+                    },
+                )
         })
     }
 
