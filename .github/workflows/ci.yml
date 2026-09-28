@@ -49,7 +49,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: backend
-          # Lockfile-only RSA via SQLx's disabled MySQL driver; see docs/deployment.md.
+          # OIDC uses RSA public-key verification, not the affected private-key operations.
+          # See docs/deployment.md for the RUSTSEC-2023-0071 assessment.
           ignore: RUSTSEC-2023-0071
 
   secret-scan:

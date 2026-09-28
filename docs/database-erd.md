@@ -399,6 +399,49 @@ erDiagram
         text display_name
         jsonb preferences
         bigint credential_version
+        bigint oidc_generation
+    }
+
+    oidc_configuration {
+        boolean singleton PK
+        text identity_key
+        text flow_key
+        text configuration
+        bigint revision
+    }
+
+    oidc_identities {
+        uuid id PK
+        uuid user_id FK,UK
+        text issuer
+        text subject
+        text configuration_key
+        boolean needs_relink
+    }
+
+    oidc_login_attempts {
+        bytea state_hash PK
+        bytea browser_hash UK
+        uuid user_id FK
+        uuid session_id FK
+        uuid identity_id FK
+        text purpose
+        text nonce
+        text verifier
+        text flow_key
+        bigint credential_version
+        bigint generation
+        text candidate_subject
+        timestamptz expires_at
+    }
+
+    oidc_logout_events {
+        text issuer PK
+        text jti PK
+        text sid
+        text subject
+        timestamptz received_at
+        timestamptz expires_at
     }
 
     sessions {
@@ -410,6 +453,9 @@ erDiagram
         timestamptz expires_at
         text user_agent
         inet ip_address
+        text authentication_method
+        uuid oidc_identity_id FK
+        text oidc_sid
     }
 
     session_history {
@@ -422,6 +468,9 @@ erDiagram
         text user_agent
         inet ip_address
         text status
+        text authentication_method
+        uuid oidc_identity_id
+        text oidc_sid
     }
 
     audit_log {
@@ -445,6 +494,11 @@ erDiagram
     }
 
     users ||--o{ sessions : owns
+    users ||--o| oidc_identities : links
+    users ||--o{ oidc_login_attempts : authenticates
+    sessions o|--o{ oidc_login_attempts : authorizes_link
+    oidc_identities o|--o{ sessions : authenticates
+    oidc_identities o|--o{ oidc_login_attempts : signs_in
     users ||--o{ session_history : archived_sessions
     users o|--o{ audit_log : acts
 ```
@@ -452,6 +506,12 @@ erDiagram
 `audit_log.entity_type` and `entity_id` form an intentionally polymorphic audit
 reference. `worker_heartbeats` is independent and keeps one current row per worker
 role.
+
+`oidc_configuration` is a singleton with encrypted settings. Its identity/flow
+fingerprints are checked by the application, not foreign keys. The issuer/subject
+pair is unique in `oidc_identities`; issuer/token ID is the composite logout-event
+key. Logout events are temporary replay/revocation markers. Archived OIDC identity
+IDs in `session_history` intentionally have no foreign key.
 
 ## Deletion behavior
 
