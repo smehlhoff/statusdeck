@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { FieldHelp } from "../../components/FieldHelp";
 import { ReliabilityHistory } from "./ReliabilityHistory";
 import { ProviderComponents } from "./ProviderComponents";
 import { Link, useParams } from "react-router-dom";
@@ -20,21 +21,10 @@ import { useToast } from "../../components/toastContext";
 import { humanizeIdentifier, maintenanceTiming } from "../../utils/display";
 
 function StatusHeading({ label, help }: { label: string; help: ReactNode }) {
-  const tooltipId = useId();
   return (
     <h2 className="field-help-label">
       <span>{label}</span>
-      <button
-        className="field-help-button"
-        type="button"
-        aria-label={`About ${label}`}
-        aria-describedby={tooltipId}
-      >
-        ?
-      </button>
-      <span className="field-help-tooltip" id={tooltipId} role="tooltip">
-        {help}
-      </span>
+      <FieldHelp label={label} help={help} />
     </h2>
   );
 }

@@ -9,6 +9,7 @@ import { useToast } from "../../components/toastContext";
 import { EmptyState } from "../../components/EmptyState";
 import { LoadingSkeleton } from "../../components/LoadingSkeleton";
 import { StatusBadge } from "../../components/StatusBadge";
+import { FieldHelp } from "../../components/FieldHelp";
 
 interface ChannelEditDraft {
   id: string;
@@ -661,43 +662,38 @@ function SigningSecretField({
   disabled: boolean;
 }) {
   const inputId = useId();
-  const tooltipId = useId();
 
   return (
     <div className="signing-secret-field">
       <span className="field-help-label">
         <label htmlFor={inputId}>HMAC signing secret (optional)</label>
-        <button
-          className="field-help-button"
-          type="button"
-          aria-label="About HMAC signing secret"
-          aria-describedby={tooltipId}
-        >
-          ?
-        </button>
-        <span
-          className="field-help-tooltip signing-secret-help"
-          id={tooltipId}
-          role="tooltip"
-        >
-          <span>
-            Add a shared secret (32–4,096 characters) so your receiver can
-            verify that a webhook came from StatusDeck. The secret is never
-            sent.
-          </span>
-          <span>Signed requests include these headers:</span>
-          <code>{`Content-Type: application/json
+        <FieldHelp
+          label="HMAC signing secret"
+          className="signing-secret-help"
+          help={
+            <>
+              <span>
+                Add a shared secret (32–4,096 characters) so your receiver can
+                verify that a webhook came from StatusDeck. The secret is never
+                sent.
+              </span>
+              <span>Signed requests include these headers:</span>
+              <code>{`Content-Type: application/json
 X-StatusDeck-Event-Id: <event UUID>
 X-StatusDeck-Timestamp: <Unix timestamp in seconds>
 X-StatusDeck-Signature: sha256=<hex digest>`}</code>
-          <span>The signature is calculated as:</span>
-          <code>{'HMAC-SHA256(secret, timestamp + "." + raw JSON body)'}</code>
-          <span>
-            Verify with the same secret and original body bytes using a
-            constant-time comparison. Reject stale timestamps to limit replay;
-            use the event ID to detect duplicate deliveries.
-          </span>
-        </span>
+              <span>The signature is calculated as:</span>
+              <code>
+                {'HMAC-SHA256(secret, timestamp + "." + raw JSON body)'}
+              </code>
+              <span>
+                Verify with the same secret and original body bytes using a
+                constant-time comparison. Reject stale timestamps to limit
+                replay; use the event ID to detect duplicate deliveries.
+              </span>
+            </>
+          }
+        />
       </span>
       <input
         id={inputId}

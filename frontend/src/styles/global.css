@@ -1207,7 +1207,7 @@ h2 {
   line-height: 1.2;
 }
 
-.provider-row > .button {
+.provider-row:not(.dashboard-provider-card) > .button {
   grid-column: 2;
   grid-row: 1;
 }
@@ -3773,7 +3773,7 @@ form.filter-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .provider-row > .button {
+  .provider-row:not(.dashboard-provider-card) > .button {
     grid-column: 1;
     grid-row: 3;
     justify-self: start;
@@ -5229,6 +5229,13 @@ dialog {
   min-height: 28px;
   padding: 0.25rem 0.55rem;
   font-size: 0.7rem;
+}
+
+@media (max-width: 800px), (pointer: coarse) {
+  .dashboard-provider-card .provider-source,
+  .profile-section .sso-instructions-button {
+    min-height: 44px;
+  }
 }
 .sso-field {
   display: grid;

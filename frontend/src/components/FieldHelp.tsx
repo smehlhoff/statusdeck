@@ -1,6 +1,14 @@
-import { useId } from "react";
+import { useId, type ReactNode } from "react";
 
-export function FieldHelp({ label, help }: { label: string; help: string }) {
+export function FieldHelp({
+  label,
+  help,
+  className = "",
+}: {
+  label: string;
+  help: ReactNode;
+  className?: string;
+}) {
   const tooltipId = useId();
   return (
     <>
@@ -16,7 +24,11 @@ export function FieldHelp({ label, help }: { label: string; help: string }) {
       >
         ?
       </button>
-      <span className="field-help-tooltip" id={tooltipId} role="tooltip">
+      <span
+        className={`field-help-tooltip ${className}`}
+        id={tooltipId}
+        role="tooltip"
+      >
         {help}
       </span>
     </>

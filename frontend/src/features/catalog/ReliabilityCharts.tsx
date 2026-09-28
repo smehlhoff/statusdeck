@@ -110,6 +110,8 @@ export function ReliabilityCharts({
         ]
       : [];
   });
+  // A short opening month must not push the remaining labels into a second row.
+  if (months[1] && months[0].column + 1 >= months[1].column) months.shift();
   const incidentParams = new URLSearchParams({
     provider_id: providerId ?? "",
     scope: "provider",
