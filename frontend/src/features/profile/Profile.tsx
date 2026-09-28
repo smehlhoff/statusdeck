@@ -11,6 +11,7 @@ import { queryKeys } from "../../api/queries";
 import type { DisplayPreferences, ProfileSession, User } from "../../api/types";
 import { ConfirmDialog } from "../../components/ConfirmDialog";
 import { RelativeDateTime } from "../../components/RelativeDateTime";
+import { LoadingDots } from "../../components/LoadingDots";
 import { UserAvatar } from "../../components/UserAvatar";
 import { useToast } from "../../components/toastContext";
 import { formatDateTime } from "../../utils/display";
@@ -634,7 +635,11 @@ export function Profile() {
                   Sign out other sessions
                 </button>
               </header>
-              {sessions.isLoading && <p className="muted">Loading sessions…</p>}
+              {sessions.isLoading && (
+                <p className="muted">
+                  <LoadingDots label="Loading sessions" />
+                </p>
+              )}
               {sessions.isError && (
                 <p className="alert error" role="alert">
                   Sessions could not be loaded.{" "}

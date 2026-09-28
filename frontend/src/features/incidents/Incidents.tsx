@@ -16,6 +16,7 @@ import { SourceButton } from "../../components/SourceButton";
 import { AutoRefreshControl } from "../../components/AutoRefreshControl";
 import { EmptyState } from "../../components/EmptyState";
 import { LoadingSkeleton } from "../../components/LoadingSkeleton";
+import { LoadingDots } from "../../components/LoadingDots";
 import { RelativeDateTime } from "../../components/RelativeDateTime";
 import { useRefreshInterval } from "../../hooks/useRefreshInterval";
 import {
@@ -401,7 +402,9 @@ export function Incidents() {
           ))}
         </div>
         <div className="infinite-scroll-sentinel" ref={loadMoreRef}>
-          {query.isFetchingNextPage ? "Loading more incidents…" : null}
+          {query.isFetchingNextPage ? (
+            <LoadingDots label="Loading more incidents" />
+          ) : null}
         </div>
       </>
     );
@@ -733,9 +736,11 @@ export function Incidents() {
           </div>
         )}
         <span className="muted incident-result-count">
-          {query.isLoading
-            ? "Loading results…"
-            : `${incidents.length}${hasNextPage ? "+" : ""} event${incidents.length === 1 ? "" : "s"} loaded`}
+          {query.isLoading ? (
+            <LoadingDots label="Loading results" />
+          ) : (
+            `${incidents.length}${hasNextPage ? "+" : ""} event${incidents.length === 1 ? "" : "s"} loaded`
+          )}
         </span>
       </div>
       {needsCatalog && catalog.isError && catalog.data && (

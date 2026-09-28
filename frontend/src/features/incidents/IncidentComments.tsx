@@ -12,6 +12,7 @@ import { UserAvatar } from "../../components/UserAvatar";
 import { ConfirmDialog } from "../../components/ConfirmDialog";
 import { EmptyState } from "../../components/EmptyState";
 import { LoadingSkeleton } from "../../components/LoadingSkeleton";
+import { LoadingDots } from "../../components/LoadingDots";
 import { RelativeDateTime } from "../../components/RelativeDateTime";
 import { useToast } from "../../components/toastContext";
 import { CommentMarkdown } from "./CommentMarkdown";
@@ -332,7 +333,11 @@ export function IncidentComments({ incidentId }: { incidentId: string }) {
           disabled={query.isFetching || pending}
           onClick={() => void query.fetchNextPage()}
         >
-          {query.isFetchingNextPage ? "Loading…" : "Load older comments"}
+          {query.isFetchingNextPage ? (
+            <LoadingDots label="Loading older comments" />
+          ) : (
+            "Load older comments"
+          )}
         </button>
       )}
       {blocker.state === "blocked" && (

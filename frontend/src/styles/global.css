@@ -1381,6 +1381,52 @@ h2 {
   margin-top: 0;
 }
 
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.loading-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: loading-dot-bounce 1.1s ease-in-out infinite;
+}
+
+.loading-dot:nth-of-type(3) {
+  animation-delay: 0.14s;
+}
+
+.loading-dot:nth-of-type(4) {
+  animation-delay: 0.28s;
+}
+
+@keyframes loading-dot-bounce {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  35% {
+    transform: translateY(-65%);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-dot {
+    animation: none;
+  }
+}
+
 .skeleton-panel {
   display: grid;
   padding: 1.25rem;
@@ -4589,6 +4635,7 @@ form.filter-grid {
 }
 .searchable-select-option {
   padding: 8px 10px;
+  font-size: 0.75rem;
   border-radius: 4px;
   cursor: pointer;
   overflow-wrap: anywhere;

@@ -3,6 +3,7 @@ import { api } from "../../api/client";
 import { queryKeys } from "../../api/queries";
 import type { SecurityActivity as Activity } from "../../api/types";
 import { RelativeDateTime } from "../../components/RelativeDateTime";
+import { LoadingDots } from "../../components/LoadingDots";
 
 const ACTIONS: Record<string, string> = {
   "oidc.settings_updated": "Single sign-on settings updated",
@@ -42,8 +43,8 @@ export function SecurityActivity() {
         </p>
       </header>
       {activity.isLoading && (
-        <p className="muted" role="status">
-          Loading security activity…
+        <p className="muted">
+          <LoadingDots label="Loading security activity" />
         </p>
       )}
       {activity.isError && (

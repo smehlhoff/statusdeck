@@ -1,6 +1,7 @@
 import { copyText } from "../../utils/clipboard";
 import { useToast } from "../../components/toastContext";
 import { FieldHelp } from "../../components/FieldHelp";
+import { LoadingDots } from "../../components/LoadingDots";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -99,7 +100,11 @@ export function SingleSignOn() {
           The sign-in attempt failed or expired. Try linking your account again.
         </p>
       )}
-      {status.isPending && <p role="status">Loading single sign-on…</p>}
+      {status.isPending && (
+        <p>
+          <LoadingDots label="Loading single sign-on" />
+        </p>
+      )}
       {status.isError && (
         <p className="alert error" role="alert">
           Single sign-on settings could not be loaded.{" "}

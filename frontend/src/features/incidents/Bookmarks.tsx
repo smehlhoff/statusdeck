@@ -6,6 +6,7 @@ import { queryKeys } from "../../api/queries";
 import type { BookmarkPage } from "../../api/types";
 import { EmptyState } from "../../components/EmptyState";
 import { LoadingSkeleton } from "../../components/LoadingSkeleton";
+import { LoadingDots } from "../../components/LoadingDots";
 import { RelativeDateTime } from "../../components/RelativeDateTime";
 import { humanizeIdentifier } from "../../utils/display";
 import { selectSearchParams } from "../../utils/searchParams";
@@ -126,7 +127,11 @@ export function Bookmarks() {
           disabled={query.isFetching}
           onClick={() => void query.fetchNextPage()}
         >
-          {query.isFetchingNextPage ? "Loading…" : "Load more bookmarks"}
+          {query.isFetchingNextPage ? (
+            <LoadingDots label="Loading more bookmarks" />
+          ) : (
+            "Load more bookmarks"
+          )}
         </button>
       )}
     </>
